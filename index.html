@@ -13,6 +13,8 @@
         content="Auditez vos chemins avant migration SharePoint et évitez les erreurs OneDrive sync">
     <meta name="theme-color" content="#0078D4">
 
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
     <!-- Schema.org Product -->
     <script type="application/ld+json">
     {
@@ -1204,7 +1206,9 @@
 
             .nav-right {
                 margin-left: 0;
-                gap: 0;
+                gap: calc(var(--grid) * 1);
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .problem-keypoints {
@@ -1552,7 +1556,7 @@
             </div>
         </div>
         <div class="container" style="text-align:center">
-            <button class="btn btn-primary" onclick="window.location.href='FAQ.html'">
+            <button class="btn btn-secondary" onclick="window.location.href='FAQ.html'">
                 <i class="fas fa-question-circle"></i>
                 Voir la FAQ complète
             </button>
@@ -1604,11 +1608,8 @@
                 <div class="pricing-card">
                     <div class="pricing-name">Entreprise</div>
                     <div class="pricing-price">Sur devis</div>
-                    <div class="pricing-period">Personnalisé</div>
-                    <ul class="pricing-features">
-                        <li>Déploiement multi-utilisateurs</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="handleContactSales()">Contact</button>
+                    <div class="pricing-period">Déploiement multi-utilisateurs</div>
+                    <button class="btn btn-primary" onclick="handleContactSales()"><i class="fas fa-envelope"></i> Contact</button>
                 </div>
             </div>
         </div>
@@ -1809,7 +1810,7 @@
         modal.style.display = 'flex';
         // Load GIF only when modal opens
         if (!gifImage.src) {
-            gifImage.src = 'https://onedrivepathchecker.com/images/DemoPathChecker.gif';
+            gifImage.src = 'images/DemoPathChecker.gif';
         }
         gifImage.style.display = 'block';
     }

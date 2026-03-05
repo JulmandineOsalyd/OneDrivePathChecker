@@ -7,6 +7,8 @@
     <meta name="keywords" content="OneDrive Path Checker FAQ, SharePoint migration, OneDrive sync, chemins longs">
     <meta name="robots" content="index, follow">
     
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    
     <!-- Schema.org FAQPage -->
     <script type="application/ld+json">
     {
@@ -798,7 +800,9 @@
 
             .nav-right {
                 margin-left: 0;
-                gap: 0;
+                gap: calc(var(--grid) * 1);
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .problem-keypoints {

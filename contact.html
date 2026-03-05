@@ -11,6 +11,8 @@
     <meta property="og:description" content="Une question ou un commentaire ? Contactez l'équipe OneDrive Path Checker.">
     <meta name="theme-color" content="#0078D4">
 
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
     <title>Contact - OneDrive Path Checker | Support & Questions</title>
 
     <!-- Google Fonts - Inter -->
@@ -500,7 +502,9 @@
 
             .nav-right {
                 margin-left: 0;
-                gap: 0;
+                gap: calc(var(--grid) * 1);
+                flex-direction: column;
+                align-items: stretch;
             }
         }
 
