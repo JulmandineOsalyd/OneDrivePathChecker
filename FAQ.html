@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FAQ PathChecker - Toutes vos questions sur le détecteur de chemins fichiers longs pour SharePoint et OneDrive">
+    <meta name="keywords" content="PathChecker FAQ, SharePoint migration, OneDrive sync, chemins longs">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "Comment l'outil calcule-t-il la longueur des chemins en mode Synchronisation OneDrive ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "En mode Synchronisation OneDrive, l'outil mesure la longueur du chemin Windows complet de chaque fichier depuis la racine du disque (C:\\...). La limite de 255 caractères est une contrainte Windows."
+            }
+        }]
+    }
+    </script>
+
+ <title>FAQ - PathChecker | Détecteur chemins fichiers longs</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ========== VARIABLES CSS ========== */
+        :root {
+            --primary: #0078D4;
+            --primary-light: #4F91D1;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F7F9FC;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B7280;
+            --border: #E5E7EB;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.08);
+            --success: #16A34A;
+            --warning: #EA580C;
+            --error: #DC2626;
+            --grid: 8px;
+        }
+
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+
+        /* ========== TYPOGRAPHY ========== */
+        h1 {
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        small {
+            font-size: 0.875rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+       /* ========== CONTAINER ========== */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 calc(var(--grid) * 2);
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 1);
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-center {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: calc(var(--grid) * 3);
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color 0.2s ease;
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 2);
+            margin-left: auto;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: calc(var(--grid) * 0.75) calc(var(--grid) * 2);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.75);
+        }
+
+        .nav-cta:hover {
+            background: #106DC0;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ========== BOUTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--grid) * 1.25) calc(var(--grid) * 2.5);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            gap: calc(var(--grid) * 1);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background: #106DC0;
+            transform: scale(1.02);
+            box-shadow: 0 0 24px rgba(0, 120, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+            transform: scale(1.02);
+        }
+
+        .btn-small {
+            padding: calc(var(--grid) * 0.75) calc(var(--grid) * 1.5);
+            font-size: 0.875rem;
+        }
+
+        /* ========== HERO FAQ ========== */
+        .faq-hero {
+            text-align: center;
+            padding: calc(var(--grid) * 12) 0 calc(var(--grid) * 8) 0;
+        }
+
+        .faq-hero h1 {
+            font-size: clamp(2.25rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--grid) * 2);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .faq-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.75);
+            color: var(--primary);
+            font-weight: 500;
+            margin-top: calc(var(--grid) * 4);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .faq-back-home:hover { opacity: 0.8; }
+
+
+
+
+
+        /* ========== FAQ ========== */
+        .faq-header {
+            text-align: center;
+            margin-bottom: calc(var(--grid) * 6);
+        }
+
+        .faq-header h2 {
+            margin-bottom: calc(var(--grid) * 2);
+        }
+
+        .faq-category {
+            max-width: 860px;
+            margin: 0 auto calc(var(--grid) * 6) auto;
+        }
+
+        .faq-category-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--grid) * 2);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 1.5);
+            padding-bottom: calc(var(--grid) * 1.5);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .faq-category-title i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: calc(var(--grid) * 2.5) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            cursor: pointer;
+            gap: calc(var(--grid) * 2);
+            transition: color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-chevron {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-item.open .faq-question {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: calc(var(--grid) * 3);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--grid) * 1.5);
+        }
+
+        .faq-answer p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .faq-code {
+            display: block;
+            background: #1E293B;
+            color: #7DD3FC;
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            border-radius: 8px;
+            font-family: 'Courier New', Consolas, monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            word-break: break-all;
+        }
+
+        .faq-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--grid) * 1.5);
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+        }
+
+        .faq-tip i {
+            color: var(--primary);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .faq-tip span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .faq-table-wrapper {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .faq-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .faq-table th {
+            background: var(--bg-secondary);
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-table td {
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            vertical-align: middle;
+        }
+
+        .faq-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.5);
+            padding: calc(var(--grid) * 0.5) calc(var(--grid) * 1.25);
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-success {
+            background: #DCFCE7;
+            color: #16A34A;
+        }
+
+        .badge-warning {
+            background: #FFF7ED;
+            color: #EA580C;
+        }
+
+        .badge-danger {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .faq-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--grid) * 1);
+            padding-left: calc(var(--grid) * 1);
+        }
+
+        .faq-list li {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--grid) * 1.5);
+            line-height: 1.6;
+        }
+
+        .faq-list li i {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 3px;
+            font-size: 0.875rem;
+        }
+
+        .faq-author {
+            display: flex;
+            gap: calc(var(--grid) * 3);
+            align-items: flex-start;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: calc(var(--grid) * 3);
+            border: 1px solid var(--border);
+        }
+
+        .faq-author-avatar {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+        }
+
+        .faq-author-links {
+            display: flex;
+            gap: calc(var(--grid) * 2);
+            margin-top: calc(var(--grid) * 1.5);
+            flex-wrap: wrap;
+        }
+
+        .faq-author-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.75);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: opacity 0.2s ease;
+        }
+
+        .faq-author-links a:hover {
+            opacity: 0.75;
+            text-decoration: none;
+        }
+
+        /* Responsive FAQ */
+        @media (max-width: 768px) {
+            .faq-author {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .faq-author-links {
+                justify-content: center;
+            }
+
+            .faq-table td,
+            .faq-table th {
+                padding: calc(var(--grid) * 1) calc(var(--grid) * 1.5);
+                font-size: 0.8125rem;
+            }
+        }
+
+
+        /* ========== STICKY CTA MOBILE ========== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: calc(var(--grid) * 2);
+            text-align: center;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .sticky-cta.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .sticky-cta p {
+            color: white;
+            margin-bottom: calc(var(--grid) * 1);
+            font-weight: 600;
+        }
+
+        /* ========== FORMULAIRE CONTACT ========== */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: calc(var(--grid) * 1);
+        }
+
+        .contact-form input {
+            flex: 1;
+            padding: calc(var(--grid) * 1.25) calc(var(--grid) * 2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: calc(var(--grid) * 6) 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--primary-light);
+        }
+
+        footer p {
+            color: #9CA3AF;
+        }
+
+        footer nav {
+            margin-top: calc(var(--grid) * 3);
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--grid) * 3);
+            flex-wrap: wrap;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: calc(var(--grid) * 2);
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            #hero {
+                min-height: auto;
+                padding: calc(var(--grid) * 4) 0;
+            }
+
+            .hero-media {
+                aspect-ratio: auto;
+                min-height: 300px;
+                margin-top: calc(var(--grid) * 3);
+            }
+
+            .hero-stats {
+                gap: calc(var(--grid) * 2);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .contact-form {
+                flex-direction: column;
+            }
+
+            .contact-form input {
+                width: 100%;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .audience-logos {
+                gap: calc(var(--grid) * 2);
+            }
+
+            section {
+                padding: calc(var(--grid) * 4) 0;
+            }
+
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-center {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: calc(var(--grid) * 2);
+                border-bottom: 1px solid var(--border);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-center.active {
+                max-height: 400px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+
+            .nav-links li {
+                padding: calc(var(--grid) * 1.5) 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-cta {
+                width: 100%;
+                justify-content: center;
+                margin-top: calc(var(--grid) * 1);
+            }
+
+            .navbar-content {
+                flex-wrap: wrap;
+            }
+
+            .nav-right {
+                margin-left: 0;
+                gap: 0;
+            }
+
+            .problem-keypoints {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-card {
+                text-align: left;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: calc(var(--grid) * 2);
+            }
+
+            .problem-icon-circle {
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <i class="fas fa-ruler-combined logo-icon"></i>
+                <span>PathChecker</span>
+            </div>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="Home.html">Accueil</a></li>
+                    <li><a href="Home.html#solution">Solution</a></li>
+                    <li><a href="FAQ.html">FAQ </a></li>
+                    <li><a href="Home.html#pricing">Tarifs</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a href="#download" class="nav-cta">
+                    <i class="fas fa-download"></i>
+                    Télécharger
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Foire Aux Questions</h1>
+            <p class="faq-subtitle">
+                Tout ce que vous devez savoir sur PathChecker.<br>
+                Une question sans réponse ? <a href="mailto:support@onedrivepathchecker.com">Contactez-nous</a>
+            </p>
+            <a href="Home.html" class="faq-back-home">
+                <i class="fas fa-arrow-left"></i>
+                Retour à l'accueil
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <div class="container">
+        <!-- 🔧 FONCTIONNEMENT -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-wrench"></i>
+                Fonctionnement de l'outil
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Comment l'outil calcule-t-il la longueur des chemins en mode « Synchronisation OneDrive » ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>En mode Synchronisation OneDrive, l'outil mesure la longueur du chemin Windows complet de
+                            chaque fichier, tel qu'il existe sur votre ordinateur. Par exemple :</p>
+                        <code
+                            class="faq-code">C:\Users\julie\OneDrive - Mon Entreprise\Projets\2024\Document important.docx</code>
+                        <p>Si ce chemin dépasse 255 caractères, Windows et OneDrive peuvent rencontrer des erreurs de
+                            synchronisation, des fichiers ignorés, ou des blocages lors de l'ouverture.</p>
+                        <div class="faq-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>La limite de 255 caractères est une contrainte Windows qui s'applique au chemin
+                                complet depuis la racine du disque (C:\...).</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Comment fonctionne le mode « Migration SharePoint » ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>En mode Migration SharePoint, l'outil simule l'URL relative que chaque fichier aura une fois
+                        migré sur SharePoint. Par exemple, si vous migrez vers le site RH et la bibliothèque Documents
+                        partagés, le fichier :</p>
+                    <code class="faq-code">C:\Serveur\Archives\Contrats\2024\Contrat_Julie.docx</code>
+                    <p>sera simulé comme :</p>
+                    <code class="faq-code">/sites/RH/Documents partagés/Archives/Contrats/2024/Contrat_Julie.docx</code>
+                    <p>C'est exactement le format qu'utilise Microsoft pour calculer la longueur du chemin SharePoint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Que se passe-t-il si je ne connais pas encore mon site SharePoint cible ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Un nom de site fictif est renseigné par défaut pour estimer les longueurs d'URL simulées.
+                        L'objectif est d'identifier les fichiers à risque — même avec un nom provisoire, les résultats
+                        restent exploitables pour prioriser vos renommages.</p>
+                    <p>Vous pouvez également cocher la case <strong>« Je ne connais pas le site SharePoint cible
+                            »</strong> pour utiliser les valeurs par défaut et lancer l'analyse immédiatement.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Quelle est la différence entre la limite 255 et 400 caractères ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ces deux seuils correspondent à des niveaux de risque différents :</p>
+                    <div class="faq-table-wrapper">
+                        <table class="faq-table">
+                            <thead>
+                                <tr>
+                                    <th>Limite</th>
+                                    <th>Risque</th>
+                                    <th>Contexte</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>255 caractères</strong></td>
+                                    <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
+                                            Avertissement</span></td>
+                                    <td>Problèmes potentiels avec les applications Office, l'Explorateur Windows et
+                                        certains outils tiers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>400 caractères</strong></td>
+                                    <td><span class="badge badge-danger"><i class="fas fa-times-circle"></i>
+                                            Critique</span></td>
+                                    <td>Blocage total par SharePoint — migration impossible</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="faq-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Traitez en priorité les fichiers dépassant 400 caractères, puis ceux entre 255 et 400 pour
+                            garantir un usage fluide après migration.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Capacités -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-folder-open"></i> Capacités et performance
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Jusqu'à combien de fichiers peut-on scanner ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>L'outil est conçu pour analyser des arborescences de taille professionnelle :</p>
+                    <div class="faq-table-wrapper">
+                        <table class="faq-table">
+                            <thead>
+                                <tr>
+                                    <th>Volume</th>
+                                    <th>Performance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jusqu'à 50 000 fichiers</td>
+                                    <td><span class="badge badge-success"><i class="fas fa-check-circle"></i> Rapide et
+                                            fluide</span></td>
+                                </tr>
+                                <tr>
+                                    <td>50 000 à 100 000 fichiers</td>
+                                    <td><span class="badge badge-success"><i class="fas fa-check-circle"></i>
+                                            Fonctionnel, quelques secondes d'attente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Au-delà de 100 000 fichiers</td>
+                                    <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
+                                            Possible ralentissement selon la machine</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="faq-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Pour les arborescences très volumineuses, analysez les dossiers principaux séparément
+                            plutôt que l'intégralité du serveur en une seule fois.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Peut-on scanner un lecteur réseau mappé ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Oui, l'outil peut analyser un lecteur réseau mappé (par exemple
+                        <code>Z:\Partage\Services\RH</code>). Il suffit de sélectionner le dossier via le bouton de
+                        sélection, comme pour n'importe quel dossier local.</p>
+                    <p>Quelques points à garder en tête :</p>
+                    <ul class="faq-list">
+                        <li><i class="fas fa-tachometer-alt"></i> <strong>Performance :</strong> un lecteur réseau est
+                            plus lent qu'un SSD local — sur 20 000 fichiers, le scan peut prendre plusieurs dizaines de
+                            secondes selon la qualité de la connexion</li>
+                        <li><i class="fas fa-key"></i> <strong>Droits d'accès :</strong> l'outil accède aux fichiers
+                            avec les droits de l'utilisateur connecté. Les sous-dossiers restreints sont silencieusement
+                            ignorés</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Chemin affiché :</strong> le chemin réseau
+                            complet (<code>Z:\...</code> ou <code>\\serveur\partage\...</code>) est utilisé pour le
+                            calcul, ce qui reflète fidèlement ce que OneDrive devra synchroniser</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Sécurité -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-shield-alt"></i> Sécurité et confidentialité
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Mes fichiers sont-ils envoyés quelque part ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée —
+                        noms de fichiers, chemins, résultats — n'est transmise à un serveur externe ou à Internet. Vos
+                        données restent sur votre machine à tout moment.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    L'outil nécessite-t-il un accès Internet ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Non.</strong> Il fonctionne entièrement hors ligne, même en environnement réseau isolé ou
+                        en DMZ. Aucune connexion n'est établie lors de l'analyse.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Faut-il des droits administrateur pour l'utiliser ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Non.</strong> L'outil est un exécutable portable qui ne nécessite aucune installation ni
+                        élévation de privilèges. Il peut être lancé directement depuis une clé USB ou un dossier
+                        partagé, sans droits admin.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    L'outil modifie-t-il des fichiers ou des dossiers ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Non.</strong> Il fonctionne en <strong>lecture seule</strong> — il ne renomme, ne déplace
+                        et ne supprime rien. Votre arborescence est analysée sans aucune modification.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Résultats & Export -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-chart-bar"></i> Résultats et export
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Sous quel format sont exportés les résultats ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Les résultats sont exportables au format <strong>CSV</strong>, directement lisible dans Excel.
+                        Chaque ligne contient :</p>
+                    <ul class="faq-list">
+                        <li><i class="fas fa-angle-right"></i> Le chemin complet</li>
+                        <li><i class="fas fa-angle-right"></i> La longueur calculée</li>
+                        <li><i class="fas fa-angle-right"></i> Les excédents par rapport aux seuils 255 et 400
+                            caractères</li>
+                        <li><i class="fas fa-angle-right"></i> Le segment le plus long du chemin</li>
+                    </ul>
+                    <p>Ce fichier peut être partagé avec votre équipe ou intégré dans un rapport de migration.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Peut-on filtrer les résultats par type de dépassement (255 ou 400) ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>L'interface distingue clairement les deux niveaux via un <strong>code couleur</strong> — <span
+                            style="color:#EA580C; font-weight:600;">orange</span> pour les dépassements 255 caractères,
+                        <span style="color:#DC2626; font-weight:600;">rouge</span> pour les dépassements 400 caractères.
+                    </p>
+                    <p>Le fichier CSV exporté contient également les deux colonnes d'excédent, ce qui permet de filtrer
+                        et trier facilement dans Excel selon le niveau de criticité.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Les résultats indiquent-ils le chemin complet du fichier problématique ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Oui. Chaque ligne affiche :</p>
+                    <ul class="faq-list">
+                        <li><i class="fas fa-angle-right"></i> Le chemin complet (ou l'URL SharePoint simulée selon le
+                            mode)</li>
+                        <li><i class="fas fa-angle-right"></i> La longueur calculée</li>
+                        <li><i class="fas fa-angle-right"></i> Les excédents par rapport aux deux seuils</li>
+                        <li><i class="fas fa-angle-right"></i> Le segment le plus long du chemin</li>
+                        <li><i class="fas fa-angle-right"></i> Un bouton d'accès direct au dossier parent dans
+                            l'Explorateur Windows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Licence & Support -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-credit-card"></i> Licence et support
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Puis-je utiliser l'outil sur plusieurs postes ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>La licence standard couvre un seul poste. Pour un déploiement multi-postes ou entreprise,
+                        contactez <a href="mailto:support@onedrivepathchecker.com">support@onedrivepathchecker.com</a>
+                        pour obtenir un devis adapté à vos besoins.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Y a-t-il une version d'essai ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Oui, une version d'essai est disponible pendant <strong>24 heures</strong> avant achat, sans
+                        limitation de fonctionnalités. Elle vous permet d'évaluer l'outil sur votre propre environnement
+                        avant de vous engager.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    L'outil est-il mis à jour si Microsoft change ses limites ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Oui, les mises à jour sont disponibles pour les licences actives. En cas d'évolution des limites
+                        Microsoft (SharePoint ou OneDrive), une mise à jour sera publiée et notifiée par e-mail aux
+                        utilisateurs disposant d'une licence valide.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : À propos -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-user-circle"></i> À propos du développeur
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Qui a développé cet outil ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-author">
+                        <div class="faq-author-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="faq-author-info">
+                            <p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365
+                                depuis plus de 10 ans. Forte d'expériences terrain sur des projets de migration
+                                SharePoint et OneDrive, elle a conçu cet outil pour répondre à un besoin concret
+                                rencontré en mission : identifier rapidement les fichiers à risque avant migration, et
+                                limiter les problèmes de synchronisation OneDrive après migration.</p>
+                            <div class="faq-author-links">
+                                <a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener">
+                                    <i class="fas fa-globe"></i> osalydconsulting.com
+                                </a>
+                                <a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener">
+                                    <i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ========== FAQ ACCORDÉON ==========
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            // Fermer tous les autres
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = '0px';
+                    openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle l'item cliqué
+            if (!isOpen) {
+                item.classList.add('open');
+                this.setAttribute('aria-expanded', 'true');
+                
+                // Calculer la hauteur réelle
+                answer.style.maxHeight = 'none';
+                const fullHeight = answer.scrollHeight;
+                answer.style.maxHeight = '0px';
+                answer.getBoundingClientRect(); // force reflow
+                answer.style.maxHeight = fullHeight + 'px';
+            } else {
+                item.classList.remove('open');
+                this.setAttribute('aria-expanded', 'false');
+                answer.style.maxHeight = '0px';
+            }
+        });
+    });
+
+    console.log('✅ FAQ Accordéon activé !');
+});
+
+        // ========== MENU MOBILE ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navCenter = document.getElementById('navCenter');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navCenter.classList.toggle('active');
+        });
+
+        // Fermer menu au clic sur lien
+        navCenter.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navCenter.classList.remove('active');
+            });
+        });
+
+        // ========== UTILITAIRES =========
+        const SCROLL_TRIGGER = 100 * window.innerHeight / 100;
+
+        // ========== ANIMATIONS SCROLL ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========== COMPTEUR ANIMÉ ==========
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString('fr-FR');
+                    clearInterval(interval);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString('fr-FR');
+                }
+            }, 20);
+        }
+
+        const counter = document.querySelector('.counter');
+        if (counter) {
+            const target = parseInt(counter.dataset.target);
+            const observer2 = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        animateCounter(entry.target, target);
+                        entry.target.classList.add('counted');
+                        observer2.unobserve(entry.target);
+                    }
+                });
+            });
+            observer2.observe(counter);
+        }
+
+        // ========== TOGGLE IMAGE/VIDÉO ==========
+        function toggleMedia() {
+            const img = document.getElementById('mainImage');
+            const video = document.getElementById('mainVideo');
+            const toggleText = document.getElementById('toggleText');
+
+            if (img.style.display !== 'none') {
+                // Passer à la vidéo
+                img.style.display = 'none';
+                video.style.display = 'block';
+                toggleText.innerHTML = '<i class="fas fa-image"></i> Image';
+                video.play();
+            } else {
+                // Passer à l'image
+                img.style.display = 'block';
+                video.style.display = 'none';
+                toggleText.innerHTML = '<i class="fas fa-play"></i> Vidéo';
+                video.pause();
+            }
+        }
+
+        // ========== STICKY CTA ==========
+        window.addEventListener('scroll', () => {
+            const stickyCTA = document.getElementById('stickyCTA');
+            if (window.scrollY > SCROLL_TRIGGER) {
+                stickyCTA.classList.add('show');
+            } else {
+                stickyCTA.classList.remove('show');
+            }
+        });
+
+        // ========== PRICING TOGGLE ==========
+        function switchPricing(period) {
+            // Mise à jour des boutons
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Mise à jour du prix
+            const priceElement = document.getElementById('priceMonthly');
+            const periodElement = document.getElementById('periodMonthly');
+
+            if (period === 'annual') {
+                priceElement.textContent = '€279';
+                periodElement.textContent = '/an';
+            } else {
+                priceElement.textContent = '€29';
+                periodElement.textContent = '/mois';
+            }
+        }
+
+        // ========== HANDLERS CTA ==========
+        function handleDownload() {
+            alert('🎉 Redirection vers le téléchargement PathChecker\n\n✅ Intégrer: https://github.com/yourusername/pathchecker/releases');
+        }
+
+        function handlePurchase() {
+            alert('💳 Redirection vers Stripe/Gumroad pour l\'achat Pro\n\n✅ Vous recevrez une clé de licence par email');
+        }
+
+        function handleContactSales() {
+            alert('📞 Email copié: contact@pathchecker.dev\n\n✅ Nous vous répondrons dans les 24h');
+        }
+
+        function handleContactSubmit() {
+            const email = document.getElementById('contactEmail').value;
+            if (email) {
+                alert(`✅ Merci ! Un email de confirmation a été envoyé à ${email}`);
+                document.getElementById('contactEmail').value = '';
+            } else {
+                alert('⚠️ Veuillez entrer un email valide');
+            }
+        }
+
+        // ========== PAGE LOAD ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ Landing Page PathChecker loaded');
+            console.log('✅ Font Awesome icons loaded');
+            console.log('✅ Animations initialized');
+        });
+
+        // ========== LAZY LOADING IMAGES ==========
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
+        }
+</script>
+
+
+
+</body>
+</html>
