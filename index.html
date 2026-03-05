@@ -1297,7 +1297,7 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR" class="nav-cta">
+                <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR" target="_blank" class="nav-cta">
                     <i class="fas fa-download"></i>
                     Télécharger
                 </a>
@@ -1748,7 +1748,8 @@
 
         // ========== HANDLERS CTA ==========
         function handleDownload() {
-            window.location.href = 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+            // open link in new tab to Microsoft Store
+            window.open('https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR', '_blank');
         }
 
         function handlePurchase() {
