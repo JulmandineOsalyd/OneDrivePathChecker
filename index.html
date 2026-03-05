@@ -583,31 +583,6 @@
             text-align: center;
         }
 
-        /* ========== AUDIENCE SECTION ========== */
-        .audience-logos {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: calc(var(--grid) * 4);
-            flex-wrap: wrap;
-            margin: calc(var(--grid) * 4) 0;
-        }
-
-        .logo-item {
-            padding: calc(var(--grid) * 2);
-            background: white;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            flex: 0 1 auto;
-        }
-
-        .logo-item svg {
-            width: 120px;
-            height: 60px;
-            object-fit: contain;
-        }
-
         /* ========== FAQ ========== */
         .faq-header {
             text-align: center;
@@ -698,6 +673,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease, padding 0.3s ease;
+            margin: 5px 0px;
         }
 
         .faq-answer-inner {
@@ -1256,7 +1232,7 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a href="#download" class="nav-cta">
+                <a href="https://apps.microsoft.com/store/detail/9PH9DTRRRX30?cid=DevShareMCLPCS" class="nav-cta">
                     <i class="fas fa-download"></i>
                     Télécharger
                 </a>
@@ -1271,9 +1247,8 @@
                 <div class="hero-icon">
                     <i class="fas fa-ruler-combined"></i>
                 </div>
-                <h1>Détecteur de chemins fichiers longs</h1>
-                <p class="hero-subtitle">Auditez vos chemins avant migration SharePoint et évitez les erreurs OneDrive
-                    sync</p>
+                <h1>Détecteur de chemins de fichiers trop longs - SharePoint & OneDrive</h1>
+                <p class="hero-subtitle">Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.</p>
 
                 <div class="hero-stats">
                     <div class="stat">
@@ -1397,32 +1372,6 @@
         </div>
     </section>
 
-    <!-- ========== AUDIENCE ========== -->
-    <section id="audience">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 2);">Pour qui ?</h2>
-            <p
-                style="text-align: center; margin-bottom: calc(var(--grid) * 4); color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto;">
-                Gestionnaires IT, administrateurs SharePoint et responsables de migration vers OneDrive
-            </p>
-            <div class="audience-logos">
-                <div class="logo-item flex-center">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100" height="100" fill="#0078D4" rx="8" />
-                        <text x="50" y="60" font-size="40" font-weight="bold" fill="white"
-                            text-anchor="middle">OneDrive</text>
-                    </svg>
-                </div>
-                <div class="logo-item flex-center">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100" height="100" fill="#0078D4" rx="8" />
-                        <text x="50" y="60" font-size="35" font-weight="bold" fill="white"
-                            text-anchor="middle">SharePoint</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
     <!-- ========== FAQ ========== -->
@@ -1746,7 +1695,7 @@
 
         // ========== HANDLERS CTA ==========
         function handleDownload() {
-            alert('🎉 Redirection vers le téléchargement PathChecker\n\n✅ Intégrer: https://github.com/yourusername/pathchecker/releases');
+            alert('🎉 Redirection vers le téléchargement PathChecker\n\n✅ Intégrer: https://apps.microsoft.com/store/detail/9PH9DTRRRX30?cid=DevShareMCLPCS');
         }
 
         function handlePurchase() {
