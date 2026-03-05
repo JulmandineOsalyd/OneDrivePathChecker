@@ -502,9 +502,7 @@
 
             .nav-right {
                 margin-left: 0;
-                gap: calc(var(--grid) * 1);
-                flex-direction: column;
-                align-items: stretch;
+                width: 100%;
             }
         }
 
@@ -526,6 +524,12 @@
                 <span>OneDrive Path Checker</span>
             </a>
 
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <div class="nav-center" id="navCenter">
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
@@ -537,11 +541,6 @@
             </div>
 
             <div class="nav-right">
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
                 <a href="index.html#download" class="nav-cta">
                     <i class="fas fa-download"></i>
                     Télécharger
