@@ -1246,10 +1246,10 @@
             background-color: white;
             padding: 20px;
             border-radius: 12px;
-            width: 80%;
-            max-width: 800px;
-            height: 80%;
-            max-height: 600px;
+            width: 90%;
+            max-width: 1200px;
+            height: 90%;
+            max-height: 800px;
             position: relative;
         }
 
@@ -1322,7 +1322,7 @@
                         Local
                     </div>
                     <div class="stat">
-                        <strong>ø</strong>
+                        <strong>Ø</strong>
                         Installation
                     </div>
                     <div class="stat">
@@ -1362,14 +1362,13 @@
     <section id="solution">
         <div class="container">
             <div class="problem-header">
-                <h2>Les chemins de fichiers trop longs bloquent vos migrations SharePoint et les problèmes de synchronisation OneDrive freinent l'adoption utilisateur.
-                </h2>
+                <h2> Migrer vers SharePoint, c'est simple.</h2>
+               <h2 style="color:#6b7280"> Migrer sans erreurs OneDrive Sync, c'est une autre histoire."</h2>
+                
             </div>
 
             <p class="problem-hookline">
-                Les équipes IT découvrent souvent le problème trop tard : en pleine migration SharePoint ou
-                lors d'une synchronisation OneDrive. <br>Résultat : des fichiers inaccessibles, projets bloqués, et des heures
-                perdues à tout corriger manuellement.
+                Les chemins de fichiers trop longs bloquent vos migrations SharePoint, et les problèmes de synchronisation OneDrive qui s'ensuivent freinent l'adoption utilisateur.
             </p>
 
 
@@ -1560,17 +1559,14 @@
                 Commencez gratuitement, progressez à votre rythme
             </p>
 
-            <div class="pricing-toggle">
-                <button class="toggle-btn active" onclick="switchPricing('monthly')">Mensuel</button>
-                <button class="toggle-btn" onclick="switchPricing('annual')">Annuel (-20%)</button>
-            </div>
+
 
             <div class="pricing-grid">
                 <!-- ESSAI GRATUIT -->
                 <div class="pricing-card">
                     <div class="pricing-name">Essai</div>
                     <div class="pricing-price">Gratuit</div>
-                    <div class="pricing-period">À durée illimitée</div>
+                    <div class="pricing-period">24 heures</div>
                     <ul class="pricing-features">
                         <li>Scan jusqu'à 100k fichiers</li>
                         <li>Local uniquement</li>
@@ -1756,16 +1752,6 @@
 
         function handleContactSales() {
             alert('📞 Email copié: contact@pathchecker.dev\n\n✅ Nous vous répondrons dans les 24h');
-        }
-
-        function handleContactSubmit() {
-            const email = document.getElementById('contactEmail').value;
-            if (email) {
-                alert(`✅ Merci ! Un email de confirmation a été envoyé à ${email}`);
-                document.getElementById('contactEmail').value = '';
-            } else {
-                alert('⚠️ Veuillez entrer un email valide');
-            }
         }
 
         // ========== PAGE LOAD ==========
