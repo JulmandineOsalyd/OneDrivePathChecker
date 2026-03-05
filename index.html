@@ -1355,7 +1355,7 @@
     <div id="gifModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeGifModal()">&times;</span>
-            <iframe src="http://onedrivepathchecker.com/images/DemoPathChecker.gif" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            <img id="gifImage" src="" alt="Démonstration PathChecker" style="width: 100%; height: 100%; object-fit: contain; display: none;">
         </div>
     </div>
 
@@ -1416,26 +1416,26 @@
             <div class="grid-3">
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Détection des URLs > 400 caractères</h3>
-                    <p>Identifie tous les fichiers et dossiers dépassant la limite SharePoint avant migration</p>
+                    <p>Identifie tous les fichiers et dossiers dépassant les limites d'URL SharePoint avant migration</p>
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Détection des chemins > 255 caractères</h3>
-                    <p>Scanne les chemins trop longs non supportés par Windows et bloquant l'ouverture des fichiers synchronisés</p>
+                    <p>Scanne les chemins trop longs non supportés par Windows, bloquant l'ouverture des fichiers synchronisés</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> Scan local / réseau / OneDrive</h3>
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Scan local / Réseau / OneDrive</h3>
                     <p>Analyse disques locaux, répertoires partagés sur serveurs réseaux et dossiers OneDrive</p>
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Export Excel</h3>
-                    <p>Rapport détaillé avec les chemins, les segments les plus long et le détail des caractères en trop</p>
+                    <p>Rapports détaillés avec les chemins, segments les plus long et le détail des caractères en trop</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> 100% local</h3>
-                    <p>Analyse sécurisée avec une analyse effectuée à 100% sur le poste de travail</p>
+                    <h3><i class="fas fa-check-circle solution-icon"></i>Analyse 100% local</h3>
+                    <p>Sécurité des données avec une analyse effectuée uniquement depuis le poste de travail</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> Portable</h3>
+                    <h3><i class="fas fa-check-circle solution-icon"></i>Sans installation</h3>
                     <p>Exécutable unique sans installation, aucun droit d'administrateur requis</p>
                 </div>
             </div>
@@ -1553,7 +1553,7 @@
     </section>
 
     <!-- ========== FAQ COMPLETE BUTTON ========== -->
-    <section style="padding: calc(var(--grid) * 4) 0; text-align: center; background: var(--bg-secondary);">
+    <section style="padding: calc(var(--grid) * 4) 0; text-align: center;">
         <div class="container">
             <button class="btn btn-primary" onclick="window.location.href='FAQ.html'">
                 <i class="fas fa-question-circle"></i>
@@ -1565,9 +1565,9 @@
    <!-- ========== PRICING ========== -->
     <section id="pricing">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);">Tarification</h2>
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);">Tarifs</h2>
             <p style="text-align: center; margin-bottom: calc(var(--grid) * 3); color: var(--text-secondary);">
-                Commencez gratuitement, progressez à votre rythme
+                Commencez gratuitement, progressez à votre rythme<br><br>
             </p>
 
 
@@ -1587,7 +1587,7 @@
                     <div class="pricing-badge">PLUS POPULAIRE</div>
                     <div class="pricing-name">Standard</div>
                     <div class="pricing-price" id="priceMonthly">€29</div>
-                    <div class="pricing-period" id="periodMonthly">/Poste de travail</div>
+                    <div class="pricing-period" id="periodMonthly">/ poste de travail</div>
                     <ul class="pricing-features">
                         <li>Scans illimités</li>
                         <li>Mode pré-migration SharePoint</li>
@@ -1596,7 +1596,7 @@
                         <li>Rapport Excel détaillé</li>
                         <li>Mises à jour incluses</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter Pro</button>
+                    <button class="btn btn-primary" onclick="handlePurchase()">Télécharger</button>
                 </div>
 
                 <!-- ENTREPRISE -->
@@ -1834,11 +1834,22 @@
 
     // ========== GIF MODAL ==========
     function openGifModal() {
-        document.getElementById('gifModal').style.display = 'flex';
+        const modal = document.getElementById('gifModal');
+        const gifImage = document.getElementById('gifImage');
+        modal.style.display = 'flex';
+        // Load GIF only when modal opens
+        if (!gifImage.src) {
+            gifImage.src = 'http://onedrivepathchecker.com/images/DemoPathChecker.gif';
+        }
+        gifImage.style.display = 'block';
     }
 
     function closeGifModal() {
-        document.getElementById('gifModal').style.display = 'none';
+        const modal = document.getElementById('gifModal');
+        const gifImage = document.getElementById('gifImage');
+        modal.style.display = 'none';
+        // Optionally hide the image to stop animation
+        gifImage.style.display = 'none';
     }
 
     console.log('✅ FAQ Accordéon activé !');
