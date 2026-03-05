@@ -353,8 +353,9 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.20rem;
             color: var(--text-secondary);
+            margin-top: calc(var(--grid) * 3);
             margin-bottom: calc(var(--grid) * 3);
             max-width: 550px;
         }
@@ -494,6 +495,7 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            text-align:center;
         }
 
         .problem-keypoints {
@@ -1246,10 +1248,10 @@
             background-color: white;
             padding: 20px;
             border-radius: 12px;
-            width: 90%;
-            max-width: 1200px;
-            height: 90%;
-            max-height: 800px;
+            width: 95%;
+            max-width: 1400px;
+            height: 95%;
+            max-height: 900px;
             position: relative;
         }
 
@@ -1283,8 +1285,7 @@
             <div class="nav-center" id="navCenter">
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="index.html#solution">Solution</a></li>
-                    <li><a href="index.html#features">Fonctionnalités</a></li>
+                    <li><a href="index.html#solution">Fonctionnalités</a></li>
                     <li><a href="FAQ.html">FAQ </a></li>
                     <li><a href="index.html#pricing">Tarifs</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -1363,7 +1364,7 @@
         <div class="container">
             <div class="problem-header">
                 <h2> Migrer vers SharePoint, c'est simple.</h2>
-               <h2 style="color:#6b7280"> Migrer sans erreurs OneDrive Sync, c'est une autre histoire."</h2>
+               <h2 style="color:#6b7280"> Migrer sans erreurs OneDrive, c'est une autre histoire.</h2>
                 
             </div>
 
@@ -1748,8 +1749,14 @@
 
         // ========== HANDLERS CTA ==========
         function handleDownload() {
-            // open link in new tab to Microsoft Store
-            window.open('https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR', '_blank');
+            // Create a temporary link and click it to open in new tab
+            const link = document.createElement('a');
+            link.href = 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function handlePurchase() {
