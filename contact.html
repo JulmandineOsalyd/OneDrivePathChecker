@@ -461,15 +461,16 @@
                 right: 0;
                 background: white;
                 flex-direction: column;
-                padding: calc(var(--grid) * 2);
+                padding: 0;
                 border-bottom: 1px solid var(--border);
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height 0.3s ease;
+                transition: max-height 0.3s ease, padding 0.3s ease;
             }
 
             .nav-center.active {
                 max-height: 400px;
+                padding: calc(var(--grid) * 2);
             }
 
             .nav-links {

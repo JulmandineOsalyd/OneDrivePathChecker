@@ -1165,15 +1165,16 @@
                 right: 0;
                 background: white;
                 flex-direction: column;
-                padding: calc(var(--grid) * 2);
+                padding: 0;
                 border-bottom: 1px solid var(--border);
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height 0.3s ease;
+                transition: max-height 0.3s ease, padding 0.3s ease;
             }
 
             .nav-center.active {
                 max-height: 400px;
+                padding: calc(var(--grid) * 2);
             }
 
             .nav-links {
@@ -1605,10 +1606,7 @@
                     <div class="pricing-price">Sur devis</div>
                     <div class="pricing-period">Personnalisé</div>
                     <ul class="pricing-features">
-                        <li>Licences multi-utilisateurs</li>
-                        <li>Déploiement réseau</li>
-                        <li>API d'intégration</li>
-                        <li>Support dédié 24/7</li>
+                        <li>Déploiement multi-utilisateurs</li>
                     </ul>
                     <button class="btn btn-secondary" onclick="handleContactSales()">Contact</button>
                 </div>
