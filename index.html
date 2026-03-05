@@ -1297,7 +1297,7 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a href="https://apps.microsoft.com/store/detail/9PH9DTRRRX30?cid=DevShareMCLPCS" class="nav-cta">
+                <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR" class="nav-cta">
                     <i class="fas fa-download"></i>
                     Télécharger
                 </a>
@@ -1334,7 +1334,7 @@
                 <div class="hero-cta">
                     <button class="btn btn-primary" onclick="handleDownload()">
                         <i class="fas fa-download"></i>
-                        Télécharger la version d'essai
+                        Votre essai gratuit
                     </button>
                 </div>
             </div>
@@ -1419,23 +1419,23 @@
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Détection des chemins > 255 caractères</h3>
-                    <p>Scanne les chemins trop longs non supportés par OneDrive et Windows natif</p>
+                    <p>Scanne les chemins trop longs non supportés par Windows et bloquant l'ouverture des fichiers synchronisés</p>
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Scan local / réseau / OneDrive</h3>
-                    <p>Analyse disques locaux, partages réseau et dossiers OneDrive</p>
+                    <p>Analyse disques locaux, répertoires partagés sur serveurs réseaux et dossiers OneDrive</p>
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Export Excel</h3>
-                    <p>Rapport détaillé avec chemins, longueurs et recommandations</p>
+                    <p>Rapport détaillé avec les chemins, les segments les plus long et le détail des caractères en trop</p>
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> 100% local</h3>
-                    <p>Aucune donnée envoyée en ligne - analyse sécurisée</p>
+                    <p>Analyse sécurisée avec une analyse effectuée à 100% sur le poste de travail</p>
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Portable</h3>
-                    <p>Exécutable unique sans installation, déploiement immédiat, aucun droit d'administrateur requis</p>
+                    <p>Exécutable unique sans installation, aucun droit d'administrateur requis</p>
                 </div>
             </div>
         </div>
@@ -1453,7 +1453,7 @@
                 <p class="faq-subtitle">
                     Tout ce que vous devez savoir sur PathChecker.<br>
                     Une question sans réponse ? Contactez-nous à <a
-                        href="mailto:support-pathchecker@osalydconsulting.com">support-pathchecker@osalydconsulting.com</a>
+                        href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a>
                 </p>
             </div>
 
@@ -1551,6 +1551,16 @@
         </div>
     </section>
 
+    <!-- ========== FAQ COMPLETE BUTTON ========== -->
+    <section style="padding: calc(var(--grid) * 4) 0; text-align: center; background: var(--bg-secondary);">
+        <div class="container">
+            <button class="btn btn-primary" onclick="window.location.href='FAQ.html'">
+                <i class="fas fa-question-circle"></i>
+                Voir la FAQ complète
+            </button>
+        </div>
+    </section>
+
    <!-- ========== PRICING ========== -->
     <section id="pricing">
         <div class="container">
@@ -1560,7 +1570,6 @@
             </p>
 
 
-
             <div class="pricing-grid">
                 <!-- ESSAI GRATUIT -->
                 <div class="pricing-card">
@@ -1568,10 +1577,6 @@
                     <div class="pricing-price">Gratuit</div>
                     <div class="pricing-period">24 heures</div>
                     <ul class="pricing-features">
-                        <li>Scan jusqu'à 100k fichiers</li>
-                        <li>Local uniquement</li>
-                        <li>Rapport basique</li>
-                        <li>Support email</li>
                     </ul>
                     <button class="btn btn-secondary" onclick="handleDownload()">Télécharger</button>
                 </div>
@@ -1579,16 +1584,16 @@
                 <!-- PLAN PRO -->
                 <div class="pricing-card featured">
                     <div class="pricing-badge">PLUS POPULAIRE</div>
-                    <div class="pricing-name">Pro</div>
+                    <div class="pricing-name">Standard</div>
                     <div class="pricing-price" id="priceMonthly">€29</div>
-                    <div class="pricing-period" id="periodMonthly">/mois</div>
+                    <div class="pricing-period" id="periodMonthly">/Poste de travail</div>
                     <ul class="pricing-features">
                         <li>Scans illimités</li>
+                        <li>Mode pré-migration SharePoint</li>
+                        <li>Mode synchronisation OneDrive</li>
                         <li>Local + réseau + OneDrive</li>
                         <li>Rapport Excel détaillé</li>
-                        <li>Historique des scans</li>
-                        <li>Support prioritaire</li>
-                        <li>Mises à jour gratuites</li>
+                        <li>Mises à jour incluses</li>
                     </ul>
                     <button class="btn btn-primary" onclick="handlePurchase()">Acheter Pro</button>
                 </div>
@@ -1604,7 +1609,7 @@
                         <li>API d'intégration</li>
                         <li>Support dédié 24/7</li>
                     </ul>
-                    <button class="btn btn-secondary" onclick="handleContactSales()">Contacter ventes</button>
+                    <button class="btn btn-secondary" onclick="handleContactSales()">Contact</button>
                 </div>
             </div>
         </div>
@@ -1743,7 +1748,7 @@
 
         // ========== HANDLERS CTA ==========
         function handleDownload() {
-            alert('🎉 Redirection vers le téléchargement PathChecker\n\n✅ Intégrer: https://apps.microsoft.com/store/detail/9PH9DTRRRX30?cid=DevShareMCLPCS');
+            window.location.href = 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
         }
 
         function handlePurchase() {
@@ -1751,7 +1756,15 @@
         }
 
         function handleContactSales() {
-            alert('📞 Email copié: contact@pathchecker.dev\n\n✅ Nous vous répondrons dans les 24h');
+            // Prepares a mailto link with subject and body template
+            const subject = encodeURIComponent('Demande de devis - OneDrive Path Checker');
+            const bodyLines = [
+                'Nom de votre organisation:',
+                'Nombre de postes concernés:',
+                'Échéance souhaitée:'
+            ];
+            const body = encodeURIComponent(bodyLines.join('\n'));
+            window.location.href = `mailto:julie.bredeche@osalydconsulting.com?subject=${subject}&body=${body}`;
         }
 
         // ========== PAGE LOAD ==========
