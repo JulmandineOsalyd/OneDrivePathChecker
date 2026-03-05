@@ -868,9 +868,10 @@
         <div class="container">
             <h1>Foire Aux Questions</h1>
             <p class="faq-subtitle">
-                Tout ce que vous devez savoir sur OneDrive Path Checker.<br>
-                Une question sans réponse ? <a href="mailto:support-pathchecker@osalydconsulting.com">Contactez-nous</a>
-            </p>
+                    Tout ce que vous devez savoir sur la solution.<br>
+                    Une question sans réponse ? <br> Contactez-nous à <a
+                        href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a>
+                </p>
             <a href="index.html" class="faq-back-home">
                 <i class="fas fa-arrow-left"></i>
                 Retour à l'accueil
@@ -1383,58 +1384,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 video.style.display = 'none';
                 toggleText.innerHTML = '<i class="fas fa-play"></i> Vidéo';
                 video.pause();
-            }
-        }
-
-        // ========== STICKY CTA ==========
-        window.addEventListener('scroll', () => {
-            const stickyCTA = document.getElementById('stickyCTA');
-            if (window.scrollY > SCROLL_TRIGGER) {
-                stickyCTA.classList.add('show');
-            } else {
-                stickyCTA.classList.remove('show');
-            }
-        });
-
-        // ========== PRICING TOGGLE ==========
-        function switchPricing(period) {
-            // Mise à jour des boutons
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Mise à jour du prix
-            const priceElement = document.getElementById('priceMonthly');
-            const periodElement = document.getElementById('periodMonthly');
-
-            if (period === 'annual') {
-                priceElement.textContent = '€279';
-                periodElement.textContent = '/an';
-            } else {
-                priceElement.textContent = '€29';
-                periodElement.textContent = '/mois';
-            }
-        }
-
-        // ========== HANDLERS CTA ==========
-        function handleDownload() {
-            alert('🎉 Redirection vers le téléchargement OneDrive Path Checker\n\n✅ Intégrer: https://apps.microsoft.com/store/detail/9PH9DTRRRX30?cid=DevShareMCLPCS');
-        }
-
-        function handlePurchase() {
-            alert('💳 Redirection vers Stripe/Gumroad pour l\'achat Pro\n\n✅ Vous recevrez une clé de licence par email');
-        }
-
-        function handleContactSales() {
-            alert('📞 Email copié: contact@pathchecker.dev\n\n✅ Nous vous répondrons dans les 24h');
-        }
-
-        function handleContactSubmit() {
-            const email = document.getElementById('contactEmail').value;
-            if (email) {
-                alert(`✅ Merci ! Un email de confirmation a été envoyé à ${email}`);
-                document.getElementById('contactEmail').value = '';
-            } else {
-                alert('⚠️ Veuillez entrer un email valide');
             }
         }
 
