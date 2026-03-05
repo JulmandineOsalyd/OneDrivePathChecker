@@ -86,7 +86,7 @@
 
         /* ========== TYPOGRAPHY ========== */
         h1 {
-            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem); 
             font-weight: 700;
             line-height: 1.2;
         }
@@ -1036,7 +1036,7 @@
         footer {
             background: var(--text-primary);
             color: white;
-            padding: calc(var(--grid) * 6) 0;
+            padding: calc(var(--grid) * 2) 0;
             text-align: center;
         }
 
@@ -1288,12 +1288,13 @@
                 <div class="hero-icon">
                     <i class="fas fa-ruler-combined"></i>
                 </div>
-                <h1>Détecteur de chemins de fichiers trop longs - SharePoint & OneDrive</h1>
+                <h1>Détecteur de chemins de fichiers trop longs</h1>
+                <h2 style="color:#6b7280">SharePoint & OneDrive</h2>
                 <p class="hero-subtitle">Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.</p>
 
                 <div class="hero-stats">
                     <div class="stat">
-                        <strong>100%</strong>
+                        <strong><span class="counter" data-target="100">0</span>%</strong>
                         Local
                     </div>
                     <div class="stat">
@@ -1301,7 +1302,7 @@
                         Installation
                     </div>
                     <div class="stat">
-                        <strong>3 sources</strong>
+                        <strong>Multi-sources</strong>
                         Local · Réseau · OneDrive
                     </div>
                 </div>
@@ -1334,13 +1335,13 @@
     <section id="solution">
         <div class="container">
             <div class="problem-header">
-                <h2>Les chemins trop longs bloquent votre migration. Les détecter à temps est encore plus difficile.
+                <h2>Les chemins de fichiers trop longs bloquent votre migration. Les détecter à temps est encore plus difficile.
                 </h2>
             </div>
 
             <p class="problem-hookline">
-                Les équipes IT découvrent souvent les problèmes de chemins trop tard — en pleine migration SharePoint ou
-                lors d'une synchronisation OneDrive. Résultat : fichiers inaccessibles, projets bloqués, et des heures
+                Les équipes IT découvrent souvent le problème trop tard : en pleine migration SharePoint ou
+                lors d'une synchronisation OneDrive. Résultat : des fichiers inaccessibles, projets bloqués, et des heures
                 perdues à tout corriger manuellement.
             </p>
 
@@ -1352,7 +1353,7 @@
                     </div>
                     <div>
                         <h3>Migration SharePoint bloquée</h3>
-                        <p>Les URLs dépassant 255 caractères sont rejetées par SharePoint et stoppent net votre
+                        <p>Les URLs dépassant 400 caractères sont rejetées par SharePoint et stoppent net votre
                             migration</p>
                     </div>
                 </div>
@@ -1362,9 +1363,8 @@
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
                     <div>
-                        <h3>Fichiers impossibles à ouvrir</h3>
-                        <p>Les chemins dépassant 400 caractères dépassent la limite Windows — vos fichiers deviennent
-                            inaccessibles</p>
+                        <h3>Fichiers synchronisés avec OneDrive impossibles à ouvrir</h3>
+                        <p>Les chemins dépassant 255 caractères dépassent la limite Windows, l'adoption utilisateur est ralentie</p>
                     </div>
                 </div>
 
@@ -1388,15 +1388,15 @@
             <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 4);">Fonctionnalités</h2>
             <div class="grid-3">
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> Détecte >255 SharePoint</h3>
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Détection des URLs > 400 caractères</h3>
                     <p>Identifie tous les fichiers et dossiers dépassant la limite SharePoint avant migration</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> Détecte >400 Windows/OneDrive</h3>
-                    <p>Scanne les chemins non supportés par OneDrive et Windows natif</p>
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Détection des chemins > 255 caractères</h3>
+                    <p>Scanne les chemins trop longs non supportés par OneDrive et Windows natif</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> Scan local/réseau/OneDrive</h3>
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Scan local / réseau / OneDrive</h3>
                     <p>Analyse disques locaux, partages réseau et dossiers OneDrive</p>
                 </div>
                 <div class="solution-card">
@@ -1409,7 +1409,7 @@
                 </div>
                 <div class="solution-card">
                     <h3><i class="fas fa-check-circle solution-icon"></i> Portable</h3>
-                    <p>Exécutable unique, aucune installation, déploiement immédiat</p>
+                    <p>Exécutable unique sans installation, déploiement immédiat, aucun droit d'administrateur requis</p>
                 </div>
             </div>
         </div>
@@ -1531,58 +1531,43 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);">Tarification</h2>
             <p style="text-align: center; margin-bottom: calc(var(--grid) * 3); color: var(--text-secondary);">
-                Commencez gratuitement, progressez à votre rythme
+                Essai gratuit 24h avec toutes les fonctionnalités, puis 29,99€ par poste
             </p>
 
-            <div class="pricing-toggle">
-                <button class="toggle-btn active" onclick="switchPricing('monthly')">Mensuel</button>
-                <button class="toggle-btn" onclick="switchPricing('annual')">Annuel (-20%)</button>
-            </div>
-
             <div class="pricing-grid">
-                <!-- ESSAI GRATUIT -->
-                <div class="pricing-card">
-                    <div class="pricing-name">Essai</div>
-                    <div class="pricing-price">Gratuit</div>
-                    <div class="pricing-period">À durée illimitée</div>
-                    <ul class="pricing-features">
-                        <li>Scan jusqu'à 100k fichiers</li>
-                        <li>Local uniquement</li>
-                        <li>Rapport basique</li>
-                        <li>Support email</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="handleDownload()">Télécharger</button>
-                </div>
-
                 <!-- PLAN PRO -->
                 <div class="pricing-card featured">
-                    <div class="pricing-badge">PLUS POPULAIRE</div>
-                    <div class="pricing-name">Pro</div>
-                    <div class="pricing-price" id="priceMonthly">€29</div>
-                    <div class="pricing-period" id="periodMonthly">/mois</div>
+                    <div class="pricing-badge">VERSION STANDARD</div>
+                    <div class="pricing-name">Par poste</div>
+                    <div class="pricing-price">€29,99</div>
+                    <div class="pricing-period">/mois par poste</div>
                     <ul class="pricing-features">
-                        <li>Scans illimités</li>
-                        <li>Local + réseau + OneDrive</li>
-                        <li>Rapport Excel détaillé</li>
-                        <li>Historique des scans</li>
-                        <li>Support prioritaire</li>
-                        <li>Mises à jour gratuites</li>
+                        <li>✅ Essai gratuit 24h</li>
+                        <li>✅ Scans illimités</li>
+                        <li>✅ Local + réseau + OneDrive</li>
+                        <li>✅ Rapport Excel détaillé</li>
+                        <li>✅ Historique des scans</li>
+                        <li>✅ Support prioritaire</li>
+                        <li>✅ Mises à jour gratuites</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter Pro</button>
+                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter maintenant</button>
                 </div>
 
                 <!-- ENTREPRISE -->
                 <div class="pricing-card">
+                    <div class="pricing-badge">SUR MESURE</div>
                     <div class="pricing-name">Entreprise</div>
                     <div class="pricing-price">Sur devis</div>
                     <div class="pricing-period">Personnalisé</div>
                     <ul class="pricing-features">
-                        <li>Licences multi-utilisateurs</li>
-                        <li>Déploiement réseau</li>
-                        <li>API d'intégration</li>
-                        <li>Support dédié 24/7</li>
+                        <li>✅ Licences multi-utilisateurs</li>
+                        <li>✅ Déploiement réseau</li>
+                        <li>✅ API d'intégration</li>
+                        <li>✅ Support dédié 24/7</li>
+                        <li>✅ Formation équipe</li>
+                        <li>✅ Maintenance garantie</li>
                     </ul>
-                    <button class="btn btn-secondary" onclick="handleContactSales()">Contacter ventes</button>
+                    <button class="btn btn-secondary" onclick="handleContactSales()">Contacter les ventes</button>
                 </div>
             </div>
         </div>
