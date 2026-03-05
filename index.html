@@ -1525,49 +1525,63 @@
         </div>
     </section>
 
-
-    <!-- ========== PRICING ========== -->
+   <!-- ========== PRICING ========== -->
     <section id="pricing">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);">Tarification</h2>
             <p style="text-align: center; margin-bottom: calc(var(--grid) * 3); color: var(--text-secondary);">
-                Essai gratuit 24h avec toutes les fonctionnalités, puis 29,99€ par poste
+                Commencez gratuitement, progressez à votre rythme
             </p>
 
+            <div class="pricing-toggle">
+                <button class="toggle-btn active" onclick="switchPricing('monthly')">Mensuel</button>
+                <button class="toggle-btn" onclick="switchPricing('annual')">Annuel (-20%)</button>
+            </div>
+
             <div class="pricing-grid">
+                <!-- ESSAI GRATUIT -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Essai</div>
+                    <div class="pricing-price">Gratuit</div>
+                    <div class="pricing-period">À durée illimitée</div>
+                    <ul class="pricing-features">
+                        <li>Scan jusqu'à 100k fichiers</li>
+                        <li>Local uniquement</li>
+                        <li>Rapport basique</li>
+                        <li>Support email</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="handleDownload()">Télécharger</button>
+                </div>
+
                 <!-- PLAN PRO -->
                 <div class="pricing-card featured">
-                    <div class="pricing-badge">VERSION STANDARD</div>
-                    <div class="pricing-name">Par poste</div>
-                    <div class="pricing-price">€29,99</div>
-                    <div class="pricing-period">/mois par poste</div>
+                    <div class="pricing-badge">PLUS POPULAIRE</div>
+                    <div class="pricing-name">Pro</div>
+                    <div class="pricing-price" id="priceMonthly">€29</div>
+                    <div class="pricing-period" id="periodMonthly">/mois</div>
                     <ul class="pricing-features">
-                        <li>✅ Essai gratuit 24h</li>
-                        <li>✅ Scans illimités</li>
-                        <li>✅ Local + réseau + OneDrive</li>
-                        <li>✅ Rapport Excel détaillé</li>
-                        <li>✅ Historique des scans</li>
-                        <li>✅ Support prioritaire</li>
-                        <li>✅ Mises à jour gratuites</li>
+                        <li>Scans illimités</li>
+                        <li>Local + réseau + OneDrive</li>
+                        <li>Rapport Excel détaillé</li>
+                        <li>Historique des scans</li>
+                        <li>Support prioritaire</li>
+                        <li>Mises à jour gratuites</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter maintenant</button>
+                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter Pro</button>
                 </div>
 
                 <!-- ENTREPRISE -->
                 <div class="pricing-card">
-                    <div class="pricing-badge">SUR MESURE</div>
                     <div class="pricing-name">Entreprise</div>
                     <div class="pricing-price">Sur devis</div>
                     <div class="pricing-period">Personnalisé</div>
                     <ul class="pricing-features">
-                        <li>✅ Licences multi-utilisateurs</li>
-                        <li>✅ Déploiement réseau</li>
-                        <li>✅ API d'intégration</li>
-                        <li>✅ Support dédié 24/7</li>
-                        <li>✅ Formation équipe</li>
-                        <li>✅ Maintenance garantie</li>
+                        <li>Licences multi-utilisateurs</li>
+                        <li>Déploiement réseau</li>
+                        <li>API d'intégration</li>
+                        <li>Support dédié 24/7</li>
                     </ul>
-                    <button class="btn btn-secondary" onclick="handleContactSales()">Contacter les ventes</button>
+                    <button class="btn btn-secondary" onclick="handleContactSales()">Contacter ventes</button>
                 </div>
             </div>
         </div>
