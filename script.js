@@ -176,9 +176,90 @@ const FAQ = (() => {
 
 // ========== LANGUAGE MODULE ==========
 const Language = (() => {
+    const SEO_META = {
+        fr: {
+            title: 'Détecteur de chemins trop longs – OneDrive & SharePoint | PathChecker',
+            description: 'Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.',
+            canonical: 'https://onedrivepathchecker.com/?lang=fr',
+            ogLocale: 'fr_FR',
+            schemaDescription: 'Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.'
+        },
+        en: {
+            title: 'Long File Path Detector – OneDrive & SharePoint | PathChecker',
+            description: 'Detect file paths exceeding 255 or 400 characters before your SharePoint migration or OneDrive sync. Portable tool, 100% local, no installation required.',
+            canonical: 'https://onedrivepathchecker.com/?lang=en',
+            ogLocale: 'en_US',
+            schemaDescription: 'Detect file paths exceeding Microsoft limits before SharePoint migration or OneDrive synchronization.'
+        }
+    };
+
     const detect = () => {
+        // Priorité 1 : paramètre URL ?lang=
+        const params = new URLSearchParams(window.location.search);
+        const urlLang = params.get('lang');
+        if (urlLang === 'fr' || urlLang === 'en') return urlLang;
+
+        // Priorité 2 : langue navigateur (fr par défaut)
         const lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
         return lang.startsWith('fr') ? 'fr' : 'en';
+    };
+
+    const updateSEOMeta = (lang) => {
+        const meta = SEO_META[lang];
+        if (!meta) return;
+
+        document.title = meta.title;
+
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute('content', meta.description);
+
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical) canonical.setAttribute('href', meta.canonical);
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', meta.title);
+
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', meta.description);
+
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', meta.canonical);
+
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+        if (ogLocale) ogLocale.setAttribute('content', meta.ogLocale);
+
+        document.documentElement.lang = lang;
+    };
+
+    const updateSchema = (lang) => {
+        const meta = SEO_META[lang];
+        if (!meta) return;
+
+        const existing = document.querySelector('script[data-schema="true"]');
+        if (existing) existing.remove();
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.setAttribute('data-schema', 'true');
+        script.textContent = JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'SoftwareApplication',
+            'name': 'Path Checker for SharePoint & OneDrive',
+            'operatingSystem': 'Windows',
+            'applicationCategory': 'UtilitiesApplication',
+            'description': meta.schemaDescription,
+            'offers': {
+                '@type': 'Offer',
+                'price': '29.99',
+                'priceCurrency': 'EUR'
+            },
+            'publisher': {
+                '@type': 'Organization',
+                'name': 'Osalyd Consulting',
+                'url': 'https://onedrivepathchecker.com'
+            }
+        });
+        document.head.appendChild(script);
     };
 
     const apply = (lang) => {
@@ -203,14 +284,37 @@ const Language = (() => {
 
         // Store active language for other modules
         window._activeLang = lang;
+
+        // Mettre à jour les balises SEO et le Schema.org
+        updateSEOMeta(lang);
+        updateSchema(lang);
+    };
+
+    // Changer la langue et mettre à jour l'URL via history.pushState
+    const setLang = (lang) => {
+        if (lang !== 'fr' && lang !== 'en') return;
+        apply(lang);
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', lang);
+        history.pushState({ lang }, '', url.toString());
     };
 
     const init = () => {
         const lang = detect();
         apply(lang);
+
+        // Synchroniser l'URL avec la langue détectée (sans créer d'entrée dans l'historique)
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('lang') !== lang) {
+            url.searchParams.set('lang', lang);
+            history.replaceState({ lang }, '', url.toString());
+        }
+
+        // Exposer setLang globalement pour un éventuel sélecteur de langue
+        window.setLang = setLang;
     };
 
-    return { init, detect };
+    return { init, detect, setLang };
 })();
 
 // ========== CTA HANDLERS MODULE ==========
