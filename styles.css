@@ -769,6 +769,7 @@ section:nth-child(even) {
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: calc(var(--grid) * 2);
+    margin-top: calc(var(--grid) * 2);
     display: flex;
     align-items: center;
     gap: calc(var(--grid) * 1.5);
@@ -888,6 +889,7 @@ section:nth-child(even) {
     overflow-x: auto;
     border-radius: 8px;
     border: 1px solid var(--border);
+    margin: 10px 0px;
 }
 
 .faq-table {
@@ -914,6 +916,11 @@ section:nth-child(even) {
 
 .faq-table tr:last-child td {
     border-bottom: none;
+}
+
+.faq-image {
+    box-shadow: var(--shadow);
+    margin: 0 auto;
 }
 
 .badge {
