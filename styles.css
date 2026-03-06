@@ -334,8 +334,8 @@ section:nth-child(even) {
 .hero-stats {
     display: flex;
     gap: calc(var(--grid) * 3);
+    margin-bottom: calc(var(--grid) * 3);
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .stat {
@@ -357,11 +357,6 @@ section:nth-child(even) {
     flex-wrap: wrap;
 }
 
-.hero-right {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--grid) * 2);
-}
 
 .hero-media {
     position: relative;
