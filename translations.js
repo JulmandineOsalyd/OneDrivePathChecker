@@ -17,6 +17,7 @@ window.TRANSLATIONS = {
 
         // Hero (index)
         hero_h1: 'Détecteur de chemins de fichiers trop longs',
+        hero_subtitle: 'Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.',
         hero_stat_sources: 'Local · Réseau · OneDrive',
         hero_cta: 'Télecharger votre essai gratuit',
 
@@ -167,6 +168,7 @@ window.TRANSLATIONS = {
 
         // Hero (index)
         hero_h1: 'Long File Path Detector',
+        hero_subtitle: 'Audit your file paths before SharePoint migration and avoid OneDrive sync errors.',
         hero_stat_sources: 'Local · Network · OneDrive',
         hero_cta: 'Download your free trial',
 
