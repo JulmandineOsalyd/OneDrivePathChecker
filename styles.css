@@ -607,15 +607,15 @@ section:nth-child(even) {
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: calc(var(--grid) * 3);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: calc(var(--grid) * 2);
 }
 
 .pricing-card {
     background: white;
     border-radius: 12px;
     border: 2px solid var(--border);
-    padding: calc(var(--grid) * 3);
+    padding: calc(var(--grid) * 2.5);
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
@@ -646,32 +646,32 @@ section:nth-child(even) {
 }
 
 .pricing-name {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: calc(var(--grid) * 1.5);
+    margin-bottom: calc(var(--grid) * 1);
 }
 
 .pricing-price {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
     margin-bottom: calc(var(--grid) * 0.5);
 }
 
 .pricing-period {
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
-    margin-bottom: calc(var(--grid) * 2);
+    margin-bottom: calc(var(--grid) * 1.5);
 }
 
 .pricing-features {
     list-style: none;
     text-align: left;
-    margin-bottom: calc(var(--grid) * 3);
+    margin-bottom: calc(var(--grid) * 2);
 }
 
 .pricing-features li {
-    padding: calc(var(--grid) * 1) 0;
+    padding: calc(var(--grid) * 0.75) 0;
     border-bottom: 1px solid var(--border);
     font-size: 0.875rem;
     color: var(--text-secondary);
