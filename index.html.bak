@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PathChecker - Détecteur de chemins fichiers longs pour migrations SharePoint et OneDrive. Auditez vos fichiers avant migration.">
+    <meta name="keywords" content="SharePoint, OneDrive, migration, chemins longs, audit fichiers">
+    <meta name="author" content="PathChecker">
+    <meta property="og:title" content="PathChecker - Détecteur de chemins longs">
+    <meta property="og:description"
+        content="Auditez vos chemins avant migration SharePoint et évitez les erreurs OneDrive sync">
+    <meta name="theme-color" content="#0078D4">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Schema.org Product -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "PathChecker",
+        "description": "Détecteur de chemins fichiers longs pour SharePoint et OneDrive",
+        "brand": {"@type": "Brand", "name": "PathChecker"},
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": "0",
+            "highPrice": "29"
+        }
+    }
+    </script>
+
+    <title>PathChecker - Détecteur de chemins fichiers longs | SharePoint & OneDrive</title>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ========== VARIABLES CSS ========== */
+        :root {
+            --primary: #0078D4;
+            --primary-light: #4F91D1;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F7F9FC;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B7280;
+            --border: #E5E7EB;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --success: #16A34A;
+            --error: #DC2626;
+            --warning: #EA580C;
+            --grid: 8px;
+        }
+
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        * {
+            font-family: inherit;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem); 
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        small {
+            font-size: 0.875rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== LAYOUT UTILITAIRES ========== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 calc(var(--grid) * 2);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--grid) * 4);
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--grid) * 3);
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .flex-center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gap-md {
+            gap: calc(var(--grid) * 2);
+        }
+
+        .gap-lg {
+            gap: calc(var(--grid) * 4);
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; 
+            gap: calc(var(--grid) * 1);
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-center {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: calc(var(--grid) * 3);
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color 0.2s ease;
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 2);
+            margin-left: auto;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: calc(var(--grid) * 0.75) calc(var(--grid) * 2);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.75);
+        }
+
+        .nav-cta:hover {
+            background: #106DC0;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ========== BOUTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--grid) * 1.25) calc(var(--grid) * 2.5);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            gap: calc(var(--grid) * 1);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            background: #106DC0;
+            transform: scale(1.02);
+            box-shadow: 0 0 24px rgba(0, 120, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+            transform: scale(1.02);
+        }
+
+        .btn-small {
+            padding: calc(var(--grid) * 0.75) calc(var(--grid) * 1.5);
+            font-size: 0.875rem;
+        }
+
+        /* ========== SECTIONS ========== */
+        section {
+            padding: calc(var(--grid) * 8) 0;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        /* ========== HERO ========== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--grid) * 6) 0;
+            margin-top: -70px;
+            padding-top: calc(var(--grid) * 12);
+            background: var(--bg-primary); /* always white, ignore nth-child alternating */
+        }
+
+        .hero-content h1 {
+            color: var(--text-primary);
+            margin-bottom: calc(var(--grid) * 1.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.20rem;
+            color: var(--text-secondary);
+            margin-top: calc(var(--grid) * 3);
+            margin-bottom: calc(var(--grid) * 3);
+            max-width: 550px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: calc(var(--grid) * 3);
+            margin-bottom: calc(var(--grid) * 3);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: calc(var(--grid) * 2);
+            margin-bottom: calc(var(--grid) * 4);
+            flex-wrap: wrap;
+        }
+
+        .hero-media {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: var(--bg-secondary);
+        }
+
+        .hero-media img,
+        .hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 120, 212, 0.8);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .play-icon:hover {
+            background: rgba(0, 120, 212, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .media-toggle {
+            position: absolute;
+            top: calc(var(--grid) * 1.5);
+            right: calc(var(--grid) * 1.5);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: calc(var(--grid) * 0.75);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .media-toggle:hover {
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        /* ========== HERO ICON ========== */
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: calc(var(--grid) * 2);
+        }
+
+        /* ========== COMPTEUR ANIMÉ ========== */
+        .counter {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* ========== PROBLÈME SECTION ========== */
+        .problem-header {
+            text-align: center;
+            margin-bottom: calc(var(--grid) * 4);
+        }
+
+        .problem-header h2 {
+            margin-bottom: calc(var(--grid) * 2);
+        }
+
+        .problem-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--grid) * 4);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .problem-hookline {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: calc(var(--grid) * 4);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align:center;
+        }
+
+        .problem-keypoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--grid) * 3);
+        }
+
+        .problem-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: calc(var(--grid) * 3);
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .problem-icon-circle {
+            width: 80px;
+            height: 80px;
+            background: #F0F4F8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: calc(var(--grid) * 2);
+        }
+
+        .problem-card h3 {
+            color: var(--text-primary);
+            margin-bottom: calc(var(--grid) * 1);
+            font-size: 1.125rem;
+        }
+
+        .problem-card p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========== SOLUTION CARDS ========== */
+        .solution-card {
+            padding: calc(var(--grid) * 3);
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .solution-card h3 {
+            color: var(--primary);
+            margin-bottom: calc(var(--grid) * 1);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 1);
+        }
+
+        .solution-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* ========== DÉMO SCREENSHOTS ========== */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--grid) * 3);
+        }
+
+        .demo-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .demo-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: scale(1.02);
+        }
+
+        .demo-item img {
+            width: 100%;
+            display: block;
+            background: var(--bg-secondary);
+        }
+
+        .demo-caption {
+            padding: calc(var(--grid) * 2);
+            background: white;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* ========== FAQ ========== */
+        .faq-header {
+            text-align: center;
+            margin-bottom: calc(var(--grid) * 6);
+        }
+
+        .faq-header h2 {
+            margin-bottom: calc(var(--grid) * 2);
+        }
+
+        .faq-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .faq-category {
+            max-width: 860px;
+            margin: 0 auto calc(var(--grid) * 6) auto;
+        }
+
+        .faq-category-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--grid) * 2);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 1.5);
+            padding-bottom: calc(var(--grid) * 1.5);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .faq-category-title i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: calc(var(--grid) * 2.5) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            cursor: pointer;
+            gap: calc(var(--grid) * 2);
+            transition: color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-chevron {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-item.open .faq-question {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            margin: 5px 0px;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: calc(var(--grid) * 3);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--grid) * 1.5);
+        }
+
+        .faq-answer p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .faq-code {
+            display: block;
+            background: #1E293B;
+            color: #7DD3FC;
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            border-radius: 8px;
+            font-family: 'Courier New', Consolas, monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            word-break: break-all;
+        }
+
+        .faq-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--grid) * 1.5);
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+        }
+
+        .faq-tip i {
+            color: var(--primary);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .faq-tip span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .faq-table-wrapper {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .faq-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .faq-table th {
+            background: var(--bg-secondary);
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-table td {
+            padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            vertical-align: middle;
+        }
+
+        .faq-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.5);
+            padding: calc(var(--grid) * 0.5) calc(var(--grid) * 1.25);
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-success {
+            background: #DCFCE7;
+            color: #16A34A;
+        }
+
+        .badge-warning {
+            background: #FFF7ED;
+            color: #EA580C;
+        }
+
+        .badge-danger {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .faq-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--grid) * 1);
+            padding-left: calc(var(--grid) * 1);
+        }
+
+        .faq-list li {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--grid) * 1.5);
+            line-height: 1.6;
+        }
+
+        .faq-list li i {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 3px;
+            font-size: 0.875rem;
+        }
+
+        .faq-author {
+            display: flex;
+            gap: calc(var(--grid) * 3);
+            align-items: flex-start;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: calc(var(--grid) * 3);
+            border: 1px solid var(--border);
+        }
+
+        .faq-author-avatar {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+        }
+
+        .faq-author-links {
+            display: flex;
+            gap: calc(var(--grid) * 2);
+            margin-top: calc(var(--grid) * 1.5);
+            flex-wrap: wrap;
+        }
+
+        .faq-author-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--grid) * 0.75);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: opacity 0.2s ease;
+        }
+
+        .faq-author-links a:hover {
+            opacity: 0.75;
+            text-decoration: none;
+        }
+
+        /* Responsive FAQ */
+        @media (max-width: 768px) {
+            .faq-author {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .faq-author-links {
+                justify-content: center;
+            }
+
+            .faq-table td,
+            .faq-table th {
+                padding: calc(var(--grid) * 1) calc(var(--grid) * 1.5);
+                font-size: 0.8125rem;
+            }
+        }
+
+
+
+        /* ========== PRICING CARDS ========== */
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--grid) * 1);
+            margin-bottom: calc(var(--grid) * 4);
+        }
+
+        .toggle-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: calc(var(--grid) * 1) calc(var(--grid) * 2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .toggle-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--grid) * 3);
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            padding: calc(var(--grid) * 3);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 120, 212, 0.15);
+        }
+
+        .pricing-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: calc(var(--grid) * 0.5) calc(var(--grid) * 1.5);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pricing-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--grid) * 1.5);
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: calc(var(--grid) * 0.5);
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--grid) * 2);
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: calc(var(--grid) * 3);
+        }
+
+        .pricing-features li {
+            padding: calc(var(--grid) * 1) 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--grid) * 1);
+        }
+
+        .pricing-features li:before {
+            content: "\f058";
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        /* ========== STICKY CTA MOBILE ========== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: calc(var(--grid) * 2);
+            text-align: center;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .sticky-cta.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .sticky-cta p {
+            color: white;
+            margin-bottom: calc(var(--grid) * 1);
+            font-weight: 600;
+        }
+
+        /* ========== FORMULAIRE CONTACT ========== */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: calc(var(--grid) * 1);
+        }
+
+        .contact-form input {
+            flex: 1;
+            padding: calc(var(--grid) * 1.25) calc(var(--grid) * 2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: calc(var(--grid) * 2) 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--primary-light);
+        }
+
+        footer p {
+            color: #9CA3AF;
+        }
+
+        footer nav {
+            margin-top: calc(var(--grid) * 3);
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--grid) * 3);
+            flex-wrap: wrap;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: calc(var(--grid) * 2);
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            #hero {
+                min-height: auto;
+                padding: calc(var(--grid) * 4) 0;
+            }
+
+            .hero-media {
+                aspect-ratio: auto;
+                min-height: 300px;
+                margin-top: calc(var(--grid) * 3);
+            }
+
+            .hero-stats {
+                gap: calc(var(--grid) * 2);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .contact-form {
+                flex-direction: column;
+            }
+
+            .contact-form input {
+                width: 100%;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .audience-logos {
+                gap: calc(var(--grid) * 2);
+            }
+
+            section {
+                padding: calc(var(--grid) * 4) 0;
+            }
+
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-center {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 0;
+                border-bottom: 1px solid var(--border);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+            }
+
+            .nav-center.active {
+                max-height: 400px;
+                padding: calc(var(--grid) * 2);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+
+            .nav-links li {
+                padding: calc(var(--grid) * 1.5) 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-cta {
+                width: 100%;
+                justify-content: center;
+                margin-top: calc(var(--grid) * 1);
+            }
+
+            .navbar-content {
+                flex-wrap: wrap;
+            }
+
+            .nav-right {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .problem-keypoints {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-card {
+                text-align: left;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: calc(var(--grid) * 2);
+            }
+
+            .problem-icon-circle {
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 1400px;
+            height: 95%;
+            max-height: 900px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: black;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .close:hover,
+        .close:focus {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <i class="fas fa-ruler-combined logo-icon"></i>
+                <span>OneDrive Path Checker</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#solution">Fonctionnalités</a></li>
+                    <li><a href="FAQ.html">FAQ </a></li>
+                    <li><a href="index.html#pricing">Tarifs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR" target="_blank" class="nav-cta">
+                    <i class="fas fa-download"></i>
+                    Télécharger sur Microsoft Store
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero">
+        <div class="container grid-2">
+            <div class="hero-content">
+                <div class="hero-icon">
+                    <i class="fas fa-ruler-combined"></i>
+                </div>
+                <h1>Détecteur de chemins de fichiers trop longs</h1>
+                <h2 style="color:#6b7280">SharePoint & OneDrive</h2>
+                <p class="hero-subtitle">Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.</p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong><span class="counter" data-target="100">0</span>%</strong>
+                        Local
+                    </div>
+                    <div class="stat">
+                        <strong>Ø</strong>
+                        Installation
+                    </div>
+                    <div class="stat">
+                        <strong>Multi-<span style="color: var(--primary);">sources</span></strong>
+                        Local · Réseau · OneDrive
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="handleDownload()">
+                        <i class="fas fa-download"></i>
+                        Télecharger votre essai gratuit
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-media" id="mediaContainer">
+                <img id="mainImage"
+                    src="http://onedrivepathchecker.com/images/Screenshot_Home.png"
+                    alt="Demo" loading="lazy" onclick="openGifModal()" style="cursor: pointer;">
+                <div class="play-icon" onclick="openGifModal()">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DEMO MODAL ========== -->
+    <!-- using a video player instead of <img> (more reliable than gif) -->
+    <div id="gifModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGifModal()">&times;</span>
+            <video id="demoVideo" src="images/DemoPathChecker.mp4" controls autoplay loop muted playsinline
+                   style="width:100%; height:100%; object-fit:contain; display:none;"></video>
+        </div>
+    </div>
+
+    <!-- ========== SOLUTION ========== -->
+    <section id="solution">
+        <div class="container">
+            <div class="problem-header">
+                <h2> Migrer vers SharePoint, c'est simple.</h2>
+               <h2 style="color:#6b7280"> Migrer sans erreurs OneDrive, c'est une autre histoire.</h2>
+                
+            </div>
+
+            <p class="problem-hookline">
+                Les chemins de fichiers trop longs bloquent vos migrations SharePoint, et les problèmes de synchronisation OneDrive qui s'ensuivent freinent l'adoption utilisateur.
+            </p>
+
+
+            <div class="problem-keypoints">
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div>
+                        <h3>Migration SharePoint bloquée</h3>
+                        <p>Les URLs dépassant 400 caractères sont rejetées par SharePoint et stoppent net votre
+                            migration</p>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <h3>Fichiers synchronisés avec OneDrive impossibles à ouvrir</h3>
+                        <p>Les chemins dépassant 255 caractères dépassent la limite Windows, l'adoption utilisateur est ralentie</p>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-hourglass-end"></i>
+                    </div>
+                    <div>
+                        <h3>Des heures perdues inutilement</h3>
+                        <p>Retrouver, renommer et réorganiser ces fichiers à la main est une tâche longue, fastidieuse
+                            et source d'erreurs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 4);">Fonctionnalités</h2>
+            <div class="grid-3">
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Détection des URLs > 400 caractères</h3>
+                    <p>Identifie tous les fichiers et dossiers dépassant les limites d'URL SharePoint avant migration</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Détection des chemins > 255 caractères</h3>
+                    <p>Scanne les chemins trop longs non supportés par Windows, bloquant l'ouverture des fichiers synchronisés</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Scan local / Réseau / OneDrive</h3>
+                    <p>Analyse disques locaux, répertoires partagés sur serveurs réseaux et dossiers OneDrive</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Export Excel</h3>
+                    <p>Rapports détaillés avec les chemins, segments les plus long et le détail des caractères en trop</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i>Analyse 100% local</h3>
+                    <p>Sécurité des données avec une analyse effectuée uniquement depuis le poste de travail</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i>Sans installation</h3>
+                    <p>Exécutable unique sans installation, aucun droit d'administrateur requis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq">
+        <div class="container">
+
+            <!-- Header -->
+            <div class="faq-header">
+                <h2>Foire Aux Questions</h2>
+                <p class="faq-subtitle">
+                    Tout ce que vous devez savoir sur la solution.<br>
+                    Une question sans réponse ? <br> Contactez-nous à <a
+                        href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a>
+                </p>
+            </div>
+
+            <!-- Catégorie : Fonctionnement -->
+
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Quelle est la différence entre la limite 255 et 400 caractères ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ces deux seuils correspondent à des niveaux de risque différents :</p>
+                    <div class="faq-table-wrapper">
+                        <table class="faq-table">
+                            <thead>
+                                <tr>
+                                    <th>Limite</th>
+                                    <th>Risque</th>
+                                    <th>Contexte</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>255 caractères</strong></td>
+                                    <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
+                                            Avertissement</span></td>
+                                    <td>Problèmes potentiels avec les applications Office, l'Explorateur Windows et
+                                        certains
+                                        outils tiers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>400 caractères</strong></td>
+                                    <td><span class="badge badge-danger"><i class="fas fa-times-circle"></i>
+                                            Critique</span>
+                                    </td>
+                                    <td>Blocage total par SharePoint — migration impossible</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="faq-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Traitez en priorité les fichiers dépassant 400 caractères, puis ceux entre 255 et 400 pour
+                            garantir un usage fluide après migration.</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Mes fichiers sont-ils envoyés quelque part ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée —
+                        noms
+                        de fichiers, chemins, résultats — n'est transmise à un serveur externe ou à Internet. Vos
+                        données
+                        restent sur votre machine à tout moment.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Qui est à l'origine de cet outil ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-author">
+                        <div class="faq-author-avatar">
+                            <img src="http://onedrivepathchecker.com/images/JBR.png" alt="Julie BREDECHE" style="width: 64px;">
+                        </div>
+                        <div class="faq-author-info">
+                            <p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365
+                                depuis plus de 10 ans. Forte d'expériences terrain sur des projets de migration
+                                SharePoint
+                                et OneDrive, elle a conçu cet outil pour répondre à un besoin concret rencontré en
+                                mission :
+                                identifier rapidement les fichiers à risque avant migration, et limiter les problèmes de
+                                synchronisation OneDrive après migration.</p>
+                            <div class="faq-author-links">
+                                <a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener">
+                                    <i class="fas fa-globe"></i> osalydconsulting.com
+                                </a>
+                                <a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener">
+                                    <i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="text-align:center">
+            <button class="btn btn-secondary" style="background-color: #FFF;"onclick="window.location.href='FAQ.html'">
+                <i class="fas fa-question-circle"></i>
+                Voir la FAQ complète
+            </button>
+        </div>
+    </section>
+
+
+
+
+
+   <!-- ========== PRICING ========== -->
+    <section id="pricing">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);">Tarification</h2>
+            <p style="text-align: center; margin-bottom: calc(var(--grid) * 3); color: var(--text-secondary);">
+                Commencez gratuitement, progressez à votre rythme<br><br>
+            </p>
+
+
+            <div class="pricing-grid">
+                <!-- ESSAI GRATUIT -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Version d'essai</div>
+                    <div class="pricing-price">Gratuit</div>
+                    <div class="pricing-period">24 heures</div>
+                    <ul class="pricing-features">
+                    </ul>
+                    <button class="btn btn-secondary" onclick="handleDownload()">Télécharger sur Microsoft Store</button>
+                </div>
+
+                <!-- PLAN PRO -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">PLUS POPULAIRE</div>
+                    <div class="pricing-name">Standard</div>
+                    <div class="pricing-price" id="priceMonthly">29,99€</div>
+                    <div class="pricing-period" id="periodMonthly">/ poste de travail</div>
+                    <ul class="pricing-features">
+                        <li>Scans illimités</li>
+                        <li>Mode pré-migration SharePoint</li>
+                        <li>Mode synchronisation OneDrive</li>
+                        <li>Local + Réseau + OneDrive</li>
+                        <li>Rapports Excel détaillés</li>
+                        <li>Mises à jour incluses</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter sur Microsoft Store</button>
+                </div>
+
+                <!-- ENTREPRISE -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Entreprise</div>
+                    <div class="pricing-price">Sur devis</div>
+                    <div class="pricing-period">Déploiement multi-utilisateurs</div>
+                    <ul class="pricing-features">
+                        <li>Scans illimités</li>
+                        <li>Mode pré-migration SharePoint</li>
+                        <li>Mode synchronisation OneDrive</li>
+                        <li>Local + Réseau + OneDrive</li>
+                        <li>Rapports Excel détaillés</li>
+                        <li>Mises à jour incluses</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="handleContactSales()"><i class="fas fa-envelope"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // ========== MENU MOBILE ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navCenter = document.getElementById('navCenter');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navCenter.classList.toggle('active');
+        });
+
+        // Fermer menu au clic sur lien
+        navCenter.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navCenter.classList.remove('active');
+            });
+        });
+
+        // ========== UTILITAIRES =========
+        const SCROLL_TRIGGER = 100 * window.innerHeight / 100;
+
+        // ========== ANIMATIONS SCROLL ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========== COMPTEUR ANIMÉ ==========
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString('fr-FR');
+                    clearInterval(interval);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString('fr-FR');
+                }
+            }, 10);
+        }
+
+        const counter = document.querySelector('.counter');
+        if (counter) {
+            const target = parseInt(counter.dataset.target);
+            const observer2 = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        animateCounter(entry.target, target);
+                        entry.target.classList.add('counted');
+                        observer2.unobserve(entry.target);
+                    }
+                });
+            });
+            observer2.observe(counter);
+        }
+
+        // ========== TOGGLE IMAGE/VIDÉO ==========
+        function toggleMedia() {
+            const img = document.getElementById('mainImage');
+            const video = document.getElementById('mainVideo');
+            const toggleText = document.getElementById('toggleText');
+
+            if (img.style.display !== 'none') {
+                // Passer à la vidéo
+                img.style.display = 'none';
+                video.style.display = 'block';
+                toggleText.innerHTML = '<i class="fas fa-image"></i> Image';
+                video.play();
+            } else {
+                // Passer à l'image
+                img.style.display = 'block';
+                video.style.display = 'none';
+                toggleText.innerHTML = '<i class="fas fa-play"></i> Vidéo';
+                video.pause();
+            }
+        }
+
+
+    
+
+        // ========== HANDLERS CTA ==========
+        function handleDownload() {
+            // Create a temporary link and click it to open in new tab
+            const link = document.createElement('a');
+            link.href = 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function handlePurchase() {
+            alert('💳 Redirection vers Stripe/Gumroad pour l\'achat Pro\n\n✅ Vous recevrez une clé de licence par email');
+        }
+
+        function handleContactSales() {
+            // Prepares a mailto link with subject and body template
+            const subject = encodeURIComponent('Demande de devis - OneDrive Path Checker');
+            const bodyLines = [
+                'Nom de votre organisation:',
+                'Nombre de postes concernés:',
+                'Échéance souhaitée:'
+            ];
+            const body = encodeURIComponent(bodyLines.join('\n'));
+            window.location.href = `mailto:julie.bredeche@osalydconsulting.com?subject=${subject}&body=${body}`;
+        }
+
+        // ========== PAGE LOAD ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ Landing Page PathChecker loaded');
+            console.log('✅ Font Awesome icons loaded');
+            console.log('✅ Animations initialized');
+        });
+
+        // ========== LAZY LOADING IMAGES ==========
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
+        }
+
+            // ========== FAQ ACCORDÉON ==========
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            // Fermer tous les autres
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = '0px';
+                    openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle l'item cliqué
+            if (!isOpen) {
+                item.classList.add('open');
+                this.setAttribute('aria-expanded', 'true');
+                
+                // Calculer la hauteur réelle
+                answer.style.maxHeight = 'none';
+                const fullHeight = answer.scrollHeight;
+                answer.style.maxHeight = '0px';
+                answer.getBoundingClientRect(); // force reflow
+                answer.style.maxHeight = fullHeight + 'px';
+            } else {
+                item.classList.remove('open');
+                this.setAttribute('aria-expanded', 'false');
+                answer.style.maxHeight = '0px';
+            }
+        });
+    });
+
+    // ========== DEMO MODAL (video) ==========
+    function openGifModal() {
+        const modal = document.getElementById('gifModal');
+        const video = document.getElementById('demoVideo');
+        modal.style.display = 'flex';
+        // ensure video element is visible and starts playing
+        video.style.display = 'block';
+        video.currentTime = 0;
+        video.play().catch(() => {});
+    }
+
+    function closeGifModal() {
+        const modal = document.getElementById('gifModal');
+        const video = document.getElementById('demoVideo');
+        modal.style.display = 'none';
+        video.pause();
+        video.style.display = 'none';
+    }
+
+    console.log('✅ FAQ Accordéon activé !');
+
+    </script>
+</body>
+
+</html>

@@ -13,7 +13,7 @@
         content="Auditez vos chemins avant migration SharePoint et évitez les erreurs OneDrive sync">
     <meta name="theme-color" content="#0078D4">
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
     <!-- Schema.org Product -->
     <script type="application/ld+json">
@@ -52,3 +52,560 @@
     <!-- ========== NAVIGATION ========== -->
     <nav class="navbar">
         <div class="navbar-content">
+            <div class="logo">
+                <i class="fas fa-ruler-combined logo-icon"></i>
+                <span>OneDrive Path Checker</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#solution">Fonctionnalités</a></li>
+                    <li><a href="FAQ.html">FAQ </a></li>
+                    <li><a href="index.html#pricing">Tarifs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR" target="_blank" class="nav-cta">
+                    <i class="fas fa-download"></i>
+                    Télécharger sur Microsoft Store
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero">
+        <div class="container grid-2">
+            <div class="hero-content">
+                <div class="hero-icon">
+                    <i class="fas fa-ruler-combined"></i>
+                </div>
+                <h1>Détecteur de chemins de fichiers trop longs</h1>
+                <h2 style="color:#6b7280">SharePoint & OneDrive</h2>
+                <p class="hero-subtitle">Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.</p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong><span class="counter" data-target="100">0</span>%</strong>
+                        Local
+                    </div>
+                    <div class="stat">
+                        <strong>Ø</strong>
+                        Installation
+                    </div>
+                    <div class="stat">
+                        <strong>Multi-<span style="color: var(--primary);">sources</span></strong>
+                        Local · Réseau · OneDrive
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="handleDownload()">
+                        <i class="fas fa-download"></i>
+                        Télecharger votre essai gratuit
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-media" id="mediaContainer">
+                <img id="mainImage"
+                    src="http://onedrivepathchecker.com/images/Screenshot_Home.png"
+                    alt="Demo" loading="lazy" onclick="openGifModal()" style="cursor: pointer;">
+                <div class="play-icon" onclick="openGifModal()">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DEMO MODAL ========== -->
+    <!-- using a video player instead of <img> (more reliable than gif) -->
+    <div id="gifModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGifModal()">&times;</span>
+            <video id="demoVideo" src="images/DemoPathChecker.mp4" controls autoplay loop muted playsinline
+                   style="width:100%; height:100%; object-fit:contain; display:none;"></video>
+        </div>
+    </div>
+
+    <!-- ========== SOLUTION ========== -->
+    <section id="solution">
+        <div class="container">
+            <div class="problem-header">
+                <h2> Migrer vers SharePoint, c'est simple.</h2>
+               <h2 style="color:#6b7280"> Migrer sans erreurs OneDrive, c'est une autre histoire.</h2>
+                
+            </div>
+
+            <p class="problem-hookline">
+                Les chemins de fichiers trop longs bloquent vos migrations SharePoint, et les problèmes de synchronisation OneDrive qui s'ensuivent freinent l'adoption utilisateur.
+            </p>
+
+
+            <div class="problem-keypoints">
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div>
+                        <h3>Migration SharePoint bloquée</h3>
+                        <p>Les URLs dépassant 400 caractères sont rejetées par SharePoint et stoppent net votre
+                            migration</p>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <h3>Fichiers synchronisés avec OneDrive impossibles à ouvrir</h3>
+                        <p>Les chemins dépassant 255 caractères dépassent la limite Windows, l'adoption utilisateur est ralentie</p>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-hourglass-end"></i>
+                    </div>
+                    <div>
+                        <h3>Des heures perdues inutilement</h3>
+                        <p>Retrouver, renommer et réorganiser ces fichiers à la main est une tâche longue, fastidieuse
+                            et source d'erreurs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 4);">Fonctionnalités</h2>
+            <div class="grid-3">
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Détection des URLs > 400 caractères</h3>
+                    <p>Identifie tous les fichiers et dossiers dépassant les limites d'URL SharePoint avant migration</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Détection des chemins > 255 caractères</h3>
+                    <p>Scanne les chemins trop longs non supportés par Windows, bloquant l'ouverture des fichiers synchronisés</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Scan local / Réseau / OneDrive</h3>
+                    <p>Analyse disques locaux, répertoires partagés sur serveurs réseaux et dossiers OneDrive</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i> Export Excel</h3>
+                    <p>Rapports détaillés avec les chemins, segments les plus long et le détail des caractères en trop</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i>Analyse 100% local</h3>
+                    <p>Sécurité des données avec une analyse effectuée uniquement depuis le poste de travail</p>
+                </div>
+                <div class="solution-card">
+                    <h3><i class="fas fa-check-circle solution-icon"></i>Sans installation</h3>
+                    <p>Exécutable unique sans installation, aucun droit d'administrateur requis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq">
+        <div class="container">
+
+            <!-- Header -->
+            <div class="faq-header">
+                <h2>Foire Aux Questions</h2>
+                <p class="faq-subtitle">
+                    Tout ce que vous devez savoir sur la solution.<br>
+                    Une question sans réponse ? <br> Contactez-nous à <a
+                        href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a>
+                </p>
+            </div>
+
+            <!-- Catégorie : Fonctionnement -->
+
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Quelle est la différence entre la limite 255 et 400 caractères ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ces deux seuils correspondent à des niveaux de risque différents :</p>
+                    <div class="faq-table-wrapper">
+                        <table class="faq-table">
+                            <thead>
+                                <tr>
+                                    <th>Limite</th>
+                                    <th>Risque</th>
+                                    <th>Contexte</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>255 caractères</strong></td>
+                                    <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
+                                            Avertissement</span></td>
+                                    <td>Problèmes potentiels avec les applications Office, l'Explorateur Windows et
+                                        certains
+                                        outils tiers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>400 caractères</strong></td>
+                                    <td><span class="badge badge-danger"><i class="fas fa-times-circle"></i>
+                                            Critique</span>
+                                    </td>
+                                    <td>Blocage total par SharePoint — migration impossible</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="faq-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Traitez en priorité les fichiers dépassant 400 caractères, puis ceux entre 255 et 400 pour
+                            garantir un usage fluide après migration.</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Mes fichiers sont-ils envoyés quelque part ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée —
+                        noms
+                        de fichiers, chemins, résultats — n'est transmise à un serveur externe ou à Internet. Vos
+                        données
+                        restent sur votre machine à tout moment.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Qui est à l'origine de cet outil ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-author">
+                        <div class="faq-author-avatar">
+                            <img src="http://onedrivepathchecker.com/images/JBR.png" alt="Julie BREDECHE" style="width: 64px;">
+                        </div>
+                        <div class="faq-author-info">
+                            <p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365
+                                depuis plus de 10 ans. Forte d'expériences terrain sur des projets de migration
+                                SharePoint
+                                et OneDrive, elle a conçu cet outil pour répondre à un besoin concret rencontré en
+                                mission :
+                                identifier rapidement les fichiers à risque avant migration, et limiter les problèmes de
+                                synchronisation OneDrive après migration.</p>
+                            <div class="faq-author-links">
+                                <a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener">
+                                    <i class="fas fa-globe"></i> osalydconsulting.com
+                                </a>
+                                <a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener">
+                                    <i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="text-align:center">
+            <button class="btn btn-secondary" style="background-color: #FFF;"onclick="window.location.href='FAQ.html'">
+                <i class="fas fa-question-circle"></i>
+                Voir la FAQ complète
+            </button>
+        </div>
+    </section>
+
+
+
+
+
+   <!-- ========== PRICING ========== -->
+    <section id="pricing">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);">Tarification</h2>
+            <p style="text-align: center; margin-bottom: calc(var(--grid) * 3); color: var(--text-secondary);">
+                Commencez gratuitement, progressez à votre rythme<br><br>
+            </p>
+
+
+            <div class="pricing-grid">
+                <!-- ESSAI GRATUIT -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Version d'essai</div>
+                    <div class="pricing-price">Gratuit</div>
+                    <div class="pricing-period">24 heures</div>
+                    <ul class="pricing-features">
+                    </ul>
+                    <button class="btn btn-secondary" onclick="handleDownload()">Télécharger sur Microsoft Store</button>
+                </div>
+
+                <!-- PLAN PRO -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">PLUS POPULAIRE</div>
+                    <div class="pricing-name">Standard</div>
+                    <div class="pricing-price" id="priceMonthly">29,99€</div>
+                    <div class="pricing-period" id="periodMonthly">/ poste de travail</div>
+                    <ul class="pricing-features">
+                        <li>Scans illimités</li>
+                        <li>Mode pré-migration SharePoint</li>
+                        <li>Mode synchronisation OneDrive</li>
+                        <li>Local + Réseau + OneDrive</li>
+                        <li>Rapports Excel détaillés</li>
+                        <li>Mises à jour incluses</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="handlePurchase()">Acheter sur Microsoft Store</button>
+                </div>
+
+                <!-- ENTREPRISE -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Entreprise</div>
+                    <div class="pricing-price">Sur devis</div>
+                    <div class="pricing-period">Déploiement multi-utilisateurs</div>
+                    <ul class="pricing-features">
+                        <li>Scans illimités</li>
+                        <li>Mode pré-migration SharePoint</li>
+                        <li>Mode synchronisation OneDrive</li>
+                        <li>Local + Réseau + OneDrive</li>
+                        <li>Rapports Excel détaillés</li>
+                        <li>Mises à jour incluses</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="handleContactSales()"><i class="fas fa-envelope"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // ========== MENU MOBILE ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navCenter = document.getElementById('navCenter');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navCenter.classList.toggle('active');
+        });
+
+        // Fermer menu au clic sur lien
+        navCenter.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navCenter.classList.remove('active');
+            });
+        });
+
+        // ========== UTILITAIRES =========
+        const SCROLL_TRIGGER = 100 * window.innerHeight / 100;
+
+        // ========== ANIMATIONS SCROLL ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========== COMPTEUR ANIMÉ ==========
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString('fr-FR');
+                    clearInterval(interval);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString('fr-FR');
+                }
+            }, 10);
+        }
+
+        const counter = document.querySelector('.counter');
+        if (counter) {
+            const target = parseInt(counter.dataset.target);
+            const observer2 = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        animateCounter(entry.target, target);
+                        entry.target.classList.add('counted');
+                        observer2.unobserve(entry.target);
+                    }
+                });
+            });
+            observer2.observe(counter);
+        }
+
+        // ========== TOGGLE IMAGE/VIDÉO ==========
+        function toggleMedia() {
+            const img = document.getElementById('mainImage');
+            const video = document.getElementById('mainVideo');
+            const toggleText = document.getElementById('toggleText');
+
+            if (img.style.display !== 'none') {
+                // Passer à la vidéo
+                img.style.display = 'none';
+                video.style.display = 'block';
+                toggleText.innerHTML = '<i class="fas fa-image"></i> Image';
+                video.play();
+            } else {
+                // Passer à l'image
+                img.style.display = 'block';
+                video.style.display = 'none';
+                toggleText.innerHTML = '<i class="fas fa-play"></i> Vidéo';
+                video.pause();
+            }
+        }
+
+
+    
+
+        // ========== HANDLERS CTA ==========
+        function handleDownload() {
+            // Create a temporary link and click it to open in new tab
+            const link = document.createElement('a');
+            link.href = 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function handlePurchase() {
+            alert('💳 Redirection vers Stripe/Gumroad pour l\'achat Pro\n\n✅ Vous recevrez une clé de licence par email');
+        }
+
+        function handleContactSales() {
+            // Prepares a mailto link with subject and body template
+            const subject = encodeURIComponent('Demande de devis - OneDrive Path Checker');
+            const bodyLines = [
+                'Nom de votre organisation:',
+                'Nombre de postes concernés:',
+                'Échéance souhaitée:'
+            ];
+            const body = encodeURIComponent(bodyLines.join('\n'));
+            window.location.href = `mailto:julie.bredeche@osalydconsulting.com?subject=${subject}&body=${body}`;
+        }
+
+        // ========== PAGE LOAD ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ Landing Page PathChecker loaded');
+            console.log('✅ Font Awesome icons loaded');
+            console.log('✅ Animations initialized');
+        });
+
+        // ========== LAZY LOADING IMAGES ==========
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
+        }
+
+            // ========== FAQ ACCORDÉON ==========
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            // Fermer tous les autres
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = '0px';
+                    openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle l'item cliqué
+            if (!isOpen) {
+                item.classList.add('open');
+                this.setAttribute('aria-expanded', 'true');
+                
+                // Calculer la hauteur réelle
+                answer.style.maxHeight = 'none';
+                const fullHeight = answer.scrollHeight;
+                answer.style.maxHeight = '0px';
+                answer.getBoundingClientRect(); // force reflow
+                answer.style.maxHeight = fullHeight + 'px';
+            } else {
+                item.classList.remove('open');
+                this.setAttribute('aria-expanded', 'false');
+                answer.style.maxHeight = '0px';
+            }
+        });
+    });
+
+    // ========== DEMO MODAL (video) ==========
+    function openGifModal() {
+        const modal = document.getElementById('gifModal');
+        const video = document.getElementById('demoVideo');
+        modal.style.display = 'flex';
+        // ensure video element is visible and starts playing
+        video.style.display = 'block';
+        video.currentTime = 0;
+        video.play().catch(() => {});
+    }
+
+    function closeGifModal() {
+        const modal = document.getElementById('gifModal');
+        const video = document.getElementById('demoVideo');
+        modal.style.display = 'none';
+        video.pause();
+        video.style.display = 'none';
+    }
+
+    console.log('✅ FAQ Accordéon activé !');
+
+    </script>
+</body>
+
+</html>
