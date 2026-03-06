@@ -151,7 +151,7 @@ window.TRANSLATIONS = {
         contact_item3_html: '<strong>Fournir des captures d\'écran</strong> — Si vous signalez un bug, les visuels nous aident à comprendre et reproduire le problème',
 
         // Meta
-        store_url: 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR',
+        store_url: 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS',
         sales_email_subject: 'Demande de devis - OneDrive Path Checker',
         sales_email_body: 'Nom de votre organisation:\nNombre de postes concernés:\nÉchéance souhaitée:',
     },
@@ -302,7 +302,7 @@ window.TRANSLATIONS = {
         contact_item3_html: '<strong>Provide screenshots</strong> — If you\'re reporting a bug, visuals help us understand and reproduce the problem',
 
         // Meta
-        store_url: 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=en-US&gl=US',
+        store_url: 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS',
         sales_email_subject: 'Enterprise Quote Request - OneDrive Path Checker',
         sales_email_body: 'Organization name:\nNumber of workstations:\nDesired timeline:',
     }

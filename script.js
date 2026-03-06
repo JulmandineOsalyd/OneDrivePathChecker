@@ -366,7 +366,7 @@ const CTAHandlers = (() => {
     const handleDownload = () => {
         const t = getT();
         const link = document.createElement('a');
-        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS';
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         document.body.appendChild(link);
@@ -377,7 +377,7 @@ const CTAHandlers = (() => {
     const handlePurchase = () => {
         const t = getT();
         const link = document.createElement('a');
-        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS';
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         document.body.appendChild(link);
