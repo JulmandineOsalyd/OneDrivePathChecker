@@ -8,9 +8,9 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Julie BREDECHE">
 
-    
+
     <link rel="icon" href="images/favicon.png" type="image/png">
-    
+
     <!-- Schema.org FAQPage -->
     <script type="application/ld+json">
     {
@@ -28,7 +28,7 @@
     </script>
 
  <title>FAQ - OneDrive Path Checker | Détecteur chemins fichiers longs</title>
-    
+
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,9 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Translations (must load before script.js) -->
+    <script src="translations.js"></script>
 
     <!-- Main Script -->
     <script defer src="script.js"></script>
@@ -55,23 +58,23 @@
             <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
-                <span></span> 
+                <span></span>
             </button>
 
             <div class="nav-center" id="navCenter">
                 <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="index.html#solution">Fonctionnalités</a></li>
-                    <li><a href="FAQ.html">FAQ </a></li>
-                    <li><a href="index.html#pricing">Tarifs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                    <li><a href="index.html#solution" data-i18n="nav_features">Fonctionnalités</a></li>
+                    <li><a href="FAQ.html" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="index.html#pricing" data-i18n="nav_pricing">Tarifs</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </div>
 
             <div class="nav-right">
                 <a href="#download" class="nav-cta">
                     <i class="fas fa-download"></i>
-                    Télécharger
+                    <span data-i18n="nav_download_short">Télécharger</span>
                 </a>
             </div>
         </div>
@@ -80,15 +83,15 @@
     <!-- ========== HERO ========== -->
     <section class="faq-hero">
         <div class="container">
-            <h1>Foire Aux Questions</h1>
-            <p class="faq-subtitle">
+            <h1 data-i18n="faq_page_h1">Foire Aux Questions</h1>
+            <p class="faq-subtitle" data-i18n-html="faq_page_subtitle_html">
                     Tout ce que vous devez savoir sur la solution.<br>
                     Une question sans réponse ? <br> Contactez-nous à <a
                         href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a>
                 </p>
             <a href="index.html" class="faq-back-home">
                 <i class="fas fa-arrow-left"></i>
-                Retour à l'accueil
+                <span data-i18n="faq_back_home">Retour à l'accueil</span>
             </a>
         </div>
     </section>
@@ -99,16 +102,16 @@
         <div class="faq-category">
             <h3 class="faq-category-title">
                 <i class="fas fa-question-circle"></i>
-                Pourquoi cet outil
+                <span data-i18n="faq_cat1_title">Pourquoi cet outil</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Pourquoi mes fichiers ne se synchronisent-ils plus après une migration SharePoint ?
+                    <span data-i18n="faq_full_q1">Pourquoi mes fichiers ne se synchronisent-ils plus après une migration SharePoint ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a1_html">
                         <p>Après une migration, les chemins de fichiers sont reconstruits dans une nouvelle arborescence SharePoint peuvent dépasser les limites acceptées par Microsoft, même s'ils étaient parfaitement valides sur votre ancien serveur.
                         <br>Deux seuils sont à surveiller :</p>
 
@@ -142,11 +145,11 @@
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?
+                    <span data-i18n="faq_full_q2">Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html">
                         <p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Les fichiers ne peuvent pas être synchronisés et OneDrive restera bloqué sur cette erreur tant que la longueur du chemin n'aura pas été corrigée.</p>
                         <img src="images/OneDrive400.png" alt="Erreur OneDrive 400 caractères" class="faq-image" style="width:60%">
                         <p><strong>Chemin &gt; 255 caractères</strong> : Le fichier est synchronisé, mais impossible à ouvrir. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic particulièrement difficile sans outil dédié.</p>
@@ -157,26 +160,25 @@
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Pourquoi est-ce difficile à corriger sans outil ?
+                    <span data-i18n="faq_full_q3">Pourquoi est-ce difficile à corriger sans outil ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a3_html">
                         <p>Windows n'affiche pas toujours la longueur des chemins. <br>
                             Sans outil, il faut copier chaque chemin manuellement dans un éditeur de texte pour en compter les caractères : une tâche irréaliste sur des milliers de fichiers.</p>
                         <p>OneDrive Path Checker automatise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent.</p>
-
                     </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Puis-je analyser des fichiers déjà migrés qui posent problème ?
+                    <span data-i18n="faq_full_q4">Puis-je analyser des fichiers déjà migrés qui posent problème ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a4_html">
                         <p>Pas toujours. Les fichiers dont le chemin dépasse 400 caractères ne sont pas synchronisés par OneDrive — ils sont donc absents de votre poste et ne peuvent pas être analysés après coup.</p>
                         <p>Pour les fichiers entre 255 et 400 caractères, l'analyse reste possible depuis votre dossier OneDrive synchronisé.</p>
                         <div class="faq-tip">
@@ -192,16 +194,16 @@
         <div class="faq-category">
             <h3 class="faq-category-title">
                 <i class="fas fa-wrench"></i>
-                Fonctionnement de l'outil
+                <span data-i18n="faq_cat2_title">Fonctionnement de l'outil</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Comment est calculée la longueur des chemins en mode « Synchronisation OneDrive » ?
+                    <span data-i18n="faq_full_q5">Comment est calculée la longueur des chemins en mode « Synchronisation OneDrive » ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a5_html">
                         <p>En mode Synchronisation OneDrive, l'outil mesure la longueur du chemin Windows complet de
                             chaque fichier, tel qu'il existe sur votre ordinateur. Par exemple :</p>
                         <code
@@ -219,104 +221,112 @@
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Comment fonctionne le mode « Migration SharePoint » ?
+                    <span data-i18n="faq_full_q6">Comment fonctionne le mode « Migration SharePoint » ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>En mode Migration SharePoint, l'outil simule l'URL relative que chaque fichier aura une fois
-                        migré sur SharePoint. Par exemple, si vous migrez vers le site RH et la bibliothèque Documents
-                        partagés, le fichier :</p>
-                    <code class="faq-code">C:\Serveur\Archives\Contrats\2024\Contrat_Julie.docx</code>
-                    <p>sera simulé comme :</p>
-                    <code class="faq-code">/sites/RH/Documents partagés/Archives/Contrats/2024/Contrat_Julie.docx</code>
-                    <p>C'est exactement le format qu'utilise Microsoft pour calculer la longueur du chemin SharePoint.
-                    </p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a6_html">
+                        <p>En mode Migration SharePoint, l'outil simule l'URL relative que chaque fichier aura une fois
+                            migré sur SharePoint. Par exemple, si vous migrez vers le site RH et la bibliothèque Documents
+                            partagés, le fichier :</p>
+                        <code class="faq-code">C:\Serveur\Archives\Contrats\2024\Contrat_Julie.docx</code>
+                        <p>sera simulé comme :</p>
+                        <code class="faq-code">/sites/RH/Documents partagés/Archives/Contrats/2024/Contrat_Julie.docx</code>
+                        <p>C'est exactement le format qu'utilise Microsoft pour calculer la longueur du chemin SharePoint.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Que se passe-t-il si je ne connais pas encore mon site SharePoint cible ?
+                    <span data-i18n="faq_full_q7">Que se passe-t-il si je ne connais pas encore mon site SharePoint cible ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Un nom de site fictif est renseigné par défaut pour estimer les longueurs d'URL simulées.
-                        L'objectif est d'identifier les fichiers à risque — même avec un nom provisoire, les résultats
-                        restent exploitables pour prioriser vos renommages.</p>
-                    <p>Vous pouvez également cocher la case <strong>« Je ne connais pas le site SharePoint cible
-                            »</strong> pour utiliser les valeurs par défaut et lancer l'analyse immédiatement.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a7_html">
+                        <p>Un nom de site fictif est renseigné par défaut pour estimer les longueurs d'URL simulées.
+                            L'objectif est d'identifier les fichiers à risque — même avec un nom provisoire, les résultats
+                            restent exploitables pour prioriser vos renommages.</p>
+                        <p>Vous pouvez également cocher la case <strong>« Je ne connais pas le site SharePoint cible
+                                »</strong> pour utiliser les valeurs par défaut et lancer l'analyse immédiatement.</p>
+                    </div>
                 </div>
             </div>
 
         <!-- Catégorie : Capacités -->
         <div class="faq-category">
             <h3 class="faq-category-title">
-                <i class="fas fa-folder-open"></i> Capacités et performance
+                <i class="fas fa-folder-open"></i> <span data-i18n="faq_cat3_title">Capacités et performance</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Jusqu'à combien de fichiers peut-on scanner ?
+                    <span data-i18n="faq_full_q8">Jusqu'à combien de fichiers peut-on scanner ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>L'outil est conçu pour analyser des arborescences de taille professionnelle :</p>
-                    <div class="faq-table-wrapper">
-                        <table class="faq-table">
-                            <thead>
-                                <tr>
-                                    <th>Volume</th>
-                                    <th>Performance</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Jusqu'à 50 000 fichiers</td>
-                                    <td><span class="badge badge-success"><i class="fas fa-check-circle"></i> Rapide et
-                                            fluide</span></td>
-                                </tr>
-                                <tr>
-                                    <td>50 000 à 100 000 fichiers</td>
-                                    <td><span class="badge badge-success"><i class="fas fa-check-circle"></i>
-                                            Fonctionnel, quelques secondes d'attente</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Au-delà de 100 000 fichiers</td>
-                                    <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
-                                            Possible ralentissement selon la machine</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="faq-tip">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>Pour les arborescences très volumineuses, analysez les dossiers principaux séparément
-                            plutôt que l'intégralité du serveur en une seule fois.</span>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a8_html">
+                        <p>L'outil est conçu pour analyser des arborescences de taille professionnelle :</p>
+                        <div class="faq-table-wrapper">
+                            <table class="faq-table">
+                                <thead>
+                                    <tr>
+                                        <th>Volume</th>
+                                        <th>Performance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jusqu'à 50 000 fichiers</td>
+                                        <td><span class="badge badge-success"><i class="fas fa-check-circle"></i> Rapide et
+                                                fluide</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>50 000 à 100 000 fichiers</td>
+                                        <td><span class="badge badge-success"><i class="fas fa-check-circle"></i>
+                                                Fonctionnel, quelques secondes d'attente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Au-delà de 100 000 fichiers</td>
+                                        <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
+                                                Possible ralentissement selon la machine</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="faq-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Pour les arborescences très volumineuses, analysez les dossiers principaux séparément
+                                plutôt que l'intégralité du serveur en une seule fois.</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Peut-on scanner un lecteur réseau mappé ?
+                    <span data-i18n="faq_full_q9">Peut-on scanner un lecteur réseau mappé ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Oui, l'outil peut analyser un lecteur réseau mappé (par exemple
-                        <code>Z:\Partage\Services\RH</code>). Il suffit de sélectionner le dossier via le bouton de
-                        sélection, comme pour n'importe quel dossier local.</p>
-                    <p>Quelques points à garder en tête :</p>
-                    <ul class="faq-list">
-                        <li><i class="fas fa-tachometer-alt"></i> <strong>Performance :</strong> un lecteur réseau est
-                            plus lent qu'un SSD local — sur 20 000 fichiers, le scan peut prendre plusieurs dizaines de
-                            secondes selon la qualité de la connexion</li>
-                        <li><i class="fas fa-key"></i> <strong>Droits d'accès :</strong> l'outil accède aux fichiers
-                            avec les droits de l'utilisateur connecté. Les sous-dossiers restreints sont silencieusement
-                            ignorés</li>
-                        <li><i class="fas fa-map-marker-alt"></i> <strong>Chemin affiché :</strong> le chemin réseau
-                            complet (<code>Z:\...</code> ou <code>\\serveur\partage\...</code>) est utilisé pour le
-                            calcul, ce qui reflète fidèlement ce que OneDrive devra synchroniser</li>
-                    </ul>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a9_html">
+                        <p>Oui, l'outil peut analyser un lecteur réseau mappé (par exemple
+                            <code>Z:\Partage\Services\RH</code>). Il suffit de sélectionner le dossier via le bouton de
+                            sélection, comme pour n'importe quel dossier local.</p>
+                        <p>Quelques points à garder en tête :</p>
+                        <ul class="faq-list">
+                            <li><i class="fas fa-tachometer-alt"></i> <strong>Performance :</strong> un lecteur réseau est
+                                plus lent qu'un SSD local — sur 20 000 fichiers, le scan peut prendre plusieurs dizaines de
+                                secondes selon la qualité de la connexion</li>
+                            <li><i class="fas fa-key"></i> <strong>Droits d'accès :</strong> l'outil accède aux fichiers
+                                avec les droits de l'utilisateur connecté. Les sous-dossiers restreints sont silencieusement
+                                ignorés</li>
+                            <li><i class="fas fa-map-marker-alt"></i> <strong>Chemin affiché :</strong> le chemin réseau
+                                complet (<code>Z:\...</code> ou <code>\\serveur\partage\...</code>) est utilisé pour le
+                                calcul, ce qui reflète fidèlement ce que OneDrive devra synchroniser</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -324,50 +334,58 @@
         <!-- Catégorie : Sécurité -->
         <div class="faq-category">
             <h3 class="faq-category-title">
-                <i class="fas fa-shield-alt"></i> Sécurité et confidentialité
+                <i class="fas fa-shield-alt"></i> <span data-i18n="faq_cat4_title">Sécurité et confidentialité</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Mes fichiers sont-ils envoyés quelque part ?
+                    <span data-i18n="faq_full_q10">Mes fichiers sont-ils envoyés quelque part ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée (noms de fichiers, chemins, résultats) n'est transmise à un serveur externe ou à Internet. <br>
-                        Vos données restent sur votre machine à tout moment.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a10_html">
+                        <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée (noms de fichiers, chemins, résultats) n'est transmise à un serveur externe ou à Internet. <br>
+                            Vos données restent sur votre machine à tout moment.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    L'outil nécessite-t-il un accès Internet ?
+                    <span data-i18n="faq_full_q11">L'outil nécessite-t-il un accès Internet ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p><strong>Non.</strong> Il fonctionne entièrement hors ligne, même en environnement réseau isolé ou
-                        en DMZ. Aucune connexion n'est établie lors de l'analyse.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a11_html">
+                        <p><strong>Non.</strong> Il fonctionne entièrement hors ligne, même en environnement réseau isolé ou
+                            en DMZ. Aucune connexion n'est établie lors de l'analyse.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Faut-il des droits administrateur pour l'utiliser ?
+                    <span data-i18n="faq_full_q12">Faut-il des droits administrateur pour l'utiliser ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p><strong>Non.</strong> L'outil est un exécutable portable qui ne nécessite aucune installation ni
-                        élévation de privilèges. Il peut être lancé directement depuis votre poste de travail sans droits admin.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a12_html">
+                        <p><strong>Non.</strong> L'outil est un exécutable portable qui ne nécessite aucune installation ni
+                            élévation de privilèges. Il peut être lancé directement depuis votre poste de travail sans droits admin.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    L'outil modifie-t-il des fichiers ou des dossiers ?
+                    <span data-i18n="faq_full_q13">L'outil modifie-t-il des fichiers ou des dossiers ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p><strong>Non.</strong> Il fonctionne en <strong>lecture seule</strong>. Il ne renomme, ne déplace
-                        et ne supprime rien. Votre arborescence est analysée sans aucune modification.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a13_html">
+                        <p><strong>Non.</strong> Il fonctionne en <strong>lecture seule</strong>. Il ne renomme, ne déplace
+                            et ne supprime rien. Votre arborescence est analysée sans aucune modification.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -375,59 +393,65 @@
         <!-- Catégorie : Résultats & Export -->
         <div class="faq-category">
             <h3 class="faq-category-title">
-                <i class="fas fa-chart-bar"></i> Résultats et export
+                <i class="fas fa-chart-bar"></i> <span data-i18n="faq_cat5_title">Résultats et export</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Sous quel format sont exportés les résultats ?
+                    <span data-i18n="faq_full_q14">Sous quel format sont exportés les résultats ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Les résultats sont exportables au format <strong>CSV</strong>, directement lisible dans Excel.
-                        Chaque ligne contient :</p>
-                    <ul class="faq-list">
-                        <li><i class="fas fa-angle-right"></i> Le chemin complet du fichier / URL SharePoint simulée</li>
-                        <li><i class="fas fa-angle-right"></i> La longueur calculée</li>
-                        <li><i class="fas fa-angle-right"></i> Les excédents par rapport aux seuils 255 et 400
-                            caractères</li>
-                        <li><i class="fas fa-angle-right"></i> Le segment le plus long du chemin</li>
-                    </ul>
-                    <p>Ce fichier peut être partagé avec votre équipe ou intégré dans un rapport de migration.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a14_html">
+                        <p>Les résultats sont exportables au format <strong>CSV</strong>, directement lisible dans Excel.
+                            Chaque ligne contient :</p>
+                        <ul class="faq-list">
+                            <li><i class="fas fa-angle-right"></i> Le chemin complet du fichier / URL SharePoint simulée</li>
+                            <li><i class="fas fa-angle-right"></i> La longueur calculée</li>
+                            <li><i class="fas fa-angle-right"></i> Les excédents par rapport aux seuils 255 et 400
+                                caractères</li>
+                            <li><i class="fas fa-angle-right"></i> Le segment le plus long du chemin</li>
+                        </ul>
+                        <p>Ce fichier peut être partagé avec votre équipe ou intégré dans un rapport de migration.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Peut-on filtrer les résultats par type de dépassement (255 ou 400) ?
+                    <span data-i18n="faq_full_q15">Peut-on filtrer les résultats par type de dépassement (255 ou 400) ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>L'interface distingue clairement les deux niveaux via un <strong>code couleur</strong> — <span
-                            style="color:#EA580C; font-weight:600;">orange</span> pour les dépassements 255 caractères,
-                        <span style="color:#DC2626; font-weight:600;">rouge</span> pour les dépassements 400 caractères.
-                    </p>
-                    <p>Le fichier CSV exporté contient également les deux colonnes d'excédent de caractères, ce qui permet de filtrer
-                        et trier facilement dans Excel selon le niveau de criticité.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a15_html">
+                        <p>L'interface distingue clairement les deux niveaux via un <strong>code couleur</strong> — <span
+                                style="color:#EA580C; font-weight:600;">orange</span> pour les dépassements 255 caractères,
+                            <span style="color:#DC2626; font-weight:600;">rouge</span> pour les dépassements 400 caractères.
+                        </p>
+                        <p>Le fichier CSV exporté contient également les deux colonnes d'excédent de caractères, ce qui permet de filtrer
+                            et trier facilement dans Excel selon le niveau de criticité.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Les résultats indiquent-ils le chemin complet du fichier problématique ?
+                    <span data-i18n="faq_full_q16">Les résultats indiquent-ils le chemin complet du fichier problématique ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Oui. Chaque ligne affiche :</p>
-                    <ul class="faq-list">
-                        <li><i class="fas fa-angle-right"></i> Le chemin complet (ou l'URL SharePoint simulée selon le
-                            mode)</li>
-                        <li><i class="fas fa-angle-right"></i> La longueur calculée</li>
-                        <li><i class="fas fa-angle-right"></i> Les excédents par rapport aux deux seuils</li>
-                        <li><i class="fas fa-angle-right"></i> Le segment le plus long du chemin</li>
-                        <li><i class="fas fa-angle-right"></i> Un bouton d'accès direct au dossier parent dans
-                            l'Explorateur Windows</li>
-                    </ul>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a16_html">
+                        <p>Oui. Chaque ligne affiche :</p>
+                        <ul class="faq-list">
+                            <li><i class="fas fa-angle-right"></i> Le chemin complet (ou l'URL SharePoint simulée selon le
+                                mode)</li>
+                            <li><i class="fas fa-angle-right"></i> La longueur calculée</li>
+                            <li><i class="fas fa-angle-right"></i> Les excédents par rapport aux deux seuils</li>
+                            <li><i class="fas fa-angle-right"></i> Le segment le plus long du chemin</li>
+                            <li><i class="fas fa-angle-right"></i> Un bouton d'accès direct au dossier parent dans
+                                l'Explorateur Windows</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -435,42 +459,48 @@
         <!-- Catégorie : Licence & Support -->
         <div class="faq-category">
             <h3 class="faq-category-title">
-                <i class="fas fa-credit-card"></i> Licence et support
+                <i class="fas fa-credit-card"></i> <span data-i18n="faq_cat6_title">Licence et support</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Puis-je utiliser l'outil sur plusieurs postes ?
+                    <span data-i18n="faq_full_q17">Puis-je utiliser l'outil sur plusieurs postes ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>La licence standard couvre un seul poste. Pour un déploiement multi-postes ou entreprise,
-                        contactez <a href="mailto:support-pathchecker@osalydconsulting.com">support-pathchecker@osalydconsulting.com</a>
-                        pour obtenir un devis adapté à vos besoins.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a17_html">
+                        <p>La licence standard couvre un seul poste. Pour un déploiement multi-postes ou entreprise,
+                            contactez <a href="mailto:support-pathchecker@osalydconsulting.com">support-pathchecker@osalydconsulting.com</a>
+                            pour obtenir un devis adapté à vos besoins.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Y a-t-il une version d'essai ?
+                    <span data-i18n="faq_full_q18">Y a-t-il une version d'essai ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Oui, une version d'essai est disponible pendant <strong>24 heures</strong> avant achat, sans
-                        limitation de fonctionnalités. Elle vous permet d'évaluer l'outil sur votre propre environnement
-                        avant de vous engager.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a18_html">
+                        <p>Oui, une version d'essai est disponible pendant <strong>24 heures</strong> avant achat, sans
+                            limitation de fonctionnalités. Elle vous permet d'évaluer l'outil sur votre propre environnement
+                            avant de vous engager.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    L'outil est-il mis à jour si Microsoft change ses limites ?
+                    <span data-i18n="faq_full_q19">L'outil est-il mis à jour si Microsoft change ses limites ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Oui, les mises à jour sont disponibles pour les licences actives. En cas d'évolution des limites
-                        Microsoft (SharePoint ou OneDrive), une mise à jour sera publiée et notifiée par e-mail aux
-                        utilisateurs disposant d'une licence valide.</p>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a19_html">
+                        <p>Oui, les mises à jour sont disponibles pour les licences actives. En cas d'évolution des limites
+                            Microsoft (SharePoint ou OneDrive), une mise à jour sera publiée et notifiée par e-mail aux
+                            utilisateurs disposant d'une licence valide.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -478,32 +508,34 @@
         <!-- Catégorie : À propos -->
         <div class="faq-category">
             <h3 class="faq-category-title">
-                <i class="fas fa-user-circle"></i> À propos du développeur
+                <i class="fas fa-user-circle"></i> <span data-i18n="faq_cat7_title">À propos du développeur</span>
             </h3>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Qui est à l'origine de cet outil ?
+                    <span data-i18n="faq_full_q20">Qui est à l'origine de cet outil ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-author">
-                        <div class="faq-author-avatar">
-                            <img src="http://onedrivepathchecker.com/images/JBR.png" alt="Julie BREDECHE" style="width: 64px;">
-                        </div>
-                        <div class="faq-author-info">
-                            <p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365
-                                depuis plus de 10 ans. Forte d'expériences terrain sur des projets de migration
-                                SharePoint et OneDrive, elle a conçu cet outil pour répondre à un besoin concret
-                                rencontré en mission : identifier rapidement les fichiers à risque avant migration, et
-                                limiter les problèmes de synchronisation OneDrive après migration.</p>
-                            <div class="faq-author-links">
-                                <a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener">
-                                    <i class="fas fa-globe"></i> osalydconsulting.com
-                                </a>
-                                <a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener">
-                                    <i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche
-                                </a>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a20_html">
+                        <div class="faq-author">
+                            <div class="faq-author-avatar">
+                                <img src="http://onedrivepathchecker.com/images/JBR.png" alt="Julie BREDECHE" style="width: 64px;">
+                            </div>
+                            <div class="faq-author-info">
+                                <p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365
+                                    depuis plus de 10 ans. Forte d'expériences terrain sur des projets de migration
+                                    SharePoint et OneDrive, elle a conçu cet outil pour répondre à un besoin concret
+                                    rencontré en mission : identifier rapidement les fichiers à risque avant migration, et
+                                    limiter les problèmes de synchronisation OneDrive après migration.</p>
+                                <div class="faq-author-links">
+                                    <a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener">
+                                        <i class="fas fa-globe"></i> osalydconsulting.com
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener">
+                                        <i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -517,7 +549,7 @@
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
         </div>
     </footer>
 

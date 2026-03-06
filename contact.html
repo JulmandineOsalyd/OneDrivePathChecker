@@ -27,6 +27,9 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Translations (must load before script.js) -->
+    <script src="translations.js"></script>
+
     <!-- Main Script -->
     <script defer src="script.js"></script>
 </head>
@@ -48,18 +51,18 @@
 
             <div class="nav-center" id="navCenter">
                 <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="index.html#solution">Fonctionnalités</a></li>
-                    <li><a href="FAQ.html">FAQ</a></li>
-                    <li><a href="index.html#pricing">Tarifs</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                    <li><a href="index.html#solution" data-i18n="nav_features">Fonctionnalités</a></li>
+                    <li><a href="FAQ.html" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="index.html#pricing" data-i18n="nav_pricing">Tarifs</a></li>
+                    <li><a href="contact.html" class="active" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </div>
 
             <div class="nav-right">
                 <a href="index.html#download" class="nav-cta">
                     <i class="fas fa-download"></i>
-                    Télécharger
+                    <span data-i18n="nav_download_short">Télécharger</span>
                 </a>
             </div>
         </div>
@@ -68,8 +71,8 @@
     <!-- ========== HERO ========== -->
     <section class="contact-hero">
         <div class="container">
-            <h1>Nous contacter</h1>
-            <p class="contact-hero-subtitle">
+            <h1 data-i18n="contact_h1">Nous contacter</h1>
+            <p class="contact-hero-subtitle" data-i18n-html="contact_subtitle_html">
                 Une question ou un commentaire ? <br>Nous sommes là pour vous aider.
             </p>
         </div>
@@ -85,8 +88,8 @@
                     <div class="contact-card-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Écrivez-nous</h3>
-                    <p>Pour toute demande générale ou support technique</p>
+                    <h3 data-i18n="contact_card1_title">Écrivez-nous</h3>
+                    <p data-i18n="contact_card1_desc">Pour toute demande générale ou support technique</p>
                     <a href="mailto:support-pathchecker@osalydconsulting.com" class="contact-card-link">
                         support-pathchecker@osalydconsulting.com
                     </a>
@@ -97,9 +100,9 @@
                     <div class="contact-card-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Délai de réponse</h3>
-                    <p>Nous répondons généralement sous</p>
-                    <span class="contact-card-highlight">24 à 48 heures</span>
+                    <h3 data-i18n="contact_card2_title">Délai de réponse</h3>
+                    <p data-i18n="contact_card2_desc">Nous répondons généralement sous</p>
+                    <span class="contact-card-highlight" data-i18n="contact_card2_highlight">24 à 48 heures</span>
                 </div>
 
                 <!-- Card 3 : FAQ -->
@@ -107,9 +110,9 @@
                     <div class="contact-card-icon">
                         <i class="fas fa-comment-dots"></i>
                     </div>
-                    <h3>Réponses rapides</h3>
-                    <p>Consultez notre FAQ pour les questions les plus fréquentes</p>
-                    <a href="FAQ.html" class="contact-card-link">
+                    <h3 data-i18n="contact_card3_title">Réponses rapides</h3>
+                    <p data-i18n="contact_card3_desc">Consultez notre FAQ pour les questions les plus fréquentes</p>
+                    <a href="FAQ.html" class="contact-card-link" data-i18n="contact_card3_link">
                         Voir la FAQ
                     </a>
                 </div>
@@ -121,23 +124,23 @@
     <!-- ========== QUE MENTIONNER ========== -->
     <section class="contact-include-section">
         <div class="container-narrow">
-            <h2>Pour répondre au mieux à vos demandes de support : </h2>
+            <h2 data-i18n="contact_include_h2">Pour répondre au mieux à vos demandes de support : </h2>
             <ul class="contact-include-list">
                 <li class="contact-include-item">
                     <div class="contact-include-number">1</div>
-                    <p>
+                    <p data-i18n-html="contact_item1_html">
                         <strong>Précisez votre environnement</strong> - Exemple : Windows 11 / Scan serveur réseau 120k fichiers / Mode SharePoint
                     </p>
                 </li>
                 <li class="contact-include-item">
                     <div class="contact-include-number">2</div>
-                    <p>
-                        <strong>Donner une description précise</strong> - A quel étape vous rencontrez un problème ? Quels messages d'erreur voyez-vous ? 
+                    <p data-i18n-html="contact_item2_html">
+                        <strong>Donner une description précise</strong> - A quel étape vous rencontrez un problème ? Quels messages d'erreur voyez-vous ?
                     </p>
                 </li>
                 <li class="contact-include-item">
                     <div class="contact-include-number">3</div>
-                    <p>
+                    <p data-i18n-html="contact_item3_html">
                         <strong>Fournir des captures d'écran</strong> — Si vous signalez un bug, les visuels nous aident à comprendre et reproduire le problème
                     </p>
                 </li>
@@ -148,7 +151,7 @@
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
         </div>
     </footer>
 

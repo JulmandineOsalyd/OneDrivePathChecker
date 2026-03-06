@@ -174,11 +174,56 @@ const FAQ = (() => {
     return { init };
 })();
 
+// ========== LANGUAGE MODULE ==========
+const Language = (() => {
+    const detect = () => {
+        const lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+        return lang.startsWith('fr') ? 'fr' : 'en';
+    };
+
+    const apply = (lang) => {
+        if (!window.TRANSLATIONS) return;
+        const t = window.TRANSLATIONS[lang];
+        if (!t) return;
+
+        // Update html lang attribute
+        document.documentElement.lang = lang;
+
+        // Apply text translations
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.textContent = t[key];
+        });
+
+        // Apply HTML translations
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.getAttribute('data-i18n-html');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+
+        // Store active language for other modules
+        window._activeLang = lang;
+    };
+
+    const init = () => {
+        const lang = detect();
+        apply(lang);
+    };
+
+    return { init, detect };
+})();
+
 // ========== CTA HANDLERS MODULE ==========
 const CTAHandlers = (() => {
+    const getT = () => {
+        const lang = window._activeLang || Language.detect();
+        return (window.TRANSLATIONS && window.TRANSLATIONS[lang]) || {};
+    };
+
     const handleDownload = () => {
+        const t = getT();
         const link = document.createElement('a');
-        link.href = 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         document.body.appendChild(link);
@@ -187,17 +232,20 @@ const CTAHandlers = (() => {
     };
 
     const handlePurchase = () => {
-        alert('💳 Redirection vers Stripe/Gumroad pour l\'achat Pro\n\n✅ Vous recevrez une clé de licence par email');
+        const t = getT();
+        const link = document.createElement('a');
+        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     const handleContactSales = () => {
-        const subject = encodeURIComponent('Demande de devis - OneDrive Path Checker');
-        const bodyLines = [
-            'Nom de votre organisation:',
-            'Nombre de postes concernés:',
-            'Échéance souhaitée:'
-        ];
-        const body = encodeURIComponent(bodyLines.join('\n'));
+        const t = getT();
+        const subject = encodeURIComponent(t.sales_email_subject || 'Demande de devis - OneDrive Path Checker');
+        const body = encodeURIComponent(t.sales_email_body || '');
         window.location.href = `mailto:julie.bredeche@osalydconsulting.com?subject=${subject}&body=${body}`;
     };
 
@@ -238,6 +286,7 @@ const LazyLoading = (() => {
 // ========== MAIN APP INITIALIZATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all modules
+    Language.init();
     Navigation.init();
     Animations.initScrollAnimations();
     Counter.init();
