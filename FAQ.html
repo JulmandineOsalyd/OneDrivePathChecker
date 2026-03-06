@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FAQ OneDrive Path Checker - Toutes vos questions sur le détecteur de chemins fichiers longs pour SharePoint et OneDrive">
+    <meta name="description" content="Toutes vos questions sur l'outil de détection de chemins trop longs pour SharePoint et OneDrive. Fonctionnement, sécurité, export, licences.">
     <meta name="keywords" content="OneDrive Path Checker FAQ, SharePoint migration, OneDrive sync, chemins longs">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Julie BREDECHE">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAQ – Détecteur de chemins longs OneDrive &amp; SharePoint | PathChecker">
+    <meta property="og:description" content="Toutes vos questions sur l'outil de détection de chemins trop longs pour SharePoint et OneDrive. Fonctionnement, sécurité, export, licences.">
+    <meta property="og:url" content="https://onedrivepathchecker.com/FAQ.html?lang=fr">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+    <meta name="theme-color" content="#0078D4">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://onedrivepathchecker.com/FAQ.html?lang=fr">
+    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html?lang=fr">
+    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/FAQ.html?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/FAQ.html?lang=fr">
 
     <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <!-- Schema.org FAQPage -->
+    <!-- Schema.org FAQPage (statique FR — rich snippet Google) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -27,7 +41,7 @@
     }
     </script>
 
- <title>FAQ - OneDrive Path Checker | Détecteur chemins fichiers longs</title>
+    <title>FAQ – Détecteur de chemins longs OneDrive &amp; SharePoint | PathChecker</title>
 
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,7 +86,11 @@
             </div>
 
             <div class="nav-right">
-                <a href="#download" class="nav-cta">
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" aria-label="Français">FR</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-label="English">EN</button>
+                </div>
+                <a href="index.html" class="nav-cta">
                     <i class="fas fa-download"></i>
                     <span data-i18n="nav_download_short">Télécharger</span>
                 </a>

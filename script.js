@@ -178,19 +178,54 @@ const FAQ = (() => {
 const Language = (() => {
     const SEO_META = {
         fr: {
-            title: 'Détecteur de chemins trop longs – OneDrive & SharePoint | PathChecker',
-            description: 'Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.',
-            canonical: 'https://onedrivepathchecker.com/?lang=fr',
             ogLocale: 'fr_FR',
-            schemaDescription: 'Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.'
+            schemaDescription: 'Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.',
+            pages: {
+                '/': {
+                    title: 'Détecteur de chemins trop longs – OneDrive & SharePoint | PathChecker',
+                    description: 'Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.'
+                },
+                '/FAQ.html': {
+                    title: 'FAQ – Détecteur de chemins longs OneDrive & SharePoint | PathChecker',
+                    description: 'Toutes vos questions sur l\'outil de détection de chemins trop longs pour SharePoint et OneDrive. Fonctionnement, sécurité, export, licences.'
+                },
+                '/contact.html': {
+                    title: 'Contact – OneDrive Path Checker | Support & Questions',
+                    description: 'Contactez l\'équipe OneDrive Path Checker pour toute question sur l\'outil de détection de chemins trop longs. Support technique et demandes commerciales.'
+                }
+            }
         },
         en: {
-            title: 'Long File Path Detector – OneDrive & SharePoint | PathChecker',
-            description: 'Detect file paths exceeding 255 or 400 characters before your SharePoint migration or OneDrive sync. Portable tool, 100% local, no installation required.',
-            canonical: 'https://onedrivepathchecker.com/?lang=en',
             ogLocale: 'en_US',
-            schemaDescription: 'Detect file paths exceeding Microsoft limits before SharePoint migration or OneDrive synchronization.'
+            schemaDescription: 'Detect file paths exceeding Microsoft limits before SharePoint migration or OneDrive synchronization.',
+            pages: {
+                '/': {
+                    title: 'Long File Path Detector – OneDrive & SharePoint | PathChecker',
+                    description: 'Detect file paths exceeding 255 or 400 characters before your SharePoint migration or OneDrive sync. Portable tool, 100% local, no installation required.'
+                },
+                '/FAQ.html': {
+                    title: 'FAQ – Long File Path Detector OneDrive & SharePoint | PathChecker',
+                    description: 'All your questions about the long file path detection tool for SharePoint and OneDrive. How it works, security, export, licensing.'
+                },
+                '/contact.html': {
+                    title: 'Contact – OneDrive Path Checker | Support & Questions',
+                    description: 'Contact the OneDrive Path Checker team for any question about the long file path detection tool. Technical support and sales inquiries.'
+                }
+            }
         }
+    };
+
+    const getPageKey = () => {
+        const path = window.location.pathname;
+        if (path.endsWith('FAQ.html')) return '/FAQ.html';
+        if (path.endsWith('contact.html')) return '/contact.html';
+        return '/';
+    };
+
+    const getCanonicalUrl = (lang) => {
+        const pageKey = getPageKey();
+        const page = pageKey === '/' ? '' : pageKey;
+        return `https://onedrivepathchecker.com${page}?lang=${lang}`;
     };
 
     const detect = () => {
@@ -205,28 +240,32 @@ const Language = (() => {
     };
 
     const updateSEOMeta = (lang) => {
-        const meta = SEO_META[lang];
-        if (!meta) return;
+        const langMeta = SEO_META[lang];
+        if (!langMeta) return;
 
-        document.title = meta.title;
+        const pageKey = getPageKey();
+        const page = langMeta.pages[pageKey] || langMeta.pages['/'];
+        const canonicalUrl = getCanonicalUrl(lang);
+
+        document.title = page.title;
 
         const desc = document.querySelector('meta[name="description"]');
-        if (desc) desc.setAttribute('content', meta.description);
+        if (desc) desc.setAttribute('content', page.description);
 
-        const canonical = document.querySelector('link[rel="canonical"]');
-        if (canonical) canonical.setAttribute('href', meta.canonical);
+        const canonicalEl = document.querySelector('link[rel="canonical"]');
+        if (canonicalEl) canonicalEl.setAttribute('href', canonicalUrl);
 
         const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', meta.title);
+        if (ogTitle) ogTitle.setAttribute('content', page.title);
 
         const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (ogDesc) ogDesc.setAttribute('content', meta.description);
+        if (ogDesc) ogDesc.setAttribute('content', page.description);
 
         const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) ogUrl.setAttribute('content', meta.canonical);
+        if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
 
         const ogLocale = document.querySelector('meta[property="og:locale"]');
-        if (ogLocale) ogLocale.setAttribute('content', meta.ogLocale);
+        if (ogLocale) ogLocale.setAttribute('content', langMeta.ogLocale);
 
         document.documentElement.lang = lang;
     };
