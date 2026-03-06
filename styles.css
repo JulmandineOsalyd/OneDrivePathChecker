@@ -380,7 +380,7 @@ section:nth-child(even) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--primary);
+    background: rgb(14 44 66 / 30%);
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -607,7 +607,7 @@ section:nth-child(even) {
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: calc(var(--grid) * 2);
 }
 
@@ -615,7 +615,7 @@ section:nth-child(even) {
     background: white;
     border-radius: 12px;
     border: 2px solid var(--border);
-    padding: calc(var(--grid) * 2.5);
+    padding: calc(var(--grid) * 2);
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
@@ -646,34 +646,34 @@ section:nth-child(even) {
 }
 
 .pricing-name {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: calc(var(--grid) * 1);
+    margin-bottom: calc(var(--grid) * 0.75);
 }
 
 .pricing-price {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--primary);
     margin-bottom: calc(var(--grid) * 0.5);
 }
 
 .pricing-period {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    margin-bottom: calc(var(--grid) * 1.5);
+    margin-bottom: calc(var(--grid) * 1);
 }
 
 .pricing-features {
     list-style: none;
     text-align: left;
-    margin-bottom: calc(var(--grid) * 2);
+    margin-bottom: calc(var(--grid) * 1.5);
 }
 
 .pricing-features li {
-    padding: calc(var(--grid) * 0.75) 0;
+    padding: calc(var(--grid) * 0.5) 0;
     border-bottom: 1px solid var(--border);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     display: flex;
     align-items: center;
