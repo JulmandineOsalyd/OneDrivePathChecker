@@ -845,6 +845,7 @@ section:nth-child(even) {
     font-size: 0.9375rem;
     line-height: 1.7;
     color: var(--text-secondary);
+    margin: 10px 0px;
 }
 
 .faq-code {
@@ -867,6 +868,7 @@ section:nth-child(even) {
     border-left: 4px solid var(--primary);
     border-radius: 8px;
     padding: calc(var(--grid) * 1.5) calc(var(--grid) * 2);
+    margin: 10px 0px;
 }
 
 .faq-tip i {

@@ -95,6 +95,95 @@
 
     <!-- ========== FAQ ========== -->
     <div class="container">
+        <!-- ❓ POURQUOI CET OUTIL -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-question-circle"></i>
+                Pourquoi cet outil
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Pourquoi mes fichiers ne se synchronisent-ils plus après une migration SharePoint ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Après une migration, les chemins de fichiers sont reconstruits dans une nouvelle arborescence SharePoint peuvent dépasser les limites acceptées par Microsoft, même s'ils étaient parfaitement valides sur votre ancien serveur.</p>
+                        <p>Deux seuils sont à surveiller :</p>
+                        <div class="faq-table-wrapper">
+                            <table class="faq-table">
+                                <thead>
+                                    <tr>
+                                        <th>Limite</th>
+                                        <th>Conséquence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>&gt; 255 caractères</td>
+                                        <td>⚠️ Le fichier ne peut pas être ouvert depuis le dossier OneDrive</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&gt; 400 caractères</td>
+                                        <td>🔴 Le fichier est bloqué et l'application OneDrive ne répond plus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="faq-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Traitez en priorité les fichiers dépassant 400 caractères, puis ceux entre 255 et 400 pour garantir un usage fluide après migration.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p><strong>Chemin &gt; 400 caractères</strong> — OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Les fichiers ne peuvent pas être synchronisés et OneDrive restera bloqué sur cette erreur tant que la longueur du chemin n'aura pas été corrigée.</p>
+                        <img src="images/OneDrive400.png" alt="Erreur OneDrive 400 caractères" class="faq-image">
+                        <p><strong>Chemin &gt; 255 caractères</strong> — Le fichier est synchronisé, mais impossible à ouvrir. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic particulièrement difficile sans outil dédié.</p>
+                        <img src="images/OneDrive255.png" alt="Erreur OneDrive 255 caractères" class="faq-image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Pourquoi est-ce difficile à corriger sans outil ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Windows n'affiche pas toujours la longueur des chemins. Sans outil, il faut copier chaque chemin manuellement dans un éditeur de texte pour en compter les caractères — une tâche irréaliste sur des milliers de fichiers. OneDrive Path Checker automatise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Puis-je analyser des fichiers déjà migrés qui posent problème ?
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Pas toujours. Les fichiers dont le chemin dépasse 400 caractères ne sont pas synchronisés par OneDrive — ils sont donc absents de votre poste et ne peuvent pas être analysés après coup.</p>
+                        <p>Pour les fichiers entre 255 et 400 caractères, l'analyse reste possible depuis votre dossier OneDrive synchronisé.</p>
+                        <div class="faq-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Si des fichiers bloqués ont déjà été migrés, il faudra les identifier directement depuis SharePoint. Pour éviter cette situation, utilisez le mode Migration SharePoint avant de migrer — c'est précisément à ça qu'il sert.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 🔧 FONCTIONNEMENT -->
         <div class="faq-category">
             <h3 class="faq-category-title">
@@ -104,7 +193,7 @@
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    Comment l'outil calcule-t-il la longueur des chemins en mode « Synchronisation OneDrive » ?
+                    Comment est calculée la longueur des chemins en mode « Synchronisation OneDrive » ?
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
@@ -154,48 +243,6 @@
                             »</strong> pour utiliser les valeurs par défaut et lancer l'analyse immédiatement.</p>
                 </div>
             </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
-                    Quelle est la différence entre la limite 255 et 400 caractères ?
-                    <i class="fas fa-chevron-down faq-chevron"></i>
-                </button>
-                <div class="faq-answer">
-                    <p>Ces deux seuils correspondent à des niveaux de risque différents :</p>
-                    <div class="faq-table-wrapper">
-                        <table class="faq-table">
-                            <thead>
-                                <tr>
-                                    <th>Limite</th>
-                                    <th>Risque</th>
-                                    <th>Contexte</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>255 caractères</strong></td>
-                                    <td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>
-                                            Avertissement</span></td>
-                                    <td>Problèmes potentiels avec les applications Office, l'Explorateur Windows et
-                                        certains outils tiers</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>400 caractères</strong></td>
-                                    <td><span class="badge badge-danger"><i class="fas fa-times-circle"></i>
-                                            Critique</span></td>
-                                    <td>Blocage total par SharePoint — migration impossible</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="faq-tip">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>Traitez en priorité les fichiers dépassant 400 caractères, puis ceux entre 255 et 400 pour
-                            garantir un usage fluide après migration.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Catégorie : Capacités -->
         <div class="faq-category">
@@ -282,9 +329,8 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée —
-                        noms de fichiers, chemins, résultats — n'est transmise à un serveur externe ou à Internet. Vos
-                        données restent sur votre machine à tout moment.</p>
+                    <p><strong>Non.</strong> L'outil fonctionne intégralement en local sur votre poste. Aucune donnée (noms de fichiers, chemins, résultats) n'est transmise à un serveur externe ou à Internet. <br>
+                        Vos données restent sur votre machine à tout moment.</p>
                 </div>
             </div>
 
@@ -306,8 +352,7 @@
                 </button>
                 <div class="faq-answer">
                     <p><strong>Non.</strong> L'outil est un exécutable portable qui ne nécessite aucune installation ni
-                        élévation de privilèges. Il peut être lancé directement depuis une clé USB ou un dossier
-                        partagé, sans droits admin.</p>
+                        élévation de privilèges. Il peut être lancé directement depuis votre poste de travail sans droits admin.</p>
                 </div>
             </div>
 
@@ -358,7 +403,7 @@
                             style="color:#EA580C; font-weight:600;">orange</span> pour les dépassements 255 caractères,
                         <span style="color:#DC2626; font-weight:600;">rouge</span> pour les dépassements 400 caractères.
                     </p>
-                    <p>Le fichier CSV exporté contient également les deux colonnes d'excédent, ce qui permet de filtrer
+                    <p>Le fichier CSV exporté contient également les deux colonnes d'excédent de caractères, ce qui permet de filtrer
                         et trier facilement dans Excel selon le niveau de criticité.</p>
                 </div>
             </div>
