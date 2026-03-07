@@ -1322,6 +1322,11 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     #hero {
         min-height: auto;
         padding: calc(var(--grid) * 4) 0;
+        padding-top: calc(var(--grid) * 16);
+    }
+
+    .hero-icon {
+        display: none;
     }
 
     .hero-media {
