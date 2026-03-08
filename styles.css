@@ -206,8 +206,11 @@ a:hover {
 }
 
 .nav-cta {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, #0550A0 100%);
     color: white !important;
+    -webkit-text-fill-color: white;
+    background-clip: unset;
+    -webkit-background-clip: unset;
     padding: calc(var(--grid) * 0.75) calc(var(--grid) * 2);
     border-radius: 8px;
     transition: all 0.2s ease;
@@ -218,7 +221,7 @@ a:hover {
 }
 
 .nav-cta:hover {
-    background: #106DC0;
+    background: linear-gradient(135deg, #106DC0 0%, #03407E 100%);
     transform: scale(1.05);
     text-decoration: none;
 }
@@ -271,13 +274,13 @@ a:hover {
 }
 
 .btn-primary {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, #0550A0 100%);
     color: white;
     box-shadow: var(--shadow);
 }
 
 .btn-primary:hover {
-    background: #106DC0;
+    background: linear-gradient(135deg, #106DC0 0%, #03407E 100%);
     transform: scale(1.02);
     box-shadow: 0 0 24px rgba(0, 120, 212, 0.3);
 }
@@ -1306,6 +1309,63 @@ html[lang="fr"] .lang-btn[data-lang="fr"],
 html[lang="en"] .lang-btn[data-lang="en"] {
     color: var(--primary);
     font-weight: 700;
+}
+
+/* ========== GRADIENT TEXTE PRIMAIRE ========== */
+a,
+.logo-icon,
+.counter,
+.solution-card h3,
+.solution-icon,
+.pricing-price,
+.faq-category-title i,
+.faq-question:hover,
+.faq-item.open .faq-chevron,
+.faq-item.open .faq-question,
+.faq-tip i,
+.faq-list li i,
+.faq-author-links a,
+.contact-card-icon i,
+.contact-card-highlight,
+.contact-card-link,
+.faq-back-home,
+.lang-btn:hover,
+html[lang="fr"] .lang-btn[data-lang="fr"],
+html[lang="en"] .lang-btn[data-lang="en"] {
+    background: linear-gradient(135deg, var(--primary) 0%, #0550A0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Exceptions : texte blanc sur fond dégradé, liens nav et logo en noir */
+.nav-cta,
+.nav-cta:hover {
+    -webkit-text-fill-color: white;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+}
+
+.logo span {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+.nav-links a,
+.nav-links a:hover,
+.nav-links a.active {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--text-primary);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    -webkit-text-fill-color: var(--primary);
 }
 
 /* ========== RESPONSIVE ========== */
