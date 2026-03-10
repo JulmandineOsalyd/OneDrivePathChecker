@@ -1257,6 +1257,7 @@ footer nav {
     position: absolute;
     top: 10px;
     right: 20px;
+    z-index: 10;
     color: white;
     font-size: 28px;
     font-weight: bold;
