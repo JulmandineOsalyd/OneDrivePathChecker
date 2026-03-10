@@ -321,6 +321,12 @@ const Language = (() => {
             if (t[key] !== undefined) el.innerHTML = t[key];
         });
 
+        // Mettre à jour les src dépendants de la langue (images, vidéos)
+        document.querySelectorAll('[data-src-fr][data-src-en]').forEach(el => {
+            const src = lang === 'fr' ? el.getAttribute('data-src-fr') : el.getAttribute('data-src-en');
+            if (src) el.setAttribute('src', src);
+        });
+
         // Store active language for other modules
         window._activeLang = lang;
 
