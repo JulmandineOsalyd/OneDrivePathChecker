@@ -32,6 +32,22 @@ window.TRANSLATIONS = {
         solution_card3_title: 'Des heures perdues inutilement',
         solution_card3_desc: 'Retrouver, renommer et réorganiser ces fichiers à la main est une tâche longue, fastidieuse et source d\'erreurs',
 
+        // Pour qui section
+        audience_h2: 'Pour qui ?',
+        audience_subtitle: 'Deux profils, un outil : chacun y trouve ce qu\'il cherche.',
+        audience_it_tag: 'Administrateurs IT',
+        audience_it_headline: '"J\'ai déjà mon script PowerShell"',
+        audience_it_intro: 'Un outil que vous pouvez déléguer à vos utilisateurs finaux.',
+        audience_it_b1: 'Simulation précise des URLs SharePoint pré-migration',
+        audience_it_b2: 'Interface intuitive : délégation directe aux utilisateurs finaux',
+        audience_it_b3: 'Zéro maintenance : plus de script à faire évoluer ni à déboguer',
+        audience_biz_tag: 'Consultant M365 · Gestionnaire de l\'information',
+        audience_biz_headline: '"Combien j\'ai de fichiers problématiques ?"',
+        audience_biz_intro: 'Identifiez et renommez les fichiers sans solliciter l\'IT.',
+        audience_biz_b1: 'Interface visuelle : identifiez d\'un coup d\'œil ce qui bloque',
+        audience_biz_b2: 'Accès direct aux dossiers pour renommer les chemins problématiques',
+        audience_biz_b3: 'Autonomie totale, même sans DSI dédiée',
+
         // Features section
         features_h2: 'Fonctionnalités',
         feat_card1_title: 'Détection des URLs > 400 caractères',
@@ -182,6 +198,22 @@ window.TRANSLATIONS = {
         solution_card2_desc: 'Paths exceeding 255 characters exceed the Windows limit, slowing down user adoption',
         solution_card3_title: 'Hours Wasted Unnecessarily',
         solution_card3_desc: 'Finding, renaming, and reorganizing these files manually is a long, tedious, and error-prone task',
+
+        // Pour qui section
+        audience_h2: 'Who is it for?',
+        audience_subtitle: 'Two profiles, one tool : each finds exactly what they need.',
+        audience_it_tag: 'IT Administrators',
+        audience_it_headline: '"I already have my PowerShell script"',
+        audience_it_intro: 'A tool you can hand directly to your end users.',
+        audience_it_b1: 'Accurate SharePoint URL simulation before migration',
+        audience_it_b2: 'Intuitive interface: hand it off to end users without training',
+        audience_it_b3: 'Zero maintenance : no more scripts to update or debug',
+        audience_biz_tag: 'M365 Consultant · Information Manager',
+        audience_biz_headline: '"How many problematic files do I have?"',
+        audience_biz_intro: 'Identify and fix files without involving IT.',
+        audience_biz_b1: 'Visual interface : spot what\'s blocking at a glance',
+        audience_biz_b2: 'Direct folder access to rename problematic paths',
+        audience_biz_b3: 'Full autonomy, even without a dedicated IT department',
 
         // Features section
         features_h2: 'Features',
