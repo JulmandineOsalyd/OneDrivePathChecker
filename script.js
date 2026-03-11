@@ -182,11 +182,11 @@ const Language = (() => {
             schemaDescription: 'Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.',
             pages: {
                 '/': {
-                    title: 'Détecteur de chemins trop longs – OneDrive & SharePoint | PathChecker',
+                    title: 'Détecteur de chemins trop longs – OneDrive & SharePoint | OneDrive PathChecker',
                     description: 'Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.'
                 },
                 '/FAQ.html': {
-                    title: 'FAQ – Détecteur de chemins longs OneDrive & SharePoint | PathChecker',
+                    title: 'FAQ – Détecteur de chemins longs OneDrive & SharePoint | OneDrive PathChecker',
                     description: 'Toutes vos questions sur l\'outil de détection de chemins trop longs pour SharePoint et OneDrive. Fonctionnement, sécurité, export, licences.'
                 },
                 '/contact.html': {
@@ -200,11 +200,11 @@ const Language = (() => {
             schemaDescription: 'Detect file paths exceeding Microsoft limits before SharePoint migration or OneDrive synchronization.',
             pages: {
                 '/': {
-                    title: 'Long File Path Detector – OneDrive & SharePoint | PathChecker',
+                    title: 'Long File Path Detector – OneDrive & SharePoint | OneDrive PathChecker',
                     description: 'Detect file paths exceeding 255 or 400 characters before your SharePoint migration or OneDrive sync. Portable tool, 100% local, no installation required.'
                 },
                 '/FAQ.html': {
-                    title: 'FAQ – Long File Path Detector OneDrive & SharePoint | PathChecker',
+                    title: 'FAQ – Long File Path Detector OneDrive & SharePoint | OneDrive PathChecker',
                     description: 'All your questions about the long file path detection tool for SharePoint and OneDrive. How it works, security, export, licensing.'
                 },
                 '/contact.html': {
