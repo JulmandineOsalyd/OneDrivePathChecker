@@ -163,8 +163,7 @@ a:hover {
 }
 
 .logo-icon {
-    font-size: 1.5rem;
-    color: var(--primary);
+    width:24px;
 }
 
 .nav-center {
@@ -423,16 +422,11 @@ section:nth-child(even) {
 
 /* ========== HERO ICON ========== */
 .hero-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary), #174775);
-    border-radius: 16px;
+    width: 120px;
+    height: 90px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: calc(var(--grid) * 2);
+    margin-bottom: var(--grid);
 }
 
 /* ========== COMPTEUR ANIMÉ ========== */
