@@ -32,7 +32,7 @@
     {
         "@context": "https://schema.org/",
         "@type": "SoftwareApplication",
-        "name": "Path Checker for SharePoint & OneDrive",
+        "name": "OneDrive Path Checker",
         "operatingSystem": "Windows",
         "applicationCategory": "UtilitiesApplication",
         "description": "Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.",
@@ -117,22 +117,22 @@
                 <div class="hero-icon">
                     <img src="images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="80" height="80">
                 </div>
-                <h1 data-i18n="hero_h1">Détecteur de chemins de fichiers trop longs</h1>
-                <h2 style="color:#6b7280">SharePoint & OneDrive</h2>
+                <h1 data-i18n="hero_h1">Diagnostiquez et corrigez les chemins trop longs qui bloquent OneDrive</h1>
+                <h2 style="color:#6b7280" data-i18n="hero_tagline">En 3 minutes, sans script PowerShell.</h2>
                 <p class="hero-subtitle" data-i18n="hero_subtitle">Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.</p>
 
                 <div class="hero-stats">
                     <div class="stat">
-                        <strong><span class="counter" data-target="100">0</span>%</strong>
-                        Local
+                        <strong><span class="counter" data-target="50000">0</span>+</strong>
+                        <span data-i18n="hero_stat1">fichiers en quelques secondes</span>
                     </div>
                     <div class="stat">
                         <strong>Ø</strong>
-                        Installation
+                        <span data-i18n="hero_stat2">droits d'admin requis</span>
                     </div>
                     <div class="stat">
-                        <strong>Multi-<span class="counter">sources</span></strong>
-                        <span data-i18n="hero_stat_sources">Local · Réseau · OneDrive</span>
+                        <strong><span class="counter" data-target="100">0</span>%</strong>
+                        <span data-i18n="hero_stat3">local</span>
                     </div>
                 </div>
 
@@ -146,6 +146,7 @@
                             alt="Télécharger sur Microsoft Store">
                     </a>
                 </div>
+                <p class="hero-privacy-note" data-i18n="hero_privacy">Aucun contenu de fichier n'est lu. Aucune donnée ne quitte votre appareil.</p>
             </div>
 
             <div class="hero-media" id="mediaContainer">
@@ -190,7 +191,7 @@
             <div class="problem-keypoints">
                 <div class="problem-card">
                     <div class="problem-icon-circle">
-                        <i class="fas fa-ban"></i>
+                        <i class="fas fa-folder-minus"></i>
                     </div>
                     <div>
                         <h3 data-i18n="solution_card1_title">Migration SharePoint bloquée</h3>
@@ -200,7 +201,7 @@
 
                 <div class="problem-card">
                     <div class="problem-icon-circle">
-                        <i class="fas fa-exclamation-triangle"></i>
+                        <i class="fas fa-lock"></i>
                     </div>
                     <div>
                         <h3 data-i18n="solution_card2_title">Fichiers synchronisés avec OneDrive impossibles à ouvrir</h3>
@@ -210,7 +211,7 @@
 
                 <div class="problem-card">
                     <div class="problem-icon-circle">
-                        <i class="fas fa-hourglass-end"></i>
+                        <i class="fas fa-cogs"></i>
                     </div>
                     <div>
                         <h3 data-i18n="solution_card3_title">Des heures perdues inutilement</h3>
@@ -227,27 +228,27 @@
             <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 4);" data-i18n="features_h2">Fonctionnalités</h2>
             <div class="grid-3">
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> <span data-i18n="feat_card1_title">Détection des URLs > 400 caractères</span></h3>
+                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card1_title">Détection des URLs > 400 caractères</span></h3>
                     <p data-i18n="feat_card1_desc">Identifie tous les fichiers et dossiers dépassant les limites d'URL SharePoint avant migration</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> <span data-i18n="feat_card2_title">Détection des chemins > 255 caractères</span></h3>
+                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card2_title">Détection des chemins > 255 caractères</span></h3>
                     <p data-i18n="feat_card2_desc">Scanne les chemins trop longs non supportés par Windows, bloquant l'ouverture des fichiers synchronisés</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> <span data-i18n="feat_card3_title">Scan local / Réseau / OneDrive</span></h3>
+                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card3_title">Scan local / Réseau / OneDrive</span></h3>
                     <p data-i18n="feat_card3_desc">Analyse disques locaux, répertoires partagés sur serveurs réseaux et dossiers OneDrive</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i> <span data-i18n="feat_card4_title">Export Excel</span></h3>
+                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card4_title">Export Excel</span></h3>
                     <p data-i18n="feat_card4_desc">Rapports détaillés avec les chemins, segments les plus long et le détail des caractères en trop</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i><span data-i18n="feat_card5_title">Analyse 100% local</span></h3>
+                    <h3><i class="far fa-check-circle solution-icon"></i><span data-i18n="feat_card5_title">Analyse 100% local</span></h3>
                     <p data-i18n="feat_card5_desc">Sécurité des données avec une analyse effectuée uniquement depuis le poste de travail</p>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="fas fa-check-circle solution-icon"></i><span data-i18n="feat_card6_title">Sans installation</span></h3>
+                    <h3><i class="far fa-check-circle solution-icon"></i><span data-i18n="feat_card6_title">Sans installation</span></h3>
                     <p data-i18n="feat_card6_desc">Exécutable unique sans installation, aucun droit d'administrateur requis</p>
                 </div>
             </div>
@@ -255,6 +256,44 @@
     </section>
 
 
+
+    <!-- ========== POUR QUI ========== -->
+    <section id="audience">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 2);" data-i18n="audience_h2">Pour qui ?</h2>
+            <p style="text-align: center; margin-bottom: calc(var(--grid) * 6); color: var(--text-secondary);" data-i18n="audience_subtitle">Administrateurs IT, consultants M365 et gestionnaires de l'information : chacun gagne du temps sur les chemins bloquants.</p>
+
+            <div class="audience-grid">
+                <div class="audience-card fade-in-up">
+                    <div class="audience-tag">
+                        <i class="fas fa-user-shield"></i>
+                        <span data-i18n="audience_it_tag">Administrateurs IT</span>
+                    </div>
+                    <p class="audience-headline" data-i18n="audience_it_headline">"Je veux résoudre l'incident sans script maison"</p>
+                    <p class="audience-intro" data-i18n="audience_it_intro">Analysez un dossier, obtenez un score de compatibilité clair et partagez un rapport exploitable avec vos utilisateurs.</p>
+                    <ul class="audience-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_it_b1">Simulation précise des URLs SharePoint avant migration</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_it_b2">Score de conformité qui sensibilise les utilisateurs au problème</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_it_b3">Exports CSV et PDF pour déléguer ou documenter la remédiation</span></li>
+                    </ul>
+                </div>
+
+                <div class="audience-card fade-in-up">
+                    <div class="audience-tag">
+                        <i class="fas fa-briefcase"></i>
+                        <span data-i18n="audience_biz_tag">Consultant M365 · Gestionnaire de l'information</span>
+                    </div>
+                    <p class="audience-headline" data-i18n="audience_biz_headline">"Quels fichiers bloquent ma migration ou ma synchro ?"</p>
+                    <p class="audience-intro" data-i18n="audience_biz_intro">Identifiez les fichiers problématiques, corrigez-les depuis l'interface et avancez sans dépendre d'un script PowerShell.</p>
+                    <ul class="audience-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_biz_b1">Vue visuelle des chemins bloquants et de leur niveau de gravité</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_biz_b2">Remédiation intégrée : renommer ou supprimer les fichiers concernés</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_biz_b3">Autonomie complète, même sans DSI dédiée</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ========== FAQ ========== -->
     <section id="faq">

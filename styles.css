@@ -330,7 +330,11 @@ section:nth-child(even) {
     color: var(--text-secondary);
     margin-top: calc(var(--grid) * 3);
     margin-bottom: calc(var(--grid) * 3);
-    max-width: 550px;
+    max-width: 640px;
+}
+
+#hero .grid-2 {
+    grid-template-columns: 55fr 45fr;
 }
 
 .hero-stats {
@@ -359,6 +363,12 @@ section:nth-child(even) {
     flex-wrap: wrap;
 }
 
+
+.hero-privacy-note {
+    font-size: 12px;
+    color: var(--text-muted, #9ca3af);
+    margin-top: -8px;
+}
 
 .hero-media {
     position: relative;

@@ -78,13 +78,13 @@ const Counter = (() => {
     };
 
     const init = () => {
-        const counter = document.querySelector('.counter');
-        if (!counter) return;
+        const counters = document.querySelectorAll('.counter');
+        if (!counters.length) return;
 
-        const target = parseInt(counter.dataset.target);
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    const target = parseInt(entry.target.dataset.target);
                     animate(entry.target, target);
                     entry.target.classList.add('counted');
                     observer.unobserve(entry.target);
@@ -92,7 +92,7 @@ const Counter = (() => {
             });
         }, { threshold: 0.1 });
 
-        observer.observe(counter);
+        counters.forEach(counter => observer.observe(counter));
     };
 
     return { init };
