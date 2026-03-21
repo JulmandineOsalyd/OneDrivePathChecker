@@ -16,7 +16,7 @@ window.TRANSLATIONS = {
         nav_download_short: 'Télécharger',
 
         // Hero (index)
-        hero_h1: 'Diagnostiquez et corrigez les chemins trop longs qui bloquent OneDrive.',
+        hero_h1: 'Détectez et corrigez les chemins trop longs qui bloquent OneDrive.',
         hero_tagline: 'En 3 minutes, sans script PowerShell.',
         hero_subtitle: 'Vos collègues ne peuvent plus ouvrir leurs fichiers OneDrive ? Identifiez et corrigez les problèmes de chemins trop longs, avant ou après une migration SharePoint.',
         hero_privacy: 'Aucun contenu de fichier n\'est lu. Aucune donnée ne quitte votre appareil.',
@@ -193,7 +193,7 @@ window.TRANSLATIONS = {
         nav_download_short: 'Download',
 
         // Hero (index)
-        hero_h1: 'Diagnose and fix long file paths that block OneDrive sync. In 3 minutes, no PowerShell.',
+        hero_h1: 'Detect and fix long file paths blocking OneDrive synchronisation.',
         hero_tagline: 'In 3 minutes, no PowerShell.',
         hero_subtitle: 'Your colleagues can\'t open their OneDrive files? Identify and fix file path issues, before or after SharePoint migration.',
         hero_privacy: 'No file contents are read. No data leaves your device.',
