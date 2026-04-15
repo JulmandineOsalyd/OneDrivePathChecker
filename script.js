@@ -289,7 +289,7 @@ const Language = (() => {
             'description': meta.schemaDescription,
             'offers': {
                 '@type': 'Offer',
-                'price': '29.99',
+                'price': '19.99',
                 'priceCurrency': 'EUR'
             },
             'publisher': {
