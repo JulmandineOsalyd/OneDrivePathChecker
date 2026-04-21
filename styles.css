@@ -1472,11 +1472,43 @@ html[lang="en"] .lang-btn[data-lang="en"] {
         display: none;
     }
 
+    #hero .grid-2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-content {
+        display: contents;
+    }
+
+    .hero-subtitle {
+        display: none;
+    }
+
+    .hero-stats .stat:first-child {
+        display: none;
+    }
+
+    .hero-privacy-note {
+        display: none;
+    }
+
+    .problem-hookline {
+        display: none;
+    }
+
     .hero-media {
         aspect-ratio: auto;
         min-height: 300px;
         margin-top: calc(var(--grid) * 3);
+        order: 3;
     }
+
+    .hero-content > h1 { order: 1; }
+    .hero-content > h2 { order: 2; }
+    .hero-content > .hero-stats { order: 4; }
+    .hero-content > .hero-cta { order: 5; }
+    .hero-content > .hero-privacy-note { order: 6; }
 
     .hero-stats {
         gap: calc(var(--grid) * 2);
@@ -1500,6 +1532,14 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 
     .pricing-card.featured {
         transform: scale(1);
+    }
+
+    .pricing-card {
+        width: 100%;
+    }
+
+    .pricing-grid {
+        justify-items: center;
     }
 
     .audience-logos {
