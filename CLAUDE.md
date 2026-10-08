@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is the **marketing website** for **OneDrive Path Checker**, a Windows desktop tool that detects file paths exceeding SharePoint/OneDrive length limits before migration. The tool itself is distributed via the Microsoft Store; this repo contains only the product website.
+This is the **marketing website** for **OneDrive Path Checker**, a Windows desktop tool that detects file paths exceeding OneDrive length limits (v1.1.0.0: OneDrive scan only, no SharePoint migration mode). The tool itself is distributed via the Microsoft Store; this repo contains only the product website.
 
 - **Live URL:** https://onedrivepathchecker.com
 - **Hosting:** GitHub Pages (custom domain via `CNAME`)
@@ -94,7 +94,7 @@ The desktop tool enforces two Microsoft limits:
 
 The website has two primary conversion goals:
 1. **Download** — Free 24-hour trial on Microsoft Store
-2. **Purchase** — €29.99 Standard license (single workstation) or enterprise quote
+2. **Purchase** — €9.99 Standard license (single workstation) or enterprise quote
 
 Microsoft Store link: `https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS&hl=fr-FR&gl=FR`
 

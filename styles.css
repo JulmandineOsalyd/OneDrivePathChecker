@@ -2,6 +2,7 @@
 :root {
     --primary: #0078D4;
     --primary-light: #4F91D1;
+    --primary-dark: #004E8C;
     --bg-primary: #FFFFFF;
     --bg-secondary: #F7F9FC;
     --text-primary: #1A1A1A;
@@ -163,7 +164,8 @@ a:hover {
 }
 
 .logo-icon {
-    width:24px;
+    width: calc(var(--grid) * 4);
+    height: calc(var(--grid) * 4);
 }
 
 .nav-center {
@@ -370,6 +372,12 @@ section:nth-child(even) {
     margin-top: -8px;
 }
 
+.offer-trust.hero-trust {
+    margin: calc(var(--grid) * -2) 0 0;
+    padding: 0;
+    justify-content: flex-start;
+}
+
 .hero-media {
     position: relative;
     border-radius: 12px;
@@ -456,6 +464,12 @@ section:nth-child(even) {
     margin-bottom: calc(var(--grid) * 2);
 }
 
+.problem-header .problem-header-sub {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
 .problem-subtitle {
     font-size: 1rem;
     color: var(--text-secondary);
@@ -522,6 +536,44 @@ section:nth-child(even) {
 
 .problem-card p {
     font-size: 0.9375rem;
+    color: var(--text-secondary);
+}
+
+/* ========== HOW IT WORKS ========== */
+#how {
+    padding: calc(var(--grid) * 12) 0;
+}
+
+#how .grid-3 {
+    gap: calc(var(--grid) * 5);
+}
+
+#how .solution-card {
+    padding: calc(var(--grid) * 5);
+}
+
+#how .solution-card > p {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+#how .solution-card h3 {
+    font-size: 1.375rem;
+    color: var(--primary-dark);
+    margin-bottom: calc(var(--grid) * 2.5);
+}
+
+.how-benefits {
+    margin-top: calc(var(--grid) * 6);
+    gap: calc(var(--grid) * 2.5);
+}
+
+.how-benefits li {
+    line-height: 1.6;
+    font-size: 0.875rem;
+    font-weight: 400;
     color: var(--text-secondary);
 }
 
@@ -664,6 +716,257 @@ section:nth-child(even) {
     font-weight: 500;
     font-size: 0.875rem;
     text-align: center;
+}
+
+/* ========== BOUTONS CTA (hero) ========== */
+.pricing-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--grid) * 0.5);
+    padding: calc(var(--grid) * 2) calc(var(--grid) * 3);
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pricing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.pricing-btn-primary {
+    flex-direction: row;
+    gap: calc(var(--grid) * 1.5);
+    border: none;
+    color: white;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    box-shadow: var(--shadow-md);
+}
+
+.pricing-btn-outline {
+    background: white;
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+}
+
+/* ========== OFFRE (section Tarification) ========== */
+.offer-lead {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto calc(var(--grid) * 6);
+    font-size: 1.1rem;
+}
+
+.offer-lead strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.offer-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: calc(var(--grid) * 6);
+    align-items: center;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.offer-list-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: calc(var(--grid) * 2.5);
+}
+
+.offer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid) * 2);
+}
+
+.offer-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(var(--grid) * 1.75);
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.offer-list li i {
+    color: var(--success);
+    font-size: 1.2rem;
+    margin-top: 0.1em;
+    flex-shrink: 0;
+}
+
+.offer-list li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.offer-card {
+    position: relative;
+    background: var(--bg-primary);
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+    padding: calc(var(--grid) * 4) calc(var(--grid) * 3.5) calc(var(--grid) * 3);
+    text-align: center;
+    box-shadow: 0 18px 50px rgba(0, 120, 212, 0.16);
+}
+
+.offer-card-tag {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: calc(var(--grid) * 0.75) calc(var(--grid) * 2);
+    border-radius: 999px;
+}
+
+.offer-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.offer-price {
+    margin-top: calc(var(--grid) * 1.5);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--primary);
+}
+
+.offer-once {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--grid) * 0.75);
+    margin-top: calc(var(--grid) * 2);
+    padding: calc(var(--grid) * 0.5) calc(var(--grid) * 1.5);
+    border-radius: 999px;
+    background: rgba(22, 163, 74, 0.1);
+    color: #15803D;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.offer-btns {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid) * 1.5);
+    margin-top: calc(var(--grid) * 3.5);
+}
+
+.offer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--grid) * 1.25);
+    width: 100%;
+    padding: calc(var(--grid) * 1.9) calc(var(--grid) * 2);
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.offer-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.offer-btn small {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.offer-btn-primary {
+    border: none;
+    color: white;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    box-shadow: var(--shadow-md);
+}
+
+.offer-btn-outline {
+    background: white;
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+}
+
+.offer-secure {
+    margin-top: calc(var(--grid) * 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--grid) * 0.75);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.offer-trust {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(var(--grid) * 1.5) calc(var(--grid) * 4);
+    margin: calc(var(--grid) * 6) auto 0;
+}
+
+.offer-trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--grid) * 1);
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+.offer-trust li i {
+    color: var(--primary);
+}
+
+.offer-multi {
+    text-align: center;
+    margin-top: calc(var(--grid) * 2.5);
+    font-size: 0.95rem;
+}
+
+.offer-multi a {
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .offer-layout {
+        grid-template-columns: 1fr;
+        gap: calc(var(--grid) * 5);
+    }
+
+    .offer-card {
+        order: -1;
+    }
+
+    .offer-price {
+        font-size: 2.25rem;
+    }
 }
 
 /* ========== PRICING CARDS ========== */
@@ -1497,11 +1800,14 @@ html[lang="en"] .lang-btn[data-lang="en"] {
         display: none;
     }
 
+    .hero-visual {
+        margin-top: calc(var(--grid) * 3);
+        order: 3;
+    }
+
     .hero-media {
         aspect-ratio: auto;
         min-height: 300px;
-        margin-top: calc(var(--grid) * 3);
-        order: 3;
     }
 
     .hero-content > h1 { order: 1; }
@@ -1509,6 +1815,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     .hero-content > .hero-stats { order: 4; }
     .hero-content > .hero-cta { order: 5; }
     .hero-content > .hero-privacy-note { order: 6; }
+    .hero-content > .hero-trust { order: 6; }
 
     .hero-stats {
         gap: calc(var(--grid) * 2);

@@ -6,7 +6,7 @@
   <!-- ========== PAGE D'ACCUEIL – FR (canonique) ========== -->
   <url>
     <loc>https://onedrivepathchecker.com/</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/?lang=fr"/>
@@ -14,8 +14,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/"/>
     <video:video>
       <video:thumbnail_loc>https://onedrivepathchecker.com/images/Screenshot_Home_FR.png</video:thumbnail_loc>
-      <video:title>Démonstration OneDrive Path Checker – Détecteur de chemins trop longs pour SharePoint</video:title>
-      <video:description>Découvrez comment OneDrive Path Checker détecte automatiquement les chemins de fichiers dépassant les limites SharePoint et OneDrive (255 et 400 caractères) avant migration, et exporte les résultats pour corriger les erreurs.</video:description>
+      <video:title>Démonstration OneDrive Path Checker – Détecteur de chemins trop longs pour OneDrive</video:title>
+      <video:description>Découvrez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), les corrige et exporte un rapport PDF ou CSV.</video:description>
       <video:content_loc>https://onedrivepathchecker.com/images/DemoPathChecker_FR.mp4</video:content_loc>
     </video:video>
   </url>
@@ -23,7 +23,7 @@
   <!-- ========== PAGE D'ACCUEIL – EN ========== -->
   <url>
     <loc>https://onedrivepathchecker.com/?lang=en</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/?lang=fr"/>
@@ -31,8 +31,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/"/>
     <video:video>
       <video:thumbnail_loc>https://onedrivepathchecker.com/images/Screenshot_Home_EN.png</video:thumbnail_loc>
-      <video:title>OneDrive Path Checker Demo – Long Path Detector for SharePoint Migration</video:title>
-      <video:description>See how OneDrive Path Checker automatically detects file paths exceeding SharePoint and OneDrive limits (255 and 400 characters) before migration, and exports results so you can fix errors before they block your sync.</video:description>
+      <video:title>OneDrive Path Checker Demo – Long Path Detector for OneDrive</video:title>
+      <video:description>See how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.</video:description>
       <video:content_loc>https://onedrivepathchecker.com/images/DemoPathChecker_EN.mp4</video:content_loc>
     </video:video>
   </url>
@@ -40,7 +40,7 @@
   <!-- ========== FAQ ========== -->
   <url>
     <loc>https://onedrivepathchecker.com/FAQ.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html?lang=fr"/>
@@ -51,7 +51,7 @@
   <!-- ========== CONTACT ========== -->
   <url>
     <loc>https://onedrivepathchecker.com/contact.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/contact.html?lang=fr"/>

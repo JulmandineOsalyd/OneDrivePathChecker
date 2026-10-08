@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.">
-    <meta name="keywords" content="SharePoint, OneDrive, migration, chemins longs, audit fichiers">
+        content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.">
     <meta name="author" content="Julie BREDECHE">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Détecteur de chemins trop longs – OneDrive &amp; SharePoint | PathChecker">
+    <meta property="og:title" content="Détecteur de chemins de fichiers trop longs pour OneDrive | OneDrive Path Checker">
     <meta property="og:description"
-        content="Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.">
+        content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.">
     <meta property="og:url" content="https://onedrivepathchecker.com/?lang=fr">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
@@ -35,10 +34,11 @@
         "name": "OneDrive Path Checker",
         "operatingSystem": "Windows",
         "applicationCategory": "UtilitiesApplication",
-        "description": "Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.",
+        "softwareVersion": "1.1.0.0",
+        "description": "Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.",
         "offers": {
             "@type": "Offer",
-            "price": "19.99",
+            "price": "9.99",
             "priceCurrency": "EUR"
         },
         "publisher": {
@@ -49,7 +49,7 @@
     }
     </script>
 
-    <title>Détecteur de chemins trop longs – OneDrive &amp; SharePoint | PathChecker</title>
+    <title>Détecteur de chemins de fichiers trop longs pour OneDrive | OneDrive Path Checker</title>
 
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +77,7 @@
     <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">
-                <img src="images/OneDrivePathCheckerLogoNav.svg" alt="OneDrive Path Checker logo" class="logo-icon">
+                <img src="images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" class="logo-icon">
                 <span>OneDrive Path Checker</span>
             </div>
 
@@ -90,16 +90,15 @@
             <div class="nav-center" id="navCenter">
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
-                    <li><a href="index.html#solution" data-i18n="nav_features">Fonctionnalités</a></li>
-                    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="index.html#how" data-i18n="nav_features">Comment ça marche ?</a></li>
                     <li><a href="index.html#pricing" data-i18n="nav_pricing">Tarifs</a></li>
+                    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </div>
 
             <div class="nav-right">
                 <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS" target="_blank" class="nav-cta">
-                    <i class="fas fa-download"></i>
                     <span data-i18n="nav_download_short">Télécharger</span>
                 </a>
                 <div class="lang-switcher">
@@ -114,49 +113,34 @@
     <section id="hero">
         <div class="container grid-2">
             <div class="hero-content">
-                <div class="hero-icon">
-                    <img src="images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="80" height="80">
-                </div>
-                <h1 data-i18n="hero_h1">Diagnostiquez et corrigez les chemins trop longs qui bloquent OneDrive</h1>
-                <h2 style="color:#6b7280" data-i18n="hero_tagline">En 3 minutes, sans script PowerShell.</h2>
-                <p class="hero-subtitle" data-i18n="hero_subtitle">Auditez vos chemins de fichiers avant migration SharePoint et évitez les erreurs de synchronisation OneDrive.</p>
-
-                <div class="hero-stats">
-                    <div class="stat">
-                        <strong><span class="counter" data-target="50000">0</span>+</strong>
-                        <span data-i18n="hero_stat1">fichiers en quelques secondes</span>
-                    </div>
-                    <div class="stat">
-                        <strong>Ø</strong>
-                        <span data-i18n="hero_stat2">droits d'admin requis</span>
-                    </div>
-                    <div class="stat">
-                        <strong><span class="counter" data-target="100">0</span>%</strong>
-                        <span data-i18n="hero_stat3">local</span>
-                    </div>
-                </div>
+                <h1 data-i18n="hero_h1">Vos fichiers ne s'ouvrent plus dans OneDrive ?</h1>
+                <h2 style="color:#6b7280" data-i18n="hero_tagline">Obtenez un diagnostic clair en quelques secondes.</h2>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Repérez les fichiers dont le chemin est trop long, corrigez-les en quelques clics ou partagez un rapport détaillé avec vos équipes.</p>
 
                 <div class="hero-cta">
-                    <a href="https://apps.microsoft.com/detail/9ph9dtrrrx30" target="_blank">
-                        <img
-                            src="https://get.microsoft.com/images/fr%20dark.svg"
-                            data-src-fr="https://get.microsoft.com/images/fr%20dark.svg"
-                            data-src-en="https://get.microsoft.com/images/en-us%20dark.svg"
-                            width="200"
-                            alt="Télécharger sur Microsoft Store">
-                    </a>
+                    <button class="pricing-btn pricing-btn-primary" onclick="handleDownload()">
+                        <i class="fab fa-windows"></i>
+                        <span data-i18n="pricing_cta_trial">Essai gratuit</span>
+                    </button>
+                    <button class="pricing-btn pricing-btn-outline" onclick="handlePurchase()">
+                        <span data-i18n="hero_cta_buy">Acheter maintenant</span>
+                    </button>
                 </div>
-                <p class="hero-privacy-note" data-i18n="hero_privacy">Aucun contenu de fichier n'est lu. Aucune donnée ne quitte votre appareil.</p>
+                <ul class="offer-trust hero-trust">
+                    <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100 % local : aucune donnée partagée</span></li>
+                </ul>
             </div>
 
-            <div class="hero-media" id="mediaContainer">
-                <img id="mainImage"
-                    src="images/Screenshot_Home_FR.png"
-                    data-src-fr="images/Screenshot_Home_FR.png"
-                    data-src-en="images/Screenshot_Home_EN.png"
-                    alt="Demo" loading="lazy" onclick="openGifModal()" style="cursor: pointer;">
-                <div class="play-icon" onclick="openGifModal()">
-                    <i class="fas fa-play"></i>
+            <div class="hero-visual">
+                <div class="hero-media" id="mediaContainer">
+                    <img id="mainImage"
+                        src="images/Screenshot_Home_FR.png"
+                        data-src-fr="images/Screenshot_Home_FR.png"
+                        data-src-en="images/Screenshot_Home_EN.png"
+                        alt="Aperçu de l'application OneDrive Path Checker" loading="lazy" onclick="openGifModal()" style="cursor: pointer;">
+                    <div class="play-icon" onclick="openGifModal()">
+                        <i class="fas fa-play"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,120 +160,111 @@
         </div>
     </div>
 
-    <!-- ========== SOLUTION ========== -->
+    <!-- ========== PROBLÈME ========== -->
     <section id="solution">
         <div class="container">
             <div class="problem-header">
-                <h2 data-i18n="solution_h2">Migrer vers SharePoint, c'est simple.</h2>
-                <h2 style="color:#6b7280" data-i18n="solution_h2_sub">Migrer sans erreurs OneDrive, c'est une autre histoire.</h2>
+                <h2 data-i18n="solution_h2">Un fichier qui ne s'ouvre pas, c'est une équipe bloquée.</h2>
+                <h2 class="problem-header-sub" data-i18n="solution_h2_sub">La cause est souvent invisible : un chemin de fichier trop long.</h2>
             </div>
 
-            <p class="problem-hookline" data-i18n="solution_hookline">
-                Les chemins de fichiers trop longs bloquent vos migrations SharePoint, et les problèmes de synchronisation OneDrive qui s'ensuivent freinent l'adoption utilisateur.
-            </p>
-
             <div class="problem-keypoints">
-                <div class="problem-card">
-                    <div class="problem-icon-circle">
-                        <i class="fas fa-folder-minus"></i>
-                    </div>
-                    <div>
-                        <h3 data-i18n="solution_card1_title">Migration SharePoint bloquée</h3>
-                        <p data-i18n="solution_card1_desc">Les URLs dépassant 400 caractères sont rejetées par SharePoint et stoppent net votre migration</p>
-                    </div>
-                </div>
-
                 <div class="problem-card">
                     <div class="problem-icon-circle">
                         <i class="fas fa-lock"></i>
                     </div>
                     <div>
-                        <h3 data-i18n="solution_card2_title">Fichiers synchronisés avec OneDrive impossibles à ouvrir</h3>
-                        <p data-i18n="solution_card2_desc">Les chemins dépassant 255 caractères dépassent la limite Windows, l'adoption utilisateur est ralentie</p>
+                        <h3 data-i18n="solution_card1_title">Fichiers impossibles à ouvrir</h3>
+                        <p data-i18n="solution_card1_desc">Au-delà de 255 caractères, le fichier se synchronise mais Windows ne peut plus l'ouvrir depuis l'Explorateur. Vos équipes ne comprennent pas pourquoi.</p>
                     </div>
                 </div>
 
                 <div class="problem-card">
                     <div class="problem-icon-circle">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-sync-alt"></i>
                     </div>
                     <div>
-                        <h3 data-i18n="solution_card3_title">Des heures perdues inutilement</h3>
-                        <p data-i18n="solution_card3_desc">Retrouver, renommer et réorganiser ces fichiers à la main est une tâche longue, fastidieuse et source d'erreurs</p>
+                        <h3 data-i18n="solution_card2_title">Synchronisation bloquée</h3>
+                        <p data-i18n="solution_card2_desc">Au-delà de 400 caractères, OneDrive ne synchronise plus le fichier et affiche une erreur tant que le chemin est trop long.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ========== FEATURES ========== -->
-    <section id="features">
+    <!-- ========== COMMENT ÇA MARCHE ========== -->
+    <section id="how">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 4);" data-i18n="features_h2">Fonctionnalités</h2>
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 8);" data-i18n="how_h2">Comment ça marche ?</h2>
             <div class="grid-3">
                 <div class="solution-card">
-                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card1_title">Détection des URLs > 400 caractères</span></h3>
-                    <p data-i18n="feat_card1_desc">Identifie tous les fichiers et dossiers dépassant les limites d'URL SharePoint avant migration</p>
+                    <h3><span data-i18n="how_step1_title"></h3>
+                    <p data-i18n="how_step1_desc"></p><br/>
+                    <ul class="audience-benefits how-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b1"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b2"></span></li>
+                    </ul>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card2_title">Détection des chemins > 255 caractères</span></h3>
-                    <p data-i18n="feat_card2_desc">Scanne les chemins trop longs non supportés par Windows, bloquant l'ouverture des fichiers synchronisés</p>
+                    <h3><span data-i18n="how_step2_title"></span></h3>
+                    <p data-i18n="how_step2_desc"></p><br/>
+                    <ul class="audience-benefits how-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b1"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b2"></span></li>
+                    </ul>
                 </div>
                 <div class="solution-card">
-                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card3_title">Scan local / Réseau / OneDrive</span></h3>
-                    <p data-i18n="feat_card3_desc">Analyse disques locaux, répertoires partagés sur serveurs réseaux et dossiers OneDrive</p>
-                </div>
-                <div class="solution-card">
-                    <h3><i class="far fa-check-circle solution-icon"></i> <span data-i18n="feat_card4_title">Export Excel</span></h3>
-                    <p data-i18n="feat_card4_desc">Rapports détaillés avec les chemins, segments les plus long et le détail des caractères en trop</p>
-                </div>
-                <div class="solution-card">
-                    <h3><i class="far fa-check-circle solution-icon"></i><span data-i18n="feat_card5_title">Analyse 100% local</span></h3>
-                    <p data-i18n="feat_card5_desc">Sécurité des données avec une analyse effectuée uniquement depuis le poste de travail</p>
-                </div>
-                <div class="solution-card">
-                    <h3><i class="far fa-check-circle solution-icon"></i><span data-i18n="feat_card6_title">Sans installation</span></h3>
-                    <p data-i18n="feat_card6_desc">Exécutable unique sans installation, aucun droit d'administrateur requis</p>
+                    <h3> <span data-i18n="how_step3_title"></span></h3>
+                    <p data-i18n="how_step3_desc"></p><br/>
+                    <ul class="audience-benefits how-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b1"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b2"></span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-    <!-- ========== POUR QUI ========== -->
-    <section id="audience">
+    <!-- ========== PRICING ========== -->
+    <section id="pricing">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 2);" data-i18n="audience_h2">Pour qui ?</h2>
-            <p style="text-align: center; margin-bottom: calc(var(--grid) * 6); color: var(--text-secondary);" data-i18n="audience_subtitle">Administrateurs IT, consultants M365 et gestionnaires de l'information : chacun gagne du temps sur les chemins bloquants.</p>
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1.5);" data-i18n="pricing_h2">Tarifs</h2>
+            <p class="offer-lead" data-i18n-html="pricing_lead_html">Essayez gratuitement pendant <strong>24 heures</strong>, puis achetez votre licence.</p>
 
-            <div class="audience-grid">
-                <div class="audience-card fade-in-up">
-                    <div class="audience-tag">
-                        <i class="fas fa-user-shield"></i>
-                        <span data-i18n="audience_it_tag">Administrateurs IT</span>
-                    </div>
-                    <p class="audience-headline" data-i18n="audience_it_headline">"Je veux résoudre l'incident sans script maison"</p>
-                    <ul class="audience-benefits">
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_it_b1">Simulation précise des URLs SharePoint avant migration</span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_it_b2">Score de conformité qui sensibilise les utilisateurs au problème</span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_it_b3">Exports CSV et PDF pour déléguer ou documenter la remédiation</span></li>
+            <div class="offer-layout">
+                <!-- Ce qui est inclus -->
+                <div>
+                    <div class="offer-list-title" data-i18n="pricing_list_title">Tout est inclus</div>
+                    <ul class="offer-list">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b1_html"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b2_html"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b3_html"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b4_html"></span></li>
                     </ul>
                 </div>
 
-                <div class="audience-card fade-in-up">
-                    <div class="audience-tag">
-                        <i class="fas fa-briefcase"></i>
-                        <span data-i18n="audience_biz_tag">Consultant M365 · Gestionnaire de l'information</span>
+                <!-- Prix et actions -->
+                <div class="offer-card">
+                    <span class="offer-card-tag" data-i18n="pricing_card_tag">Licence unique</span>
+                    <div class="offer-name">OneDrive Path Checker</div>
+                    <div class="offer-price" data-i18n="pricing_price_value">39,99&nbsp;€</div>
+                    <span class="offer-once"><i class="fas fa-check"></i> <span data-i18n="pricing_cta_buy_note">Paiement unique · sans abonnement</span></span>
+
+                    <div class="offer-btns">
+                        <button class="offer-btn offer-btn-primary" onclick="handleDownload()">
+                            <i class="fab fa-windows"></i>
+                            <span data-i18n="pricing_cta_trial">Essai gratuit</span>
+                        </button>
+                        <button class="offer-btn offer-btn-outline" onclick="handlePurchase()" data-i18n="pricing_cta_buy">Acheter la licence</button>
                     </div>
-                    <p class="audience-headline" data-i18n="audience_biz_headline">"Quels fichiers bloquent ma migration ou ma synchro ?"</p>
-                    <ul class="audience-benefits">
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_biz_b1">Vue visuelle des chemins bloquants et de leur niveau de gravité</span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_biz_b2">Remédiation intégrée : renommer ou supprimer les fichiers concernés</span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="audience_biz_b3">Autonomie complète, même sans DSI dédiée</span></li>
-                    </ul>
+                    <div class="offer-secure"><i class="fas fa-lock"></i> <span data-i18n="pricing_note_secure">Paiement sécurisé</span></div>
                 </div>
             </div>
+
+            <ul class="offer-trust">
+                <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100 % local : aucune donnée partagée</span></li>
+            </ul>
         </div>
     </section>
 
@@ -307,69 +282,33 @@
                 </p>
             </div>
 
-                <div class="faq-item">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q1">Pourquoi mes fichiers ne se synchronisent-ils plus après une migration SharePoint ?</span>
+                    <span data-i18n="faq_q1"></span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a1_html">
-                        <p>Après une migration, les chemins de fichiers sont reconstruits dans une nouvelle arborescence SharePoint peuvent dépasser les limites acceptées par Microsoft, même s'ils étaient parfaitement valides sur votre ancien serveur.
-                        <br>Deux seuils sont à surveiller :</p>
-                        <div class="faq-table-wrapper">
-                            <table class="faq-table">
-                                <thead>
-                                    <tr>
-                                        <th>Limite</th>
-                                        <th>Conséquence</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>&gt; 255 caractères</td>
-                                        <td>⚠️ Le fichier ne peut pas être ouvert depuis le dossier OneDrive</td>
-                                    </tr>
-                                    <tr>
-                                        <td>&gt; 400 caractères</td>
-                                        <td>🔴 Le fichier est bloqué et l'application OneDrive ne répond plus</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="faq-tip">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Traitez en priorité les fichiers dépassant 400 caractères, puis ceux entre 255 et 400 pour garantir un usage fluide après migration.</span>
-                        </div>
-                    </div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_a1_html"></div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q2">Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?</span>
+                    <span data-i18n="faq_q2"></span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a2_html">
-                        <p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Les fichiers ne peuvent pas être synchronisés et OneDrive restera bloqué sur cette erreur tant que la longueur du chemin n'aura pas été corrigée.</p>
-                        <img src="images/OneDrive400.png" alt="Erreur OneDrive 400 caractères" class="faq-image" style="width:40%">
-                        <p><strong>Chemin &gt; 255 caractères</strong> : Le fichier est synchronisé, mais impossible à ouvrir. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic particulièrement difficile sans outil dédié.</p>
-                        <img src="images/OneDrive255.png" alt="Erreur OneDrive 255 caractères" class="faq-image" style="width:35%">
-                    </div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_a2_html"></div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q3">Pourquoi est-ce difficile à corriger sans outil ?</span>
+                    <span data-i18n="faq_q3"></span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a3_html">
-                        <p>Windows n'affiche pas toujours la longueur des chemins. <br>
-                            Sans outil, il faut copier chaque chemin manuellement dans un éditeur de texte pour en compter les caractères : une tâche irréaliste sur des milliers de fichiers.</p>
-                        <p>OneDrive Path Checker automatise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent.</p>
-                    </div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_a3_html"></div>
                 </div>
             </div>
         </div>
@@ -379,65 +318,6 @@
                 <i class="fas fa-question-circle"></i>
                 <span data-i18n="faq_see_full">Voir la FAQ complète</span>
             </button>
-        </div>
-    </section>
-
-
-
-
-   <!-- ========== PRICING ========== -->
-    <section id="pricing">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1);" data-i18n="pricing_h2">Tarification</h2>
-            <p style="text-align: center; margin-bottom: calc(var(--grid) * 3); color: var(--text-secondary);">
-                <span data-i18n="pricing_subtitle">Commencez gratuitement, progressez à votre rythme</span><br><br>
-            </p>
-
-
-            <div class="pricing-grid">
-                <!-- ESSAI GRATUIT -->
-                <div class="pricing-card">
-                    <div class="pricing-name" data-i18n="pricing_trial_name">Version d'essai</div>
-                    <div class="pricing-price" data-i18n="pricing_trial_price">Gratuit</div>
-                    <div class="pricing-period" data-i18n="pricing_trial_period">24 heures</div>
-                    <ul class="pricing-features">
-                    </ul>
-                    <button class="btn btn-secondary" onclick="handleDownload()" data-i18n="pricing_trial_cta">Télécharger sur Microsoft Store</button>
-                </div>
-
-                <!-- PLAN PRO -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge" data-i18n="pricing_badge">PLUS POPULAIRE</div>
-                    <div class="pricing-name">Standard</div>
-                    <div class="pricing-price" id="priceMonthly">19,99€</div>
-                    <div class="pricing-period" id="periodMonthly" data-i18n="pricing_standard_period">/ poste de travail</div>
-                    <ul class="pricing-features">
-                        <li data-i18n="pricing_feat_1">Scans illimités</li>
-                        <li data-i18n="pricing_feat_2">Mode pré-migration SharePoint</li>
-                        <li data-i18n="pricing_feat_3">Mode synchronisation OneDrive</li>
-                        <li data-i18n="pricing_feat_4">Local + Réseau + OneDrive</li>
-                        <li data-i18n="pricing_feat_5">Rapports Excel détaillés</li>
-                        <li data-i18n="pricing_feat_6">Mises à jour incluses</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="handlePurchase()" data-i18n="pricing_standard_cta">Acheter sur Microsoft Store</button>
-                </div>
-
-                <!-- ENTREPRISE -->
-                <div class="pricing-card">
-                    <div class="pricing-name" data-i18n="pricing_enterprise_name">Entreprise</div>
-                    <div class="pricing-price" data-i18n="pricing_enterprise_price">Sur devis</div>
-                    <div class="pricing-period" data-i18n="pricing_enterprise_period">Déploiement multi-utilisateurs</div>
-                    <ul class="pricing-features">
-                        <li data-i18n="pricing_feat_1">Scans illimités</li>
-                        <li data-i18n="pricing_feat_2">Mode pré-migration SharePoint</li>
-                        <li data-i18n="pricing_feat_3">Mode synchronisation OneDrive</li>
-                        <li data-i18n="pricing_feat_4">Local + Réseau + OneDrive</li>
-                        <li data-i18n="pricing_feat_5">Rapports Excel détaillés</li>
-                        <li data-i18n="pricing_feat_6">Mises à jour incluses</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="handleContactSales()"><i class="fas fa-envelope"></i> <span data-i18n="pricing_enterprise_cta">Contact</span></button>
-                </div>
-            </div>
         </div>
     </section>
 

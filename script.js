@@ -179,15 +179,15 @@ const Language = (() => {
     const SEO_META = {
         fr: {
             ogLocale: 'fr_FR',
-            schemaDescription: 'Détectez les chemins de fichiers dépassant les limites Microsoft avant migration SharePoint ou synchronisation OneDrive.',
+            schemaDescription: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.',
             pages: {
                 '/': {
-                    title: 'Détecteur de chemins trop longs – OneDrive & SharePoint | OneDrive PathChecker',
-                    description: 'Détectez les chemins de fichiers dépassant 255 ou 400 caractères avant votre migration SharePoint ou synchronisation OneDrive. Outil portable, 100% local.'
+                    title: 'Détecteur de chemins de fichiers trop longs pour OneDrive | OneDrive Path Checker',
+                    description: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.'
                 },
                 '/FAQ.html': {
-                    title: 'FAQ – Détecteur de chemins longs OneDrive & SharePoint | OneDrive PathChecker',
-                    description: 'Toutes vos questions sur l\'outil de détection de chemins trop longs pour SharePoint et OneDrive. Fonctionnement, sécurité, export, licences.'
+                    title: 'FAQ – Détecteur de chemins trop longs pour OneDrive | OneDrive Path Checker',
+                    description: 'Toutes vos questions sur l\'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.'
                 },
                 '/contact.html': {
                     title: 'Contact – OneDrive Path Checker | Support & Questions',
@@ -197,15 +197,15 @@ const Language = (() => {
         },
         en: {
             ogLocale: 'en_US',
-            schemaDescription: 'Detect file paths exceeding Microsoft limits before SharePoint migration or OneDrive synchronization.',
+            schemaDescription: 'Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.',
             pages: {
                 '/': {
-                    title: 'Long File Path Detector – OneDrive & SharePoint | OneDrive PathChecker',
-                    description: 'Detect file paths exceeding 255 or 400 characters before your SharePoint migration or OneDrive sync. Portable tool, 100% local, no installation required.'
+                    title: 'Long File Path Detector for OneDrive | OneDrive Path Checker',
+                    description: 'Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.'
                 },
                 '/FAQ.html': {
-                    title: 'FAQ – Long File Path Detector OneDrive & SharePoint | OneDrive PathChecker',
-                    description: 'All your questions about the long file path detection tool for SharePoint and OneDrive. How it works, security, export, licensing.'
+                    title: 'FAQ – Long File Path Detector for OneDrive | OneDrive Path Checker',
+                    description: 'All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing.'
                 },
                 '/contact.html': {
                     title: 'Contact – OneDrive Path Checker | Support & Questions',
@@ -283,13 +283,14 @@ const Language = (() => {
         script.textContent = JSON.stringify({
             '@context': 'https://schema.org/',
             '@type': 'SoftwareApplication',
-            'name': 'Path Checker for SharePoint & OneDrive',
+            'name': 'OneDrive Path Checker',
+            'softwareVersion': '1.1.0.0',
             'operatingSystem': 'Windows',
             'applicationCategory': 'UtilitiesApplication',
             'description': meta.schemaDescription,
             'offers': {
                 '@type': 'Offer',
-                'price': '19.99',
+                'price': '9.99',
                 'priceCurrency': 'EUR'
             },
             'publisher': {
