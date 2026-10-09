@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.">
+    <meta name="author" content="Julie BREDECHE">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OneDrive Path Checker: Long File Path Detector">
+    <meta property="og:description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.">
+    <meta property="og:url" content="https://onedrivepathchecker.com/en/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="theme-color" content="#0078D4">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://onedrivepathchecker.com/en/">
+    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/">
+    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/">
+
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+
+    <!-- Schema.org SoftwareApplication (généré par tools/build.js) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "SoftwareApplication",
+        "name": "OneDrive Path Checker",
+        "operatingSystem": "Windows",
+        "applicationCategory": "UtilitiesApplication",
+        "softwareVersion": "1.1.0.0",
+        "inLanguage": "en",
+        "url": "https://onedrivepathchecker.com/en/",
+        "description": "Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.",
+        "offers": {
+            "@type": "Offer",
+            "price": "39.99",
+            "priceCurrency": "EUR"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Osalyd Consulting",
+            "url": "https://onedrivepathchecker.com"
+        }
+    }
+    </script>
+
+    <title>OneDrive Path Checker: Long File Path Detector</title>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Translations (must load before script.js) -->
+    <script src="../translations.js"></script>
+
+    <!-- Main Script -->
+    <script defer src="../script.js"></script>
+
+</head>
+
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="../images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="32" height="32" class="logo-icon">
+                <span>OneDrive Path Checker</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="index.html#how" data-i18n="nav_features">How does it work?</a></li>
+                    <li><a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a></li>
+                    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="../download/OneDrivePathChecker-1.1.0.0-en.msi" download class="nav-cta">
+                    <span data-i18n="nav_download_short">Download</span>
+                </a>
+                <div class="lang-switcher">
+                    <a class="lang-btn" data-lang="fr" href="/" hreflang="fr" lang="fr" aria-label="Français">FR</a>
+                    <a class="lang-btn" data-lang="en" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero">
+        <div class="container grid-2">
+            <div class="hero-content">
+                <h1 data-i18n="hero_h1">Files won't open in OneDrive?</h1>
+                <h2 style="color:#6b7280" data-i18n="hero_tagline">Get a clear diagnosis in a few seconds.</h2>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Spot files whose path is too long, fix them in a few clicks or share a detailed report with your teams.</p>
+
+                <div class="hero-cta">
+                    <button class="pricing-btn pricing-btn-primary" onclick="handleDownload()">
+                        <i class="fab fa-windows"></i>
+                        <span data-i18n="pricing_cta_trial">Free trial</span>
+                    </button>
+                    <button class="pricing-btn pricing-btn-outline" onclick="handlePurchase()">
+                        <span data-i18n="hero_cta_buy">Buy now</span>
+                    </button>
+                </div>
+                <ul class="offer-trust hero-trust">
+                    <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100% local: no data shared</span></li>
+                </ul>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-media" id="mediaContainer">
+                    <img id="mainImage"
+                        src="../images/Screenshot_Home_EN.png"
+                       
+                       
+                        alt="Preview of the OneDrive Path Checker application: compliance score and list of files to fix" width="1694" height="1079" fetchpriority="high" onclick="openGifModal()" style="cursor: pointer;">
+                    <div class="play-icon" onclick="openGifModal()">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DEMO MODAL ========== -->
+    <!-- using a video player instead of <img> (more reliable than gif) -->
+    <div id="gifModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGifModal()">&times;</span>
+            <video id="demoVideo"
+                   src="../images/DemoPathChecker_EN.mp4"
+                  
+                  
+                   controls autoplay loop muted playsinline
+                   style="width:100%; height:100%; object-fit:contain; display:none;"></video>
+        </div>
+    </div>
+
+    <!-- ========== PROBLÈME ========== -->
+    <section id="solution">
+        <div class="container">
+            <div class="problem-header">
+                <h2 data-i18n="solution_h2">A file that won't open means a blocked team.</h2>
+                <h2 class="problem-header-sub" data-i18n="solution_h2_sub">The cause is often invisible: a file path that is too long.</h2>
+            </div>
+
+            <div class="problem-keypoints">
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 data-i18n="solution_card1_title">Files that won't open</h3>
+                        <p data-i18n="solution_card1_desc">Beyond 255 characters, the file syncs but Windows can no longer open it from File Explorer. Your teams don't understand why.</p>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon-circle">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div>
+                        <h3 data-i18n="solution_card2_title">Blocked synchronization</h3>
+                        <p data-i18n="solution_card2_desc">Beyond 400 characters, OneDrive stops syncing the file and displays an error as long as the path is too long.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMMENT ÇA MARCHE ========== -->
+    <section id="how">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 8);" data-i18n="how_h2">How does it work?</h2>
+            <div class="grid-3">
+                <div class="solution-card">
+                    <h3><span data-i18n="how_step1_title">1. Choose a folder</span></h3>
+                    <p data-i18n="how_step1_desc">Select your OneDrive folder to scan:</p><br/>
+                    <ul class="audience-benefits how-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b1">No administrator rights required</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b2">No file contents are read, no data leaves your device</span></li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <h3><span data-i18n="how_step2_title">2. Review the score</span></h3>
+                    <p data-i18n="how_step2_desc">Find out how many files are a problem:</p><br/>
+                    <ul class="audience-benefits how-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b1">An overall compliance score</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b2">Critical in red, warnings in orange, with the number of excess characters</span></li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <h3><span data-i18n="how_step3_title">3. Fix and share</span></h3>
+                    <p data-i18n="how_step3_desc">Shorten file paths from the application:</p><br/>
+                    <ul class="audience-benefits how-benefits">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b1">Guided renaming: spaces, punctuation and dashes cleaned in one click, gain shown live</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b2">PDF and CSV reports ready to share</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING ========== -->
+    <section id="pricing">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 1.5);" data-i18n="pricing_h2">Pricing</h2>
+            <p class="offer-lead" data-i18n-html="pricing_lead_html">Try it free for <strong>24 hours</strong>, then buy your license.</p>
+
+            <div class="offer-layout">
+                <!-- Ce qui est inclus -->
+                <div>
+                    <div class="offer-list-title" data-i18n="pricing_list_title">Everything included</div>
+                    <ul class="offer-list">
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b1_html"><strong>Unlimited scans</strong> with compliance score and breakdown by severity.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b2_html"><strong>Guided renaming</strong>: the longest element is already selected, the gauge shows the gain live.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b3_html"><strong>Fix tracking</strong>: find what you have already handled in one click.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b4_html"><strong>PDF reports and CSV exports</strong> ready to share with your team or your client.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Prix et actions -->
+                <div class="offer-card">
+                    <span class="offer-card-tag" data-i18n="pricing_card_tag">Single license</span>
+                    <div class="offer-name">OneDrive Path Checker</div>
+                    <div class="offer-price" data-i18n="pricing_price_value">€39.99</div>
+                    <span class="offer-once"><i class="fas fa-check"></i> <span data-i18n="pricing_cta_buy_note">One-time payment · no subscription</span></span>
+
+                    <div class="offer-btns">
+                        <button class="offer-btn offer-btn-primary" onclick="handleDownload()">
+                            <i class="fab fa-windows"></i>
+                            <span data-i18n="pricing_cta_trial">Free trial</span>
+                        </button>
+                        <button class="offer-btn offer-btn-outline" onclick="handlePurchase()" data-i18n="pricing_cta_buy">Buy the license</button>
+                    </div>
+                    <div class="offer-secure"><i class="fas fa-lock"></i> <span data-i18n="pricing_note_secure">Secure payment</span></div>
+                </div>
+            </div>
+
+            <ul class="offer-trust">
+                <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100% local: no data shared</span></li>
+            </ul>
+            <p class="offer-multi">
+                <span data-i18n="pricing_multi_text">Business: want to deploy the tool on several workstations?</span>
+                <a href="#" onclick="handleContactSales(); return false;" data-i18n="pricing_multi_cta">Request a quote</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq">
+        <div class="container">
+
+            <!-- Header -->
+            <div class="faq-header">
+                <h2 data-i18n="faq_preview_h2">Frequently Asked Questions</h2>
+                <p class="faq-subtitle" data-i18n-html="faq_preview_subtitle_html">Everything you need to know about the solution.<br>A question without an answer? <br> Contact us at <a href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Support%20Request">support-pathchecker@osalydconsulting.com</a></p>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_q1">Why do some OneDrive files no longer open?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_a1_html"><p>Windows limits the length of a file's "path", meaning its name plus all the folders that contain it. When that length gets too long, two thresholds cause problems:</p><div class="faq-table-wrapper"><table class="faq-table"><thead><tr><th>Limit</th><th>Consequence</th></tr></thead><tbody><tr><td>&gt; 255 characters</td><td>⚠️ Warning: the file syncs, but Windows cannot open it from File Explorer. It remains accessible online (OneDrive or Teams).</td></tr><tr><td>&gt; 400 characters</td><td>🔴 Critical: OneDrive cannot sync the file.</td></tr></tbody></table></div><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>Start with critical files (over 400 characters), then handle the warnings (between 256 and 400).</span></div></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_q2">What OneDrive sync errors might I encounter?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_a2_html"><p><strong>Path &gt; 400 characters</strong>: OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected.</p><img src="../images/OneDrive400.png" width="1298" height="906" loading="lazy" alt="OneDrive 400 character error" class="faq-image" style="width:40%"><p><strong>Path &gt; 255 characters</strong>: the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool.</p><img src="../images/OneDrive255.png" width="610" height="262" loading="lazy" alt="OneDrive 255 character error" class="faq-image" style="width:35%"></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_q3">Why is it difficult to fix without a tool?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_a3_html"><p>Windows does not always display path lengths.<br>Without a tool, you have to copy each path into a text editor to count the characters: an unrealistic task with thousands of files.</p><p>OneDrive Path Checker runs this diagnosis in seconds, before errors appear.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="text-align:center">
+            <button class="btn btn-secondary" style="background-color: #FFF;" onclick="window.location.href='FAQ.html'">
+                <i class="fas fa-question-circle"></i>
+                <span data-i18n="faq_see_full">See the full FAQ</span>
+            </button>
+        </div>
+    </section>
+
+<!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+</body>
+
+</html>

@@ -15,24 +15,22 @@ This is the **marketing website** for **OneDrive Path Checker**, a Windows deskt
 
 ```
 OneDrivePathChecker/
-├── index.html       # Main landing page (hero, features, FAQ preview, pricing)
-├── FAQ.html         # Full FAQ page (categorized accordion)
-├── contact.html     # Contact page
-├── styles.css       # Single shared stylesheet for all pages
-├── script.js        # Single shared JavaScript module for all pages
-├── CNAME            # GitHub Pages custom domain: onedrivepathchecker.com
-└── images/
-    ├── favicon.png
-    ├── Screenshot_Home.png   # Hero screenshot of the desktop app
-    ├── DemoPathChecker.mp4   # Demo video played in modal
-    ├── OneDrive255.png       # Screenshot: OneDrive 255-char error
-    ├── OneDrive400.png       # Screenshot: OneDrive 400-char error
-    └── JBR.png               # Author photo (Julie BREDECHE)
+├── src/                 # MODÈLES HTML (à modifier) : index.html, FAQ.html, contact.html
+├── translations.js      # Tous les textes FR + EN (clés data-i18n / data-i18n-html)
+├── tools/build.js       # Génère les pages FR (racine) et EN (en/) : node tools/build.js
+├── index.html           # GÉNÉRÉ (FR) — ne pas modifier à la main
+├── FAQ.html             # GÉNÉRÉ (FR)
+├── contact.html         # GÉNÉRÉ (FR)
+├── en/                  # GÉNÉRÉ (EN) : index.html, FAQ.html, contact.html
+├── styles.css           # Single shared stylesheet for all pages
+├── script.js            # Single shared JavaScript module for all pages
+├── sitemap.xml, robots.txt
+├── CNAME                # GitHub Pages custom domain: onedrivepathchecker.com
+├── download/            # Installateur OneDrivePathChecker-Setup-<version>.exe
+└── images/              # favicon, logos, captures FR/EN, vidéos de démo FR/EN, captures d'erreur OneDrive
 ```
 
-No build tools, no package manager, no framework — this is a **plain static site**.
-
----
+**Workflow :** modifier `src/*.html` et/ou `translations.js`, puis lancer `node tools/build.js` et committer les fichiers générés (GitHub Pages ne lance pas le script). Les pages EN vivent dans `/en/` ; le français est canonique à la racine (`/`).
 
 ## Architecture
 
@@ -126,9 +124,9 @@ Microsoft Store link: `https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevSha
 
 ---
 
-## No Build Step
+## Build
 
-There is **no build process**. Changes to HTML/CSS/JS take effect immediately on push. To test locally, open any `.html` file directly in a browser or use a simple static server:
+Le site reste statique (pas de dépendance npm), mais les pages FR/EN sont générées par `node tools/build.js` (Node.js uniquement). Changes to CSS/JS take effect immediately on push. To test locally, use a simple static server (les liens de langue sont en chemins absolus `/en/...`) :
 
 ```bash
 python3 -m http.server 8000

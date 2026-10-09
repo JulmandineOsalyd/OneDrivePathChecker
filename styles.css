@@ -1308,6 +1308,8 @@ section:nth-child(even) {
 }
 
 .faq-image {
+    height: auto;
+    max-width: 100%;
     box-shadow: var(--shadow);
     margin: 0 auto;
     border-radius: 20px;
@@ -1752,6 +1754,23 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 .nav-links a:hover,
 .nav-links a.active {
     -webkit-text-fill-color: var(--primary);
+}
+
+/* Sélecteur de langue en liens (pages FR / EN générées) */
+a.lang-btn {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--text-secondary);
+    text-decoration: none;
+}
+
+a.lang-btn:hover,
+html[lang="fr"] a.lang-btn[data-lang="fr"],
+html[lang="en"] a.lang-btn[data-lang="en"] {
+    background: none;
+    -webkit-text-fill-color: var(--primary);
+    text-decoration: none;
 }
 
 /* ========== RESPONSIVE ========== */

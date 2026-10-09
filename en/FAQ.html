@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Julie BREDECHE">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAQ Long File Paths in OneDrive | OneDrive Path Checker">
+    <meta property="og:description" content="All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing.">
+    <meta property="og:url" content="https://onedrivepathchecker.com/en/FAQ.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="theme-color" content="#0078D4">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://onedrivepathchecker.com/en/FAQ.html">
+    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html">
+    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/FAQ.html">
+    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/FAQ.html">
+
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+
+    <!-- Schema.org FAQPage (statique FR — rich snippet Google) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "inLanguage": "en",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why do some OneDrive files no longer open?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Windows limits the length of a file's \"path\", meaning its name plus all the folders that contain it. When that length gets too long, two thresholds cause problems: Limit Consequence > 255 characters ⚠️ Warning: the file syncs, but Windows cannot open it from File Explorer. It remains accessible online (OneDrive or Teams). > 400 characters 🔴 Critical: OneDrive cannot sync the file. Start with critical files (over 400 characters), then handle the warnings (between 256 and 400)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What OneDrive sync errors might I encounter?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Path > 400 characters : OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected. Path > 255 characters : the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is it difficult to fix without a tool?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Windows does not always display path lengths. Without a tool, you have to copy each path into a text editor to count the characters: an unrealistic task with thousands of files. OneDrive Path Checker runs this diagnosis in seconds, before errors appear."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What can be scanned, and how is length measured?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The tool scans a OneDrive folder synced on your computer. It measures the full Windows path length of each file, from the drive root. For example: C:\\Users\\julie\\OneDrive - My Company\\Projects\\2024\\Important document.docx Beyond 255 characters, the file is flagged as a warning; beyond 400, it is flagged as critical. A path of exactly 255 characters is accepted. The 255-character limit applies to the full path, including your Windows user name and the OneDrive folder name."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many files can be scanned?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The tool is designed to scan professional-scale folders: Volume Performance Up to 50,000 files Fast and smooth 50,000 to 100,000 files Functional, a few seconds wait Beyond 100,000 files Possible slowdown depending on machine For very large volumes, scan the main folders separately rather than everything at once."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What should I do once problematic files are identified?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For each file, a \"⋯\" menu lets you rename it, open its folder or delete it (with confirmation). The rename window opens on the longest element of the path and shows the new length live against the limits. Three buttons quickly clean up spaces, punctuation and dashes. Files you fix stay in the list, in green, and are counted in the \"Fixed\" category so you can follow your progress live. To delegate the fix, export the report and send it to the person concerned: it contains the full path and exact length of each file."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "In what formats can I export the results?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Two formats are available: CSV (readable in Excel) and PDF (a report ready to print or share, with the compliance score). Both use the same columns as the application: Total length Excess over 255 characters Excess over 400 characters Folder levels File name and path Rows are sorted from the longest path to the shortest. Only files that still need fixing are listed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the tool's limitations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To be transparent, here is what you should know: Files over 400 characters are not synced by OneDrive: they may be missing from your computer, and therefore from the scan. Fix tracking lasts for the session: a new scan resets it. Renaming a folder also changes the path of the files it contains: run a new scan to update the list."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my data safe?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The tool runs entirely locally on your workstation. No file contents are read and no data (file names, paths, results) is sent to an external server. The scan does not require an internet connection."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are administrator rights required to use it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. No administrator rights are required. The application runs in the context of the logged-in user and accesses files with their standard rights."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the tool modify files or folders?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The scan is read-only . The tool only changes a file when you ask it to: a rename that you confirm, or a file deletion with confirmation. It never deletes a folder."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <title>FAQ Long File Paths in OneDrive | OneDrive Path Checker</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Translations (must load before script.js) -->
+    <script src="../translations.js"></script>
+
+    <!-- Main Script -->
+    <script defer src="../script.js"></script>
+</head>
+
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="../images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="32" height="32" class="logo-icon">
+                <span>OneDrive Path Checker</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="index.html#how" data-i18n="nav_features">How does it work?</a></li>
+                    <li><a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a></li>
+                    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="../download/OneDrivePathChecker-1.1.0.0-en.msi" download class="nav-cta">
+                    <span data-i18n="nav_download_short">Download</span>
+                </a>
+                <div class="lang-switcher">
+                    <a class="lang-btn" data-lang="fr" href="/FAQ.html" hreflang="fr" lang="fr" aria-label="Français">FR</a>
+                    <a class="lang-btn" data-lang="en" href="/en/FAQ.html" hreflang="en" lang="en" aria-label="English">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1 data-i18n="faq_page_h1">Frequently Asked Questions</h1>
+            <p class="faq-subtitle" data-i18n-html="faq_page_subtitle_html">Everything you need to know about the solution.<br>A question without an answer? <br> Contact us at <a href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Support%20Request">support-pathchecker@osalydconsulting.com</a></p>
+            <a href="index.html" class="faq-back-home">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="faq_back_home">Back to home</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <div class="container">
+        <!-- Catégorie : Comprendre le problème -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-question-circle"></i> <span data-i18n="faq_cat1_title">Understanding the problem</span>
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q1">Why do some OneDrive files no longer open?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a1_html"><p>Windows limits the length of a file's "path", meaning its name plus all the folders that contain it. When that length gets too long, two thresholds cause problems:</p><div class="faq-table-wrapper"><table class="faq-table"><thead><tr><th>Limit</th><th>Consequence</th></tr></thead><tbody><tr><td>&gt; 255 characters</td><td>⚠️ Warning: the file syncs, but Windows cannot open it from File Explorer. It remains accessible online (OneDrive or Teams).</td></tr><tr><td>&gt; 400 characters</td><td>🔴 Critical: OneDrive cannot sync the file.</td></tr></tbody></table></div><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>Start with critical files (over 400 characters), then handle the warnings (between 256 and 400).</span></div></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q2">What OneDrive sync errors might I encounter?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Path &gt; 400 characters</strong>: OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected.</p><img src="../images/OneDrive400.png" width="1298" height="906" loading="lazy" alt="OneDrive 400 character error" class="faq-image" style="width:40%"><p><strong>Path &gt; 255 characters</strong>: the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool.</p><img src="../images/OneDrive255.png" width="610" height="262" loading="lazy" alt="OneDrive 255 character error" class="faq-image" style="width:35%"></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q3">Why is it difficult to fix without a tool?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a3_html"><p>Windows does not always display path lengths.<br>Without a tool, you have to copy each path into a text editor to count the characters: an unrealistic task with thousands of files.</p><p>OneDrive Path Checker runs this diagnosis in seconds, before errors appear.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Utiliser l'outil -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-wrench"></i> <span data-i18n="faq_cat2_title">Using the tool</span>
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q4">What can be scanned, and how is length measured?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a4_html"><p>The tool scans a <strong>OneDrive folder</strong> synced on your computer. It measures the full Windows path length of each file, from the drive root. For example:</p><code class="faq-code">C:\Users\julie\OneDrive - My Company\Projects\2024\Important document.docx</code><p>Beyond 255 characters, the file is flagged as a warning; beyond 400, it is flagged as critical. A path of exactly 255 characters is accepted.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>The 255-character limit applies to the full path, including your Windows user name and the OneDrive folder name.</span></div></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q5">How many files can be scanned?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a5_html"><p>The tool is designed to scan professional-scale folders:</p><div class="faq-table-wrapper"><table class="faq-table"><thead><tr><th>Volume</th><th>Performance</th></tr></thead><tbody><tr><td>Up to 50,000 files</td><td><span class="badge badge-success"><i class="fas fa-check-circle"></i> Fast and smooth</span></td></tr><tr><td>50,000 to 100,000 files</td><td><span class="badge badge-success"><i class="fas fa-check-circle"></i> Functional, a few seconds wait</span></td></tr><tr><td>Beyond 100,000 files</td><td><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i> Possible slowdown depending on machine</span></td></tr></tbody></table></div><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>For very large volumes, scan the main folders separately rather than everything at once.</span></div></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q6">What should I do once problematic files are identified?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a6_html"><p>For each file, a "⋯" menu lets you <strong>rename</strong> it, <strong>open its folder</strong> or <strong>delete</strong> it (with confirmation).</p><p>The rename window opens on the longest element of the path and shows the new length live against the limits. Three buttons quickly clean up spaces, punctuation and dashes.</p><p>Files you fix stay in the list, in green, and are counted in the "Fixed" category so you can follow your progress live.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>To delegate the fix, export the report and send it to the person concerned: it contains the full path and exact length of each file.</span></div></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q7">In what formats can I export the results?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a7_html"><p>Two formats are available: <strong>CSV</strong> (readable in Excel) and <strong>PDF</strong> (a report ready to print or share, with the compliance score). Both use the same columns as the application:</p><ul class="faq-list"><li><i class="fas fa-angle-right"></i> Total length</li><li><i class="fas fa-angle-right"></i> Excess over 255 characters</li><li><i class="fas fa-angle-right"></i> Excess over 400 characters</li><li><i class="fas fa-angle-right"></i> Folder levels</li><li><i class="fas fa-angle-right"></i> File name and path</li></ul><p>Rows are sorted from the longest path to the shortest. Only files that still need fixing are listed.</p></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q8">What are the tool's limitations?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a8_html"><p>To be transparent, here is what you should know:</p><ul class="faq-list"><li><i class="fas fa-angle-right"></i> Files over 400 characters are not synced by OneDrive: they may be missing from your computer, and therefore from the scan.</li><li><i class="fas fa-angle-right"></i> Fix tracking lasts for the session: a new scan resets it.</li><li><i class="fas fa-angle-right"></i> Renaming a folder also changes the path of the files it contains: run a new scan to update the list.</li></ul></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Sécurité et confidentialité -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-shield-alt"></i> <span data-i18n="faq_cat3_title">Security and privacy</span>
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q9">Is my data safe?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a9_html"><p><strong>Yes.</strong> The tool runs entirely locally on your workstation. No file contents are read and no data (file names, paths, results) is sent to an external server. The scan does not require an internet connection.</p></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q10">Are administrator rights required to use it?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a10_html"><p><strong>No.</strong> No administrator rights are required. The application runs in the context of the logged-in user and accesses files with their standard rights.</p></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q11">Does the tool modify files or folders?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a11_html"><p>The scan is <strong>read-only</strong>. The tool only changes a file when you ask it to: a rename that you confirm, or a file deletion with confirmation. It never deletes a folder.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : À propos du développeur -->
+        <div class="faq-category">
+            <h3 class="faq-category-title">
+                <i class="fas fa-user-circle"></i> <span data-i18n="faq_cat5_title">About the developer</span>
+            </h3>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q15">Who created this tool?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a15_html"><div class="faq-author"><div class="faq-author-avatar"><img src="https://onedrivepathchecker.com/images/JBR.png" width="64" height="64" alt="Julie BREDECHE" style="width: 64px;"></div><div class="faq-author-info"><p>This tool was developed by <strong>Julie BREDECHE</strong>, a Microsoft 365 consultant with over 10 years of experience. She designed it to address a concrete need encountered in the field: quickly identifying files whose path is too long, before they block teams.</p><div class="faq-author-links"><a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> osalydconsulting.com</a><a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche</a></div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
+<!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.">
+    <meta name="description" content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.">
     <meta name="author" content="Julie BREDECHE">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Détecteur de chemins de fichiers trop longs pour OneDrive | OneDrive Path Checker">
-    <meta property="og:description"
-        content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.">
-    <meta property="og:url" content="https://onedrivepathchecker.com/?lang=fr">
+    <meta property="og:title" content="OneDrive Path Checker : chemins de fichiers trop longs">
+    <meta property="og:description" content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.">
+    <meta property="og:url" content="https://onedrivepathchecker.com/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
 
     <meta name="theme-color" content="#0078D4">
 
     <!-- Canonical & hreflang -->
-    <link rel="canonical" href="https://onedrivepathchecker.com/?lang=fr">
-    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/?lang=fr">
-    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/?lang=en">
-    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/?lang=fr">
+    <link rel="canonical" href="https://onedrivepathchecker.com/">
+    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/">
+    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/">
 
     <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <!-- Schema.org SoftwareApplication (mis à jour dynamiquement par script.js selon la langue) -->
-    <script type="application/ld+json" data-schema="true">
+    <!-- Schema.org SoftwareApplication (généré par tools/build.js) -->
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org/",
         "@type": "SoftwareApplication",
@@ -35,10 +34,12 @@
         "operatingSystem": "Windows",
         "applicationCategory": "UtilitiesApplication",
         "softwareVersion": "1.1.0.0",
+        "inLanguage": "fr",
+        "url": "https://onedrivepathchecker.com/",
         "description": "Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.",
         "offers": {
             "@type": "Offer",
-            "price": "9.99",
+            "price": "39.99",
             "priceCurrency": "EUR"
         },
         "publisher": {
@@ -49,7 +50,7 @@
     }
     </script>
 
-    <title>Détecteur de chemins de fichiers trop longs pour OneDrive | OneDrive Path Checker</title>
+    <title>OneDrive Path Checker : chemins de fichiers trop longs</title>
 
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +78,7 @@
     <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">
-                <img src="images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" class="logo-icon">
+                <img src="images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="32" height="32" class="logo-icon">
                 <span>OneDrive Path Checker</span>
             </div>
 
@@ -98,14 +99,12 @@
             </div>
 
             <div class="nav-right">
-                <!-- Téléchargement direct désactivé (à réactiver quand l'installateur sera publié) :
-                <a href="download/OneDrivePathChecker-Setup-1.1.0.0.exe" download class="nav-cta">
+                <a href="download/OneDrivePathChecker-1.1.0.0-fr.msi" download class="nav-cta">
                     <span data-i18n="nav_download_short">Télécharger</span>
                 </a>
-                -->
                 <div class="lang-switcher">
-                    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" aria-label="Français">FR</button>
-                    <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-label="English">EN</button>
+                    <a class="lang-btn" data-lang="fr" href="/" hreflang="fr" lang="fr" aria-label="Français">FR</a>
+                    <a class="lang-btn" data-lang="en" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a>
                 </div>
             </div>
         </div>
@@ -137,9 +136,9 @@
                 <div class="hero-media" id="mediaContainer">
                     <img id="mainImage"
                         src="images/Screenshot_Home_FR.png"
-                        data-src-fr="images/Screenshot_Home_FR.png"
-                        data-src-en="images/Screenshot_Home_EN.png"
-                        alt="Aperçu de l'application OneDrive Path Checker" loading="lazy" onclick="openGifModal()" style="cursor: pointer;">
+                       
+                       
+                        alt="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger" width="1694" height="1079" fetchpriority="high" onclick="openGifModal()" style="cursor: pointer;">
                     <div class="play-icon" onclick="openGifModal()">
                         <i class="fas fa-play"></i>
                     </div>
@@ -155,8 +154,8 @@
             <span class="close" onclick="closeGifModal()">&times;</span>
             <video id="demoVideo"
                    src="images/DemoPathChecker_FR.mp4"
-                   data-src-fr="images/DemoPathChecker_FR.mp4"
-                   data-src-en="images/DemoPathChecker_EN.mp4"
+                  
+                  
                    controls autoplay loop muted playsinline
                    style="width:100%; height:100%; object-fit:contain; display:none;"></video>
         </div>
@@ -201,27 +200,27 @@
             <h2 style="text-align: center; margin-bottom: calc(var(--grid) * 8);" data-i18n="how_h2">Comment ça marche ?</h2>
             <div class="grid-3">
                 <div class="solution-card">
-                    <h3><span data-i18n="how_step1_title"></h3>
-                    <p data-i18n="how_step1_desc"></p><br/>
+                    <h3><span data-i18n="how_step1_title">1. Choisissez un dossier</span></h3>
+                    <p data-i18n="how_step1_desc">Sélectionnez votre dossier OneDrive à scanner :</p><br/>
                     <ul class="audience-benefits how-benefits">
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b1"></span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b2"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b1">Aucun droit d'administrateur requis</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step1_b2">Aucun contenu de fichier n'est lu, aucune donnée ne quitte votre appareil</span></li>
                     </ul>
                 </div>
                 <div class="solution-card">
-                    <h3><span data-i18n="how_step2_title"></span></h3>
-                    <p data-i18n="how_step2_desc"></p><br/>
+                    <h3><span data-i18n="how_step2_title">2. Consultez le score</span></h3>
+                    <p data-i18n="how_step2_desc">Découvrez combien de fichiers posent problème :</p><br/>
                     <ul class="audience-benefits how-benefits">
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b1"></span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b2"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b1">Un score de conformité global</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step2_b2">Critiques en rouge, avertissements en orange, avec le nombre de caractères en trop</span></li>
                     </ul>
                 </div>
                 <div class="solution-card">
-                    <h3> <span data-i18n="how_step3_title"></span></h3>
-                    <p data-i18n="how_step3_desc"></p><br/>
+                    <h3><span data-i18n="how_step3_title">3. Corrigez et partagez</span></h3>
+                    <p data-i18n="how_step3_desc">Raccourcissez les chemins de fichiers depuis l'application :</p><br/>
                     <ul class="audience-benefits how-benefits">
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b1"></span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b2"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b1">Renommage guidé : espaces, ponctuation et tirets nettoyés en un clic, gain affiché en direct</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n="how_step3_b2">Rapports PDF et CSV prêts à partager</span></li>
                     </ul>
                 </div>
             </div>
@@ -239,10 +238,10 @@
                 <div>
                     <div class="offer-list-title" data-i18n="pricing_list_title">Tout est inclus</div>
                     <ul class="offer-list">
-                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b1_html"></span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b2_html"></span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b3_html"></span></li>
-                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b4_html"></span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b1_html"><strong>Scans illimités</strong> avec score de conformité et répartition par gravité.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b2_html"><strong>Renommage guidé</strong> : l'élément le plus long est déjà sélectionné, la jauge montre le gain en direct.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b3_html"><strong>Suivi des fichiers corrigés</strong> : retrouvez en un clic ce que vous avez déjà traité.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span data-i18n-html="pricing_b4_html"><strong>Rapports PDF et exports CSV</strong> prêts à partager avec votre équipe ou votre client.</span></li>
                     </ul>
                 </div>
 
@@ -250,7 +249,7 @@
                 <div class="offer-card">
                     <span class="offer-card-tag" data-i18n="pricing_card_tag">Licence unique</span>
                     <div class="offer-name">OneDrive Path Checker</div>
-                    <div class="offer-price" data-i18n="pricing_price_value">39,99&nbsp;€</div>
+                    <div class="offer-price" data-i18n="pricing_price_value">39,99 €</div>
                     <span class="offer-once"><i class="fas fa-check"></i> <span data-i18n="pricing_cta_buy_note">Paiement unique · sans abonnement</span></span>
 
                     <div class="offer-btns">
@@ -267,6 +266,10 @@
             <ul class="offer-trust">
                 <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100 % local : aucune donnée partagée</span></li>
             </ul>
+            <p class="offer-multi">
+                <span data-i18n="pricing_multi_text">Entreprise : vous souhaitez déployer l'outil sur plusieurs postes de travail ?</span>
+                <a href="#" onclick="handleContactSales(); return false;" data-i18n="pricing_multi_cta">Demandez un devis</a>
+            </p>
         </div>
     </section>
 
@@ -277,40 +280,36 @@
             <!-- Header -->
             <div class="faq-header">
                 <h2 data-i18n="faq_preview_h2">Foire Aux Questions</h2>
-                <p class="faq-subtitle" data-i18n-html="faq_preview_subtitle_html">
-                    Tout ce que vous devez savoir sur la solution.<br>
-                    Une question sans réponse ? <br> Contactez-nous à <a
-                        href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a>
-                </p>
+                <p class="faq-subtitle" data-i18n-html="faq_preview_subtitle_html">Tout ce que vous devez savoir sur la solution.<br>Une question sans réponse ? <br> Contactez-nous à <a href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Demande%20de%20support">support-pathchecker@osalydconsulting.com</a></p>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q1"></span>
+                    <span data-i18n="faq_q1">Pourquoi certains fichiers OneDrive ne s'ouvrent-ils plus ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a1_html"></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_a1_html"><p>Windows limite la longueur du « chemin » d'un fichier, c'est-à-dire son nom plus tous les dossiers qui le contiennent. Quand cette longueur devient trop grande, deux seuils posent problème :</p><div class="faq-table-wrapper"><table class="faq-table"><thead><tr><th>Limite</th><th>Conséquence</th></tr></thead><tbody><tr><td>&gt; 255 caractères</td><td>⚠️ Avertissement : le fichier est synchronisé, mais Windows ne peut pas l'ouvrir depuis l'Explorateur. Il reste accessible en ligne (OneDrive ou Teams).</td></tr><tr><td>&gt; 400 caractères</td><td>🔴 Critique : OneDrive ne peut pas synchroniser le fichier.</td></tr></tbody></table></div><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>Commencez par les fichiers critiques (plus de 400 caractères), puis traitez les avertissements (entre 256 et 400).</span></div></div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q2"></span>
+                    <span data-i18n="faq_q2">Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a2_html"></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_a2_html"><p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée.</p><img src="images/OneDrive400.png" width="1298" height="906" loading="lazy" alt="Erreur OneDrive 400 caractères" class="faq-image" style="width:40%"><p><strong>Chemin &gt; 255 caractères</strong> : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié.</p><img src="images/OneDrive255.png" width="610" height="262" loading="lazy" alt="Erreur OneDrive 255 caractères" class="faq-image" style="width:35%"></div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q3"></span>
+                    <span data-i18n="faq_q3">Pourquoi est-ce difficile à corriger sans outil ?</span>
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a3_html"></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_a3_html"><p>Windows n'affiche pas toujours la longueur des chemins. <br>Sans outil, il faut copier chaque chemin dans un éditeur de texte pour en compter les caractères : une tâche irréaliste sur des milliers de fichiers.</p><p>OneDrive Path Checker réalise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent.</p></div>
                 </div>
             </div>
         </div>

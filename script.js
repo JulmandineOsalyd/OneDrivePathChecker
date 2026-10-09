@@ -175,192 +175,27 @@ const FAQ = (() => {
 })();
 
 // ========== LANGUAGE MODULE ==========
+// Les pages FR (racine) et EN (/en/) sont générées avec leur texte en dur par tools/build.js.
+// Ce module ne traduit plus rien : il expose la langue de la page et redirige les anciens liens ?lang=.
 const Language = (() => {
-    const SEO_META = {
-        fr: {
-            ogLocale: 'fr_FR',
-            schemaDescription: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.',
-            pages: {
-                '/': {
-                    title: 'Détecteur de chemins de fichiers trop longs pour OneDrive | OneDrive Path Checker',
-                    description: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.'
-                },
-                '/FAQ.html': {
-                    title: 'FAQ – Détecteur de chemins trop longs pour OneDrive | OneDrive Path Checker',
-                    description: 'Toutes vos questions sur l\'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.'
-                },
-                '/contact.html': {
-                    title: 'Contact – OneDrive Path Checker | Support & Questions',
-                    description: 'Contactez l\'équipe OneDrive Path Checker pour toute question sur l\'outil de détection de chemins trop longs. Support technique et demandes commerciales.'
-                }
-            }
-        },
-        en: {
-            ogLocale: 'en_US',
-            schemaDescription: 'Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.',
-            pages: {
-                '/': {
-                    title: 'Long File Path Detector for OneDrive | OneDrive Path Checker',
-                    description: 'Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.'
-                },
-                '/FAQ.html': {
-                    title: 'FAQ – Long File Path Detector for OneDrive | OneDrive Path Checker',
-                    description: 'All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing.'
-                },
-                '/contact.html': {
-                    title: 'Contact – OneDrive Path Checker | Support & Questions',
-                    description: 'Contact the OneDrive Path Checker team for any question about the long file path detection tool. Technical support and sales inquiries.'
-                }
-            }
-        }
-    };
-
-    const getPageKey = () => {
-        const path = window.location.pathname;
-        if (path.endsWith('FAQ.html')) return '/FAQ.html';
-        if (path.endsWith('contact.html')) return '/contact.html';
-        return '/';
-    };
-
-    const getCanonicalUrl = (lang) => {
-        const pageKey = getPageKey();
-        const page = pageKey === '/' ? '' : pageKey;
-        return `https://onedrivepathchecker.com${page}?lang=${lang}`;
-    };
-
-    const detect = () => {
-        // Priorité 1 : paramètre URL ?lang=
-        const params = new URLSearchParams(window.location.search);
-        const urlLang = params.get('lang');
-        if (urlLang === 'fr' || urlLang === 'en') return urlLang;
-
-        // Priorité 2 : langue navigateur (fr par défaut)
-        const lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
-        return lang.startsWith('fr') ? 'fr' : 'en';
-    };
-
-    const updateSEOMeta = (lang) => {
-        const langMeta = SEO_META[lang];
-        if (!langMeta) return;
-
-        const pageKey = getPageKey();
-        const page = langMeta.pages[pageKey] || langMeta.pages['/'];
-        const canonicalUrl = getCanonicalUrl(lang);
-
-        document.title = page.title;
-
-        const desc = document.querySelector('meta[name="description"]');
-        if (desc) desc.setAttribute('content', page.description);
-
-        const canonicalEl = document.querySelector('link[rel="canonical"]');
-        if (canonicalEl) canonicalEl.setAttribute('href', canonicalUrl);
-
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', page.title);
-
-        const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (ogDesc) ogDesc.setAttribute('content', page.description);
-
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
-
-        const ogLocale = document.querySelector('meta[property="og:locale"]');
-        if (ogLocale) ogLocale.setAttribute('content', langMeta.ogLocale);
-
-        document.documentElement.lang = lang;
-    };
-
-    const updateSchema = (lang) => {
-        const meta = SEO_META[lang];
-        if (!meta) return;
-
-        const existing = document.querySelector('script[data-schema="true"]');
-        if (existing) existing.remove();
-
-        const script = document.createElement('script');
-        script.type = 'application/ld+json';
-        script.setAttribute('data-schema', 'true');
-        script.textContent = JSON.stringify({
-            '@context': 'https://schema.org/',
-            '@type': 'SoftwareApplication',
-            'name': 'OneDrive Path Checker',
-            'softwareVersion': '1.1.0.0',
-            'operatingSystem': 'Windows',
-            'applicationCategory': 'UtilitiesApplication',
-            'description': meta.schemaDescription,
-            'offers': {
-                '@type': 'Offer',
-                'price': '9.99',
-                'priceCurrency': 'EUR'
-            },
-            'publisher': {
-                '@type': 'Organization',
-                'name': 'Osalyd Consulting',
-                'url': 'https://onedrivepathchecker.com'
-            }
-        });
-        document.head.appendChild(script);
-    };
-
-    const apply = (lang) => {
-        if (!window.TRANSLATIONS) return;
-        const t = window.TRANSLATIONS[lang];
-        if (!t) return;
-
-        // Update html lang attribute
-        document.documentElement.lang = lang;
-
-        // Apply text translations
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (t[key] !== undefined) el.textContent = t[key];
-        });
-
-        // Apply HTML translations
-        document.querySelectorAll('[data-i18n-html]').forEach(el => {
-            const key = el.getAttribute('data-i18n-html');
-            if (t[key] !== undefined) el.innerHTML = t[key];
-        });
-
-        // Mettre à jour les src dépendants de la langue (images, vidéos)
-        document.querySelectorAll('[data-src-fr][data-src-en]').forEach(el => {
-            const src = lang === 'fr' ? el.getAttribute('data-src-fr') : el.getAttribute('data-src-en');
-            if (src) el.setAttribute('src', src);
-        });
-
-        // Store active language for other modules
-        window._activeLang = lang;
-
-        // Mettre à jour les balises SEO et le Schema.org
-        updateSEOMeta(lang);
-        updateSchema(lang);
-    };
-
-    // Changer la langue et mettre à jour l'URL via history.pushState
-    const setLang = (lang) => {
-        if (lang !== 'fr' && lang !== 'en') return;
-        apply(lang);
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', lang);
-        history.pushState({ lang }, '', url.toString());
-    };
+    const detect = () => (document.documentElement.lang === 'en' ? 'en' : 'fr');
 
     const init = () => {
         const lang = detect();
-        apply(lang);
+        window._activeLang = lang;
 
-        // Synchroniser l'URL avec la langue détectée (sans créer d'entrée dans l'historique)
-        const url = new URL(window.location.href);
-        if (url.searchParams.get('lang') !== lang) {
-            url.searchParams.set('lang', lang);
-            history.replaceState({ lang }, '', url.toString());
+        // Anciens liens partagés (?lang=en / ?lang=fr) : renvoyer vers la bonne page
+        const params = new URLSearchParams(window.location.search);
+        const urlLang = params.get('lang');
+        if (urlLang === 'en' && lang === 'fr') {
+            const page = window.location.pathname.replace(/^\//, '');
+            window.location.replace('/en/' + (page === 'index.html' ? '' : page));
+        } else if (urlLang === 'fr' && lang === 'fr') {
+            history.replaceState(null, '', window.location.pathname + window.location.hash);
         }
-
-        // Exposer setLang globalement pour un éventuel sélecteur de langue
-        window.setLang = setLang;
     };
 
-    return { init, detect, setLang };
+    return { init, detect };
 })();
 
 // ========== CTA HANDLERS MODULE ==========
