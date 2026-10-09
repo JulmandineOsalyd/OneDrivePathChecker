@@ -14,6 +14,16 @@
     <meta property="og:url" content="https://onedrivepathchecker.com/FAQ.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="OneDrive Path Checker">
+    <meta property="og:image" content="https://onedrivepathchecker.com/images/Screenshot_Home_FR.png">
+    <meta property="og:image:width" content="1694">
+    <meta property="og:image:height" content="1079">
+    <meta property="og:image:alt" content="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ chemins trop longs OneDrive | OneDrive Path Checker">
+    <meta name="twitter:description" content="Toutes vos questions sur l'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.">
+    <meta name="twitter:image" content="https://onedrivepathchecker.com/images/Screenshot_Home_FR.png">
+    <meta name="twitter:image:alt" content="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger">
 
     <meta name="theme-color" content="#0078D4">
 
@@ -29,96 +39,185 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "inLanguage": "fr",
-        "mainEntity": [
+        "@graph": [
             {
-                "@type": "Question",
-                "name": "Pourquoi certains fichiers OneDrive ne s'ouvrent-ils plus ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Windows limite la longueur du « chemin » d'un fichier, c'est-à-dire son nom plus tous les dossiers qui le contiennent. Quand cette longueur devient trop grande, deux seuils posent problème : Limite Conséquence > 255 caractères ⚠️ Avertissement : le fichier est synchronisé, mais Windows ne peut pas l'ouvrir depuis l'Explorateur. Il reste accessible en ligne (OneDrive ou Teams). > 400 caractères 🔴 Critique : OneDrive ne peut pas synchroniser le fichier. Commencez par les fichiers critiques (plus de 400 caractères), puis traitez les avertissements (entre 256 et 400)."
+                "@type": "Organization",
+                "@id": "https://onedrivepathchecker.com/#organization",
+                "name": "Osalyd Consulting",
+                "url": "https://www.osalydconsulting.com/",
+                "logo": "https://onedrivepathchecker.com/images/OneDrivePathCheckerLogo.svg",
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "customer support",
+                        "email": "support-pathchecker@osalydconsulting.com",
+                        "availableLanguage": [
+                            "fr",
+                            "en"
+                        ]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "sales",
+                        "email": "julie.bredeche@osalydconsulting.com",
+                        "availableLanguage": [
+                            "fr",
+                            "en"
+                        ]
+                    }
+                ],
+                "founder": {
+                    "@type": "Person",
+                    "name": "Julie BREDECHE",
+                    "sameAs": [
+                        "https://www.linkedin.com/in/juliebredeche/"
+                    ]
                 }
             },
             {
-                "@type": "Question",
-                "name": "Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Chemin > 400 caractères : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée. Chemin > 255 caractères : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié."
+                "@type": "WebSite",
+                "@id": "https://onedrivepathchecker.com/#website",
+                "name": "OneDrive Path Checker",
+                "url": "https://onedrivepathchecker.com/",
+                "inLanguage": [
+                    "fr",
+                    "en"
+                ],
+                "publisher": {
+                    "@id": "https://onedrivepathchecker.com/#organization"
                 }
             },
             {
-                "@type": "Question",
-                "name": "Pourquoi est-ce difficile à corriger sans outil ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Windows n'affiche pas toujours la longueur des chemins. Sans outil, il faut copier chaque chemin dans un éditeur de texte pour en compter les caractères : une tâche irréaliste sur des milliers de fichiers. OneDrive Path Checker réalise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent."
-                }
+                "@type": "FAQPage",
+                "@id": "https://onedrivepathchecker.com/FAQ.html#webpage",
+                "url": "https://onedrivepathchecker.com/FAQ.html",
+                "name": "FAQ chemins trop longs OneDrive | OneDrive Path Checker",
+                "description": "Toutes vos questions sur l'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.",
+                "inLanguage": "fr",
+                "isPartOf": {
+                    "@id": "https://onedrivepathchecker.com/#website"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": "https://onedrivepathchecker.com/images/Screenshot_Home_FR.png",
+                    "width": 1694,
+                    "height": 1079
+                },
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Pourquoi certains fichiers OneDrive ne s'ouvrent-ils plus ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Windows limite la longueur du « chemin » d'un fichier, c'est-à-dire son nom plus tous les dossiers qui le contiennent. Quand cette longueur devient trop grande, deux seuils posent problème : Limite Conséquence > 255 caractères ⚠️ Avertissement : le fichier est synchronisé, mais Windows ne peut pas l'ouvrir depuis l'Explorateur. Il reste accessible en ligne (OneDrive ou Teams). > 400 caractères 🔴 Critique : OneDrive ne peut pas synchroniser le fichier. Commencez par les fichiers critiques (plus de 400 caractères), puis traitez les avertissements (entre 256 et 400)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Chemin > 400 caractères : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée. Chemin > 255 caractères : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Pourquoi est-ce difficile à corriger sans outil ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Windows n'affiche pas toujours la longueur des chemins. Sans outil, il faut copier chaque chemin dans un éditeur de texte pour en compter les caractères : une tâche irréaliste sur des milliers de fichiers. OneDrive Path Checker réalise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Que peut-on analyser, et comment la longueur est-elle mesurée ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "L'outil analyse un dossier OneDrive synchronisé sur votre poste. Il mesure la longueur du chemin Windows complet de chaque fichier, depuis la racine du disque. Par exemple : C:\\Users\\julie\\OneDrive - Mon Entreprise\\Projets\\2024\\Document important.docx Au-delà de 255 caractères, le fichier est signalé en avertissement ; au-delà de 400, il est signalé comme critique. Un chemin d'exactement 255 caractères est accepté. La limite de 255 caractères s'applique au chemin complet, y compris le nom de votre session Windows et celui du dossier OneDrive."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Jusqu'à combien de fichiers peut-on scanner ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "L'outil est conçu pour analyser des dossiers de taille professionnelle : Volume Performance Jusqu'à 50 000 fichiers Rapide et fluide 50 000 à 100 000 fichiers Fonctionnel, quelques secondes d'attente Au-delà de 100 000 fichiers Possible ralentissement selon la machine Pour les très gros volumes, analysez les dossiers principaux séparément plutôt que l'ensemble en une seule fois."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Que faire une fois les fichiers problématiques identifiés ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Pour chaque fichier, un menu « ⋯ » permet de le renommer , d' ouvrir son dossier ou de le supprimer (avec confirmation). La fenêtre de renommage s'ouvre sur l'élément le plus long du chemin et montre en direct la nouvelle longueur par rapport aux limites. Trois boutons nettoient rapidement les espaces, la ponctuation et les tirets. Les fichiers que vous corrigez restent dans la liste, en vert, et sont comptés dans la catégorie « Corrigés » : vous suivez votre avancement en direct. Pour déléguer la correction, exportez le rapport et transmettez-le à la personne concernée : il contient le chemin complet et la longueur exacte de chaque fichier."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Sous quels formats exporter les résultats ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Deux formats sont disponibles : CSV (lisible dans Excel) et PDF (rapport prêt à imprimer ou à partager, avec le score de conformité). Les deux reprennent les colonnes de l'application : Longueur totale Excédent par rapport à 255 caractères Excédent par rapport à 400 caractères Niveaux de dossiers Nom et chemin du fichier Les lignes sont triées du chemin le plus long au plus court. Seuls les fichiers encore à corriger y figurent."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quelles sont les limites de l'outil ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Pour rester transparent, voici ce qu'il faut savoir : Les fichiers de plus de 400 caractères ne sont pas synchronisés par OneDrive : ils peuvent être absents de votre poste, donc de l'analyse. Le suivi des fichiers corrigés dure le temps de la session : un nouveau scan le remet à zéro. Renommer un dossier modifie aussi le chemin des fichiers qu'il contient : lancez un nouveau scan pour mettre la liste à jour."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Mes données sont-elles en sécurité ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Oui. L'outil fonctionne entièrement en local sur votre poste. Aucun contenu de fichier n'est lu et aucune donnée (noms de fichiers, chemins, résultats) n'est transmise à un serveur externe. L'analyse ne nécessite pas de connexion Internet."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Faut-il des droits administrateur pour l'utiliser ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Non. Aucun droit d'administrateur n'est requis. L'application s'exécute dans le contexte de l'utilisateur connecté et accède aux fichiers avec ses droits habituels."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "L'outil modifie-t-il des fichiers ou des dossiers ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Le scan est en lecture seule . L'outil ne modifie un fichier que si vous le demandez : renommage validé par vous, ou suppression d'un fichier avec confirmation. Il ne supprime jamais de dossier."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Qui est à l'origine de cet outil ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Cet outil a été développé par Julie BREDECHE , consultante Microsoft 365 depuis plus de 10 ans. Elle l'a conçu pour répondre à un besoin concret rencontré en mission : identifier rapidement les fichiers dont le chemin est trop long, avant qu'ils ne bloquent les équipes. osalydconsulting.com linkedin.com/in/juliebredeche"
+                        }
+                    }
+                ]
             },
             {
-                "@type": "Question",
-                "name": "Que peut-on analyser, et comment la longueur est-elle mesurée ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "L'outil analyse un dossier OneDrive synchronisé sur votre poste. Il mesure la longueur du chemin Windows complet de chaque fichier, depuis la racine du disque. Par exemple : C:\\Users\\julie\\OneDrive - Mon Entreprise\\Projets\\2024\\Document important.docx Au-delà de 255 caractères, le fichier est signalé en avertissement ; au-delà de 400, il est signalé comme critique. Un chemin d'exactement 255 caractères est accepté. La limite de 255 caractères s'applique au chemin complet, y compris le nom de votre session Windows et celui du dossier OneDrive."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Jusqu'à combien de fichiers peut-on scanner ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "L'outil est conçu pour analyser des dossiers de taille professionnelle : Volume Performance Jusqu'à 50 000 fichiers Rapide et fluide 50 000 à 100 000 fichiers Fonctionnel, quelques secondes d'attente Au-delà de 100 000 fichiers Possible ralentissement selon la machine Pour les très gros volumes, analysez les dossiers principaux séparément plutôt que l'ensemble en une seule fois."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Que faire une fois les fichiers problématiques identifiés ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Pour chaque fichier, un menu « ⋯ » permet de le renommer , d' ouvrir son dossier ou de le supprimer (avec confirmation). La fenêtre de renommage s'ouvre sur l'élément le plus long du chemin et montre en direct la nouvelle longueur par rapport aux limites. Trois boutons nettoient rapidement les espaces, la ponctuation et les tirets. Les fichiers que vous corrigez restent dans la liste, en vert, et sont comptés dans la catégorie « Corrigés » : vous suivez votre avancement en direct. Pour déléguer la correction, exportez le rapport et transmettez-le à la personne concernée : il contient le chemin complet et la longueur exacte de chaque fichier."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Sous quels formats exporter les résultats ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Deux formats sont disponibles : CSV (lisible dans Excel) et PDF (rapport prêt à imprimer ou à partager, avec le score de conformité). Les deux reprennent les colonnes de l'application : Longueur totale Excédent par rapport à 255 caractères Excédent par rapport à 400 caractères Niveaux de dossiers Nom et chemin du fichier Les lignes sont triées du chemin le plus long au plus court. Seuls les fichiers encore à corriger y figurent."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Quelles sont les limites de l'outil ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Pour rester transparent, voici ce qu'il faut savoir : Les fichiers de plus de 400 caractères ne sont pas synchronisés par OneDrive : ils peuvent être absents de votre poste, donc de l'analyse. Le suivi des fichiers corrigés dure le temps de la session : un nouveau scan le remet à zéro. Renommer un dossier modifie aussi le chemin des fichiers qu'il contient : lancez un nouveau scan pour mettre la liste à jour."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Mes données sont-elles en sécurité ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Oui. L'outil fonctionne entièrement en local sur votre poste. Aucun contenu de fichier n'est lu et aucune donnée (noms de fichiers, chemins, résultats) n'est transmise à un serveur externe. L'analyse ne nécessite pas de connexion Internet."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Faut-il des droits administrateur pour l'utiliser ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Non. Aucun droit d'administrateur n'est requis. L'application s'exécute dans le contexte de l'utilisateur connecté et accède aux fichiers avec ses droits habituels."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "L'outil modifie-t-il des fichiers ou des dossiers ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Le scan est en lecture seule . L'outil ne modifie un fichier que si vous le demandez : renommage validé par vous, ou suppression d'un fichier avec confirmation. Il ne supprime jamais de dossier."
-                }
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Accueil",
+                        "item": "https://onedrivepathchecker.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "FAQ",
+                        "item": "https://onedrivepathchecker.com/FAQ.html"
+                    }
+                ]
             }
         ]
     }
@@ -148,7 +247,7 @@
     <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">
-                <img src="images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="32" height="32" class="logo-icon">
+                <img src="images/OneDrivePathCheckerLogo.svg" alt="" width="32" height="32" class="logo-icon">
                 <span>OneDrive Path Checker</span>
             </div>
 
@@ -163,7 +262,7 @@
                     <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
                     <li><a href="index.html#how" data-i18n="nav_features">Comment ça marche ?</a></li>
                     <li><a href="index.html#pricing" data-i18n="nav_pricing">Tarifs</a></li>
-                    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="FAQ.html" data-i18n="nav_faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </div>
@@ -216,7 +315,7 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée.</p><img src="images/OneDrive400.png" width="1298" height="906" loading="lazy" alt="Erreur OneDrive 400 caractères" class="faq-image" style="width:40%"><p><strong>Chemin &gt; 255 caractères</strong> : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié.</p><img src="images/OneDrive255.png" width="610" height="262" loading="lazy" alt="Erreur OneDrive 255 caractères" class="faq-image" style="width:35%"></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée.</p><img src="images/OneDrive400.png" width="1298" height="906" loading="lazy" alt="Message d'erreur OneDrive : « Nous ne pouvons pas synchroniser cet élément, car le chemin d'accès est trop long »" class="faq-image" style="width:40%"><p><strong>Chemin &gt; 255 caractères</strong> : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié.</p><img src="images/OneDrive255.png" width="610" height="262" loading="lazy" alt="Fenêtre Windows « Action interrompue » affichée pour un document Word au nom très long" class="faq-image" style="width:35%"></div>
                 </div>
             </div>
 
@@ -337,7 +436,7 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_full_a15_html"><div class="faq-author"><div class="faq-author-avatar"><img src="https://onedrivepathchecker.com/images/JBR.png" width="64" height="64" alt="Julie BREDECHE" style="width: 64px;"></div><div class="faq-author-info"><p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365 depuis plus de 10 ans. Elle l'a conçu pour répondre à un besoin concret rencontré en mission : identifier rapidement les fichiers dont le chemin est trop long, avant qu'ils ne bloquent les équipes.</p><div class="faq-author-links"><a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> osalydconsulting.com</a><a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche</a></div></div></div></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a15_html"><div class="faq-author"><div class="faq-author-avatar"><img src="https://onedrivepathchecker.com/images/JBR.png" width="64" height="64" alt="Julie BREDECHE, consultante Microsoft 365" style="width: 64px;"></div><div class="faq-author-info"><p>Cet outil a été développé par <strong>Julie BREDECHE</strong>, consultante Microsoft 365 depuis plus de 10 ans. Elle l'a conçu pour répondre à un besoin concret rencontré en mission : identifier rapidement les fichiers dont le chemin est trop long, avant qu'ils ne bloquent les équipes.</p><div class="faq-author-links"><a href="https://www.osalydconsulting.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> osalydconsulting.com</a><a href="https://www.linkedin.com/in/juliebredeche/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> linkedin.com/in/juliebredeche</a></div></div></div></div>
                 </div>
             </div>
         </div>

@@ -950,6 +950,11 @@ section:nth-child(even) {
     font-size: 0.95rem;
 }
 
+.offer-multi i {
+    color: var(--primary);
+    margin-right: calc(var(--grid) * 1);
+}
+
 .offer-multi a {
     font-weight: 600;
 }

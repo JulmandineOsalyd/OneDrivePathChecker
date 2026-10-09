@@ -14,6 +14,16 @@
     <meta property="og:url" content="https://onedrivepathchecker.com/en/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="OneDrive Path Checker">
+    <meta property="og:image" content="https://onedrivepathchecker.com/images/Screenshot_Home_EN.png">
+    <meta property="og:image:width" content="1694">
+    <meta property="og:image:height" content="1079">
+    <meta property="og:image:alt" content="Preview of the OneDrive Path Checker application: compliance score and list of files to fix">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OneDrive Path Checker: Long File Path Detector">
+    <meta name="twitter:description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.">
+    <meta name="twitter:image" content="https://onedrivepathchecker.com/images/Screenshot_Home_EN.png">
+    <meta name="twitter:image:alt" content="Preview of the OneDrive Path Checker application: compliance score and list of files to fix">
 
     <meta name="theme-color" content="#0078D4">
 
@@ -28,25 +38,115 @@
     <!-- Schema.org SoftwareApplication (généré par tools/build.js) -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org/",
-        "@type": "SoftwareApplication",
-        "name": "OneDrive Path Checker",
-        "operatingSystem": "Windows",
-        "applicationCategory": "UtilitiesApplication",
-        "softwareVersion": "1.1.0.0",
-        "inLanguage": "en",
-        "url": "https://onedrivepathchecker.com/en/",
-        "description": "Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.",
-        "offers": {
-            "@type": "Offer",
-            "price": "39.99",
-            "priceCurrency": "EUR"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Osalyd Consulting",
-            "url": "https://onedrivepathchecker.com"
-        }
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://onedrivepathchecker.com/#organization",
+                "name": "Osalyd Consulting",
+                "url": "https://www.osalydconsulting.com/",
+                "logo": "https://onedrivepathchecker.com/images/OneDrivePathCheckerLogo.svg",
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "customer support",
+                        "email": "support-pathchecker@osalydconsulting.com",
+                        "availableLanguage": [
+                            "fr",
+                            "en"
+                        ]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "sales",
+                        "email": "julie.bredeche@osalydconsulting.com",
+                        "availableLanguage": [
+                            "fr",
+                            "en"
+                        ]
+                    }
+                ],
+                "founder": {
+                    "@type": "Person",
+                    "name": "Julie BREDECHE",
+                    "sameAs": [
+                        "https://www.linkedin.com/in/juliebredeche/"
+                    ]
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://onedrivepathchecker.com/#website",
+                "name": "OneDrive Path Checker",
+                "url": "https://onedrivepathchecker.com/",
+                "inLanguage": [
+                    "fr",
+                    "en"
+                ],
+                "publisher": {
+                    "@id": "https://onedrivepathchecker.com/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://onedrivepathchecker.com/en/#webpage",
+                "url": "https://onedrivepathchecker.com/en/",
+                "name": "OneDrive Path Checker: Long File Path Detector",
+                "description": "Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.",
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@id": "https://onedrivepathchecker.com/#website"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": "https://onedrivepathchecker.com/images/Screenshot_Home_EN.png",
+                    "width": 1694,
+                    "height": 1079
+                },
+                "mainEntity": {
+                    "@id": "https://onedrivepathchecker.com/#software"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://onedrivepathchecker.com/#software",
+                "name": "OneDrive Path Checker",
+                "url": "https://onedrivepathchecker.com/en/",
+                "description": "Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Windows",
+                "softwareVersion": "1.1.0.0",
+                "inLanguage": [
+                    "fr",
+                    "en"
+                ],
+                "image": "https://onedrivepathchecker.com/images/Screenshot_Home_EN.png",
+                "screenshot": "https://onedrivepathchecker.com/images/Screenshot_Home_EN.png",
+                "downloadUrl": "https://onedrivepathchecker.com/download/OneDrivePathChecker-1.1.0.0-en.msi",
+                "featureList": [
+                    "Unlimited scans with compliance score and breakdown by severity.",
+                    "Guided renaming : the longest element is already selected, the gauge shows the gain live.",
+                    "Fix tracking : find what you have already handled in one click.",
+                    "PDF reports and CSV exports ready to share with your team or your client."
+                ],
+                "author": {
+                    "@id": "https://onedrivepathchecker.com/#organization"
+                },
+                "publisher": {
+                    "@id": "https://onedrivepathchecker.com/#organization"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "39.99",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://onedrivepathchecker.com/en/#pricing",
+                    "seller": {
+                        "@id": "https://onedrivepathchecker.com/#organization"
+                    }
+                }
+            }
+        ]
     }
     </script>
 
@@ -78,7 +178,7 @@
     <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">
-                <img src="../images/OneDrivePathCheckerLogo.svg" alt="OneDrive Path Checker logo" width="32" height="32" class="logo-icon">
+                <img src="../images/OneDrivePathCheckerLogo.svg" alt="" width="32" height="32" class="logo-icon">
                 <span>OneDrive Path Checker</span>
             </div>
 
@@ -93,7 +193,7 @@
                     <li><a href="index.html" data-i18n="nav_home">Home</a></li>
                     <li><a href="index.html#how" data-i18n="nav_features">How does it work?</a></li>
                     <li><a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a></li>
-                    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="FAQ.html" data-i18n="nav_faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </div>
@@ -128,7 +228,7 @@
                     </button>
                 </div>
                 <ul class="offer-trust hero-trust">
-                    <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100% local: no data shared</span></li>
+                    <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100% local execution: no data shared</span></li>
                 </ul>
             </div>
 
@@ -263,64 +363,14 @@
                 </div>
             </div>
 
-            <ul class="offer-trust">
-                <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100% local: no data shared</span></li>
-            </ul>
             <p class="offer-multi">
+                <i class="fas fa-building"></i>
                 <span data-i18n="pricing_multi_text">Business: want to deploy the tool on several workstations?</span>
                 <a href="#" onclick="handleContactSales(); return false;" data-i18n="pricing_multi_cta">Request a quote</a>
             </p>
         </div>
     </section>
 
-    <!-- ========== FAQ ========== -->
-    <section id="faq">
-        <div class="container">
-
-            <!-- Header -->
-            <div class="faq-header">
-                <h2 data-i18n="faq_preview_h2">Frequently Asked Questions</h2>
-                <p class="faq-subtitle" data-i18n-html="faq_preview_subtitle_html">Everything you need to know about the solution.<br>A question without an answer? <br> Contact us at <a href="mailto:support-pathchecker@osalydconsulting.com?subject=OneDrive%20Path%20Checker%20-%20Support%20Request">support-pathchecker@osalydconsulting.com</a></p>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q1">Why do some OneDrive files no longer open?</span>
-                    <i class="fas fa-chevron-down faq-chevron"></i>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a1_html"><p>Windows limits the length of a file's "path", meaning its name plus all the folders that contain it. When that length gets too long, two thresholds cause problems:</p><div class="faq-table-wrapper"><table class="faq-table"><thead><tr><th>Limit</th><th>Consequence</th></tr></thead><tbody><tr><td>&gt; 255 characters</td><td>⚠️ Warning: the file syncs, but Windows cannot open it from File Explorer. It remains accessible online (OneDrive or Teams).</td></tr><tr><td>&gt; 400 characters</td><td>🔴 Critical: OneDrive cannot sync the file.</td></tr></tbody></table></div><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>Start with critical files (over 400 characters), then handle the warnings (between 256 and 400).</span></div></div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q2">What OneDrive sync errors might I encounter?</span>
-                    <i class="fas fa-chevron-down faq-chevron"></i>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a2_html"><p><strong>Path &gt; 400 characters</strong>: OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected.</p><img src="../images/OneDrive400.png" width="1298" height="906" loading="lazy" alt="OneDrive 400 character error" class="faq-image" style="width:40%"><p><strong>Path &gt; 255 characters</strong>: the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool.</p><img src="../images/OneDrive255.png" width="610" height="262" loading="lazy" alt="OneDrive 255 character error" class="faq-image" style="width:35%"></div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
-                    <span data-i18n="faq_q3">Why is it difficult to fix without a tool?</span>
-                    <i class="fas fa-chevron-down faq-chevron"></i>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_a3_html"><p>Windows does not always display path lengths.<br>Without a tool, you have to copy each path into a text editor to count the characters: an unrealistic task with thousands of files.</p><p>OneDrive Path Checker runs this diagnosis in seconds, before errors appear.</p></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="text-align:center">
-            <button class="btn btn-secondary" style="background-color: #FFF;" onclick="window.location.href='FAQ.html'">
-                <i class="fas fa-question-circle"></i>
-                <span data-i18n="faq_see_full">See the full FAQ</span>
-            </button>
-        </div>
-    </section>
 
 <!-- ========== FOOTER ========== -->
     <footer>

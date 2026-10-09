@@ -172,6 +172,23 @@ function setHead(html, lang, page, t) {
     html = html.replace(/<meta property="og:url"\s+content="[^"]*">/, `<meta property="og:url" content="${own}">`);
     html = html.replace(/<meta property="og:locale"\s+content="[^"]*">/, `<meta property="og:locale" content="${LANGS[lang].ogLocale}">`);
 
+    // Image de partage (LinkedIn, Teams, Slack, X...) et cartes Twitter
+    const image = `${SITE}/images/Screenshot_Home_${lang.toUpperCase()}.png`;
+    const imageAlt = escapeAttr(t.hero_alt || seo.title);
+    const social = [
+        `<meta property="og:site_name" content="OneDrive Path Checker">`,
+        `<meta property="og:image" content="${image}">`,
+        `<meta property="og:image:width" content="1694">`,
+        `<meta property="og:image:height" content="1079">`,
+        `<meta property="og:image:alt" content="${imageAlt}">`,
+        `<meta name="twitter:card" content="summary_large_image">`,
+        `<meta name="twitter:title" content="${escapeAttr(seo.title)}">`,
+        `<meta name="twitter:description" content="${escapeAttr(seo.description)}">`,
+        `<meta name="twitter:image" content="${image}">`,
+        `<meta name="twitter:image:alt" content="${imageAlt}">`
+    ].map(l => '    ' + l).join('\n');
+    html = html.replace(/(<meta property="og:locale"[^>]*>)/, '$1\n' + social);
+
     const links = [
         `<link rel="canonical" href="${own}">`,
         `<link rel="alternate" hreflang="fr" href="${urlFr}">`,
@@ -188,27 +205,98 @@ function ldScript(obj) {
     return '<script type="application/ld+json">\n' + JSON.stringify(obj, null, 4).replace(/^/gm, '    ') + '\n    </script>';
 }
 
+/** Données structurées : un @graph (organisation, site, page) par page et par langue. */
 function setJsonLd(html, lang, page, t) {
+    const own = pageUrl(lang, page);
+    const homeUrl = pageUrl(lang, PAGES[0]);
+    const price = (t.pricing_price_value || '').replace(/[^0-9,\.]/g, '').replace(',', '.');
+    const screenshot = `${SITE}/images/Screenshot_Home_${lang.toUpperCase()}.png`;
+    const seo = SEO[lang][page.file];
+
+    const organization = {
+        '@type': 'Organization',
+        '@id': SITE + '/#organization',
+        name: 'Osalyd Consulting',
+        url: 'https://www.osalydconsulting.com/',
+        logo: SITE + '/images/OneDrivePathCheckerLogo.svg',
+        contactPoint: [{
+            '@type': 'ContactPoint',
+            contactType: 'customer support',
+            email: 'support-pathchecker@osalydconsulting.com',
+            availableLanguage: ['fr', 'en']
+        }, {
+            '@type': 'ContactPoint',
+            contactType: 'sales',
+            email: 'julie.bredeche@osalydconsulting.com',
+            availableLanguage: ['fr', 'en']
+        }],
+        founder: {
+            '@type': 'Person',
+            name: 'Julie BREDECHE',
+            sameAs: ['https://www.linkedin.com/in/juliebredeche/']
+        }
+    };
+
+    const website = {
+        '@type': 'WebSite',
+        '@id': SITE + '/#website',
+        name: 'OneDrive Path Checker',
+        url: SITE + '/',
+        inLanguage: ['fr', 'en'],
+        publisher: { '@id': SITE + '/#organization' }
+    };
+
+    const webPage = {
+        '@type': page.file === 'contact.html' ? 'ContactPage' : (page.file === 'FAQ.html' ? 'FAQPage' : 'WebPage'),
+        '@id': own + '#webpage',
+        url: own,
+        name: seo.title,
+        description: seo.description,
+        inLanguage: lang,
+        isPartOf: { '@id': SITE + '/#website' },
+        primaryImageOfPage: { '@type': 'ImageObject', url: screenshot, width: 1694, height: 1079 }
+    };
+
+    const graph = [organization, website, webPage];
+
     if (page.file === 'index.html') {
-        const price = (t.pricing_price_value || '').replace(/[^0-9,\.]/g, '').replace(',', '.');
-        const data = {
-            '@context': 'https://schema.org/',
+        const features = [1, 2, 3, 4]
+            .map(n => t['pricing_b' + n + '_html'])
+            .filter(Boolean)
+            .map(stripTags);
+        const msi = `${SITE}/download/OneDrivePathChecker-1.1.0.0-${lang}.msi`;
+        webPage.mainEntity = { '@id': SITE + '/#software' };
+        graph.push({
             '@type': 'SoftwareApplication',
+            '@id': SITE + '/#software',
             name: 'OneDrive Path Checker',
-            operatingSystem: 'Windows',
-            applicationCategory: 'UtilitiesApplication',
-            softwareVersion: '1.1.0.0',
-            inLanguage: lang,
-            url: pageUrl(lang, page),
+            url: own,
             description: SEO[lang].schemaDescription,
-            offers: { '@type': 'Offer', price: price || undefined, priceCurrency: 'EUR' },
-            publisher: { '@type': 'Organization', name: 'Osalyd Consulting', url: SITE }
-        };
-        return html.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/, () => ldScript(data));
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Windows',
+            softwareVersion: '1.1.0.0',
+            inLanguage: ['fr', 'en'],
+            image: screenshot,
+            screenshot: screenshot,
+            downloadUrl: msi,
+            featureList: features,
+            author: { '@id': SITE + '/#organization' },
+            publisher: { '@id': SITE + '/#organization' },
+            offers: {
+                '@type': 'Offer',
+                price: price || undefined,
+                priceCurrency: 'EUR',
+                availability: 'https://schema.org/InStock',
+                url: own + '#pricing',
+                seller: { '@id': SITE + '/#organization' }
+            }
+        });
     }
+
     if (page.file === 'FAQ.html') {
         const entities = [];
-        for (let n = 1; t['faq_full_q' + n]; n++) {
+        for (let n = 1; n <= 40; n++) {
+            if (!t['faq_full_q' + n]) continue;
             const answer = t['faq_full_a' + n + '_html'];
             if (!answer) continue;
             entities.push({
@@ -217,10 +305,24 @@ function setJsonLd(html, lang, page, t) {
                 acceptedAnswer: { '@type': 'Answer', text: stripTags(answer) }
             });
         }
-        const data = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: entities };
-        return html.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/, () => ldScript(data));
+        webPage.mainEntity = entities;
     }
-    return html;
+
+    if (page.file !== 'index.html') {
+        graph.push({
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: t.nav_home, item: homeUrl },
+                { '@type': 'ListItem', position: 2, name: page.file === 'FAQ.html' ? t.nav_faq : t.nav_contact, item: own }
+            ]
+        });
+    }
+
+    const data = { '@context': 'https://schema.org', '@graph': graph };
+    const re = /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/;
+    if (re.test(html)) return html.replace(re, () => ldScript(data));
+    // Pas de bloc dans le modèle (page contact) : on l'ajoute avant le titre
+    return html.replace(/(\s*)<title>/, (m, sp) => '\n    ' + ldScript(data) + '\n' + sp + '<title>');
 }
 
 function setSwitcher(html, lang, page) {
@@ -238,11 +340,6 @@ const BANNER = '<!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici 
 
 for (const lang of Object.keys(LANGS)) {
     const t = TRANSLATIONS[lang];
-    // Aperçu FAQ de l'accueil (déjà calculé dans translations.js, mais on le garantit ici)
-    [1, 2, 3].forEach(n => {
-        t['faq_q' + n] = t['faq_full_q' + n];
-        t['faq_a' + n + '_html'] = t['faq_full_a' + n + '_html'];
-    });
 
     for (const page of PAGES) {
         const ctx = `${lang}/${page.file}`;
