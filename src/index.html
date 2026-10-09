@@ -24,7 +24,10 @@
     <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/?lang=en">
     <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/">
 
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/OneDrivePathCheckerLogo.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="images/favicon-96.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Schema.org SoftwareApplication (généré par tools/build.js) -->
     <script type="application/ld+json" data-schema="true">
@@ -51,15 +54,11 @@
 
     <title>OneDrive Path Checker : chemins de fichiers trop longs</title>
 
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <!-- Polices et icônes hébergées sur le site (sans appel à des services externes) -->
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/fa-solid.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts/fonts.css">
 
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -81,7 +80,7 @@
                 <span>OneDrive Path Checker</span>
             </div>
 
-            <button class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navCenter" data-i18n-aria="nav_menu_label">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -114,15 +113,15 @@
         <div class="container grid-2">
             <div class="hero-content">
                 <h1 data-i18n="hero_h1">Vos fichiers ne s'ouvrent plus dans OneDrive ?</h1>
-                <h2 style="color:#6b7280" data-i18n="hero_tagline">Obtenez un diagnostic clair en quelques secondes.</h2>
+                <p class="hero-tagline" data-i18n="hero_tagline">Obtenez un diagnostic clair en quelques secondes.</p>
                 <p class="hero-subtitle" data-i18n="hero_subtitle">Repérez les fichiers dont le chemin est trop long, corrigez-les en quelques clics ou partagez un rapport détaillé avec vos équipes.</p>
 
                 <div class="hero-cta">
-                    <button class="pricing-btn pricing-btn-primary" onclick="handleDownload()">
+                    <a class="pricing-btn pricing-btn-primary" href="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-fr="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-en="download/OneDrivePathChecker-1.1.0.0-en.msi" download>
                         <i class="fab fa-windows"></i>
                         <span data-i18n="pricing_cta_trial">Essai gratuit</span>
-                    </button>
-                    <button class="pricing-btn pricing-btn-outline" onclick="handlePurchase()">
+                    </a>
+                    <button class="pricing-btn pricing-btn-outline" type="button">
                         <span data-i18n="hero_cta_buy">Acheter maintenant</span>
                     </button>
                 </div>
@@ -134,9 +133,9 @@
             <div class="hero-visual">
                 <div class="hero-media" id="mediaContainer">
                     <img id="mainImage" data-i18n-alt="hero_alt"
-                        src="images/Screenshot_Home_FR.png"
-                        data-src-fr="images/Screenshot_Home_FR.png"
-                        data-src-en="images/Screenshot_Home_EN.png"
+                        src="images/Screenshot_Home_FR.webp"
+                        data-src-fr="images/Screenshot_Home_FR.webp"
+                        data-src-en="images/Screenshot_Home_EN.webp"
                         alt="Aperçu de l'application OneDrive Path Checker" width="1694" height="1079" fetchpriority="high" onclick="openGifModal()" style="cursor: pointer;">
                     <div class="play-icon" onclick="openGifModal()">
                         <i class="fas fa-play"></i>
@@ -155,7 +154,7 @@
                    src="images/DemoPathChecker_FR.mp4"
                    data-src-fr="images/DemoPathChecker_FR.mp4"
                    data-src-en="images/DemoPathChecker_EN.mp4"
-                   controls autoplay loop muted playsinline
+                   controls preload="none" loop muted playsinline
                    style="width:100%; height:100%; object-fit:contain; display:none;"></video>
         </div>
     </div>
@@ -165,7 +164,7 @@
         <div class="container">
             <div class="problem-header">
                 <h2 data-i18n="solution_h2">Un fichier qui ne s'ouvre pas, c'est une équipe bloquée.</h2>
-                <h2 class="problem-header-sub" data-i18n="solution_h2_sub">La cause est souvent invisible : un chemin de fichier trop long.</h2>
+                <p class="problem-header-sub" data-i18n="solution_h2_sub">La cause est souvent invisible : un chemin de fichier trop long.</p>
             </div>
 
             <div class="problem-keypoints">
@@ -176,6 +175,7 @@
                     <div>
                         <h3 data-i18n="solution_card1_title">Fichiers impossibles à ouvrir</h3>
                         <p data-i18n="solution_card1_desc">Au-delà de 255 caractères, le fichier se synchronise mais Windows ne peut plus l'ouvrir depuis l'Explorateur. Vos équipes ne comprennent pas pourquoi.</p>
+                        <a class="problem-more" href="fichier-onedrive-impossible-a-ouvrir.html" data-href-fr="fichier-onedrive-impossible-a-ouvrir.html" data-href-en="onedrive-file-wont-open.html" data-i18n="solution_more">En savoir plus</a>
                     </div>
                 </div>
 
@@ -186,6 +186,7 @@
                     <div>
                         <h3 data-i18n="solution_card2_title">Synchronisation bloquée</h3>
                         <p data-i18n="solution_card2_desc">Au-delà de 400 caractères, OneDrive ne synchronise plus le fichier et affiche une erreur tant que le chemin est trop long.</p>
+                        <a class="problem-more" href="erreur-chemin-acces-trop-long-onedrive.html" data-href-fr="erreur-chemin-acces-trop-long-onedrive.html" data-href-en="onedrive-path-too-long-error.html" data-i18n="solution_more">En savoir plus</a>
                     </div>
                 </div>
 
@@ -252,18 +253,17 @@
                     <span class="offer-once"><i class="fas fa-check"></i> <span data-i18n="pricing_cta_buy_note">Paiement unique · sans abonnement</span></span>
 
                     <div class="offer-btns">
-                        <button class="offer-btn offer-btn-primary" onclick="handleDownload()">
+                        <a class="offer-btn offer-btn-primary" href="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-fr="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-en="download/OneDrivePathChecker-1.1.0.0-en.msi" download>
                             <i class="fab fa-windows"></i>
                             <span data-i18n="pricing_cta_trial">Essai gratuit</span>
-                        </button>
-                        <button class="offer-btn offer-btn-outline" onclick="handlePurchase()" data-i18n="pricing_cta_buy">Acheter la licence</button>
+                        </a>
+                        <button class="offer-btn offer-btn-outline" type="button" data-i18n="pricing_cta_buy">Acheter la licence</button>
                     </div>
                     <div class="offer-secure"><i class="fas fa-lock"></i> <span data-i18n="pricing_note_secure">Paiement sécurisé</span></div>
                 </div>
             </div>
 
             <p class="offer-multi">
-                <i class="fas fa-building"></i>
                 <span data-i18n="pricing_multi_text">Entreprise : vous souhaitez déployer l'outil sur plusieurs postes de travail ?</span>
                 <a href="#" onclick="handleContactSales(); return false;" data-i18n="pricing_multi_cta">Demandez un devis</a>
             </p>

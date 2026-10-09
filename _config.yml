@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) : ne pas publier les sources ni les outils de génération
+exclude:
+  - src
+  - tools
+  - CLAUDE.md
+  - README.md
+  - .vscode

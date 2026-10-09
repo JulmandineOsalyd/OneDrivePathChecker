@@ -5,24 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.">
+    <meta name="description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local execution.">
     <meta name="author" content="Julie BREDECHE">
 
     <!-- Open Graph -->
     <meta property="og:title" content="OneDrive Path Checker: Long File Path Detector">
-    <meta property="og:description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.">
+    <meta property="og:description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local execution.">
     <meta property="og:url" content="https://onedrivepathchecker.com/en/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="OneDrive Path Checker">
-    <meta property="og:image" content="https://onedrivepathchecker.com/images/Screenshot_Home_EN.png">
-    <meta property="og:image:width" content="1694">
-    <meta property="og:image:height" content="1079">
+    <meta property="og:image" content="https://onedrivepathchecker.com/images/share-en.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Preview of the OneDrive Path Checker application: compliance score and list of files to fix">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OneDrive Path Checker: Long File Path Detector">
-    <meta name="twitter:description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.">
-    <meta name="twitter:image" content="https://onedrivepathchecker.com/images/Screenshot_Home_EN.png">
+    <meta name="twitter:description" content="Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local execution.">
+    <meta name="twitter:image" content="https://onedrivepathchecker.com/images/share-en.jpg">
     <meta name="twitter:image:alt" content="Preview of the OneDrive Path Checker application: compliance score and list of files to fix">
 
     <meta name="theme-color" content="#0078D4">
@@ -33,7 +33,10 @@
     <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/">
     <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/">
 
-    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link rel="icon" href="../images/OneDrivePathCheckerLogo.svg" type="image/svg+xml">
+    <link rel="icon" href="../images/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="../images/favicon-96.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
     <!-- Schema.org SoftwareApplication (généré par tools/build.js) -->
     <script type="application/ld+json">
@@ -92,16 +95,16 @@
                 "@id": "https://onedrivepathchecker.com/en/#webpage",
                 "url": "https://onedrivepathchecker.com/en/",
                 "name": "OneDrive Path Checker: Long File Path Detector",
-                "description": "Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.",
+                "description": "Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local execution.",
                 "inLanguage": "en",
                 "isPartOf": {
                     "@id": "https://onedrivepathchecker.com/#website"
                 },
                 "primaryImageOfPage": {
                     "@type": "ImageObject",
-                    "url": "https://onedrivepathchecker.com/images/Screenshot_Home_EN.png",
-                    "width": 1694,
-                    "height": 1079
+                    "url": "https://onedrivepathchecker.com/images/share-en.jpg",
+                    "width": 1200,
+                    "height": 630
                 },
                 "mainEntity": {
                     "@id": "https://onedrivepathchecker.com/#software"
@@ -152,15 +155,11 @@
 
     <title>OneDrive Path Checker: Long File Path Detector</title>
 
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <!-- Polices et icônes hébergées sur le site (sans appel à des services externes) -->
+    <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/fa-solid.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../fonts/fonts.css">
 
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="../styles.css">
@@ -182,7 +181,7 @@
                 <span>OneDrive Path Checker</span>
             </div>
 
-            <button class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open the menu" aria-expanded="false" aria-controls="navCenter">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -200,7 +199,7 @@
 
             <div class="nav-right">
                 <a href="../download/OneDrivePathChecker-1.1.0.0-en.msi" download class="nav-cta">
-                    <span data-i18n="nav_download_short">Download</span>
+                    <span data-i18n="nav_download_short">Free trial</span>
                 </a>
                 <div class="lang-switcher">
                     <a class="lang-btn" data-lang="fr" href="/" hreflang="fr" lang="fr" aria-label="Français">FR</a>
@@ -215,15 +214,15 @@
         <div class="container grid-2">
             <div class="hero-content">
                 <h1 data-i18n="hero_h1">Files won't open in OneDrive?</h1>
-                <h2 style="color:#6b7280" data-i18n="hero_tagline">Get a clear diagnosis in a few seconds.</h2>
+                <p class="hero-tagline" data-i18n="hero_tagline">Get a clear diagnosis in a few seconds.</p>
                 <p class="hero-subtitle" data-i18n="hero_subtitle">Spot files whose path is too long, fix them in a few clicks or share a detailed report with your teams.</p>
 
                 <div class="hero-cta">
-                    <button class="pricing-btn pricing-btn-primary" onclick="handleDownload()">
+                    <a class="pricing-btn pricing-btn-primary" href="../download/OneDrivePathChecker-1.1.0.0-en.msi" download>
                         <i class="fab fa-windows"></i>
                         <span data-i18n="pricing_cta_trial">Free trial</span>
-                    </button>
-                    <button class="pricing-btn pricing-btn-outline" onclick="handlePurchase()">
+                    </a>
+                    <button class="pricing-btn pricing-btn-outline" type="button">
                         <span data-i18n="hero_cta_buy">Buy now</span>
                     </button>
                 </div>
@@ -235,7 +234,7 @@
             <div class="hero-visual">
                 <div class="hero-media" id="mediaContainer">
                     <img id="mainImage"
-                        src="../images/Screenshot_Home_EN.png"
+                        src="../images/Screenshot_Home_EN.webp"
                        
                        
                         alt="Preview of the OneDrive Path Checker application: compliance score and list of files to fix" width="1694" height="1079" fetchpriority="high" onclick="openGifModal()" style="cursor: pointer;">
@@ -256,7 +255,7 @@
                    src="../images/DemoPathChecker_EN.mp4"
                   
                   
-                   controls autoplay loop muted playsinline
+                   controls preload="none" loop muted playsinline
                    style="width:100%; height:100%; object-fit:contain; display:none;"></video>
         </div>
     </div>
@@ -266,7 +265,7 @@
         <div class="container">
             <div class="problem-header">
                 <h2 data-i18n="solution_h2">A file that won't open means a blocked team.</h2>
-                <h2 class="problem-header-sub" data-i18n="solution_h2_sub">The cause is often invisible: a file path that is too long.</h2>
+                <p class="problem-header-sub" data-i18n="solution_h2_sub">The cause is often invisible: a file path that is too long.</p>
             </div>
 
             <div class="problem-keypoints">
@@ -277,6 +276,7 @@
                     <div>
                         <h3 data-i18n="solution_card1_title">Files that won't open</h3>
                         <p data-i18n="solution_card1_desc">Beyond 255 characters, the file syncs but Windows can no longer open it from File Explorer. Your teams don't understand why.</p>
+                        <a class="problem-more" href="onedrive-file-wont-open.html" data-i18n="solution_more">Understand the error →</a>
                     </div>
                 </div>
 
@@ -287,6 +287,7 @@
                     <div>
                         <h3 data-i18n="solution_card2_title">Blocked synchronization</h3>
                         <p data-i18n="solution_card2_desc">Beyond 400 characters, OneDrive stops syncing the file and displays an error as long as the path is too long.</p>
+                        <a class="problem-more" href="onedrive-path-too-long-error.html" data-i18n="solution_more">Understand the error →</a>
                     </div>
                 </div>
 
@@ -353,18 +354,17 @@
                     <span class="offer-once"><i class="fas fa-check"></i> <span data-i18n="pricing_cta_buy_note">One-time payment · no subscription</span></span>
 
                     <div class="offer-btns">
-                        <button class="offer-btn offer-btn-primary" onclick="handleDownload()">
+                        <a class="offer-btn offer-btn-primary" href="../download/OneDrivePathChecker-1.1.0.0-en.msi" download>
                             <i class="fab fa-windows"></i>
                             <span data-i18n="pricing_cta_trial">Free trial</span>
-                        </button>
-                        <button class="offer-btn offer-btn-outline" onclick="handlePurchase()" data-i18n="pricing_cta_buy">Buy the license</button>
+                        </a>
+                        <button class="offer-btn offer-btn-outline" type="button" data-i18n="pricing_cta_buy">Buy the license</button>
                     </div>
                     <div class="offer-secure"><i class="fas fa-lock"></i> <span data-i18n="pricing_note_secure">Secure payment</span></div>
                 </div>
             </div>
 
             <p class="offer-multi">
-                <i class="fas fa-building"></i>
                 <span data-i18n="pricing_multi_text">Business: want to deploy the tool on several workstations?</span>
                 <a href="#" onclick="handleContactSales(); return false;" data-i18n="pricing_multi_cta">Request a quote</a>
             </p>

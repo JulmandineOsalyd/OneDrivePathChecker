@@ -15,7 +15,8 @@ const Navigation = (() => {
         // Toggle menu
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
-            navCenter.classList.toggle('active');
+            const open = navCenter.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
 
         // Close menu on link click
@@ -23,6 +24,7 @@ const Navigation = (() => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navCenter.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
     };
@@ -59,43 +61,6 @@ const Animations = (() => {
     };
 
     return { initScrollAnimations };
-})();
-
-// ========== COUNTER MODULE ==========
-const Counter = (() => {
-    const animate = (element, target) => {
-        let current = 0;
-        const increment = target / 100;
-        const interval = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target.toLocaleString('fr-FR');
-                clearInterval(interval);
-            } else {
-                element.textContent = Math.floor(current).toLocaleString('fr-FR');
-            }
-        }, 10);
-    };
-
-    const init = () => {
-        const counters = document.querySelectorAll('.counter');
-        if (!counters.length) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    const target = parseInt(entry.target.dataset.target);
-                    animate(entry.target, target);
-                    entry.target.classList.add('counted');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        counters.forEach(counter => observer.observe(counter));
-    };
-
-    return { init };
 })();
 
 // ========== MODAL MODULE ==========
@@ -205,28 +170,6 @@ const CTAHandlers = (() => {
         return (window.TRANSLATIONS && window.TRANSLATIONS[lang]) || {};
     };
 
-    const handleDownload = () => {
-        const t = getT();
-        const link = document.createElement('a');
-        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS';
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-
-    const handlePurchase = () => {
-        const t = getT();
-        const link = document.createElement('a');
-        link.href = t.store_url || 'https://apps.microsoft.com/detail/9ph9dtrrrx30?cid=DevShareMCLPCS';
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-
     const handleContactSales = () => {
         const t = getT();
         const subject = encodeURIComponent(t.sales_email_subject || 'Demande de devis - OneDrive Path Checker');
@@ -236,54 +179,18 @@ const CTAHandlers = (() => {
 
     // Expose functions to window for onclick handlers
     const init = () => {
-        window.handleDownload = handleDownload;
-        window.handlePurchase = handlePurchase;
         window.handleContactSales = handleContactSales;
     };
 
     return { init };
 })();
 
-// ========== LAZY LOADING MODULE ==========
-const LazyLoading = (() => {
-    const init = () => {
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-    };
-
-    return { init };
-})();
-
-// ========== MAIN APP INITIALIZATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all modules
     Language.init();
     Navigation.init();
     Animations.initScrollAnimations();
-    Counter.init();
     Modal.init();
     FAQ.init();
     CTAHandlers.init();
-    LazyLoading.init();
-
-    // Log initialization
-    console.log('✅ OneDrive Path Checker - All modules initialized');
-    console.log('✅ Navigation loaded');
-    console.log('✅ Animations initialized');
-    console.log('✅ FAQ Accordion activated');
-    console.log('✅ Lazy loading enabled');
 });

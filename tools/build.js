@@ -1,33 +1,52 @@
 /**
- * OneDrive Path Checker - Génération des pages FR et EN
+ * OneDrive Path Checker - Génération des pages FR et EN et du sitemap
  *
  * Usage :  node tools/build.js
  *
  * Lit les modèles de src/*.html et les textes de translations.js, puis écrit :
- *   - index.html, FAQ.html, contact.html            (français, à la racine)
- *   - en/index.html, en/FAQ.html, en/contact.html   (anglais)
+ *   - les pages françaises à la racine  (index.html, FAQ.html, contact.html, guides...)
+ *   - les pages anglaises dans en/      (index.html, FAQ.html, contact.html, guides...)
+ *   - sitemap.xml
  *
  * Les pages générées contiennent tout le texte en dur (aucun JavaScript requis
  * pour afficher le contenu). Ne modifiez PAS les fichiers générés : modifiez
  * src/*.html ou translations.js, puis relancez ce script.
+ *
+ * Les dates <lastmod> du sitemap sont mémorisées dans tools/lastmod.json : une
+ * date ne change que si le contenu de la page a changé.
  */
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const crypto = require('crypto');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://onedrivepathchecker.com';
+const TODAY = new Date().toISOString().slice(0, 10);
 
 // ---------- Textes ----------
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'translations.js'), 'utf8'), sandbox);
 const TRANSLATIONS = sandbox.window.TRANSLATIONS;
 
-// ---------- Pages et SEO ----------
+// ---------- Pages ----------
+// key : identifiant (clé du SEO) ; type : home | faq | contact | article
+// out / urlPath : nom du fichier et chemin d'URL, par langue (les guides ont un nom différent en FR et EN)
+const same = name => ({ fr: name, en: name });
 const PAGES = [
-    { file: 'index.html', urlPath: '' },
-    { file: 'FAQ.html', urlPath: 'FAQ.html' },
-    { file: 'contact.html', urlPath: 'contact.html' }
+    { key: 'index', type: 'home', src: 'index.html', out: same('index.html'), urlPath: same(''), priority: ['1.0', '0.9'], freq: 'monthly' },
+    { key: 'faq', type: 'faq', src: 'FAQ.html', out: same('FAQ.html'), urlPath: same('FAQ.html'), priority: ['0.8', '0.7'], freq: 'monthly' },
+    {
+        key: 'errsync', type: 'article', prefix: 'errsync', src: 'err-sync.html', priority: ['0.7', '0.6'], freq: 'monthly',
+        out: { fr: 'erreur-chemin-acces-trop-long-onedrive.html', en: 'onedrive-path-too-long-error.html' },
+        urlPath: { fr: 'erreur-chemin-acces-trop-long-onedrive.html', en: 'onedrive-path-too-long-error.html' }
+    },
+    {
+        key: 'erropen', type: 'article', prefix: 'erropen', src: 'err-open.html', priority: ['0.7', '0.6'], freq: 'monthly',
+        out: { fr: 'fichier-onedrive-impossible-a-ouvrir.html', en: 'onedrive-file-wont-open.html' },
+        urlPath: { fr: 'fichier-onedrive-impossible-a-ouvrir.html', en: 'onedrive-file-wont-open.html' }
+    },
+    { key: 'contact', type: 'contact', src: 'contact.html', out: same('contact.html'), urlPath: same('contact.html'), priority: ['0.5', '0.4'], freq: 'yearly' }
 ];
 
 const LANGS = {
@@ -37,34 +56,64 @@ const LANGS = {
 
 const SEO = {
     fr: {
-        'index.html': {
+        index: {
             title: 'OneDrive Path Checker : chemins de fichiers trop longs',
-            description: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. 100 % local, essai gratuit.'
+            description: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. Exécution 100 % locale.'
         },
-        'FAQ.html': {
+        faq: {
             title: 'FAQ chemins trop longs OneDrive | OneDrive Path Checker',
             description: 'Toutes vos questions sur l\'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.'
         },
-        'contact.html': {
+        errsync: {
+            title: 'Erreur OneDrive « chemin d\'accès trop long » : solution',
+            description: 'OneDrive affiche « Nous ne pouvons pas synchroniser cet élément, car le chemin d\'accès est trop long » ? Comprenez l\'erreur (400 caractères) et corrigez-la.'
+        },
+        erropen: {
+            title: 'Fichier OneDrive impossible à ouvrir : chemin trop long',
+            description: 'Un fichier OneDrive se synchronise mais ne s\'ouvre pas depuis l\'Explorateur Windows ? La cause est souvent un chemin de plus de 255 caractères. Solutions.'
+        },
+        contact: {
             title: 'Contact – OneDrive Path Checker | Support & Questions',
             description: 'Contactez l\'équipe OneDrive Path Checker pour toute question sur l\'outil de détection de chemins trop longs. Support technique et demandes commerciales.'
         },
         schemaDescription: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.'
     },
     en: {
-        'index.html': {
+        index: {
             title: 'OneDrive Path Checker: Long File Path Detector',
-            description: 'Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local, free trial.'
+            description: 'Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local execution.'
         },
-        'FAQ.html': {
+        faq: {
             title: 'FAQ Long File Paths in OneDrive | OneDrive Path Checker',
-            description: 'All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing.'
+            description: 'All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing, and support.'
         },
-        'contact.html': {
+        errsync: {
+            title: 'OneDrive "file path is too long" sync error: how to fix',
+            description: 'OneDrive says "We can\'t sync this item because the file path is too long"? Understand the 400-character limit and fix the error step by step.'
+        },
+        erropen: {
+            title: 'OneDrive file won\'t open: path too long (255 limit)',
+            description: 'A OneDrive file syncs but won\'t open from File Explorer? The cause is often a path over 255 characters. Find out why and how to fix it.'
+        },
+        contact: {
             title: 'Contact – OneDrive Path Checker | Support & Questions',
             description: 'Contact the OneDrive Path Checker team for any question about the long file path detection tool. Technical support and sales inquiries.'
         },
         schemaDescription: 'Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.'
+    }
+};
+
+// Vidéos de démonstration (sitemap vidéo de l'accueil)
+const VIDEOS = {
+    fr: {
+        thumb: 'Screenshot_Home_FR.png', file: 'DemoPathChecker_FR.mp4',
+        title: 'Démonstration OneDrive Path Checker – Détecteur de chemins trop longs pour OneDrive',
+        description: 'Découvrez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), les corrige et exporte un rapport PDF ou CSV.'
+    },
+    en: {
+        thumb: 'Screenshot_Home_EN.png', file: 'DemoPathChecker_EN.mp4',
+        title: 'OneDrive Path Checker Demo – Long Path Detector for OneDrive',
+        description: 'See how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.'
     }
 };
 
@@ -129,12 +178,24 @@ function fillAlt(html, t, ctx) {
     });
 }
 
+/** data-i18n-aria="clé" -> aria-label="texte" */
+function fillAria(html, t, ctx) {
+    return html.replace(/<[a-zA-Z0-9]+\b[^>]*?\sdata-i18n-aria="([^"]+)"[^>]*>/g, (tagStr, key) => {
+        if (t[key] === undefined) {
+            console.warn(`  ! clé manquante (${ctx}) : ${key}`);
+            return tagStr;
+        }
+        const s = tagStr.replace(/\sdata-i18n-aria="[^"]+"/, '');
+        return s.replace(/\saria-label="[^"]*"/, ' aria-label="' + escapeAttr(t[key]) + '"');
+    });
+}
+
 /** data-src-fr / data-src-en -> src de la langue courante. */
 function fillSrc(html, lang) {
     return html.replace(/<(img|video)\b[^>]*?\sdata-src-fr="[^"]*"[^>]*>/g, tagStr => {
         const fr = tagStr.match(/\sdata-src-fr="([^"]*)"/)[1];
         const en = (tagStr.match(/\sdata-src-en="([^"]*)"/) || [])[1] || fr;
-        let s = tagStr.replace(/\sdata-src-(fr|en)="[^"]*"/g, '');
+        const s = tagStr.replace(/\sdata-src-(fr|en)="[^"]*"/g, '');
         return s.replace(/\ssrc="[^"]*"/, ' src="' + (lang === 'fr' ? fr : en) + '"');
     });
 }
@@ -151,15 +212,15 @@ function fillHref(html, lang) {
 
 /** Les pages anglaises sont dans /en/ : les ressources locales remontent d'un niveau. */
 function fixAssetPaths(html) {
-    return html.replace(/(\s(?:src|href)=")((?:images\/|download\/|styles\.css|script\.js|translations\.js)[^"]*")/g, '$1../$2');
+    return html.replace(/(\s(?:src|href)=")((?:images\/|download\/|fonts\/|styles\.css|script\.js|translations\.js)[^"]*")/g, '$1../$2');
 }
 
 function pageUrl(lang, page) {
-    return SITE + LANGS[lang].urlDir + page.urlPath;
+    return SITE + LANGS[lang].urlDir + page.urlPath[lang];
 }
 
 function setHead(html, lang, page, t) {
-    const seo = SEO[lang][page.file];
+    const seo = SEO[lang][page.key];
     const urlFr = pageUrl('fr', page);
     const urlEn = pageUrl('en', page);
     const own = pageUrl(lang, page);
@@ -173,13 +234,13 @@ function setHead(html, lang, page, t) {
     html = html.replace(/<meta property="og:locale"\s+content="[^"]*">/, `<meta property="og:locale" content="${LANGS[lang].ogLocale}">`);
 
     // Image de partage (LinkedIn, Teams, Slack, X...) et cartes Twitter
-    const image = `${SITE}/images/Screenshot_Home_${lang.toUpperCase()}.png`;
+    const image = `${SITE}/images/share-${lang}.jpg`;
     const imageAlt = escapeAttr(t.hero_alt || seo.title);
     const social = [
         `<meta property="og:site_name" content="OneDrive Path Checker">`,
         `<meta property="og:image" content="${image}">`,
-        `<meta property="og:image:width" content="1694">`,
-        `<meta property="og:image:height" content="1079">`,
+        `<meta property="og:image:width" content="1200">`,
+        `<meta property="og:image:height" content="630">`,
         `<meta property="og:image:alt" content="${imageAlt}">`,
         `<meta name="twitter:card" content="summary_large_image">`,
         `<meta name="twitter:title" content="${escapeAttr(seo.title)}">`,
@@ -206,12 +267,12 @@ function ldScript(obj) {
 }
 
 /** Données structurées : un @graph (organisation, site, page) par page et par langue. */
-function setJsonLd(html, lang, page, t) {
+function setJsonLd(html, lang, page, t, dates) {
     const own = pageUrl(lang, page);
     const homeUrl = pageUrl(lang, PAGES[0]);
     const price = (t.pricing_price_value || '').replace(/[^0-9,\.]/g, '').replace(',', '.');
     const screenshot = `${SITE}/images/Screenshot_Home_${lang.toUpperCase()}.png`;
-    const seo = SEO[lang][page.file];
+    const seo = SEO[lang][page.key];
 
     const organization = {
         '@type': 'Organization',
@@ -246,20 +307,21 @@ function setJsonLd(html, lang, page, t) {
         publisher: { '@id': SITE + '/#organization' }
     };
 
+    const pageTypes = { contact: 'ContactPage', faq: 'FAQPage', article: 'WebPage', home: 'WebPage' };
     const webPage = {
-        '@type': page.file === 'contact.html' ? 'ContactPage' : (page.file === 'FAQ.html' ? 'FAQPage' : 'WebPage'),
+        '@type': pageTypes[page.type],
         '@id': own + '#webpage',
         url: own,
         name: seo.title,
         description: seo.description,
         inLanguage: lang,
         isPartOf: { '@id': SITE + '/#website' },
-        primaryImageOfPage: { '@type': 'ImageObject', url: screenshot, width: 1694, height: 1079 }
+        primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}/images/share-${lang}.jpg`, width: 1200, height: 630 }
     };
 
     const graph = [organization, website, webPage];
 
-    if (page.file === 'index.html') {
+    if (page.type === 'home') {
         const features = [1, 2, 3, 4]
             .map(n => t['pricing_b' + n + '_html'])
             .filter(Boolean)
@@ -293,7 +355,7 @@ function setJsonLd(html, lang, page, t) {
         });
     }
 
-    if (page.file === 'FAQ.html') {
+    if (page.type === 'faq') {
         const entities = [];
         for (let n = 1; n <= 40; n++) {
             if (!t['faq_full_q' + n]) continue;
@@ -308,12 +370,30 @@ function setJsonLd(html, lang, page, t) {
         webPage.mainEntity = entities;
     }
 
-    if (page.file !== 'index.html') {
+    if (page.type === 'article') {
+        graph.push({
+            '@type': 'TechArticle',
+            '@id': own + '#article',
+            headline: t[page.prefix + '_h1'] || seo.title,
+            description: seo.description,
+            url: own,
+            inLanguage: lang,
+            datePublished: dates.published,
+            dateModified: dates.lastmod,
+            image: screenshot,
+            mainEntityOfPage: { '@id': own + '#webpage' },
+            author: { '@type': 'Person', name: 'Julie BREDECHE', sameAs: ['https://www.linkedin.com/in/juliebredeche/'] },
+            publisher: { '@id': SITE + '/#organization' }
+        });
+    }
+
+    if (page.type !== 'home') {
+        const name = page.type === 'faq' ? t.nav_faq : (page.type === 'contact' ? t.nav_contact : (t[page.prefix + '_h1'] || seo.title));
         graph.push({
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: t.nav_home, item: homeUrl },
-                { '@type': 'ListItem', position: 2, name: page.file === 'FAQ.html' ? t.nav_faq : t.nav_contact, item: own }
+                { '@type': 'ListItem', position: 2, name: stripTags(name), item: own }
             ]
         });
     }
@@ -321,13 +401,13 @@ function setJsonLd(html, lang, page, t) {
     const data = { '@context': 'https://schema.org', '@graph': graph };
     const re = /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/;
     if (re.test(html)) return html.replace(re, () => ldScript(data));
-    // Pas de bloc dans le modèle (page contact) : on l'ajoute avant le titre
+    // Pas de bloc dans le modèle : on l'ajoute avant le titre
     return html.replace(/(\s*)<title>/, (m, sp) => '\n    ' + ldScript(data) + '\n' + sp + '<title>');
 }
 
 function setSwitcher(html, lang, page) {
-    const frHref = LANGS.fr.urlDir + page.urlPath;
-    const enHref = LANGS.en.urlDir + page.urlPath;
+    const frHref = LANGS.fr.urlDir + page.urlPath.fr;
+    const enHref = LANGS.en.urlDir + page.urlPath.en;
     const block = `<div class="lang-switcher">
                     <a class="lang-btn" data-lang="fr" href="${frHref}" hreflang="fr" lang="fr" aria-label="Français">FR</a>
                     <a class="lang-btn" data-lang="en" href="${enHref}" hreflang="en" lang="en" aria-label="English">EN</a>
@@ -335,28 +415,93 @@ function setSwitcher(html, lang, page) {
     return html.replace(/<div class="lang-switcher">[\s\S]*?<\/div>/, () => block);
 }
 
-// ---------- Génération ----------
+// ---------- Dates de modification (sitemap + articles) ----------
+const LASTMOD_FILE = path.join(__dirname, 'lastmod.json');
+const lastmodStore = fs.existsSync(LASTMOD_FILE) ? JSON.parse(fs.readFileSync(LASTMOD_FILE, 'utf8')) : {};
+
+function trackDates(id, content) {
+    const hash = crypto.createHash('sha1').update(content).digest('hex');
+    const entry = lastmodStore[id];
+    if (!entry) {
+        lastmodStore[id] = { hash, published: TODAY, lastmod: TODAY };
+    } else if (entry.hash !== hash) {
+        entry.hash = hash;
+        entry.lastmod = TODAY;
+    }
+    return lastmodStore[id];
+}
+
+// ---------- Génération des pages ----------
 const BANNER = '<!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->\n';
 
 for (const lang of Object.keys(LANGS)) {
     const t = TRANSLATIONS[lang];
 
     for (const page of PAGES) {
-        const ctx = `${lang}/${page.file}`;
-        let html = fs.readFileSync(path.join(ROOT, 'src', page.file), 'utf8').replace(/\r\n/g, '\n');
+        const outName = page.out[lang];
+        const ctx = `${lang}/${outName}`;
+        let html = fs.readFileSync(path.join(ROOT, 'src', page.src), 'utf8').replace(/\r\n/g, '\n');
         html = fillText(html, t, ctx);
         html = fillAlt(html, t, ctx);
+        html = fillAria(html, t, ctx);
         html = fillSrc(html, lang);
         html = fillHref(html, lang);
         html = setHead(html, lang, page, t);
-        html = setJsonLd(html, lang, page, t);
         html = setSwitcher(html, lang, page);
+
+        // La date de modification dépend du contenu (hors données structurées, qui contiennent les dates)
+        const dates = trackDates(LANGS[lang].dir + outName, html);
+        html = setJsonLd(html, lang, page, t, dates);
+
         if (lang === 'en') html = fixAssetPaths(html);
         html = html.replace(/(<html[^>]*>)/, '$1\n' + BANNER.trim());
 
         const outDir = path.join(ROOT, LANGS[lang].dir);
         fs.mkdirSync(outDir, { recursive: true });
-        fs.writeFileSync(path.join(outDir, page.file), html, 'utf8');
-        console.log('✔ ' + LANGS[lang].dir + page.file);
+        fs.writeFileSync(path.join(outDir, outName), html, 'utf8');
+        console.log('✔ ' + LANGS[lang].dir + outName);
     }
 }
+
+fs.writeFileSync(LASTMOD_FILE, JSON.stringify(lastmodStore, null, 2) + '\n', 'utf8');
+
+// ---------- Sitemap ----------
+function sitemapEntry(lang, page, i) {
+    const dates = lastmodStore[LANGS[lang].dir + page.out[lang]];
+    const urlFr = pageUrl('fr', page);
+    const urlEn = pageUrl('en', page);
+    let video = '';
+    if (page.type === 'home') {
+        const v = VIDEOS[lang];
+        video = `    <video:video>
+      <video:thumbnail_loc>${SITE}/images/${v.thumb}</video:thumbnail_loc>
+      <video:title>${escapeHtml(v.title)}</video:title>
+      <video:description>${escapeHtml(v.description)}</video:description>
+      <video:content_loc>${SITE}/images/${v.file}</video:content_loc>
+    </video:video>
+`;
+    }
+    return `  <url>
+    <loc>${pageUrl(lang, page)}</loc>
+    <lastmod>${dates.lastmod}</lastmod>
+    <changefreq>${page.freq}</changefreq>
+    <priority>${page.priority[i]}</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="${urlFr}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${urlEn}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFr}"/>
+${video}  </url>
+`;
+}
+
+let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<!-- FICHIER GÉNÉRÉ par tools/build.js -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+`;
+for (const page of PAGES) {
+    sitemap += `\n  <!-- ${page.key} -->\n` + sitemapEntry('fr', page, 0) + sitemapEntry('en', page, 1);
+}
+sitemap += '\n</urlset>\n';
+fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap, 'utf8');
+console.log('✔ sitemap.xml (' + PAGES.length * 2 + ' URL)');

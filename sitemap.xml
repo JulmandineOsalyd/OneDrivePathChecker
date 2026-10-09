@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- FICHIER GÉNÉRÉ par tools/build.js -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
-  <!-- ========== ACCUEIL ========== -->
+  <!-- index -->
   <url>
     <loc>https://onedrivepathchecker.com/</loc>
     <lastmod>2026-10-09</lastmod>
@@ -35,7 +36,7 @@
     </video:video>
   </url>
 
-  <!-- ========== FAQ ========== -->
+  <!-- faq -->
   <url>
     <loc>https://onedrivepathchecker.com/FAQ.html</loc>
     <lastmod>2026-10-09</lastmod>
@@ -55,7 +56,47 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/FAQ.html"/>
   </url>
 
-  <!-- ========== CONTACT ========== -->
+  <!-- errsync -->
+  <url>
+    <loc>https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-path-too-long-error.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html"/>
+  </url>
+  <url>
+    <loc>https://onedrivepathchecker.com/en/onedrive-path-too-long-error.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-path-too-long-error.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html"/>
+  </url>
+
+  <!-- erropen -->
+  <url>
+    <loc>https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-file-wont-open.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
+  </url>
+  <url>
+    <loc>https://onedrivepathchecker.com/en/onedrive-file-wont-open.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-file-wont-open.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
+  </url>
+
+  <!-- contact -->
   <url>
     <loc>https://onedrivepathchecker.com/contact.html</loc>
     <lastmod>2026-10-09</lastmod>

@@ -1,0 +1,77 @@
+/* Polices hébergées sur le site (aucun appel à Google Fonts ni à un CDN) */
+
+/* Inter : police variable, sous-ensemble latin (français et anglais) */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(inter-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Icônes : sous-ensemble de Font Awesome 6 Free (uniquement les icônes utilisées par le site) */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url(fa-solid.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Brands';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(fa-brands.woff2) format('woff2');
+}
+
+.fas,
+.far,
+.fab {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fas {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+.far {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 400;
+}
+
+.fab {
+    font-family: 'Font Awesome 6 Brands';
+    font-weight: 400;
+}
+
+.fa-angle-right::before { content: "\f105"; }
+.fa-arrow-left::before { content: "\f060"; }
+.fa-check-circle::before { content: "\f058"; }
+.fa-check::before { content: "\f00c"; }
+.fa-chevron-down::before { content: "\f078"; }
+.fa-clock::before { content: "\f017"; }
+.fa-comment-dots::before { content: "\f4ad"; }
+.fa-envelope::before { content: "\f0e0"; }
+.fa-exclamation-triangle::before { content: "\f071"; }
+.fa-globe::before { content: "\f0ac"; }
+.fa-lightbulb::before { content: "\f0eb"; }
+.fa-linkedin::before { content: "\f08c"; }
+.fa-lock::before { content: "\f023"; }
+.fa-play::before { content: "\f04b"; }
+.fa-question-circle::before { content: "\f059"; }
+.fa-shield-alt::before { content: "\f3ed"; }
+.fa-shield-halved::before { content: "\f3ed"; }
+.fa-sync-alt::before { content: "\f2f1"; }
+.fa-user-circle::before { content: "\f2bd"; }
+.fa-windows::before { content: "\f17a"; }
+.fa-wrench::before { content: "\f0ad"; }

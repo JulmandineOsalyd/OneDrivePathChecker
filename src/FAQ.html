@@ -22,7 +22,10 @@
     <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/FAQ.html?lang=en">
     <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/FAQ.html">
 
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/OneDrivePathCheckerLogo.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="images/favicon-96.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Schema.org FAQPage (statique FR — rich snippet Google) -->
     <script type="application/ld+json">
@@ -49,12 +52,10 @@
 
     <title>FAQ chemins trop longs OneDrive | OneDrive Path Checker</title>
 
-    <!-- Google Fonts & Font Awesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Polices et icônes hébergées sur le site (sans appel à des services externes) -->
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/fa-solid.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts/fonts.css">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -75,7 +76,7 @@
                 <span>OneDrive Path Checker</span>
             </div>
 
-            <button class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navCenter" data-i18n-aria="nav_menu_label">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -123,9 +124,9 @@
     <div class="container">
         <!-- Catégorie : Comprendre le problème -->
         <div class="faq-category">
-            <h3 class="faq-category-title">
+            <h2 class="faq-category-title">
                 <i class="fas fa-question-circle"></i> <span data-i18n="faq_cat1_title">Comprendre le problème</span>
-            </h3>
+            </h2>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
@@ -160,9 +161,9 @@
 
         <!-- Catégorie : Utiliser l'outil -->
         <div class="faq-category">
-            <h3 class="faq-category-title">
+            <h2 class="faq-category-title">
                 <i class="fas fa-wrench"></i> <span data-i18n="faq_cat2_title">Utiliser l'outil</span>
-            </h3>
+            </h2>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
@@ -217,9 +218,9 @@
 
         <!-- Catégorie : Sécurité et confidentialité -->
         <div class="faq-category">
-            <h3 class="faq-category-title">
+            <h2 class="faq-category-title">
                 <i class="fas fa-shield-alt"></i> <span data-i18n="faq_cat3_title">Sécurité et confidentialité</span>
-            </h3>
+            </h2>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
@@ -254,9 +255,9 @@
 
         <!-- Catégorie : À propos du développeur -->
         <div class="faq-category">
-            <h3 class="faq-category-title">
+            <h2 class="faq-category-title">
                 <i class="fas fa-user-circle"></i> <span data-i18n="faq_cat5_title">À propos du développeur</span>
-            </h3>
+            </h2>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">

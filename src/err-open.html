@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Toutes vos questions sur l'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Julie BREDECHE">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAQ chemins trop longs OneDrive | OneDrive Path Checker">
+    <meta property="og:description" content="Toutes vos questions sur l'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.">
+    <meta property="og:url" content="https://onedrivepathchecker.com/FAQ.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+    <meta name="theme-color" content="#0078D4">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://onedrivepathchecker.com/FAQ.html">
+    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html">
+    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/FAQ.html?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/FAQ.html">
+
+    <link rel="icon" href="images/OneDrivePathCheckerLogo.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="images/favicon-96.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Schema.org FAQPage (statique FR — rich snippet Google) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "Pourquoi certains fichiers OneDrive ne s'ouvrent-ils plus ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Windows limite la longueur du chemin d'un fichier (son nom plus tous les dossiers qui le contiennent). Au-delà de 255 caractères, le fichier est synchronisé mais ne peut pas être ouvert depuis l'Explorateur. Au-delà de 400 caractères, OneDrive ne peut pas le synchroniser."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Mes données sont-elles en sécurité ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui. L'outil fonctionne entièrement en local. Aucun contenu de fichier n'est lu et aucune donnée ne quitte votre appareil."
+            }
+        }]
+    }
+    </script>
+
+    <title>FAQ chemins trop longs OneDrive | OneDrive Path Checker</title>
+
+    <!-- Polices et icônes hébergées sur le site (sans appel à des services externes) -->
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/fa-solid.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts/fonts.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Translations (must load before script.js) -->
+    <script src="translations.js"></script>
+
+    <!-- Main Script -->
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="images/OneDrivePathCheckerLogo.svg" alt="" width="32" height="32" class="logo-icon">
+                <span>OneDrive Path Checker</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navCenter" data-i18n-aria="nav_menu_label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                    <li><a href="index.html#how" data-i18n="nav_features">Comment ça marche ?</a></li>
+                    <li><a href="index.html#pricing" data-i18n="nav_pricing">Tarifs</a></li>
+                    <li><a href="FAQ.html" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-fr="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-en="download/OneDrivePathChecker-1.1.0.0-en.msi" download class="nav-cta">
+                    <span data-i18n="nav_download_short">Télécharger</span>
+                </a>
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" aria-label="Français">FR</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-label="English">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== EN-TÊTE ========== -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1 data-i18n-html="erropen_h1"></h1>
+            <p class="faq-subtitle" data-i18n="erropen_lead"></p>
+            <a href="index.html" class="faq-back-home">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="faq_back_home">Retour à l'accueil</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== ARTICLE ========== -->
+    <article class="article container-narrow">
+        <div class="article-body" data-i18n-html="erropen_body_html"></div>
+
+
+        <div class="article-cta">
+            <h2 data-i18n="art_cta_title"></h2>
+            <p data-i18n="art_cta_text"></p>
+            <div class="article-cta-btns">
+                <a class="pricing-btn pricing-btn-primary" href="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-fr="download/OneDrivePathChecker-1.1.0.0-fr.msi" data-href-en="download/OneDrivePathChecker-1.1.0.0-en.msi" download>
+                    <i class="fab fa-windows"></i>
+                    <span data-i18n="pricing_cta_trial">Essai gratuit</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="article-related" data-i18n-html="erropen_related_html"></div>
+    </article>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
