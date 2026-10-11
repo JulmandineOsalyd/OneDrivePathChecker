@@ -253,6 +253,23 @@ function fillHref(html, lang) {
     });
 }
 
+// Versionnage des ressources (anti-cache) : styles.css?v=<empreinte>. Un navigateur qui a gardé une
+// ancienne feuille de style en cache la recharge dès que son contenu change.
+function fileVersion(rel) {
+    const p = path.join(ROOT, rel);
+    return fs.existsSync(p) ? crypto.createHash('sha1').update(fs.readFileSync(p)).digest('hex').slice(0, 8) : '0';
+}
+const ASSET_VERSIONS = {
+    'styles.css': fileVersion('styles.css'),
+    'script.js': fileVersion('script.js'),
+    'translations.js': fileVersion('translations.js'),
+    'fonts/fonts.css': fileVersion('fonts/fonts.css')
+};
+function versionAssets(html) {
+    return html.replace(/(\s(?:src|href)=")(styles\.css|script\.js|translations\.js|fonts\/fonts\.css)(")/g,
+        (m, a, file, c) => a + file + '?v=' + ASSET_VERSIONS[file] + c);
+}
+
 /** Les pages anglaises sont dans /en/ : les ressources locales remontent d'un niveau. */
 function fixAssetPaths(html) {
     return html.replace(/(\s(?:src|href|poster)=")((?:images\/|download\/|fonts\/|styles\.css|script\.js|translations\.js)[^"]*")/g, '$1../$2');
@@ -545,6 +562,7 @@ for (const lang of Object.keys(LANGS)) {
         const dates = trackDates(LANGS[lang].dir + outName, html);
         html = setJsonLd(html, lang, page, t, dates);
 
+        html = versionAssets(html);
         if (lang === 'en') html = fixAssetPaths(html);
         html = html.replace(/(<html[^>]*>)/, '$1\n' + BANNER.trim());
 

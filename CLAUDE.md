@@ -38,6 +38,8 @@ OneDrivePathChecker/
 
 **Workflow :** modifier `src/*.html` et/ou `translations.js`, puis lancer `node tools/build.js` et committer les fichiers générés (GitHub Pages ne lance pas le script). Les pages EN vivent dans `/en/` ; le français est canonique à la racine (`/`).
 
+**Cache :** `build.js` ajoute `?v=<empreinte>` aux liens `styles.css`, `script.js`, `translations.js` et `fonts/fonts.css` : après une modification de ces fichiers, relancer `node tools/build.js` pour que les navigateurs rechargent la nouvelle version.
+
 **Langue :** les pages françaises contiennent un petit script (généré par `build.js`) qui envoie vers `/en/…` les visiteurs dont le navigateur n'est pas en français. Il ignore les robots, respecte le choix explicite (clic FR/EN mémorisé dans `localStorage` sous `opc-lang`) et `?lang=fr`. Les pages `/en/` ne redirigent jamais.
 
 ## Architecture
