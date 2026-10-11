@@ -4,13 +4,25 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function () {
+        try {
+            var p = localStorage.getItem('opc-lang');
+            if (p) { if (p === 'en') location.replace('/en/' + location.hash); return; }
+            if (/[?&]lang=fr/.test(location.search)) return;
+            if (/bot|crawl|spider|slurp|bing|yandex|baidu|duckduck|facebookexternalhit|lighthouse|pagespeed|headless|preview/i.test(navigator.userAgent || '')) return;
+            var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            if (l && l.indexOf('fr') !== 0) location.replace('/en/' + location.hash);
+        } catch (e) { }
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. Exécution 100 % locale.">
+    <meta name="description" content="Chemin trop long sur OneDrive ? Détectez les fichiers au-delà de 255 et 400 caractères, renommez-les et exportez un rapport PDF. Exécution 100 % locale.">
     <meta name="author" content="Julie BREDECHE">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="OneDrive Path Checker : chemins de fichiers trop longs">
-    <meta property="og:description" content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. Exécution 100 % locale.">
+    <meta property="og:title" content="Chemin trop long OneDrive : détecter et corriger">
+    <meta property="og:description" content="Chemin trop long sur OneDrive ? Détectez les fichiers au-delà de 255 et 400 caractères, renommez-les et exportez un rapport PDF. Exécution 100 % locale.">
     <meta property="og:url" content="https://onedrivepathchecker.com/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
@@ -20,8 +32,8 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="OneDrive Path Checker : chemins de fichiers trop longs">
-    <meta name="twitter:description" content="Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. Exécution 100 % locale.">
+    <meta name="twitter:title" content="Chemin trop long OneDrive : détecter et corriger">
+    <meta name="twitter:description" content="Chemin trop long sur OneDrive ? Détectez les fichiers au-delà de 255 et 400 caractères, renommez-les et exportez un rapport PDF. Exécution 100 % locale.">
     <meta name="twitter:image" content="https://onedrivepathchecker.com/images/share-fr.jpg">
     <meta name="twitter:image:alt" content="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger">
 
@@ -94,8 +106,8 @@
                 "@type": "WebPage",
                 "@id": "https://onedrivepathchecker.com/#webpage",
                 "url": "https://onedrivepathchecker.com/",
-                "name": "OneDrive Path Checker : chemins de fichiers trop longs",
-                "description": "Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. Exécution 100 % locale.",
+                "name": "Chemin trop long OneDrive : détecter et corriger",
+                "description": "Chemin trop long sur OneDrive ? Détectez les fichiers au-delà de 255 et 400 caractères, renommez-les et exportez un rapport PDF. Exécution 100 % locale.",
                 "inLanguage": "fr",
                 "isPartOf": {
                     "@id": "https://onedrivepathchecker.com/#website"
@@ -153,7 +165,7 @@
     }
     </script>
 
-    <title>OneDrive Path Checker : chemins de fichiers trop longs</title>
+    <title>Chemin trop long OneDrive : détecter et corriger</title>
 
     <!-- Polices et icônes hébergées sur le site (sans appel à des services externes) -->
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -375,6 +387,12 @@
 <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
+            <nav class="footer-guides" aria-label="Guides">
+                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
+                <a href="limite-longueur-chemin-onedrive.html" data-i18n="footer_guide_limit">Limite de longueur de chemin OneDrive</a>
+                <a href="erreur-chemin-acces-trop-long-onedrive.html" data-i18n="footer_guide_sync">Erreur « chemin d'accès trop long »</a>
+                <a href="fichier-onedrive-impossible-a-ouvrir.html" data-i18n="footer_guide_open">Fichier impossible à ouvrir</a>
+            </nav>
             <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
         </div>
     </footer>

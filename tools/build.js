@@ -37,6 +37,11 @@ const PAGES = [
     { key: 'index', type: 'home', src: 'index.html', out: same('index.html'), urlPath: same(''), priority: ['1.0', '0.9'], freq: 'monthly' },
     { key: 'faq', type: 'faq', src: 'FAQ.html', out: same('FAQ.html'), urlPath: same('FAQ.html'), priority: ['0.8', '0.7'], freq: 'monthly' },
     {
+        key: 'limits', type: 'article', prefix: 'limits', src: 'err-limit.html', priority: ['0.8', '0.7'], freq: 'monthly',
+        out: { fr: 'limite-longueur-chemin-onedrive.html', en: 'onedrive-path-length-limit.html' },
+        urlPath: { fr: 'limite-longueur-chemin-onedrive.html', en: 'onedrive-path-length-limit.html' }
+    },
+    {
         key: 'errsync', type: 'article', prefix: 'errsync', src: 'err-sync.html', priority: ['0.7', '0.6'], freq: 'monthly',
         out: { fr: 'erreur-chemin-acces-trop-long-onedrive.html', en: 'onedrive-path-too-long-error.html' },
         urlPath: { fr: 'erreur-chemin-acces-trop-long-onedrive.html', en: 'onedrive-path-too-long-error.html' }
@@ -57,8 +62,8 @@ const LANGS = {
 const SEO = {
     fr: {
         index: {
-            title: 'OneDrive Path Checker : chemins de fichiers trop longs',
-            description: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive. Score de conformité, renommage guidé, rapport PDF. Exécution 100 % locale.'
+            title: 'Chemin trop long OneDrive : détecter et corriger',
+            description: 'Chemin trop long sur OneDrive ? Détectez les fichiers au-delà de 255 et 400 caractères, renommez-les et exportez un rapport PDF. Exécution 100 % locale.'
         },
         faq: {
             title: 'FAQ chemins trop longs OneDrive | OneDrive Path Checker',
@@ -76,28 +81,36 @@ const SEO = {
             title: 'Contact – OneDrive Path Checker | Support & Questions',
             description: 'Contactez l\'équipe OneDrive Path Checker pour toute question sur l\'outil de détection de chemins trop longs. Support technique et demandes commerciales.'
         },
+        limits: {
+            title: 'Limite de longueur de chemin OneDrive : 255 et 400 caractères',
+            description: 'Longueur maximale d\'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.'
+        },
         schemaDescription: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.'
     },
     en: {
         index: {
-            title: 'OneDrive Path Checker: Long File Path Detector',
-            description: 'Spot and fix files whose path is too long for OneDrive. Compliance score, guided renaming, PDF report. 100% local execution.'
+            title: 'OneDrive Path Too Long? Path Length Checker & Fixer',
+            description: 'Fix the OneDrive path too long error. Scan your OneDrive for paths over the 255 and 400 character limits, rename files and share a PDF report. 100% local.'
         },
         faq: {
-            title: 'FAQ Long File Paths in OneDrive | OneDrive Path Checker',
-            description: 'All your questions about the long file path detection tool for OneDrive: how it works, security, exports, licensing, and support.'
+            title: 'FAQ OneDrive Path Too Long | OneDrive Path Checker',
+            description: 'All your questions about OneDrive path too long errors and the path length limit: how the checker works, security, exports, licensing, and support.'
         },
         errsync: {
-            title: 'OneDrive "file path is too long" sync error: how to fix',
-            description: 'OneDrive says "We can\'t sync this item because the file path is too long"? Understand the 400-character limit and fix the error step by step.'
+            title: 'OneDrive Path Too Long Error: How to Fix It',
+            description: 'OneDrive says "We can\'t sync this item because the file path is too long"? Understand the 400-character path limit and fix the error step by step.'
         },
         erropen: {
-            title: 'OneDrive file won\'t open: path too long (255 limit)',
+            title: 'OneDrive File Won\'t Open: Path Too Long (255 Limit)',
             description: 'A OneDrive file syncs but won\'t open from File Explorer? The cause is often a path over 255 characters. Find out why and how to fix it.'
         },
         contact: {
             title: 'Contact – OneDrive Path Checker | Support & Questions',
             description: 'Contact the OneDrive Path Checker team for any question about the long file path detection tool. Technical support and sales inquiries.'
+        },
+        limits: {
+            title: 'OneDrive Path Length Limit: 255 & 400 Characters',
+            description: 'What is the OneDrive max path length? The 400-character OneDrive limit and the 255-character Windows limit explained, and how to check your files.'
         },
         schemaDescription: 'Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.'
     }
@@ -260,6 +273,27 @@ function setHead(html, lang, page, t) {
         links.trim());
 
     return html;
+}
+
+/**
+ * Détection automatique de la langue (pages françaises uniquement) :
+ * un visiteur dont le navigateur n'est pas en français est envoyé vers la version anglaise.
+ * Garde-fous : jamais pour les robots (indexation du français préservée), le choix explicite du
+ * visiteur (clic sur FR/EN, mémorisé) est toujours respecté, et ?lang=fr force le français.
+ */
+function langRedirectScript(enPath) {
+    return `<script>
+    (function () {
+        try {
+            var p = localStorage.getItem('opc-lang');
+            if (p) { if (p === 'en') location.replace('${enPath}' + location.hash); return; }
+            if (/[?&]lang=fr/.test(location.search)) return;
+            if (/bot|crawl|spider|slurp|bing|yandex|baidu|duckduck|facebookexternalhit|lighthouse|pagespeed|headless|preview/i.test(navigator.userAgent || '')) return;
+            var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            if (l && l.indexOf('fr') !== 0) location.replace('${enPath}' + location.hash);
+        } catch (e) { }
+    })();
+    </script>`;
 }
 
 function ldScript(obj) {
@@ -448,6 +482,10 @@ for (const lang of Object.keys(LANGS)) {
         html = fillHref(html, lang);
         html = setHead(html, lang, page, t);
         html = setSwitcher(html, lang, page);
+        if (lang === 'fr') {
+            const enPath = LANGS.en.urlDir + page.urlPath.en;
+            html = html.replace(/(<meta charset="UTF-8">)/, '$1\n    ' + langRedirectScript(enPath));
+        }
 
         // La date de modification dépend du contenu (hors données structurées, qui contiennent les dates)
         const dates = trackDates(LANGS[lang].dir + outName, html);

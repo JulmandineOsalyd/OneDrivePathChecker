@@ -3,6 +3,18 @@
 <!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function () {
+        try {
+            var p = localStorage.getItem('opc-lang');
+            if (p) { if (p === 'en') location.replace('/en/onedrive-file-wont-open.html' + location.hash); return; }
+            if (/[?&]lang=fr/.test(location.search)) return;
+            if (/bot|crawl|spider|slurp|bing|yandex|baidu|duckduck|facebookexternalhit|lighthouse|pagespeed|headless|preview/i.test(navigator.userAgent || '')) return;
+            var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            if (l && l.indexOf('fr') !== 0) location.replace('/en/onedrive-file-wont-open.html' + location.hash);
+        } catch (e) { }
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Un fichier OneDrive se synchronise mais ne s'ouvre pas depuis l'Explorateur Windows ? La cause est souvent un chemin de plus de 255 caractères. Solutions.">
     <meta name="robots" content="index, follow">
@@ -115,7 +127,7 @@
                 "url": "https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html",
                 "inLanguage": "fr",
                 "datePublished": "2026-10-09",
-                "dateModified": "2026-10-09",
+                "dateModified": "2026-10-11",
                 "image": "https://onedrivepathchecker.com/images/Screenshot_Home_FR.png",
                 "mainEntityOfPage": {
                     "@id": "https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html#webpage"
@@ -234,12 +246,18 @@
             </div>
         </div>
 
-        <div class="article-related" data-i18n-html="erropen_related_html"><h2>À lire aussi</h2><ul><li><a href="erreur-chemin-acces-trop-long-onedrive.html">Erreur OneDrive « le chemin d'accès est trop long » : comprendre et corriger</a></li></ul></div>
+        <div class="article-related" data-i18n-html="erropen_related_html"><h2>À lire aussi</h2><ul><li><a href="erreur-chemin-acces-trop-long-onedrive.html">Erreur OneDrive « le chemin d'accès est trop long » : comprendre et corriger</a></li><li><a href="limite-longueur-chemin-onedrive.html">Limite de longueur de chemin OneDrive : 255 et 400 caractères</a></li></ul></div>
     </article>
 
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
+            <nav class="footer-guides" aria-label="Guides">
+                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
+                <a href="limite-longueur-chemin-onedrive.html" data-i18n="footer_guide_limit">Limite de longueur de chemin OneDrive</a>
+                <a href="erreur-chemin-acces-trop-long-onedrive.html" data-i18n="footer_guide_sync">Erreur « chemin d'accès trop long »</a>
+                <a href="fichier-onedrive-impossible-a-ouvrir.html" data-i18n="footer_guide_open">Fichier impossible à ouvrir</a>
+            </nav>
             <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
         </div>
     </footer>

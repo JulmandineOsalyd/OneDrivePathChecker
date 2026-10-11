@@ -3,6 +3,18 @@
 <!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function () {
+        try {
+            var p = localStorage.getItem('opc-lang');
+            if (p) { if (p === 'en') location.replace('/en/FAQ.html' + location.hash); return; }
+            if (/[?&]lang=fr/.test(location.search)) return;
+            if (/bot|crawl|spider|slurp|bing|yandex|baidu|duckduck|facebookexternalhit|lighthouse|pagespeed|headless|preview/i.test(navigator.userAgent || '')) return;
+            var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            if (l && l.indexOf('fr') !== 0) location.replace('/en/FAQ.html' + location.hash);
+        } catch (e) { }
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Toutes vos questions sur l'outil de détection de chemins de fichiers trop longs pour OneDrive : fonctionnement, sécurité, exports, licence.">
     <meta name="robots" content="index, follow">
@@ -202,6 +214,14 @@
                             "@type": "Answer",
                             "text": "Cet outil a été développé par Julie BREDECHE , consultante Microsoft 365 depuis plus de 10 ans. Elle l'a conçu pour répondre à un besoin concret rencontré en mission : identifier rapidement les fichiers dont le chemin est trop long, avant qu'ils ne bloquent les équipes. osalydconsulting.com linkedin.com/in/juliebredeche"
                         }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quelle est la longueur maximale d'un chemin OneDrive ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "OneDrive et SharePoint limitent le chemin complet d'un fichier, nom compris, à 400 caractères . Windows ajoute sa propre limite de 255 caractères (« MAX_PATH » : 260 au total) pour ouvrir les fichiers depuis l'Explorateur. En savoir plus : limite de longueur de chemin OneDrive : 255 et 400 caractères ."
+                        }
                     }
                 ]
             },
@@ -329,6 +349,16 @@
                     <div class="faq-answer-inner" data-i18n-html="faq_full_a3_html"><p>Windows n'affiche pas toujours la longueur des chemins. <br>Sans outil, il faut copier chaque chemin dans un éditeur de texte pour en compter les caractères : une tâche irréaliste sur des milliers de fichiers.</p><p>OneDrive Path Checker réalise ce diagnostic en quelques secondes, avant que les erreurs n'apparaissent.</p></div>
                 </div>
             </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q16">Quelle est la longueur maximale d'un chemin OneDrive ?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a16_html"><p>OneDrive et SharePoint limitent le chemin complet d'un fichier, nom compris, à <strong>400 caractères</strong>. Windows ajoute sa propre limite de <strong>255 caractères</strong> (« MAX_PATH » : 260 au total) pour ouvrir les fichiers depuis l'Explorateur.</p><p>En savoir plus : <a href="limite-longueur-chemin-onedrive.html">limite de longueur de chemin OneDrive : 255 et 400 caractères</a>.</p></div>
+                </div>
+            </div>
         </div>
 
         <!-- Catégorie : Utiliser l'outil -->
@@ -447,6 +477,12 @@
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
+            <nav class="footer-guides" aria-label="Guides">
+                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
+                <a href="limite-longueur-chemin-onedrive.html" data-i18n="footer_guide_limit">Limite de longueur de chemin OneDrive</a>
+                <a href="erreur-chemin-acces-trop-long-onedrive.html" data-i18n="footer_guide_sync">Erreur « chemin d'accès trop long »</a>
+                <a href="fichier-onedrive-impossible-a-ouvrir.html" data-i18n="footer_guide_open">Fichier impossible à ouvrir</a>
+            </nav>
             <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
         </div>
     </footer>

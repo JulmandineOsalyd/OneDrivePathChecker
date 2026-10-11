@@ -38,6 +38,8 @@ OneDrivePathChecker/
 
 **Workflow :** modifier `src/*.html` et/ou `translations.js`, puis lancer `node tools/build.js` et committer les fichiers générés (GitHub Pages ne lance pas le script). Les pages EN vivent dans `/en/` ; le français est canonique à la racine (`/`).
 
+**Langue :** les pages françaises contiennent un petit script (généré par `build.js`) qui envoie vers `/en/…` les visiteurs dont le navigateur n'est pas en français. Il ignore les robots, respecte le choix explicite (clic FR/EN mémorisé dans `localStorage` sous `opc-lang`) et `?lang=fr`. Les pages `/en/` ne redirigent jamais.
+
 ## Architecture
 
 ### HTML Pages
@@ -96,7 +98,7 @@ The desktop tool enforces two Microsoft limits:
 
 The website has two primary conversion goals:
 1. **Download** — Free 24-hour trial (`.msi` installer, FR/EN)
-2. **Purchase** — €39.99 Standard license (single workstation) or enterprise quote (the « Acheter » buttons have no link yet)
+2. **Purchase** — Standard license (single workstation): **39,99 € on the French pages, $49 on the English pages** (`pricing_price_value` in `translations.js`; the structured data follows), or enterprise quote (the « Acheter » buttons have no link yet)
 
 ---
 

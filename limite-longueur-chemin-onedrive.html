@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
+<head>
+    <meta charset="UTF-8">
+    <script>
+    (function () {
+        try {
+            var p = localStorage.getItem('opc-lang');
+            if (p) { if (p === 'en') location.replace('/en/onedrive-path-length-limit.html' + location.hash); return; }
+            if (/[?&]lang=fr/.test(location.search)) return;
+            if (/bot|crawl|spider|slurp|bing|yandex|baidu|duckduck|facebookexternalhit|lighthouse|pagespeed|headless|preview/i.test(navigator.userAgent || '')) return;
+            var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            if (l && l.indexOf('fr') !== 0) location.replace('/en/onedrive-path-length-limit.html' + location.hash);
+        } catch (e) { }
+    })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Longueur maximale d'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Julie BREDECHE">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Limite de longueur de chemin OneDrive : 255 et 400 caractères">
+    <meta property="og:description" content="Longueur maximale d'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.">
+    <meta property="og:url" content="https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="OneDrive Path Checker">
+    <meta property="og:image" content="https://onedrivepathchecker.com/images/share-fr.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Limite de longueur de chemin OneDrive : 255 et 400 caractères">
+    <meta name="twitter:description" content="Longueur maximale d'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.">
+    <meta name="twitter:image" content="https://onedrivepathchecker.com/images/share-fr.jpg">
+    <meta name="twitter:image:alt" content="Aperçu de l'application OneDrive Path Checker : score de conformité et liste des fichiers à corriger">
+
+    <meta name="theme-color" content="#0078D4">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html">
+    <link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html">
+    <link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-path-length-limit.html">
+    <link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html">
+
+    <link rel="icon" href="images/OneDrivePathCheckerLogo.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="images/favicon-96.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Schema.org FAQPage (statique FR — rich snippet Google) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://onedrivepathchecker.com/#organization",
+                "name": "Osalyd Consulting",
+                "url": "https://www.osalydconsulting.com/",
+                "logo": "https://onedrivepathchecker.com/images/OneDrivePathCheckerLogo.svg",
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "customer support",
+                        "email": "support-pathchecker@osalydconsulting.com",
+                        "availableLanguage": [
+                            "fr",
+                            "en"
+                        ]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "sales",
+                        "email": "julie.bredeche@osalydconsulting.com",
+                        "availableLanguage": [
+                            "fr",
+                            "en"
+                        ]
+                    }
+                ],
+                "founder": {
+                    "@type": "Person",
+                    "name": "Julie BREDECHE",
+                    "sameAs": [
+                        "https://www.linkedin.com/in/juliebredeche/"
+                    ]
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://onedrivepathchecker.com/#website",
+                "name": "OneDrive Path Checker",
+                "url": "https://onedrivepathchecker.com/",
+                "inLanguage": [
+                    "fr",
+                    "en"
+                ],
+                "publisher": {
+                    "@id": "https://onedrivepathchecker.com/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html#webpage",
+                "url": "https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html",
+                "name": "Limite de longueur de chemin OneDrive : 255 et 400 caractères",
+                "description": "Longueur maximale d'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.",
+                "inLanguage": "fr",
+                "isPartOf": {
+                    "@id": "https://onedrivepathchecker.com/#website"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": "https://onedrivepathchecker.com/images/share-fr.jpg",
+                    "width": 1200,
+                    "height": 630
+                }
+            },
+            {
+                "@type": "TechArticle",
+                "@id": "https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html#article",
+                "headline": "Limite de longueur de chemin OneDrive : 255 et 400 caractères",
+                "description": "Longueur maximale d'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.",
+                "url": "https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html",
+                "inLanguage": "fr",
+                "datePublished": "2026-10-11",
+                "dateModified": "2026-10-11",
+                "image": "https://onedrivepathchecker.com/images/Screenshot_Home_FR.png",
+                "mainEntityOfPage": {
+                    "@id": "https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html#webpage"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Julie BREDECHE",
+                    "sameAs": [
+                        "https://www.linkedin.com/in/juliebredeche/"
+                    ]
+                },
+                "publisher": {
+                    "@id": "https://onedrivepathchecker.com/#organization"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Accueil",
+                        "item": "https://onedrivepathchecker.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Limite de longueur de chemin OneDrive : 255 et 400 caractères",
+                        "item": "https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <title>Limite de longueur de chemin OneDrive : 255 et 400 caractères</title>
+
+    <!-- Polices et icônes hébergées sur le site (sans appel à des services externes) -->
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/fa-solid.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts/fonts.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Translations (must load before script.js) -->
+    <script src="translations.js"></script>
+
+    <!-- Main Script -->
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="images/OneDrivePathCheckerLogo.svg" alt="" width="32" height="32" class="logo-icon">
+                <span>OneDrive Path Checker</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navCenter">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-center" id="navCenter">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                    <li><a href="index.html#how" data-i18n="nav_features">Comment ça marche ?</a></li>
+                    <li><a href="index.html#pricing" data-i18n="nav_pricing">Tarifs</a></li>
+                    <li><a href="FAQ.html" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="download/OneDrivePathChecker-1.1.0.0-fr.msi" download class="nav-cta">
+                    <span data-i18n="nav_download_short">Essai gratuit</span>
+                </a>
+                <div class="lang-switcher">
+                    <a class="lang-btn" data-lang="fr" href="/limite-longueur-chemin-onedrive.html" hreflang="fr" lang="fr" aria-label="Français">FR</a>
+                    <a class="lang-btn" data-lang="en" href="/en/onedrive-path-length-limit.html" hreflang="en" lang="en" aria-label="English">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== EN-TÊTE ========== -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1 data-i18n-html="limits_h1">Limite de longueur de chemin OneDrive : 255 et 400 caractères</h1>
+            <p class="faq-subtitle" data-i18n="limits_lead">Quelle est la longueur maximale d'un chemin OneDrive ? Deux limites différentes s'appliquent. Voici comment elles fonctionnent et que faire quand un fichier les dépasse.</p>
+            <a href="index.html" class="faq-back-home">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="faq_back_home">Retour à l'accueil</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== ARTICLE ========== -->
+    <article class="article container-narrow">
+        <div class="article-body" data-i18n-html="limits_body_html"><h2>La réponse courte</h2><p>Deux limites s'appliquent à un fichier OneDrive. Elles n'ont pas la même origine ni les mêmes conséquences :</p><div class="faq-table-wrapper"><table class="faq-table"><thead><tr><th>Limite</th><th>Origine</th><th>Conséquence</th></tr></thead><tbody><tr><td><strong>400 caractères</strong></td><td>OneDrive, OneDrive pour le travail ou l'école et SharePoint dans Microsoft 365 : le chemin complet, nom du fichier compris</td><td>🔴 Le fichier ne peut pas être synchronisé (erreur « le chemin d'accès est trop long »).</td></tr><tr><td><strong>255 caractères</strong></td><td>Windows (limite « MAX_PATH » : 260 caractères au total, lettre du lecteur et caractère de fin compris)</td><td>⚠️ Le fichier est synchronisé, mais Windows et certaines applications ne peuvent pas l'ouvrir depuis l'Explorateur.</td></tr></tbody></table></div><h2>Pourquoi on lit 255, 256 ou 260</h2><p>Le chiffre varie selon ce que l'on compte : la lettre du lecteur (<code>C:\</code>), le caractère de fin que Windows ajoute, ou seulement le nom du fichier. La limite officielle de Windows est de 260 caractères, caractère de fin inclus. OneDrive Path Checker signale en avertissement les chemins de plus de 255 caractères et en critique ceux de plus de 400.</p><h2>Ce qui compte dans la longueur</h2><ul><li><strong>Pour la limite de 400 caractères :</strong> le chemin complet du dossier et le nom du fichier, une fois décodés (un espace compte pour un caractère).</li><li><strong>Pour la limite de Windows :</strong> le chemin local complet depuis la racine du disque, y compris le nom de votre session Windows et celui du dossier OneDrive, par exemple <code>C:\Users\julie\OneDrive - Mon Entreprise\Projets\Document.docx</code>. Le même fichier peut donc s'ouvrir sur un poste et pas sur un autre.</li></ul><h2>Peut-on relever la limite ?</h2><p>Pas la limite de 400 caractères de OneDrive et de SharePoint. En revanche, la limite de Windows (260 caractères au total) peut être levée pour les applications compatibles à partir de Windows 10 (version 1607) : il faut activer la prise en charge des chemins longs dans le Registre (valeur <code>LongPathsEnabled</code>) ou par la stratégie de groupe « Enable Win32 long paths », avec des droits d'administrateur. Toutes les applications ne la gèrent pas, et cela ne change rien à la limite de 400 caractères de OneDrive.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>Le plus simple reste de raccourcir les chemins : remontez les dossiers près de la racine et supprimez les répétitions dans les noms.</span></div><h2>Vérifier vos fichiers</h2><p>Chercher ces chemins à la main dans des milliers de dossiers est irréaliste. OneDrive Path Checker analyse un dossier OneDrive en quelques secondes et liste les fichiers de plus de 255 caractères (avertissements) et de plus de 400 caractères (critiques), avec le nombre de caractères en trop. Vous les renommez depuis l'application, puis vous exportez un rapport PDF ou CSV.</p></div>
+
+        <div class="article-cta">
+            <h2 data-i18n="art_cta_title">Repérez tous les fichiers concernés en quelques secondes</h2>
+            <p data-i18n="art_cta_text">Analysez votre dossier OneDrive, corrigez les fichiers depuis l'application et partagez un rapport PDF ou CSV avec vos équipes.</p>
+            <div class="article-cta-btns">
+                <a class="pricing-btn pricing-btn-primary" href="download/OneDrivePathChecker-1.1.0.0-fr.msi" download>
+                    <i class="fab fa-windows"></i>
+                    <span data-i18n="pricing_cta_trial">Essai gratuit</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="article-related" data-i18n-html="limits_related_html"><h2>À lire aussi</h2><ul><li><a href="erreur-chemin-acces-trop-long-onedrive.html">Erreur OneDrive « le chemin d'accès est trop long » : comprendre et corriger</a></li><li><a href="fichier-onedrive-impossible-a-ouvrir.html">Fichier OneDrive impossible à ouvrir : un chemin de plus de 255 caractères</a></li></ul></div>
+    </article>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <nav class="footer-guides" aria-label="Guides">
+                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
+                <a href="limite-longueur-chemin-onedrive.html" data-i18n="footer_guide_limit">Limite de longueur de chemin OneDrive</a>
+                <a href="erreur-chemin-acces-trop-long-onedrive.html" data-i18n="footer_guide_sync">Erreur « chemin d'accès trop long »</a>
+                <a href="fichier-onedrive-impossible-a-ouvrir.html" data-i18n="footer_guide_open">Fichier impossible à ouvrir</a>
+            </nav>
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

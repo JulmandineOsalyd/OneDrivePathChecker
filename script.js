@@ -149,6 +149,13 @@ const Language = (() => {
         const lang = detect();
         window._activeLang = lang;
 
+        // Choix explicite de langue (clic sur FR / EN) : mémorisé, la détection automatique ne s'applique plus
+        document.querySelectorAll('.lang-btn[data-lang]').forEach(link => {
+            link.addEventListener('click', () => {
+                try { localStorage.setItem('opc-lang', link.getAttribute('data-lang')); } catch (e) { /* stockage indisponible */ }
+            });
+        });
+
         // Anciens liens partagés (?lang=en / ?lang=fr) : renvoyer vers la bonne page
         const params = new URLSearchParams(window.location.search);
         const urlLang = params.get('lang');
