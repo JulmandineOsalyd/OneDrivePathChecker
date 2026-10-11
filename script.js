@@ -65,14 +65,27 @@ const Animations = (() => {
 
 // ========== MODAL MODULE ==========
 const Modal = (() => {
+    // La vidéo n'est pas dans le HTML de l'accueil : elle est créée au clic puis retirée à la fermeture.
+    // (La page de lecture dédiée, « Démonstration vidéo », porte la vidéo pour l'indexation.)
     const openGifModal = () => {
         const modal = document.getElementById('gifModal');
-        const video = document.getElementById('demoVideo');
-        
-        if (!modal || !video) return;
-        
+        const holder = document.getElementById('demoVideoHolder');
+        if (!modal || !holder) return;
+
+        let video = document.getElementById('demoVideo');
+        if (!video) {
+            video = document.createElement('video');
+            video.id = 'demoVideo';
+            video.src = holder.getAttribute('data-video') || '';
+            video.controls = true;
+            video.loop = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.style.cssText = 'width:100%; height:100%; object-fit:contain; display:block;';
+            holder.appendChild(video);
+        }
+
         modal.style.display = 'flex';
-        video.style.display = 'block';
         video.currentTime = 0;
         video.play().catch(() => {});
     };
@@ -80,12 +93,13 @@ const Modal = (() => {
     const closeGifModal = () => {
         const modal = document.getElementById('gifModal');
         const video = document.getElementById('demoVideo');
-        
-        if (!modal || !video) return;
-        
+        if (!modal) return;
+
         modal.style.display = 'none';
-        video.pause();
-        video.style.display = 'none';
+        if (video) {
+            video.pause();
+            video.remove();
+        }
     };
 
     // Expose functions to window for onclick handlers

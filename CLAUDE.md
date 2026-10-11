@@ -79,7 +79,7 @@ Organized as **IIFE modules**, each with an `init()` method, all called from a s
 |---|---|
 | `Navigation` | Hamburger menu toggle; closes on link click |
 | `Animations` | `IntersectionObserver` scroll-in animations (`fade-in-up` class) |
-| `Modal` | Video demo modal (open/close, plays `DemoPathChecker.mp4`) |
+| `Modal` | Fenêtre vidéo de l'accueil : la `<video>` est **créée au clic** (jamais dans le HTML de l'accueil). La vidéo indexable vit sur la page de lecture « Démonstration vidéo » (`src/demo.html`, avec `VideoObject` et entrée `<video:video>` du sitemap) |
 | `FAQ` | Accordion expand/collapse with smooth `max-height` animation |
 | `CTAHandlers` | CTA « Demandez un devis » (mailto). Les boutons « Essai gratuit » sont de simples liens vers le `.msi` ; « Acheter » n'a pas encore de lien |
 

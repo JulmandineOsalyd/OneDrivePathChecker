@@ -133,6 +133,13 @@ window.TRANSLATIONS = {
         footer_guide_sync: `Erreur « chemin d'accès trop long »`,
         footer_guide_open: `Fichier impossible à ouvrir`,
 
+        // Page de lecture vidéo
+        demo_h1: `Démonstration vidéo : repérer les chemins trop longs sur OneDrive`,
+        demo_lead: `Voyez comment OneDrive Path Checker repère les fichiers dont le chemin est trop long.`,
+        demo_body_html: `<h2>À propos de cette démonstration</h2><p>Cette courte vidéo montre comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), aide à les corriger et exporte un rapport PDF ou CSV.</p><p>L'analyse est entièrement locale : aucun contenu de fichier n'est lu et aucune donnée ne quitte votre appareil.</p>`,
+        demo_related_html: `<h2>À lire aussi</h2><ul><li><a href="limite-longueur-chemin-onedrive.html">Limite de longueur de chemin OneDrive : 255 et 400 caractères</a></li><li><a href="erreur-chemin-acces-trop-long-onedrive.html">Erreur OneDrive « le chemin d'accès est trop long » : comprendre et corriger</a></li></ul>`,
+        footer_guide_demo: `Démonstration vidéo`,
+
         // Contact page
         contact_h1: 'Nous contacter',
         contact_subtitle_html: 'Une question ou un commentaire ? <br>Nous sommes là pour vous aider.',
@@ -281,6 +288,13 @@ window.TRANSLATIONS = {
         footer_guide_limit: `OneDrive path length limit`,
         footer_guide_sync: `"File path is too long" error`,
         footer_guide_open: `File won't open`,
+
+        // Video watch page
+        demo_h1: `Video demo: spot OneDrive paths that are too long`,
+        demo_lead: `See how OneDrive Path Checker finds the files whose path is too long.`,
+        demo_body_html: `<h2>About this demo</h2><p>This short video shows how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.</p><p>The scan is fully local: no file contents are read and no data leaves your device.</p>`,
+        demo_related_html: `<h2>Read also</h2><ul><li><a href="onedrive-path-length-limit.html">OneDrive path length limit: 255 and 400 characters explained</a></li><li><a href="onedrive-path-too-long-error.html">OneDrive error "the file path is too long": understand and fix</a></li></ul>`,
+        footer_guide_demo: `Video demo`,
 
         // Contact page
         contact_h1: 'Contact us',

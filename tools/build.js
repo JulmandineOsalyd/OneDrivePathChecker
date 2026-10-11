@@ -37,6 +37,11 @@ const PAGES = [
     { key: 'index', type: 'home', src: 'index.html', out: same('index.html'), urlPath: same(''), priority: ['1.0', '0.9'], freq: 'monthly' },
     { key: 'faq', type: 'faq', src: 'FAQ.html', out: same('FAQ.html'), urlPath: same('FAQ.html'), priority: ['0.8', '0.7'], freq: 'monthly' },
     {
+        key: 'demo', type: 'video', prefix: 'demo', src: 'demo.html', priority: ['0.7', '0.6'], freq: 'monthly',
+        out: { fr: 'demonstration-onedrive-path-checker.html', en: 'onedrive-path-checker-demo.html' },
+        urlPath: { fr: 'demonstration-onedrive-path-checker.html', en: 'onedrive-path-checker-demo.html' }
+    },
+    {
         key: 'limits', type: 'article', prefix: 'limits', src: 'err-limit.html', priority: ['0.8', '0.7'], freq: 'monthly',
         out: { fr: 'limite-longueur-chemin-onedrive.html', en: 'onedrive-path-length-limit.html' },
         urlPath: { fr: 'limite-longueur-chemin-onedrive.html', en: 'onedrive-path-length-limit.html' }
@@ -85,6 +90,10 @@ const SEO = {
             title: 'Limite de longueur de chemin OneDrive : 255 et 400 caractères',
             description: 'Longueur maximale d\'un chemin OneDrive : la limite de 400 caractères de OneDrive et SharePoint et celle de 255 caractères de Windows, expliquées.'
         },
+        demo: {
+            title: 'Démonstration vidéo : chemins trop longs OneDrive',
+            description: 'Vidéo : voyez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères).'
+        },
         schemaDescription: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.'
     },
     en: {
@@ -112,6 +121,10 @@ const SEO = {
             title: 'OneDrive Path Length Limit: 255 & 400 Characters',
             description: 'What is the OneDrive max path length? The 400-character OneDrive limit and the 255-character Windows limit explained, and how to check your files.'
         },
+        demo: {
+            title: 'Video Demo: Find OneDrive Paths That Are Too Long',
+            description: 'Video: see how OneDrive Path Checker spots files whose path exceeds the OneDrive limits (255 and 400 characters) and exports a report.'
+        },
         schemaDescription: 'Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.'
     }
 };
@@ -120,13 +133,15 @@ const SEO = {
 const VIDEOS = {
     fr: {
         thumb: 'Screenshot_Home_FR.png', file: 'DemoPathChecker_FR.mp4',
-        title: 'Démonstration OneDrive Path Checker – Détecteur de chemins trop longs pour OneDrive',
-        description: 'Découvrez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), les corrige et exporte un rapport PDF ou CSV.'
+        title: 'Démonstration OneDrive Path Checker : détecter les chemins trop longs sur OneDrive',
+        description: 'Voyez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), les corrige et exporte un rapport PDF ou CSV.',
+        duration: 23, isoDuration: 'PT23S', uploadDate: '2026-10-08', width: 1920, height: 1080
     },
     en: {
         thumb: 'Screenshot_Home_EN.png', file: 'DemoPathChecker_EN.mp4',
-        title: 'OneDrive Path Checker Demo – Long Path Detector for OneDrive',
-        description: 'See how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.'
+        title: 'OneDrive Path Checker demo: find OneDrive paths that are too long',
+        description: 'See how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.',
+        duration: 23, isoDuration: 'PT23S', uploadDate: '2026-10-08', width: 1920, height: 1080
     }
 };
 
@@ -213,6 +228,21 @@ function fillSrc(html, lang) {
     });
 }
 
+/** data-poster-fr / data-poster-en -> poster de la langue courante. */
+function fillPoster(html, lang) {
+    return html.replace(/<video\b[^>]*?\sdata-poster-fr="[^"]*"[^>]*>/g, tagStr => {
+        const fr = tagStr.match(/\sdata-poster-fr="([^"]*)"/)[1];
+        const en = (tagStr.match(/\sdata-poster-en="([^"]*)"/) || [])[1] || fr;
+        const s = tagStr.replace(/\sdata-poster-(fr|en)="[^"]*"/g, '');
+        return s.replace(/\sposter="[^"]*"/, ' poster="' + (lang === 'fr' ? fr : en) + '"');
+    });
+}
+
+/** data-video-fr / data-video-en -> data-video (chemin absolu de la vidéo à injecter au clic). */
+function fillVideoData(html, lang) {
+    return html.replace(/\sdata-video-fr="([^"]*)"\s+data-video-en="([^"]*)"/g, (m, fr, en) => ' data-video="' + (lang === 'fr' ? fr : en) + '"');
+}
+
 /** data-href-fr / data-href-en -> href de la langue courante. */
 function fillHref(html, lang) {
     return html.replace(/<a\b[^>]*?\sdata-href-fr="[^"]*"[^>]*>/g, tagStr => {
@@ -225,7 +255,7 @@ function fillHref(html, lang) {
 
 /** Les pages anglaises sont dans /en/ : les ressources locales remontent d'un niveau. */
 function fixAssetPaths(html) {
-    return html.replace(/(\s(?:src|href)=")((?:images\/|download\/|fonts\/|styles\.css|script\.js|translations\.js)[^"]*")/g, '$1../$2');
+    return html.replace(/(\s(?:src|href|poster)=")((?:images\/|download\/|fonts\/|styles\.css|script\.js|translations\.js)[^"]*")/g, '$1../$2');
 }
 
 function pageUrl(lang, page) {
@@ -341,7 +371,7 @@ function setJsonLd(html, lang, page, t, dates) {
         publisher: { '@id': SITE + '/#organization' }
     };
 
-    const pageTypes = { contact: 'ContactPage', faq: 'FAQPage', article: 'WebPage', home: 'WebPage' };
+    const pageTypes = { contact: 'ContactPage', faq: 'FAQPage', article: 'WebPage', video: 'WebPage', home: 'WebPage' };
     const webPage = {
         '@type': pageTypes[page.type],
         '@id': own + '#webpage',
@@ -421,6 +451,28 @@ function setJsonLd(html, lang, page, t, dates) {
         });
     }
 
+    if (page.type === 'video') {
+        const v = VIDEOS[lang];
+        const videoObj = {
+            '@type': 'VideoObject',
+            '@id': own + '#video',
+            name: v.title,
+            description: v.description,
+            thumbnailUrl: [`${SITE}/images/${v.thumb}`],
+            uploadDate: v.uploadDate,
+            duration: v.isoDuration,
+            contentUrl: `${SITE}/images/${v.file}`,
+            width: v.width,
+            height: v.height,
+            inLanguage: lang,
+            isFamilyFriendly: true,
+            publisher: { '@id': SITE + '/#organization' }
+        };
+        webPage.mainEntity = { '@id': own + '#video' };
+        webPage.video = { '@id': own + '#video' };
+        graph.push(videoObj);
+    }
+
     if (page.type !== 'home') {
         const name = page.type === 'faq' ? t.nav_faq : (page.type === 'contact' ? t.nav_contact : (t[page.prefix + '_h1'] || seo.title));
         graph.push({
@@ -480,6 +532,8 @@ for (const lang of Object.keys(LANGS)) {
         html = fillAria(html, t, ctx);
         html = fillSrc(html, lang);
         html = fillHref(html, lang);
+        html = fillPoster(html, lang);
+        html = fillVideoData(html, lang);
         html = setHead(html, lang, page, t);
         html = setSwitcher(html, lang, page);
         if (lang === 'fr') {
@@ -509,13 +563,16 @@ function sitemapEntry(lang, page, i) {
     const urlFr = pageUrl('fr', page);
     const urlEn = pageUrl('en', page);
     let video = '';
-    if (page.type === 'home') {
+    if (page.type === 'video') {
         const v = VIDEOS[lang];
         video = `    <video:video>
       <video:thumbnail_loc>${SITE}/images/${v.thumb}</video:thumbnail_loc>
       <video:title>${escapeHtml(v.title)}</video:title>
       <video:description>${escapeHtml(v.description)}</video:description>
       <video:content_loc>${SITE}/images/${v.file}</video:content_loc>
+      <video:duration>${v.duration}</video:duration>
+      <video:publication_date>${v.uploadDate}</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
     </video:video>
 `;
     }

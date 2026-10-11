@@ -13,12 +13,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/"/>
-    <video:video>
-      <video:thumbnail_loc>https://onedrivepathchecker.com/images/Screenshot_Home_FR.png</video:thumbnail_loc>
-      <video:title>Démonstration OneDrive Path Checker – Détecteur de chemins trop longs pour OneDrive</video:title>
-      <video:description>Découvrez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), les corrige et exporte un rapport PDF ou CSV.</video:description>
-      <video:content_loc>https://onedrivepathchecker.com/images/DemoPathChecker_FR.mp4</video:content_loc>
-    </video:video>
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/</loc>
@@ -28,12 +22,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/"/>
-    <video:video>
-      <video:thumbnail_loc>https://onedrivepathchecker.com/images/Screenshot_Home_EN.png</video:thumbnail_loc>
-      <video:title>OneDrive Path Checker Demo – Long Path Detector for OneDrive</video:title>
-      <video:description>See how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.</video:description>
-      <video:content_loc>https://onedrivepathchecker.com/images/DemoPathChecker_EN.mp4</video:content_loc>
-    </video:video>
   </url>
 
   <!-- faq -->
@@ -54,6 +42,44 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/FAQ.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/FAQ.html"/>
+  </url>
+
+  <!-- demo -->
+  <url>
+    <loc>https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-path-checker-demo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html"/>
+    <video:video>
+      <video:thumbnail_loc>https://onedrivepathchecker.com/images/Screenshot_Home_FR.png</video:thumbnail_loc>
+      <video:title>Démonstration OneDrive Path Checker : détecter les chemins trop longs sur OneDrive</video:title>
+      <video:description>Voyez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères), les corrige et exporte un rapport PDF ou CSV.</video:description>
+      <video:content_loc>https://onedrivepathchecker.com/images/DemoPathChecker_FR.mp4</video:content_loc>
+      <video:duration>23</video:duration>
+      <video:publication_date>2026-10-08</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://onedrivepathchecker.com/en/onedrive-path-checker-demo.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/onedrive-path-checker-demo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html"/>
+    <video:video>
+      <video:thumbnail_loc>https://onedrivepathchecker.com/images/Screenshot_Home_EN.png</video:thumbnail_loc>
+      <video:title>OneDrive Path Checker demo: find OneDrive paths that are too long</video:title>
+      <video:description>See how OneDrive Path Checker spots files whose path exceeds OneDrive limits (255 and 400 characters), helps you fix them and exports a PDF or CSV report.</video:description>
+      <video:content_loc>https://onedrivepathchecker.com/images/DemoPathChecker_EN.mp4</video:content_loc>
+      <video:duration>23</video:duration>
+      <video:publication_date>2026-10-08</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
 
   <!-- limits -->

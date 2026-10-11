@@ -249,14 +249,10 @@
     <!-- ========== DEMO MODAL ========== -->
     <!-- using a video player instead of <img> (more reliable than gif) -->
     <div id="gifModal" class="modal">
-        <div class="modal-content">
+        <!-- La vidéo est injectée au clic (voir script.js) : elle n'est pas dans le HTML de l'accueil.
+             La page de lecture dédiée est la page « Démonstration vidéo » (indexation vidéo). -->
+        <div class="modal-content" id="demoVideoHolder" data-video="/images/DemoPathChecker_EN.mp4">
             <span class="close" onclick="closeGifModal()">&times;</span>
-            <video id="demoVideo"
-                   src="../images/DemoPathChecker_EN.mp4"
-                  
-                  
-                   controls preload="none" loop muted playsinline
-                   style="width:100%; height:100%; object-fit:contain; display:none;"></video>
         </div>
     </div>
 
@@ -380,6 +376,7 @@
                 <a href="onedrive-path-length-limit.html" data-i18n="footer_guide_limit">OneDrive path length limit</a>
                 <a href="onedrive-path-too-long-error.html" data-i18n="footer_guide_sync">"File path is too long" error</a>
                 <a href="onedrive-file-wont-open.html" data-i18n="footer_guide_open">File won't open</a>
+                <a href="onedrive-path-checker-demo.html" data-i18n="footer_guide_demo">Video demo</a>
             </nav>
             <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. All rights reserved.</p>
         </div>

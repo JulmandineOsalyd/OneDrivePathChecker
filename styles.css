@@ -1516,6 +1516,22 @@ html[lang="en"] a.lang-btn[data-lang="en"] {
     margin-bottom: calc(var(--grid) * 3);
 }
 
+.watch-video {
+    margin-bottom: calc(var(--grid) * 4);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: var(--shadow-lg);
+}
+
+.watch-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
 .article-image {
     display: block;
     width: 100%;
