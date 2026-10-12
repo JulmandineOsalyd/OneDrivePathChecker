@@ -1446,19 +1446,14 @@ html[lang="en"] a.lang-btn[data-lang="en"] {
     text-decoration: none;
 }
 
-/* ========== PIED DE PAGE : GUIDES ========== */
-.footer-guides {
+/* ========== PIED DE PAGE : PAGES LÉGALES ========== */
+.footer-legal {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: calc(var(--grid) * 1) calc(var(--grid) * 3);
     margin-bottom: calc(var(--grid) * 2);
     font-size: 0.875rem;
-}
-
-.footer-guides-title {
-    font-weight: 700;
-    color: var(--text-primary);
 }
 
 /* ========== GUIDES (une page par erreur OneDrive) ========== */

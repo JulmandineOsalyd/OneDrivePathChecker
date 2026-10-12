@@ -1,72 +1,102 @@
 {
   "index.html": {
-    "hash": "f92b555a3400c4b5e442b600b75ab61c167f0543",
+    "hash": "1b84417643f6c4b612ae9e1335066d4d6faceeed",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "FAQ.html": {
-    "hash": "acc17d1407ab95cbab798aa86814c9dd440a8c57",
+    "hash": "b2e8d1fd3d9d332d4983bef63c8951db9f399d3b",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "erreur-chemin-acces-trop-long-onedrive.html": {
-    "hash": "844353601d365e6360457af21c3577e6c38ff855",
+    "hash": "856373a50b95c76440d52f335466d637d9be32b9",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "fichier-onedrive-impossible-a-ouvrir.html": {
-    "hash": "02cdca4f7029cfb8ad73ff5b81c97cc7b12a5dc4",
+    "hash": "3bfa247616df495283713308321d0e919a5e5d75",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "contact.html": {
-    "hash": "5b8cd81b554059223f8313b1e150954d1abd1e32",
+    "hash": "451ede215cfebb893c43521d61c29e55234199de",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/index.html": {
-    "hash": "ed77e1b1f55c779479ddebb9524a01e540606cf3",
+    "hash": "edafa76d2a37629e9c9c74194ba0a4f797cdbb9f",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/FAQ.html": {
-    "hash": "61890ec37d94edb5bc52a68622c320fa8f020707",
+    "hash": "8dea7a8a404dd60061bbd244da4b8a127797302a",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/onedrive-path-too-long-error.html": {
-    "hash": "8a1a94fd3cb147dce48e4b0467f75aea41708bdd",
+    "hash": "4a3cae83ccecbfaaaa3723a18d2e7f7f53b6017b",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/onedrive-file-wont-open.html": {
-    "hash": "18e7bacbd059e2f26206db39e141f51e13090aa1",
+    "hash": "d5df7c2e82078f5d4b486c411942c205b5eb4bff",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/contact.html": {
-    "hash": "46c2c70d97b62daaad8e966c164005524fef7c27",
+    "hash": "bf45f4171882b43e0f0a9985e8a9b010a6b5daec",
     "published": "2026-10-09",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "limite-longueur-chemin-onedrive.html": {
-    "hash": "d689049475db5fa81dd2a076e380f6911cba0cd3",
+    "hash": "668b69983ec26744e2830855701127a23bf78710",
     "published": "2026-10-11",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/onedrive-path-length-limit.html": {
-    "hash": "88e17c287b0fd1c52bf69413ddbfdf11e134f56d",
+    "hash": "f6c2b446a0d42636010c28bd85110afe4ef869ab",
     "published": "2026-10-11",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "demonstration-onedrive-path-checker.html": {
-    "hash": "e78a3a309423c30470554a18aaeb8b31ca4a7cb5",
+    "hash": "7af8a36c05d1d3debf79403df329f33f4b064f59",
     "published": "2026-10-11",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
   },
   "en/onedrive-path-checker-demo.html": {
-    "hash": "abb40818678bf2110ff3d61b8fd91b42e96f7361",
+    "hash": "6f51611d773f3971d400fefef1fa65adefef4865",
     "published": "2026-10-11",
-    "lastmod": "2026-10-11"
+    "lastmod": "2026-10-12"
+  },
+  "conditions-generales-de-vente.html": {
+    "hash": "ad3149b181c9a5a857ebc944fa594623aa3d3831",
+    "published": "2026-10-12",
+    "lastmod": "2026-10-12"
+  },
+  "politique-de-remboursement.html": {
+    "hash": "8119746d2b145d3bacbc9a1088caeadbea6cea85",
+    "published": "2026-10-12",
+    "lastmod": "2026-10-12"
+  },
+  "mentions-legales.html": {
+    "hash": "fece0648a03a51cf01bcc2f897813dfd6a05f4a7",
+    "published": "2026-10-12",
+    "lastmod": "2026-10-12"
+  },
+  "en/terms-of-sale.html": {
+    "hash": "f0c7eab52b13504ae903b16383930411274bb6ac",
+    "published": "2026-10-12",
+    "lastmod": "2026-10-12"
+  },
+  "en/refund-policy.html": {
+    "hash": "d0d9a30114b1d1d7bfff3fa109280d73d8c55aac",
+    "published": "2026-10-12",
+    "lastmod": "2026-10-12"
+  },
+  "en/legal-notice.html": {
+    "hash": "9762d10db66b16698365b94078a27198a81774d4",
+    "published": "2026-10-12",
+    "lastmod": "2026-10-12"
   }
 }

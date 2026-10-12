@@ -38,6 +38,8 @@ OneDrivePathChecker/
 
 **Workflow :** modifier `src/*.html` et/ou `translations.js`, puis lancer `node tools/build.js` et committer les fichiers générés (GitHub Pages ne lance pas le script). Les pages EN vivent dans `/en/` ; le français est canonique à la racine (`/`).
 
+**Analytics :** `build.js` injecte le code Google Analytics 4 (constante `GA_ID`) juste après `<head>` sur toutes les pages. Mettre `GA_ID = ''` pour le retirer.
+
 **Cache :** `build.js` ajoute `?v=<empreinte>` aux liens `styles.css`, `script.js`, `translations.js` et `fonts/fonts.css` : après une modification de ces fichiers, relancer `node tools/build.js` pour que les navigateurs rechargent la nouvelle version.
 
 **Langue :** les pages françaises contiennent un petit script (généré par `build.js`) qui envoie vers `/en/…` les visiteurs dont le navigateur n'est pas en français. Il ignore les robots, respecte le choix explicite (clic FR/EN mémorisé dans `localStorage` sous `opc-lang`) et `?lang=fr`. Les pages `/en/` ne redirigent jamais.
@@ -83,7 +85,7 @@ Organized as **IIFE modules**, each with an `init()` method, all called from a s
 | `Animations` | `IntersectionObserver` scroll-in animations (`fade-in-up` class) |
 | `Modal` | Fenêtre vidéo de l'accueil : la `<video>` est **créée au clic** (jamais dans le HTML de l'accueil). La vidéo indexable vit sur la page de lecture « Démonstration vidéo » (`src/demo.html`, avec `VideoObject` et entrée `<video:video>` du sitemap) |
 | `FAQ` | Accordion expand/collapse with smooth `max-height` animation |
-| `CTAHandlers` | CTA « Demandez un devis » (mailto). Les boutons « Essai gratuit » sont de simples liens vers le `.msi` ; « Acheter » n'a pas encore de lien |
+| `CTAHandlers` | CTA « Demandez un devis » (mailto). Les boutons « Essai gratuit » sont de simples liens vers le `.msi` ; « Acheter » ouvre le paiement Dodo Payments |
 
 Modules expose functions to `window` (e.g. `window.handleDownload`) for inline `onclick` attributes in HTML. This is intentional — do not refactor to event listeners without updating all HTML files.
 
@@ -100,7 +102,7 @@ The desktop tool enforces two Microsoft limits:
 
 The website has two primary conversion goals:
 1. **Download** — Free 24-hour trial (`.msi` installer, FR/EN)
-2. **Purchase** — Standard license (single workstation): **39,99 € on the French pages, $49 on the English pages** (`pricing_price_value` in `translations.js`; the structured data follows), or enterprise quote (the « Acheter » buttons have no link yet)
+2. **Purchase** — Standard license (single workstation): **39,99 € on the French pages, $49 on the English pages** (`pricing_price_value` in `translations.js`; the structured data follows), or enterprise quote (the « Acheter » buttons open the Dodo Payments checkout `checkout.dodopayments.com/buy/pdt_…`, return URL = the site root)
 
 ---
 

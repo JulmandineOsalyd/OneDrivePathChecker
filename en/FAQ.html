@@ -2,6 +2,15 @@
 <html lang="en">
 <!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BKEQDWP6E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6BKEQDWP6E');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="All your questions about OneDrive path too long errors and the path length limit: how the checker works, security, exports, licensing, and support.">
@@ -120,7 +129,7 @@
                         "name": "What OneDrive sync errors might I encounter?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Path > 400 characters : OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected. Path > 255 characters : the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool."
+                            "text": "Path > 400 characters : OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected. → Understand and fix the \"file path is too long\" error Path > 255 characters : the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool. → What to do when a OneDrive file won't open"
                         }
                     },
                     {
@@ -136,7 +145,7 @@
                         "name": "What can be scanned, and how is length measured?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "The tool scans a OneDrive folder synced on your computer. It measures the full Windows path length of each file, from the drive root. For example: C:\\Users\\julie\\OneDrive - My Company\\Projects\\2024\\Important document.docx Beyond 255 characters, the file is flagged as a warning; beyond 400, it is flagged as critical. A path of exactly 255 characters is accepted. The 255-character limit applies to the full path, including your Windows user name and the OneDrive folder name."
+                            "text": "The tool scans a OneDrive folder synced on your computer. It measures the full Windows path length of each file, from the drive root. For example: C:\\Users\\julie\\OneDrive - My Company\\Projects\\2024\\Important document.docx Beyond 255 characters, the file is flagged as a warning; beyond 400, it is flagged as critical. A path of exactly 255 characters is accepted. The 255-character limit applies to the full path, including your Windows user name and the OneDrive folder name. Learn more: OneDrive path length limit: 255 and 400 characters explained ."
                         }
                     },
                     {
@@ -210,6 +219,14 @@
                             "@type": "Answer",
                             "text": "OneDrive and SharePoint limit the entire path of a file, name included, to 400 characters . Windows adds its own limit of 255 characters (\"MAX_PATH\": 260 in total) for opening files from File Explorer. Learn more: OneDrive path length limit: 255 and 400 characters explained ."
                         }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is there a video demo of the tool?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. A short video shows how OneDrive Path Checker spots files whose path is too long, helps you fix them and exports a report. Watch the video demo ."
+                        }
                     }
                 ]
             },
@@ -242,10 +259,10 @@
     <link rel="stylesheet" href="../fonts/fonts.css?v=da39256b">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="../styles.css?v=0d5d2efb">
+    <link rel="stylesheet" href="../styles.css?v=81f8fe95">
 
     <!-- Translations (must load before script.js) -->
-    <script src="../translations.js?v=510c3f56"></script>
+    <script src="../translations.js?v=167918e8"></script>
 
     <!-- Main Script -->
     <script defer src="../script.js?v=7d02b97a"></script>
@@ -324,7 +341,7 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Path &gt; 400 characters</strong>: OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected.</p><img src="../images/OneDrive400-en.webp" width="1298" height="906" loading="lazy" alt="OneDrive error message: « We can't sync this item because the file path is too long »" class="faq-image" style="width:40%"><p><strong>Path &gt; 255 characters</strong>: the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool.</p><img src="../images/OneDrive255-en.webp" width="610" height="262" loading="lazy" alt="Windows « 1 interrupted action » dialog shown for a Word document with a very long file name" class="faq-image" style="width:35%"></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Path &gt; 400 characters</strong>: OneDrive displays a sync error and shows the number of excess characters. The file cannot be synced and OneDrive stays stuck on this error until the path length is corrected.</p><p>→ <a href="onedrive-path-too-long-error.html">Understand and fix the "file path is too long" error</a></p><img src="../images/OneDrive400-en.webp" width="1298" height="906" loading="lazy" alt="OneDrive error message: « We can't sync this item because the file path is too long »" class="faq-image" style="width:40%"><p><strong>Path &gt; 255 characters</strong>: the file syncs, but cannot be opened directly from the OneDrive folder. It remains accessible online or via Teams. OneDrive does not indicate the path length, making diagnosis difficult without a dedicated tool.</p><p>→ <a href="onedrive-file-wont-open.html">What to do when a OneDrive file won't open</a></p><img src="../images/OneDrive255-en.webp" width="610" height="262" loading="lazy" alt="Windows « 1 interrupted action » dialog shown for a Word document with a very long file name" class="faq-image" style="width:35%"></div>
                 </div>
             </div>
 
@@ -361,7 +378,7 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_full_a4_html"><p>The tool scans a <strong>OneDrive folder</strong> synced on your computer. It measures the full Windows path length of each file, from the drive root. For example:</p><code class="faq-code">C:\Users\julie\OneDrive - My Company\Projects\2024\Important document.docx</code><p>Beyond 255 characters, the file is flagged as a warning; beyond 400, it is flagged as critical. A path of exactly 255 characters is accepted.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>The 255-character limit applies to the full path, including your Windows user name and the OneDrive folder name.</span></div></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a4_html"><p>The tool scans a <strong>OneDrive folder</strong> synced on your computer. It measures the full Windows path length of each file, from the drive root. For example:</p><code class="faq-code">C:\Users\julie\OneDrive - My Company\Projects\2024\Important document.docx</code><p>Beyond 255 characters, the file is flagged as a warning; beyond 400, it is flagged as critical. A path of exactly 255 characters is accepted.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>The 255-character limit applies to the full path, including your Windows user name and the OneDrive folder name.</span></div><p>Learn more: <a href="onedrive-path-length-limit.html">OneDrive path length limit: 255 and 400 characters explained</a>.</p></div>
                 </div>
             </div>
 
@@ -402,6 +419,16 @@
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner" data-i18n-html="faq_full_a8_html"><p>To be transparent, here is what you should know:</p><ul class="faq-list"><li><i class="fas fa-angle-right"></i> Files over 400 characters are not synced by OneDrive: they may be missing from your computer, and therefore from the scan.</li><li><i class="fas fa-angle-right"></i> Fix tracking lasts for the session: a new scan resets it.</li><li><i class="fas fa-angle-right"></i> Renaming a folder also changes the path of the files it contains: run a new scan to update the list.</li></ul></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q17">Is there a video demo of the tool?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a17_html"><p>Yes. A short video shows how OneDrive Path Checker spots files whose path is too long, helps you fix them and exports a report.</p><p><a href="onedrive-path-checker-demo.html">Watch the video demo</a>.</p></div>
                 </div>
             </div>
         </div>
@@ -465,14 +492,12 @@
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
-            <nav class="footer-guides" aria-label="Guides">
-                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
-                <a href="onedrive-path-length-limit.html" data-i18n="footer_guide_limit">OneDrive path length limit</a>
-                <a href="onedrive-path-too-long-error.html" data-i18n="footer_guide_sync">"File path is too long" error</a>
-                <a href="onedrive-file-wont-open.html" data-i18n="footer_guide_open">File won't open</a>
-                <a href="onedrive-path-checker-demo.html" data-i18n="footer_guide_demo">Video demo</a>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="legal-notice.html" data-i18n="footer_legal">Legal notice</a>
+                <a href="terms-of-sale.html" data-i18n="footer_cgv">Terms of sale</a>
+                <a href="refund-policy.html" data-i18n="footer_refund">Refund policy</a>
             </nav>
-            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. All rights reserved.</p>
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker. All rights reserved.</p>
         </div>
     </footer>
 

@@ -2,6 +2,15 @@
 <html lang="fr">
 <!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BKEQDWP6E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6BKEQDWP6E');
+</script>
     <meta charset="UTF-8">
     <script>
     (function () {
@@ -132,7 +141,7 @@
                         "name": "Quelles sont les erreurs de synchronisation OneDrive que je peux rencontrer ?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Chemin > 400 caractères : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée. Chemin > 255 caractères : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié."
+                            "text": "Chemin > 400 caractères : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée. → Comprendre et corriger l'erreur « le chemin d'accès est trop long » Chemin > 255 caractères : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié. → Que faire quand un fichier OneDrive ne s'ouvre pas"
                         }
                     },
                     {
@@ -148,7 +157,7 @@
                         "name": "Que peut-on analyser, et comment la longueur est-elle mesurée ?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "L'outil analyse un dossier OneDrive synchronisé sur votre poste. Il mesure la longueur du chemin Windows complet de chaque fichier, depuis la racine du disque. Par exemple : C:\\Users\\julie\\OneDrive - Mon Entreprise\\Projets\\2024\\Document important.docx Au-delà de 255 caractères, le fichier est signalé en avertissement ; au-delà de 400, il est signalé comme critique. Un chemin d'exactement 255 caractères est accepté. La limite de 255 caractères s'applique au chemin complet, y compris le nom de votre session Windows et celui du dossier OneDrive."
+                            "text": "L'outil analyse un dossier OneDrive synchronisé sur votre poste. Il mesure la longueur du chemin Windows complet de chaque fichier, depuis la racine du disque. Par exemple : C:\\Users\\julie\\OneDrive - Mon Entreprise\\Projets\\2024\\Document important.docx Au-delà de 255 caractères, le fichier est signalé en avertissement ; au-delà de 400, il est signalé comme critique. Un chemin d'exactement 255 caractères est accepté. La limite de 255 caractères s'applique au chemin complet, y compris le nom de votre session Windows et celui du dossier OneDrive. En savoir plus : limite de longueur de chemin OneDrive : 255 et 400 caractères ."
                         }
                     },
                     {
@@ -222,6 +231,14 @@
                             "@type": "Answer",
                             "text": "OneDrive et SharePoint limitent le chemin complet d'un fichier, nom compris, à 400 caractères . Windows ajoute sa propre limite de 255 caractères (« MAX_PATH » : 260 au total) pour ouvrir les fichiers depuis l'Explorateur. En savoir plus : limite de longueur de chemin OneDrive : 255 et 400 caractères ."
                         }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Existe-t-il une démonstration vidéo de l'outil ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Oui. Une courte vidéo montre comment OneDrive Path Checker repère les fichiers dont le chemin est trop long, aide à les corriger et exporte un rapport. Voir la démonstration vidéo ."
+                        }
                     }
                 ]
             },
@@ -254,10 +271,10 @@
     <link rel="stylesheet" href="fonts/fonts.css?v=da39256b">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=0d5d2efb">
+    <link rel="stylesheet" href="styles.css?v=81f8fe95">
 
     <!-- Translations (must load before script.js) -->
-    <script src="translations.js?v=510c3f56"></script>
+    <script src="translations.js?v=167918e8"></script>
 
     <!-- Main Script -->
     <script defer src="script.js?v=7d02b97a"></script>
@@ -336,7 +353,7 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée.</p><img src="images/OneDrive400.webp" width="1298" height="906" loading="lazy" alt="Message d'erreur OneDrive : « Nous ne pouvons pas synchroniser cet élément, car le chemin d'accès est trop long »" class="faq-image" style="width:40%"><p><strong>Chemin &gt; 255 caractères</strong> : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié.</p><img src="images/OneDrive255.webp" width="610" height="262" loading="lazy" alt="Fenêtre Windows « Action interrompue » affichée pour un document Word au nom très long" class="faq-image" style="width:35%"></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a2_html"><p><strong>Chemin &gt; 400 caractères</strong> : OneDrive affiche une erreur de synchronisation et indique le nombre de caractères en trop. Le fichier ne peut pas être synchronisé et OneDrive reste bloqué sur cette erreur tant que la longueur du chemin n'a pas été corrigée.</p><p>→ <a href="erreur-chemin-acces-trop-long-onedrive.html">Comprendre et corriger l'erreur « le chemin d'accès est trop long »</a></p><img src="images/OneDrive400.webp" width="1298" height="906" loading="lazy" alt="Message d'erreur OneDrive : « Nous ne pouvons pas synchroniser cet élément, car le chemin d'accès est trop long »" class="faq-image" style="width:40%"><p><strong>Chemin &gt; 255 caractères</strong> : le fichier est synchronisé, mais impossible à ouvrir directement depuis le dossier OneDrive. Il reste accessible en ligne ou via Teams. OneDrive n'indique pas la longueur du chemin, ce qui rend le diagnostic difficile sans outil dédié.</p><p>→ <a href="fichier-onedrive-impossible-a-ouvrir.html">Que faire quand un fichier OneDrive ne s'ouvre pas</a></p><img src="images/OneDrive255.webp" width="610" height="262" loading="lazy" alt="Fenêtre Windows « Action interrompue » affichée pour un document Word au nom très long" class="faq-image" style="width:35%"></div>
                 </div>
             </div>
 
@@ -373,7 +390,7 @@
                     <i class="fas fa-chevron-down faq-chevron"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner" data-i18n-html="faq_full_a4_html"><p>L'outil analyse un <strong>dossier OneDrive</strong> synchronisé sur votre poste. Il mesure la longueur du chemin Windows complet de chaque fichier, depuis la racine du disque. Par exemple :</p><code class="faq-code">C:\Users\julie\OneDrive - Mon Entreprise\Projets\2024\Document important.docx</code><p>Au-delà de 255 caractères, le fichier est signalé en avertissement ; au-delà de 400, il est signalé comme critique. Un chemin d'exactement 255 caractères est accepté.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>La limite de 255 caractères s'applique au chemin complet, y compris le nom de votre session Windows et celui du dossier OneDrive.</span></div></div>
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a4_html"><p>L'outil analyse un <strong>dossier OneDrive</strong> synchronisé sur votre poste. Il mesure la longueur du chemin Windows complet de chaque fichier, depuis la racine du disque. Par exemple :</p><code class="faq-code">C:\Users\julie\OneDrive - Mon Entreprise\Projets\2024\Document important.docx</code><p>Au-delà de 255 caractères, le fichier est signalé en avertissement ; au-delà de 400, il est signalé comme critique. Un chemin d'exactement 255 caractères est accepté.</p><div class="faq-tip"><i class="fas fa-lightbulb"></i><span>La limite de 255 caractères s'applique au chemin complet, y compris le nom de votre session Windows et celui du dossier OneDrive.</span></div><p>En savoir plus : <a href="limite-longueur-chemin-onedrive.html">limite de longueur de chemin OneDrive : 255 et 400 caractères</a>.</p></div>
                 </div>
             </div>
 
@@ -414,6 +431,16 @@
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner" data-i18n-html="faq_full_a8_html"><p>Pour rester transparent, voici ce qu'il faut savoir :</p><ul class="faq-list"><li><i class="fas fa-angle-right"></i> Les fichiers de plus de 400 caractères ne sont pas synchronisés par OneDrive : ils peuvent être absents de votre poste, donc de l'analyse.</li><li><i class="fas fa-angle-right"></i> Le suivi des fichiers corrigés dure le temps de la session : un nouveau scan le remet à zéro.</li><li><i class="fas fa-angle-right"></i> Renommer un dossier modifie aussi le chemin des fichiers qu'il contient : lancez un nouveau scan pour mettre la liste à jour.</li></ul></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-i18n="faq_full_q17">Existe-t-il une démonstration vidéo de l'outil ?</span>
+                    <i class="fas fa-chevron-down faq-chevron"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner" data-i18n-html="faq_full_a17_html"><p>Oui. Une courte vidéo montre comment OneDrive Path Checker repère les fichiers dont le chemin est trop long, aide à les corriger et exporte un rapport.</p><p><a href="demonstration-onedrive-path-checker.html">Voir la démonstration vidéo</a>.</p></div>
                 </div>
             </div>
         </div>
@@ -477,14 +504,12 @@
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
-            <nav class="footer-guides" aria-label="Guides">
-                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
-                <a href="limite-longueur-chemin-onedrive.html" data-i18n="footer_guide_limit">Limite de longueur de chemin OneDrive</a>
-                <a href="erreur-chemin-acces-trop-long-onedrive.html" data-i18n="footer_guide_sync">Erreur « chemin d'accès trop long »</a>
-                <a href="fichier-onedrive-impossible-a-ouvrir.html" data-i18n="footer_guide_open">Fichier impossible à ouvrir</a>
-                <a href="demonstration-onedrive-path-checker.html" data-i18n="footer_guide_demo">Démonstration vidéo</a>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="mentions-legales.html" data-i18n="footer_legal">Mentions légales</a>
+                <a href="conditions-generales-de-vente.html" data-i18n="footer_cgv">Conditions générales de vente</a>
+                <a href="politique-de-remboursement.html" data-i18n="footer_refund">Politique de remboursement</a>
             </nav>
-            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. Tous droits réservés.</p>
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker. Tous droits réservés.</p>
         </div>
     </footer>
 

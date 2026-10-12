@@ -24,6 +24,18 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://onedrivepathchecker.com';
 const TODAY = new Date().toISOString().slice(0, 10);
 
+// Google Analytics 4 : ID de mesure. Mettre une chaîne vide ('') pour ne plus injecter le code.
+const GA_ID = 'G-6BKEQDWP6E';
+const GA_SNIPPET = GA_ID ? `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${GA_ID}');
+</script>` : '';
+
 // ---------- Textes ----------
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'translations.js'), 'utf8'), sandbox);
@@ -55,6 +67,21 @@ const PAGES = [
         key: 'erropen', type: 'article', prefix: 'erropen', src: 'err-open.html', priority: ['0.7', '0.6'], freq: 'monthly',
         out: { fr: 'fichier-onedrive-impossible-a-ouvrir.html', en: 'onedrive-file-wont-open.html' },
         urlPath: { fr: 'fichier-onedrive-impossible-a-ouvrir.html', en: 'onedrive-file-wont-open.html' }
+    },
+    {
+        key: 'cgv', type: 'legal', prefix: 'cgv', src: 'legal-cgv.html', priority: ['0.3', '0.2'], freq: 'yearly',
+        out: { fr: 'conditions-generales-de-vente.html', en: 'terms-of-sale.html' },
+        urlPath: { fr: 'conditions-generales-de-vente.html', en: 'terms-of-sale.html' }
+    },
+    {
+        key: 'refund', type: 'legal', prefix: 'refund', src: 'legal-refund.html', priority: ['0.3', '0.2'], freq: 'yearly',
+        out: { fr: 'politique-de-remboursement.html', en: 'refund-policy.html' },
+        urlPath: { fr: 'politique-de-remboursement.html', en: 'refund-policy.html' }
+    },
+    {
+        key: 'legal', type: 'legal', prefix: 'legal', src: 'legal-notice.html', priority: ['0.3', '0.2'], freq: 'yearly',
+        out: { fr: 'mentions-legales.html', en: 'legal-notice.html' },
+        urlPath: { fr: 'mentions-legales.html', en: 'legal-notice.html' }
     },
     { key: 'contact', type: 'contact', src: 'contact.html', out: same('contact.html'), urlPath: same('contact.html'), priority: ['0.5', '0.4'], freq: 'yearly' }
 ];
@@ -94,6 +121,18 @@ const SEO = {
             title: 'Démonstration vidéo : chemins trop longs OneDrive',
             description: 'Vidéo : voyez comment OneDrive Path Checker repère les fichiers dont le chemin dépasse les limites OneDrive (255 et 400 caractères).'
         },
+        cgv: {
+            title: 'Conditions générales de vente | OneDrive Path Checker',
+            description: 'Conditions générales de vente et d\'utilisation du logiciel OneDrive Path Checker : licence perpétuelle pour un poste, paiement, support.'
+        },
+        refund: {
+            title: 'Politique de remboursement | OneDrive Path Checker',
+            description: 'Politique de remboursement des licences OneDrive Path Checker : ventes définitives, essai gratuit de 24 heures avant l\'achat.'
+        },
+        legal: {
+            title: 'Mentions légales | OneDrive Path Checker',
+            description: 'Mentions légales du site OneDrive Path Checker : éditeur OSALYD CONSULTING, hébergeur et contact.'
+        },
         schemaDescription: 'Repérez et corrigez les fichiers dont le chemin est trop long pour OneDrive, avec un score de conformité et un rapport PDF.'
     },
     en: {
@@ -124,6 +163,18 @@ const SEO = {
         demo: {
             title: 'Video Demo: Find OneDrive Paths That Are Too Long',
             description: 'Video: see how OneDrive Path Checker spots files whose path exceeds the OneDrive limits (255 and 400 characters) and exports a report.'
+        },
+        cgv: {
+            title: 'Terms of Sale | OneDrive Path Checker',
+            description: 'Terms of sale and use of the OneDrive Path Checker software: perpetual single-workstation license, payment, support.'
+        },
+        refund: {
+            title: 'Refund Policy | OneDrive Path Checker',
+            description: 'Refund policy for OneDrive Path Checker licenses: sales are final, free 24-hour trial available before purchase.'
+        },
+        legal: {
+            title: 'Legal Notice | OneDrive Path Checker',
+            description: 'Legal notice of the OneDrive Path Checker website: publisher OSALYD CONSULTING, host and contact.'
         },
         schemaDescription: 'Spot and fix files whose path is too long for OneDrive, with a compliance score and a PDF report.'
     }
@@ -388,7 +439,7 @@ function setJsonLd(html, lang, page, t, dates) {
         publisher: { '@id': SITE + '/#organization' }
     };
 
-    const pageTypes = { contact: 'ContactPage', faq: 'FAQPage', article: 'WebPage', video: 'WebPage', home: 'WebPage' };
+    const pageTypes = { contact: 'ContactPage', faq: 'FAQPage', article: 'WebPage', video: 'WebPage', legal: 'WebPage', home: 'WebPage' };
     const webPage = {
         '@type': pageTypes[page.type],
         '@id': own + '#webpage',
@@ -563,6 +614,7 @@ for (const lang of Object.keys(LANGS)) {
         html = setJsonLd(html, lang, page, t, dates);
 
         html = versionAssets(html);
+        if (GA_SNIPPET) html = html.replace(/<head>/, '<head>\n' + GA_SNIPPET);
         if (lang === 'en') html = fixAssetPaths(html);
         html = html.replace(/(<html[^>]*>)/, '$1\n' + BANNER.trim());
 

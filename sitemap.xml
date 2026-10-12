@@ -7,7 +7,7 @@
   <!-- index -->
   <url>
     <loc>https://onedrivepathchecker.com/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/"/>
@@ -16,7 +16,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/"/>
@@ -27,7 +27,7 @@
   <!-- faq -->
   <url>
     <loc>https://onedrivepathchecker.com/FAQ.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html"/>
@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/FAQ.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/FAQ.html"/>
@@ -47,7 +47,7 @@
   <!-- demo -->
   <url>
     <loc>https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html"/>
@@ -65,7 +65,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/onedrive-path-checker-demo.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/demonstration-onedrive-path-checker.html"/>
@@ -85,7 +85,7 @@
   <!-- limits -->
   <url>
     <loc>https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html"/>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/onedrive-path-length-limit.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/limite-longueur-chemin-onedrive.html"/>
@@ -105,7 +105,7 @@
   <!-- errsync -->
   <url>
     <loc>https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html"/>
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/onedrive-path-too-long-error.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/erreur-chemin-acces-trop-long-onedrive.html"/>
@@ -125,7 +125,7 @@
   <!-- erropen -->
   <url>
     <loc>https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
@@ -134,7 +134,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/onedrive-file-wont-open.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
@@ -142,10 +142,70 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/fichier-onedrive-impossible-a-ouvrir.html"/>
   </url>
 
+  <!-- cgv -->
+  <url>
+    <loc>https://onedrivepathchecker.com/conditions-generales-de-vente.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/conditions-generales-de-vente.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/terms-of-sale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/conditions-generales-de-vente.html"/>
+  </url>
+  <url>
+    <loc>https://onedrivepathchecker.com/en/terms-of-sale.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/conditions-generales-de-vente.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/terms-of-sale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/conditions-generales-de-vente.html"/>
+  </url>
+
+  <!-- refund -->
+  <url>
+    <loc>https://onedrivepathchecker.com/politique-de-remboursement.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/politique-de-remboursement.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/refund-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/politique-de-remboursement.html"/>
+  </url>
+  <url>
+    <loc>https://onedrivepathchecker.com/en/refund-policy.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/politique-de-remboursement.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/refund-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/politique-de-remboursement.html"/>
+  </url>
+
+  <!-- legal -->
+  <url>
+    <loc>https://onedrivepathchecker.com/mentions-legales.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/legal-notice.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/mentions-legales.html"/>
+  </url>
+  <url>
+    <loc>https://onedrivepathchecker.com/en/legal-notice.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onedrivepathchecker.com/en/legal-notice.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onedrivepathchecker.com/mentions-legales.html"/>
+  </url>
+
   <!-- contact -->
   <url>
     <loc>https://onedrivepathchecker.com/contact.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/contact.html"/>
@@ -154,7 +214,7 @@
   </url>
   <url>
     <loc>https://onedrivepathchecker.com/en/contact.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://onedrivepathchecker.com/contact.html"/>

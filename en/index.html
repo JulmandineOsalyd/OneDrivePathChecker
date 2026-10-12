@@ -3,6 +3,15 @@
 <!-- FICHIER GÉNÉRÉ par tools/build.js : ne pas modifier ici (modifier src/ ou translations.js) -->
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BKEQDWP6E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6BKEQDWP6E');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fix the OneDrive path too long error. Scan your OneDrive for paths over the 255 and 400 character limits, rename files and share a PDF report. 100% local.">
@@ -162,10 +171,10 @@
 
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="../styles.css?v=0d5d2efb">
+    <link rel="stylesheet" href="../styles.css?v=81f8fe95">
 
     <!-- Translations (must load before script.js) -->
-    <script src="../translations.js?v=510c3f56"></script>
+    <script src="../translations.js?v=167918e8"></script>
 
     <!-- Main Script -->
     <script defer src="../script.js?v=7d02b97a"></script>
@@ -222,9 +231,9 @@
                         <i class="fab fa-windows"></i>
                         <span data-i18n="pricing_cta_trial">Free trial</span>
                     </a>
-                    <button class="pricing-btn pricing-btn-outline" type="button">
+                    <a class="pricing-btn pricing-btn-outline" href="https://checkout.dodopayments.com/buy/pdt_0NpMZMQSownQ9h3BL97xs?quantity=1&amp;redirect_url=https://onedrivepathchecker.com" target="_blank" rel="noopener">
                         <span data-i18n="hero_cta_buy">Buy now</span>
-                    </button>
+                    </a>
                 </div>
                 <ul class="offer-trust hero-trust">
                     <li><i class="fas fa-shield-halved"></i> <span data-i18n="pricing_trust_local">100% local execution: no data shared</span></li>
@@ -354,7 +363,7 @@
                             <i class="fab fa-windows"></i>
                             <span data-i18n="pricing_cta_trial">Free trial</span>
                         </a>
-                        <button class="offer-btn offer-btn-outline" type="button" data-i18n="pricing_cta_buy">Buy the license</button>
+                        <a class="offer-btn offer-btn-outline" href="https://checkout.dodopayments.com/buy/pdt_0NpMZMQSownQ9h3BL97xs?quantity=1&amp;redirect_url=https://onedrivepathchecker.com" target="_blank" rel="noopener" data-i18n="pricing_cta_buy">Buy the license</a>
                     </div>
                     <div class="offer-secure"><i class="fas fa-lock"></i> <span data-i18n="pricing_note_secure">Secure payment</span></div>
                 </div>
@@ -371,14 +380,12 @@
 <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
-            <nav class="footer-guides" aria-label="Guides">
-                <span class="footer-guides-title" data-i18n="footer_guides_title">Guides</span>
-                <a href="onedrive-path-length-limit.html" data-i18n="footer_guide_limit">OneDrive path length limit</a>
-                <a href="onedrive-path-too-long-error.html" data-i18n="footer_guide_sync">"File path is too long" error</a>
-                <a href="onedrive-file-wont-open.html" data-i18n="footer_guide_open">File won't open</a>
-                <a href="onedrive-path-checker-demo.html" data-i18n="footer_guide_demo">Video demo</a>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="legal-notice.html" data-i18n="footer_legal">Legal notice</a>
+                <a href="terms-of-sale.html" data-i18n="footer_cgv">Terms of sale</a>
+                <a href="refund-policy.html" data-i18n="footer_refund">Refund policy</a>
             </nav>
-            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker — Osalyd Consulting. All rights reserved.</p>
+            <p data-i18n-html="footer_copyright">&copy; 2026 OneDrive Path Checker. All rights reserved.</p>
         </div>
     </footer>
 
